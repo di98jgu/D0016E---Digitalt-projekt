@@ -45,4 +45,14 @@ STRUCTURE
 -  DicNix: The actual Adroid project
 
 
+CODE STYLE
+- Encoding UTF-8, make sure Eclipse use the proper encoding !
+- Documentation, javadoc always. 
+- Indentation: 3 spaces, no tabs.
+- Line length: 80 columns
+- Consistency: Look at what's around you!
+- Braces: Opening braces don't go on their own line.
+- Acronyms are words: Treat acronyms as words in names, yielding XmlHttpRequest, getUrl(), etc.
+- Constants, all CAPS. 
+
 
