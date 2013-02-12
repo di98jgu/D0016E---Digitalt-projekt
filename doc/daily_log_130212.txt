@@ -1,0 +1,83 @@
+tisdagen den 12:e februari 2013
+[kl. 12:50:35 CEST] di98jgu: Hej
+[kl. 12:50:49 CEST] Viktor Stärn: Hej!
+[kl. 12:50:56 CEST] Tord Larsson: Hej
+[kl. 12:51:31 CEST] Viktor Stärn: Hur går det?
+[kl. 12:51:50 CEST] di98jgu: Har börja med LocationDetails.
+[kl. 12:54:29 CEST] di98jgu: Och ni, några problem ?
+[kl. 12:54:44 CEST] Tord Larsson: Jag har inte fått igång git. Hoppas vi kan kringå det.
+[kl. 12:55:32 CEST] Tord Larsson: Jag har börjat med dashboard. Läst guider och börjar få kläm på det men kan inte tanka exempelkod. Får skriva det.
+[kl. 12:57:40 CEST] Viktor Stärn: har börjat med listan.. en basic lista verkar ju väldigt enkel att sätta upp.. lite klurigare om man vill göra en custom adapter... (vet dock inte om vi vill ha ikoner i listan, känns lite dumt om alla poster har samma ikon)
+[kl. 12:58:58 CEST] Viktor Stärn: satte av misstag en "kart-pin"-ikon som applikationsikon.. blev nästan bättre.. men där ska vi väl förmodligen ha snögubben, så isåfall måste jag ju skapa en extra list ovanför listan..
+[kl. 12:59:49 CEST] di98jgu: Du tänker nu på actionbar ?
+[kl. 13:00:11 CEST] di98jgu: list ovanför listan, alltså.
+[kl. 13:01:23 CEST] Viktor Stärn: sitter och väntar på emulatorn här, så jag kan visa en bild :)
+[kl. 13:03:07 CEST] di98jgu: Ah, att skriva egen adapter är lite klurigt men gör saker och ting så mycket enklare. Det blir mycket lättare att lägga till nya saker till exempel.
+[kl. 13:04:08 CEST] * Viktor Stärn sent file "lista.png"
+[kl. 13:04:36 CEST] Viktor Stärn: tyckte det blev bra med ikonen där uppe istället..
+[kl. 13:04:41 CEST] Tord Larsson: Ska sådana listor vara objekt man når via dashboarden?
+[kl. 13:05:18 CEST] Tord Larsson: Så på dashboarden finns mäjlighet att gå in i 6-9 listor?
+[kl. 13:05:29 CEST] Viktor Stärn: man måste väl ha en custom adapter om man vill ha mer än en "sak" i varje listpost? (t.ex. en bild och en text)
+[kl. 13:06:29 CEST] di98jgu: Viktor - Ja precis.
+[kl. 13:06:58 CEST] di98jgu: Tord - En lista blir det.
+[kl. 13:07:14 CEST] Tord Larsson: Vilka andra objekt ska finnas i listan?
+[kl. 13:07:23 CEST] Tord Larsson: http://blahti.wordpress.com/2011/03/14/build-dashboard-ui-for-android/
+[kl. 13:07:38 CEST] Tord Larsson: Kollat i den du visade. Han har feature 1-6
+[kl. 13:08:23 CEST] di98jgu: Ja, i början blir det är tomt. En ikon för list vy.
+[kl. 13:08:40 CEST] di98jgu: Men sen kommer en ikon för att logga in.
+[kl. 13:08:48 CEST] di98jgu: Ikon för kart vy.
+[kl. 13:08:55 CEST] di98jgu: Ikon för inställningar.
+[kl. 13:09:01 CEST] Tord Larsson: Ja ok.
+[kl. 13:09:30 CEST] Tord Larsson: Jag kan göra som han då, 6 objekt. Vi kan döpa om dem senare.
+[kl. 13:10:37 CEST] di98jgu: Ja, tror det är en bra idé. Bygg en bra stomme för utveckling.
+[kl. 13:13:52 CEST] di98jgu: Några fler problem ?
+[kl. 13:14:44 CEST] Tord Larsson: Jag undrar lite över en annan sak. Kommer vi bara skriva xml-filer eller lite java också. Består min uppgift bara av xml?
+[kl. 13:15:40 CEST] di98jgu: Alla har en activitet och en eller flera XML filer att skriva.
+[kl. 13:16:40 CEST] Tord Larsson: activity är .java och xml som style. Som html vs CSS
+[kl. 13:17:09 CEST] di98jgu: Känner du till MVC ? Activitet == controll och XML == View.
+[kl. 13:17:24 CEST] Tord Larsson: Nä , känner inte till MVC
+[kl. 13:17:40 CEST] di98jgu: Modell, view, control.
+[kl. 13:18:20 CEST] di98jgu: Eller data hantering, Det du ser, och det som får saker och ting gjort.
+[kl. 13:18:26 CEST] Tord Larsson: Ja , då är det så som jag trodde.
+[kl. 13:18:47 CEST] Tord Larsson: activity praktiskt, xml grafiskt.
+[kl. 13:19:49 CEST] di98jgu: Ja, vad som händer sen är Android rullar upp din XML file till Veiw class.
+[kl. 13:20:43 CEST] di98jgu: ImageView, TextView etc.
+[kl. 13:20:52 CEST] Tord Larsson: Ja
+[kl. 13:23:02 CEST] di98jgu: En viktig sak, kommunikation mellan activiteter, jag behöver veta vilken "Location" användaren valde.
+[kl. 13:24:21 CEST] di98jgu: Lite enklare tror jag det blir mellan Dashboard och Locations, finns bara en lista med Locations.
+[kl. 13:25:27 CEST] Viktor Stärn: så min aktivitet ska ha något i stil med en getChosenLocation-metod?
+[kl. 13:26:55 CEST] Viktor Stärn: hmm, fast jag har väl i princip redan kod för något liknande, kan ju trycka på mina poster för att öppna en ny, tom, aktivitet
+[kl. 13:27:46 CEST] di98jgu: Om den activity har ListActivity som basklass har du en metod onListItemClick
+[kl. 13:28:20 CEST] Viktor Stärn: ja, setOnItemClickListener
+[kl. 13:29:43 CEST] di98jgu: Ja det fungera det också. Jag antar att din activity extends Activity och inte ListActivity.
+[kl. 13:30:29 CEST] Viktor Stärn: nä, de e ListActivity
+[kl. 13:30:54 CEST] di98jgu: Ok så onLIstIemClick i så fall.
+[kl. 13:31:35 CEST] Viktor Stärn: lv.setOnItemClickListener(new OnItemClickListener() {
+          public void onItemClick(AdapterView<?> parent, View view,
+              int position, long id) {
+[kl. 13:33:40 CEST] di98jgu: Hmm, skapa en dummy som du anropa så ersätter jag dummyn sen med min LocationDetails.
+[kl. 13:35:06 CEST] di98jgu: Du är redan en lista så du ska inte behöva sätta lyssnare på dig själv för att lyssna på dig själv. Men jag kan ha fel.
+[kl. 13:36:36 CEST] Viktor Stärn: borde väl räcka med att jag vet vad din class heter och byter ut min i:
+Intent i = new Intent(getApplicationContext(), ListItemData.class);
+[kl. 13:36:40 CEST] Viktor Stärn: (ListItemData)
+[kl. 13:36:57 CEST] Viktor Stärn: eller... hmm.. xml
+[kl. 13:37:36 CEST] Viktor Stärn: eller det går kanske
+[kl. 13:37:58 CEST] di98jgu: Du behöver också mig ett id för Location.
+[kl. 13:40:53 CEST] Viktor Stärn: är det någon av parametrarna i onItemClick? position eller id?
+[kl. 13:41:51 CEST] Viktor Stärn: jaja, får kolla på det
+[kl. 13:43:10 CEST] di98jgu: Den sista parametren i onItemClick tror jag det är du ska använda.
+[kl. 13:43:24 CEST] di98jgu: Skriva ut dem toast.
+[kl. 13:43:40 CEST] di98jgu: Så ser du vilken som är lämpligast.
+[kl. 13:44:54 CEST] Viktor Stärn: ok
+[kl. 13:45:44 CEST] di98jgu: Tror ni att vi får ihop något till i morgon ? :-)
+[kl. 13:46:03 CEST] Tord Larsson: Vet inte riktigt.
+[kl. 13:46:08 CEST] Tord Larsson: Ska försöka.
+[kl. 13:47:59 CEST] Viktor Stärn: något kommer man ju ha :) får se hur långt jag kommer
+[kl. 13:49:57 CEST] di98jgu: Jag kommer att göra LocationDetails, det ska inte vara några problem, fast vi vet ju inget om datan och hur den lämpligen ska pressenteras. Kommer också att titta på koden för Actionbar och se om jag lista ut hur vi kan använda den.
+[kl. 13:51:06 CEST] Viktor Stärn: ok, låter bra
+[kl. 13:53:24 CEST] di98jgu: Jupp, Tord du skickar ditt via skype förmodar jag, då kan jag eller Viktor lägga upp ditt.
+[kl. 13:53:54 CEST] Tord Larsson: Ja.
+[kl. 13:55:39 CEST] di98jgu: Så ses tills imorgen med Daniel ?
+[kl. 13:55:47 CEST] Tord Larsson: Ja det gör vi
+[kl. 13:55:50 CEST] Viktor Stärn: jepp
+[kl. 13:56:03 CEST] di98jgu: Ok ses (wave)
