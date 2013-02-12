@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width = "match_parent"
+   android:layout_height = "match_parent">
+
+   <TableLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:stretchColumns="1">
+      
+      <ImageView
+         android:id="@+id/snow_img"
+         android:layout_width = "fill_parent"
+         android:layout_height = "wrap_content"
+         android:adjustViewBounds = "true"
+         android:layout_gravity = "center"
+         android:layout_margin="10dp"
+         android:contentDescription="@string/loc_details_snow_img"
+      />
+      
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_snow_a" 
+             android:paddingRight="20dp" />
+         <TextView android:id = "@+id/snow_a" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_snow_b" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/snow_b" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_snow_c" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/snow_c" />
+      </TableRow>
+   </TableLayout>
+   
+</ScrollView>
