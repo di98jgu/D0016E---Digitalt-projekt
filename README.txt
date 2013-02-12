@@ -11,6 +11,9 @@ PARTICIPANTS
 Students, the team
 Jim Gunnarsson, Tord Larsson och Viktor Stärn
 
+Teacher, at www.ltu.se
+Daniel Granlund
+
 
 INTRO
 If you are a stranger, welcome to this project. Feel free to let
@@ -42,17 +45,18 @@ alert him.
 STRUCTURE
 -  doc: Collection of notes och logs
 -  design: Ideas and proposals for GUI and code
--  DicNix: The actual Adroid project
+-  DicNix: The actual Android project
 
 
 CODE STYLE
-- Encoding UTF-8, make sure Eclipse use the proper encoding !
-- Documentation, javadoc always. 
-- Indentation: 3 spaces, no tabs.
-- Line length: 80 columns
-- Consistency: Look at what's around you!
-- Braces: Opening braces don't go on their own line.
-- Acronyms are words: Treat acronyms as words in names, yielding XmlHttpRequest, getUrl(), etc.
-- Constants, all CAPS. 
+-  Encoding UTF-8, make sure Eclipse use the proper encoding !
+-  Documentation, javadoc always. 
+-  Indentation: 3 spaces, no tabs.
+-  Line length: 80 columns
+-  Consistency: Look at what's around you!
+-  Braces: Opening braces don't go on their own line.
+-  Acronyms are words: Treat acronyms as words in names, yielding 
+   XmlHttpRequest, getUrl(), etc.
+-  Constants, all CAPS. 
 
 

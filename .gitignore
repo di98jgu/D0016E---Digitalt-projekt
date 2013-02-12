@@ -1,3 +1,6 @@
+# Myself
+.gitignore
+
 # built application files
 *.apk
 *.ap_
@@ -14,6 +17,9 @@ gen/
 
 # Local configuration file (sdk path, etc)
 local.properties
+
+# Sandbox projects
+tfk11jgs.rista.Gallery
 
 # Eclipse project files
 .metadata
