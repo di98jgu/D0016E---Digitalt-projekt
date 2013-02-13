@@ -8,15 +8,12 @@
         android:minSdkVersion="9"
         android:targetSdkVersion="10" />
     
-    
-    
-    <!-- // For testing of LocationDetails
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="dicnix.LocationDetails"
+            android:name="LocationDetails"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +21,5 @@
             </intent-filter>
         </activity>
     </application>
-   --> 
    
 </manifest>

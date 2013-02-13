@@ -16,16 +16,16 @@
  */
 
 
-package dicnix;
+package se.ltu.dicnix;
 
-import se.ltu.dicnix.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Veiw details about a location. 
+ * View details about a location. A location is position with a set of data.
+ * The information is read only, 
  * 
  * @author Jim Gunnarsson, di98jgu
  */
@@ -35,7 +35,7 @@ public class LocationDetails extends Activity {
 	public final static String ID_LOCATION_DETAILS = "dicnix.id_location_details";
 	
 	/**
-    * Start of post activity
+    * Start of this activity.
     * 
     */
    @Override
@@ -50,7 +50,7 @@ public class LocationDetails extends Activity {
    }
 	
    /**
-    * 
+    * Nothing to destroy yet.
     */
    @Override
    public void onDestroy() {
@@ -60,6 +60,8 @@ public class LocationDetails extends Activity {
    }
    
    /**
+    * Container for all information about a selected data point. Represent
+    * the location_details_view.
     * 
     * @author Jim Gunnarsson, di98jgu
     */
@@ -71,7 +73,7 @@ public class LocationDetails extends Activity {
       private TextView c = null;
 
       /**
-       * 
+       * Create a new container for location details view
        */
       public DetailsAdp() {
          
@@ -85,7 +87,7 @@ public class LocationDetails extends Activity {
       }
       
       /**
-       * 
+       * Populate location details view.
        */
       public void populate() {
          
