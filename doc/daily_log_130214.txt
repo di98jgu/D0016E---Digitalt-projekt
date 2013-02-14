@@ -1,0 +1,33 @@
+torsdagen den 14:e februari 2013
+[kl. 12:51:10 CEST] di98jgu: Hej
+[kl. 12:51:26 CEST] di98jgu: Hur går det ?
+[kl. 12:51:27 CEST] Viktor Stärn: hej
+[kl. 12:51:55 CEST] Viktor Stärn: jag satte ihop våra activities lokalt, verkar fungera bra
+[kl. 12:52:21 CEST] Viktor Stärn: hur är det tänkt att det ska fungera i slutändan? id:t som skickas via intent ska bestämma vilken data som hämtas från databasen?
+[kl. 12:52:51 CEST] di98jgu: Ja varje plats har ett unikt id.
+[kl. 12:53:25 CEST] Viktor Stärn: ok, nu skrev jag bara ut id:t... lite som jag visade igår.. så dina "dummy"-poster + igloo + id
+[kl. 12:53:42 CEST] * Viktor Stärn sent file "igloo.png"
+[kl. 12:54:47 CEST] di98jgu: Ser bra ut, den där svarta raden ovan, är det tänkt att bli en actionbar ?
+[kl. 12:55:36 CEST] di98jgu: Jag har har titta lite på vad göra nu.
+[kl. 12:56:10 CEST] di98jgu: Har ändrat en del på seenowdo.
+[kl. 12:58:18 CEST] Viktor Stärn: ok, vad kan vi syssla med innan API:t dyker upp förutom Tords uppgifter?
+[kl. 12:58:44 CEST] di98jgu: Jag tänkte skriva stommen till databasen.
+[kl. 12:58:59 CEST] di98jgu: Då kan du pyssla med dashboard.
+[kl. 12:59:05 CEST] Viktor Stärn: yes, blir bra
+[kl. 12:59:48 CEST] di98jgu: Sen kan byta om så att du anpassar databasen till hur data faktiskt ser och försöker få till en dashboard.
+[kl. 13:00:03 CEST] di98jgu: Sen kan vi byta om - Menar jag.
+[kl. 13:00:11 CEST] Viktor Stärn: ja, det blir nog bra
+[kl. 13:00:25 CEST] di98jgu: Då får vi göra lite av varje.
+[kl. 13:00:39 CEST] di98jgu: Gränssnitt databas och så vidare.
+[kl. 13:00:45 CEST] Viktor Stärn: precis
+[kl. 13:01:43 CEST] di98jgu: Fint då tar jag första databas biten. :-)
+[kl. 13:01:53 CEST] di98jgu: Några problem ?
+[kl. 13:02:10 CEST] Viktor Stärn: nä, inte för tillfället, vi kör på helt enkelt :)
+[kl. 13:02:17 CEST] di98jgu: Bra.
+[kl. 13:03:32 CEST] di98jgu: Föresten, det går fint att lägga upp lite kod pö om pö på github.
+[kl. 13:04:06 CEST] Viktor Stärn: tänkte lägga upp min lista nu när den verkar fungera med din kod
+[kl. 13:04:14 CEST] di98jgu: Bra.
+[kl. 13:06:01 CEST] di98jgu: Så tills imorgon ska jag börja titta på databasen.
+[kl. 13:06:18 CEST] Viktor Stärn: jepp, börjar med Dashboarden, så ses vi imorgon
+[kl. 13:06:32 CEST] di98jgu: Det gör vi ses (wave)
+[kl. 13:06:38 CEST] Viktor Stärn: ses :)
