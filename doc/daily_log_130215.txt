@@ -1,0 +1,242 @@
+fredagen den 15:e februari 2013
+[kl. 12:48:06 CEST] di98jgu: Hej
+[kl. 12:48:17 CEST] di98jgu: All väl, hur går det ?
+[kl. 12:49:06 CEST] Viktor Stärn: jodå, det går bra.. laddade upp lite kod igår... men jag la det i en ny branch för jag har ingen koll på hur det ska gå till egentligen (ville inte förstöra ngt :) )
+[kl. 12:49:20 CEST] Viktor Stärn: jag kan t.ex. inte köra koden ur gitprojektet lokalt, är det meningen man ska kunna det?
+[kl. 12:49:43 CEST] di98jgu: Vänta lite måste titta på GitHub.
+[kl. 12:50:23 CEST] di98jgu: Okej jag kan se din gren bra.
+[kl. 12:51:01 CEST] di98jgu: Jo jag har också funderat på hur göra för att inte ställa till något.
+[kl. 12:51:59 CEST] Viktor Stärn: satte ihop splashscreen-, dashboard-, lista- och data-activities... fungerade bra i mitt lokala projekt... sen började jag ju kopiera och ändra för hand så långt att jag tyckte att det borde fungera även i git-projektet, men kunde ju som sagt inte testa
+[kl. 12:53:23 CEST] di98jgu: Vad jag gör är att jag gör all utvecklig på en separat gren.
+[kl. 12:53:29 CEST] di98jgu: Ser till att det fungera.
+[kl. 12:53:44 CEST] di98jgu: Går över till master, huvudgrenen.
+[kl. 12:53:53 CEST] di98jgu: Synka med Github.
+[kl. 12:54:12 CEST] di98jgu: Master är nu identisk med Github och helt orörd.
+[kl. 12:54:21 CEST] di98jgu: Min lokala master alltså.
+[kl. 12:54:52 CEST] Viktor Stärn: ok, men då kan du alltså köra själva github-projektet lokalt, så att du kan testa så att det fungerar innan du laddar upp?
+[kl. 12:55:38 CEST] di98jgu: Ja det är det som är tanken för vad jag gör sen är att jag går tillbaka till min gren.
+[kl. 12:55:53 CEST] di98jgu: Jag merge master med min gren.
+[kl. 12:56:08 CEST] di98jgu: Testa så att allt fungera och så vidare.
+[kl. 12:56:52 CEST] Viktor Stärn: men även om man skulle göra en tabbe och skriva över på något klantigt sätt så går det väl att göra ogjort? antar det är det som är poängen med versionshantering?
+[kl. 12:57:50 CEST] di98jgu: Ja visst du kan rulla tillbaka.
+[kl. 12:57:57 CEST] di98jgu: git reset
+[kl. 12:58:40 CEST] di98jgu: Jag kör här git från Terminal, man du bör ha motsvarande i Elicpse.
+[kl. 13:00:00 CEST] di98jgu: Jag ser till exempel att du har ändrat på API i manifestet.
+[kl. 13:00:16 CEST] di98jgu: Det ska vara 9 min version och target 10.
+[kl. 13:01:06 CEST] di98jgu: En fråga har du Android 2.3.3 eller Android 2.2 i ditt projekt ?
+[kl. 13:02:26 CEST] Viktor Stärn: brukar välja 2.3 som target... eller väljer man bara API 10...? har väl blivit galet där någonstans
+[kl. 13:03:17 CEST] di98jgu: Du ser vad du kör i ditt projekt, Det finns en katalog som heter Android 2.x.
+[kl. 13:03:42 CEST] di98jgu: Vi behöver ha samma det är därför jag frågar.
+[kl. 13:03:53 CEST] Viktor Stärn: är det vad man kompilerar med?
+[kl. 13:04:16 CEST] Viktor Stärn: har en katalog som heter Android 4.2 :)
+[kl. 13:04:31 CEST] di98jgu: Inte bra alls....
+[kl. 13:04:50 CEST] di98jgu: :-)
+[kl. 13:05:40 CEST] Viktor Stärn: när jag skapar ett projekt har jag tre alternativ, tror det är min, target och compile
+[kl. 13:05:47 CEST] Viktor Stärn: ska vara 2.3 på alla då eller?
+[kl. 13:05:55 CEST] di98jgu: Ska titta...
+[kl. 13:08:53 CEST] di98jgu: Okej under new > android application projekt kan du välja type av SDK.
+[kl. 13:09:22 CEST] di98jgu: Jag antar att det är enklast att du skapa en ny katalog för änamålet.
+[kl. 13:09:31 CEST] di98jgu: Sen importera all kod.
+[kl. 13:11:11 CEST] Viktor Stärn: ja, det är nog inga problem
+[kl. 13:11:47 CEST] di98jgu: Gör så vill du att jag ska göra lite tågordning för hur jag lägger upp kod ?
+[kl. 13:12:06 CEST] Viktor Stärn: ja, det skadar nog inte :)
+[kl. 13:12:26 CEST] di98jgu: Bra jag gör så.
+[kl. 13:13:05 CEST] di98jgu: Jag håller läsa in mig på "content providers".
+[kl. 13:13:34 CEST] di98jgu: Det vore intessant att bygga in får vår fjärdatabas.
+[kl. 13:13:41 CEST] di98jgu: bygga en
+[kl. 13:14:31 CEST] Viktor Stärn: ok, inget jag har koll på sådär på rak arm
+[kl. 13:14:47 CEST] di98jgu: Vet ej om vi hinner men tänkte i vart fall försöka skriva koden så att den inte hindra utvecklig åt det hållet.
+[kl. 13:15:47 CEST] di98jgu: Poängen är att vem som helst då kan använda den via ett standard gränsnitt.
+[kl. 13:16:11 CEST] di98jgu: Ungefär som adresser i webläsaren.
+[kl. 13:16:25 CEST] Viktor Stärn: ah, låter ju smidigt
+[kl. 13:16:58 CEST] di98jgu: Yupp det finns till exempel content providers för media som bilder och såndant.
+[kl. 13:17:53 CEST] di98jgu: Man behöver bara fråga om vilka bilder som finns så får man lista.
+[kl. 13:18:27 CEST] di98jgu: Den letar igenom SD kortet åt en.
+[kl. 13:19:22 CEST] Viktor Stärn: ah, ok
+[kl. 13:19:59 CEST] di98jgu: Ha påbörjat vår lokala databas. snowflake är dess name. :-)
+[kl. 13:20:14 CEST] di98jgu: Kan du SQL ?
+[kl. 13:21:08 CEST] Viktor Stärn: :)
+[kl. 13:21:11 CEST] Viktor Stärn: har provat det
+[kl. 13:22:35 CEST] di98jgu: Bra gränssnittet mellan Java och SQL är mycket tunt, inget ORM alls.
+[kl. 13:23:43 CEST] Viktor Stärn: ok
+[kl. 13:24:49 CEST] di98jgu: Hur går det för dig, fått till en dashboard ?
+[kl. 13:26:19 CEST] Viktor Stärn: ja, det verkar inte vara några problem
+[kl. 13:26:30 CEST] Viktor Stärn: satte ihop fyra aktiviteter igår
+[kl. 13:26:35 CEST] Viktor Stärn: splash, dashboard, lista och data
+[kl. 13:30:01 CEST] di98jgu: Umärkt :-)
+[kl. 13:32:04 CEST] di98jgu: Så jag gör en tågordning så att du slå samman det med master på GitHub.
+[kl. 13:32:46 CEST] Viktor Stärn: satt rätt länge med en så liten grej som highlight-färgen när man trycker på knappar/listposter.. bytte tema i samband med att jag skulle fixa fullscreen, men sen blev det orange bakgrund istället för blå... lyckades inte få tillbaka :)
+[kl. 13:32:52 CEST] Viktor Stärn: ja, låter bra
+[kl. 13:34:21 CEST] di98jgu: Tja, jag minnas checkbox i en automatisk lista var rätt bevärligt.
+[kl. 13:34:46 CEST] di98jgu: Det är väl så att detaljerna alltid tar tid. :-/
+[kl. 13:35:03 CEST] Viktor Stärn: hehe, sant
+[kl. 13:35:37 CEST] di98jgu: Så har du något att skriva ?
+[kl. 13:37:07 CEST] Viktor Stärn: jag hade nog kunnat göra en del filande...
+[kl. 13:37:12 CEST] Viktor Stärn: har David hört av sig?
+[kl. 13:37:23 CEST] di98jgu: Nej det har han inte.
+[kl. 13:37:42 CEST] di98jgu: LIte därför jag segar en smula med databasen.
+[kl. 13:38:29 CEST] Viktor Stärn: ok, nä, jag får väl se till att få projektet i rätt SDK, lyckas köra gitprojektet lokalt... kanske fila lite på detaljerna och sen merge:a med master
+[kl. 13:38:54 CEST] di98jgu: Jag skriver en tågordning och lägger upp den på GitHub.
+[kl. 13:39:26 CEST] Viktor Stärn: fint! :)
+[kl. 13:39:58 CEST] di98jgu: Bra, så fredag (igen), ses på måndag ?
+[kl. 13:40:10 CEST] Viktor Stärn: jepp :)
+[kl. 13:40:24 CEST] di98jgu: Fint ses (wave)
+[kl. 13:40:34 CEST] Viktor Stärn: ses!
+[kl. 15:51:51 CEST] * di98jgu sent file "Git-Tågordning.txt"
+[kl. 15:52:15 CEST] di98jgu: En helt hastigt skriven första version.
+[kl. 15:54:27 CEST] di98jgu: Också dubbelkolla att du verkligen använder UTF-8, titta under Windows > preferences.
+[kl. 15:54:55 CEST] Viktor Stärn: stannade den?
+[kl. 15:55:01 CEST] Viktor Stärn: ok, ska kolla sen
+[kl. 15:55:27 CEST] di98jgu: Ser du filen ?
+[kl. 15:55:56 CEST] di98jgu: Märkligt .
+[kl. 15:56:27 CEST] di98jgu: Ok här den...
+Git and how to get things done
+
+Tumregeln är att arbeta på en egen privat gren lokalt.
+
+Detta är hur jag gör, i korthet. ;-)
+
+Lokalt har jag två grenar, en master som alltid ska vara samma
+som den på GitHub. Jag ändrar aldrig den. Det är viktigt.
+
+Den andra grenen är "code". Detta är min arbetsgren. Här gör 
+jag alla ändringar. Skriver kod etc. 
+
+Man slå alltid samman grenar från master till arbetsgrenen. Då har
+man inte ändrat något i master. Man kan då se till att allt fungera
+och fixa sådant som inte gör det. 
+
+Här är exempel på varför:
+
+- <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+   - package="se.ltu.dicnix"
+   - android:versionCode="1"
+   - android:versionName="1.0" >
+
+----------------------------------------------
++ <manifest xmlns:android="http://schemas.android.com/apk/res/android"         
+
+   + package="com.test.DicNicApplication"
+   
+   + android:versionCode="1"
+   + android:versionName="1.0" >
+   
+
+   + <uses-sdk 8         
+   
+      + android:minSdkVersion="8"
+      + android:targetSdkVersion="9" />
+
+---------------------------------------------
+   - <uses-sdk
+      - android:minSdkVersion="9"
+      - android:targetSdkVersion="10" />
+
+
+Ett - tecken är sådant som tagit bort och + såndant som lagts till
+detta är en refactoring av koden, från se.ltu.dicnix till com.test.DicNicApplication, och ändring API från 10 till 9, inte
+så lyckat. 
+
+Man kan rulla tillbacka koden men kanske viktigast är göra små 
+ändringar spara ofta.
+
+När man ser att allt fungera går jag tillbaka till master och 
+hämtar från GitHub. När jag är säker på min master och GitHub är
+samma kan lägga samman min gren med master. Nu har jag fortfarande
+möjligheten att dubbelkolla att verkligen är ok.
+
+Först nu lägger jag upp mina ändringar till GitHub.
+
+Ok så tågordningen är följande, jag använder terminal men jag utgår
+från att motsvarande finns i Eclipse. 
+
+Jag börja från början för enkelhetens skull. Så i begynnelsen
+har vi en tom katalog. 
+
+Börja versionshantera katalogen
+git init 
+
+Användarnamn och e-post adress. 
+git config --global user.name "my name"
+git config --global user.email "my address"
+
+Klona master på GitHub
+git clone https://github.com/di98jgu/D0016E---Digitalt-projekt
+
+Skapa en gren, att arbeta på 
+git checkout -b my_branch
+
+Kolla aktuell status
+git status
+
+Står det att vi är i my_branch ?
+
+Om inte byt gren 
+git checkout my_branch
+
+Vi är nu my_branch, du kan nu leka tryggt.
+
+För att se skillnaden mellan min fil och originalet 
+git diff file
+
+Det går också att göra detta på en katalog.
+
+För att spara ändringar använder man
+git add folder
+
+För att se allt som kommer att sparas
+git status
+
+Följt av
+git commit -m "Message about commit"
+
+För att se skillnaden mellan min gren och master
+git log [my_branch] ^[master] 
+
+När allt fungera
+
+Gå till master igen
+git checkout master
+
+Hämta senaste ändringarna 
+git fetch origin 
+
+Och uppdatera master
+git merge origin/master
+
+Nu tillbaka till arbetsgrenen
+git checkout my_branch
+
+Kanske är det säkrast att först kolla skillnaden mellan grenarna.
+git log master ^my_branch  // Vad som är i master men inte i mitt arbete
+
+Då ser vi om något kommit till i master som inte borde vara där.
+
+Lägg till senaste ändringarna
+git merge master
+
+Kolla att allt fungera.
+
+Gå tillbaka till master
+git checkout master
+
+Lägg samman 
+git merge my_branch
+
+Slutligen en sista kontroll att allt är väl sen
+git push origin master
+
+Behöver du rulla tillbaka koden av någon anledning så
+git reset --hard HEAD 
+
+HEAD är senaster sparade version, man kan gå tillbaka lägre med
+HEAD^ HEAD^2 HEAD^3 och så vidare.
+
+Slutligen jag använder förutom terminal också Linux och det kan
+finnas fler skillnader men huvuddragen bör vara detsamma.
+[kl. 15:56:28 CEST] Viktor Stärn: nä, nara delfiler
+[kl. 15:56:38 CEST] Viktor Stärn: prova igen
+[kl. 15:56:46 CEST] * di98jgu sent file "Git-Tågordning.txt"
+[kl. 15:57:03 CEST] Viktor Stärn: ah, ok, tack
+[kl. 15:59:11 CEST] di98jgu: Du har den, skype står på så du kan fråga även om det kan ta lite tid innan jag svara.
