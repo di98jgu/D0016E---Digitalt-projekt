@@ -1,0 +1,149 @@
+torsdagen den 7:e februari 2013
+[kl. 12:48:10 CEST] Tord Larsson: Hej
+[kl. 12:48:48 CEST] di98jgu: Hej
+[kl. 12:48:55 CEST] Tord Larsson: Går det bra?
+[kl. 12:49:26 CEST] Tord Larsson: Jag har installerat android sdk och eclipse ingick. Det var en portabel variant som la sig i en mapp bara.
+[kl. 12:50:01 CEST] Tord Larsson: Men när jag försöker emulera ett nyskapat projekt står där "failed to allocate memory: 8"
+[kl. 12:50:11 CEST] Tord Larsson: Är det något som ni har stött på?
+[kl. 12:51:48 CEST] * di98jgu sent file "utkast_130206.txt"
+[kl. 12:52:41 CEST] di98jgu: Nej, det känner jag inte till.
+[kl. 12:53:30 CEST] Tord Larsson: Emulator ingår i programmet?
+[kl. 12:53:50 CEST] Viktor Stärn: jag bytte device så försvann det
+[kl. 12:54:12 CEST] Tord Larsson: Vilken device fungerar?
+[kl. 12:54:34 CEST] di98jgu: Standard enheten fungera här.
+[kl. 12:54:53 CEST] Tord Larsson: Nexus?
+[kl. 12:54:54 CEST] Viktor Stärn: kör på nexus one nu
+[kl. 12:55:26 CEST] Tord Larsson: Blev samma problem
+[kl. 12:55:47 CEST] Tord Larsson: Vilken API?
+[kl. 12:56:37 CEST] Tord Larsson: 17 är väl den senaste?
+[kl. 12:56:38 CEST] di98jgu: Jag har tidigare använt 2.2.
+[kl. 12:56:52 CEST] * Viktor Stärn sent file "avd.jpg"
+[kl. 13:00:27 CEST] di98jgu: 50 Mb internt utrymme ?
+[kl. 13:02:36 CEST] Tord Larsson: Hmm inte kollat på det än
+[kl. 13:03:01 CEST] Tord Larsson: Försökte installera paket nu men programmet hackade upp sig när jag startade om det.
+[kl. 13:03:07 CEST] Tord Larsson: Hur allokerar man?
+[kl. 13:04:38 CEST] di98jgu: Jag tittade på bilden som Viktor skickade.
+[kl. 13:04:53 CEST] Tord Larsson: Ja ok
+[kl. 13:05:30 CEST] Tord Larsson: Jag kan inte hämta den för Viktor har inte accepterat mig på skype
+[kl. 13:05:52 CEST] Tord Larsson: Kan du skicka om?
+[kl. 13:06:49 CEST] * Viktor Stärn sent file "avd.jpg"
+[kl. 13:07:10 CEST] Viktor Stärn: provar igen!
+[kl. 13:07:16 CEST] Tord Larsson: Tack
+[kl. 13:08:50 CEST] di98jgu: Ok du fick den, mitt skype är besvärlig när det gäller filer. Kan inte se filer och crashar då och då.
+[kl. 13:10:37 CEST] Tord Larsson: Ja ok.
+[kl. 13:10:46 CEST] Tord Larsson: Skype tar tyvärr över nu.
+[kl. 13:11:00 CEST] Tord Larsson: MSN försvinner, ICQ vet jag inte ens om det finns längre.
+[kl. 13:11:38 CEST] Tord Larsson: Visserligen bra om alla har samma. Liksom facebook.
+[kl. 13:13:02 CEST] Tord Larsson: Jag fick igång emulator med bildens inställningar. Tack.
+[kl. 13:14:00 CEST] di98jgu: Och Viktor har du fått igång emulatorn ?
+[kl. 13:14:37 CEST] di98jgu: (skype == Microsoft, numera)
+[kl. 13:14:55 CEST] Tord Larsson: Japp
+[kl. 13:15:58 CEST] Tord Larsson: Viktor skrev han bytte device så gick det. Han har nog det igång.
+[kl. 13:16:56 CEST] di98jgu: Okej, har ni funderat något på hur vi ska lägga upp projektet ?
+[kl. 13:17:37 CEST] di98jgu: Frågade läraren om projekt sida. 
+https://www.seenowdo.com
+[kl. 13:18:03 CEST] di98jgu: Detta är för att schemalägga projektet.
+[kl. 13:18:06 CEST] Viktor Stärn: ja, det verkar fungera här
+[kl. 13:18:38 CEST] di98jgu: Utmärkt !
+[kl. 13:19:19 CEST] Tord Larsson: Projektet läggs upp lite konstigt för vi bara är 3. Men med dagliga möten blir det nog bra.
+[kl. 13:19:57 CEST] Tord Larsson: scrum/ltu pdfen uttryckte nog att det inte ska vara uppgiftsuppdelning utan att alla jobbar gemensamt.
+[kl. 13:20:26 CEST] Tord Larsson: dvs alla försöker sig på allting och kontinuerliga diskussioner.
+[kl. 13:21:42 CEST] di98jgu: Hmm, gå till länken ovan och skapa ett konto. Jag tror att den kan fungera. Flash förvisso så den är lite seg.
+[kl. 13:22:10 CEST] di98jgu: Jag bjuder in er sedan.
+[kl. 13:23:56 CEST] di98jgu: Det finns en del på youtube om scrum.
+[kl. 13:24:57 CEST] di98jgu: Vänta, jag behöver bara era mailadresser !
+[kl. 13:25:05 CEST] di98jgu: För att kunna bjuda in er.
+[kl. 13:25:06 CEST] Tord Larsson: tordlarsson@hotmail.se
+[kl. 13:25:13 CEST] Tord Larsson: men sidan är seg att aktivera
+[kl. 13:25:16 CEST] Viktor Stärn: viktor.starn@gmail.com
+[kl. 13:25:16 CEST] Tord Larsson: Inte gjord än
+[kl. 13:25:55 CEST] Tord Larsson: Så vi ska dela kod via denna sidan?
+[kl. 13:26:25 CEST] Tord Larsson: Har ingen kod nu , men senare måste jag vara inloggad på den datorn jag har koden på?
+[kl. 13:26:52 CEST] di98jgu: Okej ni ska nu ha ett brev.
+[kl. 13:27:17 CEST] Tord Larsson: Kommer upp en celllista typ.
+[kl. 13:27:28 CEST] Tord Larsson: list of measurement... osv.
+[kl. 13:27:49 CEST] di98jgu: Yupp, jag lekte lite innan.
+[kl. 13:28:16 CEST] Tord Larsson: Ja ok
+[kl. 13:28:51 CEST] di98jgu: Så längst till vänster har vi backlog.
+[kl. 13:28:57 CEST] Tord Larsson: Jag provar lägga till en task
+[kl. 13:29:49 CEST] Tord Larsson: Jaja så det kommer upp på not started automatiskt
+[kl. 13:29:53 CEST] Tord Larsson: Sen ändrar vi
+[kl. 13:30:06 CEST] di98jgu: Så här är tanken med scrum.
+[kl. 13:31:09 CEST] di98jgu: Man har en backlog, story. Man delar upp projektet i antal stories.
+[kl. 13:31:52 CEST] Tord Larsson: Ja ok
+[kl. 13:31:55 CEST] Tord Larsson: Smidigt
+[kl. 13:32:49 CEST] Tord Larsson: Har ni installerat det programmet Daniel nämnde vi kunde dela kod med?
+[kl. 13:33:14 CEST] Viktor Stärn: nä, vad var det nu det hette?
+[kl. 13:33:20 CEST] Tord Larsson: subversion
+[kl. 13:33:41 CEST] Tord Larsson: Jag tog en titt på det , men har inte heller installerat.
+[kl. 13:33:42 CEST] di98jgu: Nej men det finns också github.
+[kl. 13:33:55 CEST] Tord Larsson: Annars kan man zippa bara skulle jag tro.
+[kl. 13:34:02 CEST] Tord Larsson: Känner inte till github
+[kl. 13:34:06 CEST] Tord Larsson: Bra?
+[kl. 13:34:17 CEST] di98jgu: https://github.com/
+[kl. 13:34:41 CEST] Tord Larsson: Blir bra
+[kl. 13:35:16 CEST] Tord Larsson: Har du konto där?
+[kl. 13:35:38 CEST] di98jgu: Ja det har jag men där får ni skapa ett varsit konto.
+[kl. 13:35:45 CEST] Tord Larsson: Mm
+[kl. 13:35:59 CEST] Tord Larsson: Ingen installation av program?
+[kl. 13:36:14 CEST] di98jgu: Under Windows, ja det tror jag.
+[kl. 13:36:21 CEST] Tord Larsson: För skicka komprimerade filer kan vi göra via skype
+[kl. 13:37:05 CEST] di98jgu: Nej du använder kommandon för att synka din lokala kodbas med den på github.
+[kl. 13:37:37 CEST] di98jgu: Alla ändring kan spåras, vem som gjorde dem och när och var i koden.
+[kl. 13:37:57 CEST] Tord Larsson: Så vi har en gemensam eller vi kan se varandras via sidan?
+[kl. 13:38:11 CEST] Tord Larsson: Jag skapar konto nu åtminstone
+[kl. 13:38:34 CEST] di98jgu: Gör så jag är också ny när det gäller github.
+[kl. 13:39:23 CEST] di98jgu: Men jag vet att detta är något som man "ska" kunna. Versionshantering.
+[kl. 13:40:40 CEST] di98jgu: Men för att återgå scrum. Vi ska utforma en grundläggande backlog.
+[kl. 13:42:43 CEST] di98jgu: Jag har lagt upp några punkter som jag tror är viktiga. Tanken är att varje story ska vara en vecka lång, den ska vara färdig innan man börja på en ny story. Detta kallas för sprint.
+[kl. 13:43:14 CEST] di98jgu: Sprinten ska redovisas när den är klar, nästa onsdag med andra ord. :-)
+[kl. 13:43:47 CEST] Tord Larsson: Sprinten nu är utsseende?
+[kl. 13:44:22 CEST] di98jgu: List med mätpunkter, ja
+[kl. 13:44:34 CEST] Tord Larsson: Ja ok
+[kl. 13:45:11 CEST] di98jgu: Så tanken är att man i nästa kolumn delar in storyn är arbetsuppgifter.
+[kl. 13:47:19 CEST] di98jgu: Men väljer sen den uppgift som man vill göra och sätter sitt namn på och flytta den till nästa kolumn, in progress. Då äger man den uppgiften och alla vet det.
+[kl. 13:49:19 CEST] Tord Larsson: Om man sen inte klarar av den?
+[kl. 13:50:42 CEST] di98jgu: Då får man be om hjälp, Varje dag har man ett möte. daliy scrum. Man berättar då vad man gjorde igår, vad man kommer att göra och vilka hinder man har.
+[kl. 13:51:05 CEST] Tord Larsson: Låter som en bra struktur.
+[kl. 13:51:35 CEST] Viktor Stärn: ja, verkar smidigt
+[kl. 13:53:43 CEST] di98jgu: Tydligen väldigt stort enligt min syster, jobbar i USA. Bra att kunna alltså.
+[kl. 13:54:25 CEST] Tord Larsson: FInt o höra vi kan ha nytta av det efteråt.
+[kl. 13:57:42 CEST] di98jgu: Så min idé är denna vi klura backlog och hur vi ska dela in första uppgiften tills imorgon. Vitor ett utkast väntar på dig. Jag försöker skapa ett projekt på github till imorgon, behöver era nicks tror jag.
+[kl. 13:58:02 CEST] di98jgu: Viktor - menar jag.
+[kl. 13:58:58 CEST] di98jgu: Vad tror ni ?
+[kl. 13:59:23 CEST] Viktor Stärn: verkar inte hända så mkt när jag försöker spara det
+[kl. 13:59:39 CEST] Tord Larsson: Jag har konto på github nu
+[kl. 13:59:41 CEST] Tord Larsson: TordL
+[kl. 13:59:57 CEST] Viktor Stärn: jag med, ViktorStarn
+[kl. 14:00:14 CEST] Tord Larsson: Men jag vet inte riktigt hur android funkar än
+[kl. 14:00:20 CEST] di98jgu: Mig di98jgu.
+[kl. 14:00:36 CEST] Tord Larsson: Måste komma in i det. Det är ju inte alls som java. Själva koden är jätteliten och där är en massa filmer.
+[kl. 14:00:49 CEST] Tord Larsson: Måste nog kolla lite guider.
+[kl. 14:01:23 CEST] * di98jgu sent file "utkast_130206.txt"
+[kl. 14:01:37 CEST] di98jgu: Försöker skicka utkastet igen.
+[kl. 14:01:54 CEST] di98jgu: Visst lek med Android.
+[kl. 14:01:58 CEST] di98jgu: :-)
+[kl. 14:02:39 CEST] di98jgu: Allt utgår från en så kallad Activity. Men det är mins jag inte mycke till hjälp.
+[kl. 14:04:21 CEST] Tord Larsson: MainActivity extends Activity
+[kl. 14:05:19 CEST] Viktor Stärn: ja, saker och ting har androidspecifika namn och i de tutorials jag kollade igenom använda man xml för att hålla reda på viss info.. har jag inte använt tidigare
+[kl. 14:05:29 CEST] Viktor Stärn: *använde
+[kl. 14:06:41 CEST] di98jgu: Gränsnittet skapas med XML, det en av de saker som gör det så lätt att skapa gränsnitt i Android.
+[kl. 14:06:51 CEST] Tord Larsson: Var tutorialen text eller youtube?
+[kl. 14:08:28 CEST] Viktor Stärn: det var text och bild
+[kl. 14:08:29 CEST] Viktor Stärn: http://developer.android.com/training/basics/firstapp/index.html
+[kl. 14:10:32 CEST] Tord Larsson: Tack , sḱa läsa det.
+[kl. 14:12:36 CEST] di98jgu: ListAdapter
+[kl. 14:13:18 CEST] di98jgu: För att skapa automatiska listor.
+[kl. 14:21:05 CEST] di98jgu: Måste lämna mötet, saker att göra. Kommer att pyssla med github tills imorgon. Försöka förstå hur det fungera. Viktor jag låter filen hänga, kanske fungera det bättre om Tord skickar den. Bakgrund och Användare är godkända av läraren. Jag tror vi bör rikta in oss på "Gingerbread" dvs version 2.3. Alla har ju inte Nexus one ;-).
+[kl. 14:21:59 CEST] Tord Larsson: Jag provar , antar du menar utkast
+[kl. 14:22:07 CEST] di98jgu: Japp.
+[kl. 14:22:31 CEST] Tord Larsson: Lagt i file transfer , kan du se den V?
+[kl. 14:22:46 CEST] Tord Larsson: Men vi ses annars imorgon 1300?
+[kl. 14:23:02 CEST] Viktor Stärn: nä, här syns inget?
+[kl. 14:23:52 CEST] Tord Larsson: Nu då?
+[kl. 14:24:24 CEST] Tord Larsson: viktor.starn@gmail.com
+[kl. 14:24:36 CEST] Tord Larsson: Jag mailar den , du använder den mailen?
+[kl. 14:24:40 CEST] di98jgu: Okej, Viktor du har den på google.
+[kl. 14:25:24 CEST] di98jgu: Okej, ses (wave)
+[kl. 14:25:29 CEST] Tord Larsson: ses
+[kl. 14:28:15 CEST] Viktor Stärn: yes, tackar

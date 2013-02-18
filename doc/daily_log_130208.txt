@@ -1,0 +1,123 @@
+fredagen den 8:e februari 2013
+[kl. 12:49:15 CEST] di98jgu: Hej
+[kl. 12:49:46 CEST] Tord Larsson: Hej
+[kl. 12:49:51 CEST] Viktor Stärn: Hallå!
+[kl. 12:49:59 CEST] Tord Larsson: Jag ser github är igång
+[kl. 12:51:05 CEST] di98jgu: Jag håller på att rigga projektet där, https://github.com/di98jgu/D0016E---Digitalt-projekt.git
+[kl. 12:51:43 CEST] di98jgu: Ni bör kunna hämta det som finns där.
+[kl. 12:51:56 CEST] di98jgu: En readme file :-)
+[kl. 12:52:17 CEST] Viktor Stärn: jo, den kunde jag läsa
+[kl. 12:52:55 CEST] Tord Larsson: Det är en .md?
+[kl. 12:53:37 CEST] Viktor Stärn: jag kan läsa och editera i firefox
+[kl. 12:53:40 CEST] Tord Larsson: To develop an app for Android that provide information about current snow situation and alert when certain thresholds are exceeded.
+[kl. 12:53:46 CEST] Tord Larsson: Är det texten?
+[kl. 12:53:58 CEST] di98jgu: Precis...
+[kl. 12:54:32 CEST] Tord Larsson: Verkar som jag inte kan editera
+[kl. 12:54:33 CEST] di98jgu: Det finns en "lektion" på youtube som ni bör titta på http://www.youtube.com/watch?v=ZDR433b0HJY
+[kl. 12:54:52 CEST] di98jgu: Den förklara hur github fungera.
+[kl. 12:54:55 CEST] Tord Larsson: Jo det kan jag om jag är inloggad
+[kl. 12:55:08 CEST] Viktor Stärn: ok
+[kl. 12:55:46 CEST] di98jgu: Titta på den först av allt.
+[kl. 12:56:47 CEST] di98jgu: Han prata otroligt fort i en och halv timme så ladda hem lektionen är nog ett måste :-)
+[kl. 12:57:17 CEST] di98jgu: Vad har ni pysslat med ?
+[kl. 12:57:32 CEST] Tord Larsson: Jag har haft fullt upp i annan kurs tyvärr.
+[kl. 12:58:35 CEST] di98jgu: Så mer än 100 % studietakt....
+[kl. 12:59:08 CEST] Tord Larsson: Och har ibland problem med att emulera android, jättekonstigt, det fungerar ibland
+[kl. 12:59:11 CEST] Tord Larsson: Ja
+[kl. 12:59:28 CEST] Tord Larsson: Är det nån av er som kör linux?
+[kl. 12:59:30 CEST] Viktor Stärn: jag funderade på det du sa med gingerbread.. menar du minimum-, target- osv SDK som man väljer när man skapar projektet? har ju inte det som alternativ när jag väljer devices för emulatorn
+[kl. 12:59:39 CEST] di98jgu: VectorLInux 7.0
+[kl. 13:00:15 CEST] Tord Larsson: Och det går bra för android?
+[kl. 13:01:10 CEST] di98jgu: Ja här fungera det, men emulator är seeeg. Men det är den överallt.
+[kl. 13:01:25 CEST] di98jgu: Därimot så fungera vissa emulatorer bättre än andra.
+[kl. 13:02:11 CEST] di98jgu: Viktor - titta under windows -> Android SDK Manager.
+[kl. 13:02:19 CEST] Tord Larsson: Jo jag märkte hello world går igång på flera minuter
+[kl. 13:02:36 CEST] di98jgu: Du bör hitta 2.3 där, installera det.
+[kl. 13:03:29 CEST] Viktor Stärn: hittar 2.2 och 2.3.3
+[kl. 13:04:00 CEST] di98jgu: 2.3.3
+[kl. 13:04:16 CEST] Tord Larsson: (API10)
+[kl. 13:04:25 CEST] di98jgu: Yupp precis :-)
+[kl. 13:04:43 CEST] Viktor Stärn: jepp, installerar.. vilken device sen då? eller spelar ingen roll?
+[kl. 13:05:49 CEST] Viktor Stärn: ni har kanske någon screenshot av AVD-inställningarna, så vi kör samma?
+[kl. 13:08:35 CEST] di98jgu: AVD - Android 2.3.3 API Level 10
+[kl. 13:08:44 CEST] di98jgu: Eller google dito.
+[kl. 13:09:55 CEST] di98jgu: Det är den mest grundläggande enheten. Fungera det på den så bör det fungera på allt.
+[kl. 13:11:23 CEST] Tord Larsson: Nu får jag felmeddelande , the connection to adb is down
+[kl. 13:12:23 CEST] Tord Larsson: Nu funkar det igen
+[kl. 13:12:29 CEST] Tord Larsson: Väldigt instabilt program
+[kl. 13:12:57 CEST] Viktor Stärn: när jag skapar en AVD kan jag välja "Target: Android 2.3.3 - API Level 10" men jag måste ju ändå välja en "Device"... de listar 4 telefonmodeller och sedan en massa skärmstorlekar..
+[kl. 13:14:38 CEST] di98jgu: Vänta lite...
+[kl. 13:16:02 CEST] * Viktor Stärn sent file "devices.jpg"
+[kl. 13:17:28 CEST] di98jgu: Ok, vi ska ha en normal skärm, jag tittar på developer.android.com/guide/practices/screens_support.html
+[kl. 13:23:56 CEST] di98jgu: Så en skärm runt 4 tum och hdi.
+[kl. 13:24:34 CEST] Viktor Stärn: ok, då kör vi på det..
+[kl. 13:25:18 CEST] Tord Larsson: Perfekt. "Normal" borde antyda att det är den vanligaste sorten , men det är det kanske inte.
+[kl. 13:25:28 CEST] di98jgu: Det är det.
+[kl. 13:26:40 CEST] di98jgu: Vi bör minst har stöd för normal skärm med mdi, hdi och xhdi.
+[kl. 13:27:02 CEST] di98jgu: Då täcker vi de aldra flesta användarna.
+[kl. 13:27:49 CEST] di98jgu: Det betyder att vi måste ha tre uppsättningar av alla bilder och ikoner.
+[kl. 13:28:08 CEST] di98jgu: (läs bitmap)
+[kl. 13:29:27 CEST] di98jgu: Det är inte så besvärligt som det låter...
+[kl. 13:31:32 CEST] di98jgu: Jag kommer att skapa en kodbas, att sklett på github tills imorgon.
+[kl. 13:32:03 CEST] Viktor Stärn: får ta och kolla på youtube-klippet...
+[kl. 13:32:43 CEST] Tord Larsson: Jag också
+[kl. 13:32:54 CEST] Tord Larsson: Men ja skelletkod vore finfint
+[kl. 13:32:59 CEST] di98jgu: Yupp, eclipse ska ha stöd för git så jag tror att ska fungera.
+[kl. 13:33:16 CEST] di98jgu: Även på Windows.
+[kl. 13:33:20 CEST] Tord Larsson: Jag tänkte på ikon och namn som finns som aktiviteter på seenowdo
+[kl. 13:33:36 CEST] Tord Larsson: Ikonen kan va en snögubbe eller snöflinga
+[kl. 13:34:01 CEST] di98jgu: Fint, lägger du beslag på den aktiviteten ?
+[kl. 13:34:06 CEST] Tord Larsson: Och namnet tänkte jag kunde va "dic nix" som betyder "berätta snö" på latin enligt google translate
+[kl. 13:34:12 CEST] Tord Larsson: Ja
+[kl. 13:35:05 CEST] Tord Larsson: Ska ikonen va bmp?
+[kl. 13:35:24 CEST] di98jgu: Png
+[kl. 13:35:54 CEST] di98jgu: Och du behöver tre av dem.
+[kl. 13:36:20 CEST] di98jgu: Men alla detaljer hittar du på androids hemsidor.
+[kl. 13:37:44 CEST] di98jgu: Dic nix, bra klura på den, DicNix kanske?
+[kl. 13:37:50 CEST] di98jgu: Lätt att uttala.
+[kl. 13:37:53 CEST] Tord Larsson: Ja
+[kl. 13:38:22 CEST] Tord Larsson: Jag får nog leta så inget annat heter så
+[kl. 13:38:29 CEST] di98jgu: Bra utmärkt, namn och ikon är ditt.
+[kl. 13:38:31 CEST] Tord Larsson: En snabb sökning gav inget specifikt
+[kl. 13:40:21 CEST] di98jgu: Viktor hur går det för dig ?
+[kl. 13:40:57 CEST] Viktor Stärn: funderar på skillnaderna mellan tre av de listade SeeNowDo-punkterna, Layout och de två skriva GUI-punkterna
+[kl. 13:41:09 CEST] Viktor Stärn: Layouten bara xml?
+[kl. 13:41:41 CEST] di98jgu: Yup, gränsnitt i Android är xml. Visst är det trevligt!
+[kl. 13:41:58 CEST] Viktor Stärn: Grov kodstruktur och UML-diagram är nog lite above my head i nuläget...
+[kl. 13:42:19 CEST] di98jgu: Tänkte att jag kunnde lägga beslag på den.
+[kl. 13:43:40 CEST] Viktor Stärn: listan skulle vi ju göra ändå så då blir det att lägga till en startsida helt enkelt, ett gränssnitt man kan "klicka sig igenom" helt enkelt?
+[kl. 13:43:54 CEST] Viktor Stärn: oj, många helt enkelt där :)
+[kl. 13:44:54 CEST] di98jgu: Ja, det är rätt vanligt att appar har en startsida, där du kan välja vad du vill göra samt lite snygg grafik.
+[kl. 13:45:28 CEST] Viktor Stärn: borde det inte mest vara en login-skärm som tar dig direkt till listan i vårt fall?
+[kl. 13:46:06 CEST] di98jgu: Till exempel, ja som att synka den lokala databasen.
+[kl. 13:46:07 CEST] Viktor Stärn: eller ska det bara vara grafiskt?
+[kl. 13:47:10 CEST] di98jgu: Jag kan tänka mig att användaren vill synka databasen, kolla lista med mätpunkter, ställa in larm etc.
+[kl. 13:48:08 CEST] Viktor Stärn: ok, så startsidan blir som en liten meny efter inloggning då alltså?
+[kl. 13:49:40 CEST] di98jgu: Det är det som den oranga punkten handlar om, analys av gränssnittet (orange == analys).
+[kl. 13:50:34 CEST] di98jgu: Så frågan är om användare behöver logga in varje gång han startar appen eller det kan ske automatiskt.
+[kl. 13:51:08 CEST] Tord Larsson: I början kan vi väl göra det utan inloggning
+[kl. 13:51:21 CEST] Tord Larsson: Och ändra det sen , eftersom det är bara skellefteå
+[kl. 13:51:33 CEST] di98jgu: Precis, frågan är inte aktuell ännu.
+[kl. 13:51:55 CEST] di98jgu: Men jag tror att vi behöver en startsida.
+[kl. 13:53:16 CEST] Viktor Stärn: ska alla fortfarande göra en lista? isåfall kan jag ju ta layout och skriva GUI till startsida som extra?
+[kl. 13:55:16 CEST] di98jgu: GUI - listan består av minst tre layout filer. Startsida, lista, listelement. Det behövs också knappar (ikon).
+[kl. 13:58:56 CEST] di98jgu: Men vi behöver veta hur det ska se innan, så du ritar upp ett snyggt grännsnitt ? Bra lägg beslag på layouten. :-)
+[kl. 13:59:52 CEST] Tord Larsson: Layouten har också en bestämd storlek?
+[kl. 14:00:54 CEST] di98jgu: Nej tänker mig första vi spiker hur det ska se ut innan vi kodar. Det spara tid.
+[kl. 14:01:16 CEST] Tord Larsson: Ja ok
+[kl. 14:01:25 CEST] Viktor Stärn: så vi fortsätter med dessa uppgifter efter onsdag?
+[kl. 14:01:46 CEST] di98jgu: Tanken är vi ska vara klara då.
+[kl. 14:02:10 CEST] di98jgu: Till nästa onsta, att ha en enkel lista att visa.
+[kl. 14:02:31 CEST] Tord Larsson: SKa vi ha möten 1300 över helgen också?
+[kl. 14:03:05 CEST] di98jgu: Hmm.. vad säger ni 7/11 eller helgdagsmys ?
+[kl. 14:03:43 CEST] Viktor Stärn: får se hur det blir med tiden, men kan ju säkert vara online en del i helgen
+[kl. 14:03:55 CEST] Tord Larsson: ok så måndag nästa möte?
+[kl. 14:05:08 CEST] Viktor Stärn: men då tar jag layout-uppgiften, bara så jag har det klart för mig: ska det vara ett rent grafiskt förslag, dvs. bilder... eller xml/eclipse?
+[kl. 14:06:24 CEST] di98jgu: Bilder, vi behöver något gemensamt.
+[kl. 14:06:39 CEST] Viktor Stärn: ok
+[kl. 14:08:42 CEST] di98jgu: Ah, o githuba dem då kan vi alla se dem :-) Jag kommer att skapa en mapp för utkast och idéer.
+[kl. 14:09:23 CEST] Viktor Stärn: ok :)
+[kl. 14:10:28 CEST] di98jgu: Youtube är er vän, trevlig helg. Måste gå. (wave) ses...
+[kl. 14:10:36 CEST] Viktor Stärn: ses!
+[kl. 14:10:37 CEST] Tord Larsson: ses
+[kl. 14:10:47 CEST] Viktor Stärn: trevlig helg!

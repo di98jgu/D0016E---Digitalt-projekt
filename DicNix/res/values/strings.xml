@@ -1,0 +1,10 @@
+<resources>
+   <string name="app_name">DicNix</string>
+   
+   <!-- Location details -->
+   <string name = "loc_details_snow_img">Location image</string>
+   <string name = "loc_details_snow_a">Snowdata a</string>
+   <string name = "loc_details_snow_b">Snowdata b</string>
+   <string name = "loc_details_snow_c">Snowdata c</string>
+    
+</resources>

@@ -1,0 +1,90 @@
+Digitalt projekt 
+
+Bakgrund
+Skellefteå har som mål att vara en "smart-city". Det innebär att man vill
+förbättra service till medborgarna och utnyttja resurser mer effektivt
+med hjälp av teknik.
+
+Med ett snödjup på 120 mm i snitt så är snö en real fara för byggnader
+och människor. Flera faktorer inverkar snötryck, luftfuktighet, snödjup
+och temperatur. Ett etablerat system finns för att samla in mätdata i
+databas.
+
+Som en del i ett pilotprojekt vill man nu skapa en Android app för att 
+presentera insamlad data. Avsikten är att använderen, till exempel en 
+fastighetsägare, prenumera på ett antal mätpunkter. Han kan se insamlad 
+data samt så ska appen larma om vissa riktvärden överskrids.
+
+Användare
+Förutsätts veta hur man använder en Android enhet. Typ av enhet vet
+vi inget om men då appen ska larma kan vi anta att primär enhet
+är mobiltelefon. Den har användaren alltid med sig. 
+
+Plattform
+Andelen användare som har "Gingerbread" eller högre är närmare 90%.
+Viktigt, notera att "Gingerbread" svara för 45% av samtliga 
+användare. 
+
+Dashboards, Android Developers (2013-02-06)
+developer.android.com/about/dashboards/index.html
+
+Supporting Multiple Screens, Android Developers (2013-02-06)
+developer.android.com/guide/practices/screens_support.html
+
+Skärmen är typiskt av normal storlek, normal. Det finns tre andra
+men normal täcker 90% av alla användare. Det finns fyra olika
+upplösningar dpi, mdpi, hdpi och xhdpi. Den minsta av dessa
+dpi används mycket lite, mindre än 1% och kan därför ignoreras.
+
+Appen bör därför riktas mot "Gingerbread" med normal skärm och de tre
+upplösningarna mdpi, hdpi och xhdpi. Detta når flest användare.
+
+Arbetsbok
+Då detta projekt är tänkta att utgå från scrum som projektform. Det
+behövs därför en arbetsbok, eng. backlog. De punkter som finns
+från beställaren är:
+
+- Att hämta och pressentera data från servern för användaren. Varje
+användare premuniera på ett vissta antal mätpunkter. Inloggning krävs.
+- Att larma om data överskrider vissa värden.
+
+Dessa vaga punkter är vi fria att utveckla och detta är del av projektet.
+Den ska uppdateras vid behov, detta är endast en första version.
+
+Att hämta och pressentera data är två skilda delar, databas och 
+gränssnitt. Dessa behöver kommunicera med varandra. För att reducera
+datatrafiken mot servern så måsta datat lagras lokalt och uppdateras
+vid behov. 
+
+Pressentationen kan ske på flera sätt, enklast är en lista.
+Det finns önskemål om att representera data på en karta, detta är 
+dock mindre viktigt och kan därför ses som extra. 
+
+Användaren kommer att vilja göra vissa inställning. Det är rimligt
+att han vill namnge sina mätpunkter. Är antalet mätpunkter större än 
+fem så behöver han också kunna organisera listan. En profil behövs.
+
+Att larma är central viktigt, en av målsättningarna med detta 
+projekt. Den bör hamna så högt som möjligt.
+
+Vi har nu
+
+-  Lista med mätpunkter. Detta är en lista med mätpunkter, en mätpunkt är
+   en specifik postion och data kopplad till denna. Användaren väljer
+   en mätpunkt ur listan och data för just den mätpunkten visas för
+   användaren. 
+-  Att kontakta servern logga in och hämta data. API saknas ännu samt
+   en profil att arbeta med. 
+-  Att skapa en lokal databas för mätdatat. En så kallad "content provider"
+   innehållsleverantör skulle vara trevligt. Kräver kännedom om mätdatat
+   som vi saknar. Behövs metadata ?
+-  Ställa samman appen och redovisa faktisk mätdata. Nu ska appen fungera 
+   för en "vanlig" användare. Detta är också en milstolpe, att se till 
+   att allt är gjort och verkligen fungera.
+-  Larm då data överskrider vissa värden. På vilket sätt? Var skapas
+   larmet, här i vår app eller på databasen ? Bara frågetecken här. 
+   Vi har en färdig produkt med ett minimum av funktionalitet. 
+-  Karta med mätpunkter. Användarens mätpunkter redovisas på en karta.
+   Väljer användaren en viss mätpunkt vissas all data kopplad till den. 
+-  Att hantera användarens inställningar, vilka?
+

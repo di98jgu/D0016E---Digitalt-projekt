@@ -1,0 +1,189 @@
+Daniel Granlund: Verkar som att ljudet inte fungerar?
+
+di98jgu: Håller på att mixtra med ljudet.
+
+Daniel Granlund: Ok, Jag hörde dig tvärt
+
+Daniel Granlund: Jag hör
+
+di98jgu: Så illa jag kan inte höra dig, jag går ut och kommer tillbaka.
+
+Daniel Granlund: testa det
+
+di98jgu: Ok, tillbaka.
+
+di98jgu: Jag har testat mitt ljud under Meeting, det fungera.
+
+di98jgu: Din mic inkopplad ?
+
+Daniel Granlund: Jag tror det, fungerade bra tidigare idag i alla fall
+
+Daniel Granlund: har du valt vilken enhet som ska användas för uppspelning (om du har flera)
+
+Daniel Granlund: så att den inte försöker använda ett annat ljudkort, det har hänt tidigare att vi haft problem med det
+
+di98jgu: Under Meeting, audio wizard fungera det. Höll på att bli döv :-).
+
+Daniel Granlund: hehe ok, men inget ljud här?
+
+di98jgu: Nix, strange...
+
+Daniel Granlund: Mic fungerar i audio wizard här
+
+Daniel Granlund: väldigt underligt
+
+Daniel Granlund: Jag testar logga ut och in igen
+
+Daniel Granlund: Jag hör dig
+
+di98jgu: Hörde dig under en halv sekund.
+
+di98jgu: Mixtra med mic kontakten.
+
+Daniel Granlund: Ska testa ett annan headset
+
+Daniel Granlund: nej, det verkar inte fungera
+
+Daniel Granlund: ja
+
+Daniel Granlund: Vi får använda chatten
+
+Daniel Granlund: Tanken var att det skulle ha varit en till deltagare också
+
+Daniel Granlund: Ni är totalt 3 personer som ska gå kursen men den tredje är utomlands 
+
+di98jgu: Ok, tycke det verkade vara få ja.
+
+di98jgu: Av mailet från dig att döma.
+
+Daniel Granlund: precis, det är egentligen i minsta laget men vi får försöka få ihop ett projekt av det ändå
+
+Daniel Granlund: ser du bilderna jag delat?
+
+di98jgu: Ja inga problem där.
+
+Daniel Granlund: lite info om kursplanen
+
+Daniel Granlund: Ni ska jobba enligt en projektmodell som heter Scrum
+
+Daniel Granlund: som jag kommer att gå igenom nästa vecka
+
+Daniel Granlund: Kurslitteraturen finns att ladda hem på den länken (kommer att ligga uppe på fronter)
+
+di98jgu: scrum - linux ?
+
+Daniel Granlund: Scrum är en projektarbetsform
+
+di98jgu: inte ett program, alltså.
+
+Daniel Granlund: nä precis
+
+Daniel Granlund: Det finns dock ett verktyg man kan använda men det är webbaserat
+
+Daniel Granlund: När det sedan gäller projektets innehåll så hade jag tänkt att vi kunde besluta lite gemensamt
+
+Daniel Granlund: Det beror lite på vad ni har för förkunskaper när det gäller programmering
+
+Daniel Granlund: ?
+
+di98jgu: Har du projektidéer eller är det upp till oss
+
+di98jgu: Gemensamt arbete eller eget?
+
+di98jgu: Jag har läst 7.5 hp adroid tidigare och skulle gärna lägga 15 mer till högen.
+
+Daniel Granlund: Jag har ett antal ideer, men det finns även möjlighet att komma med förslag
+
+Daniel Granlund: Okay, men det låter bra
+
+Daniel Granlund: Jag har fyra tänkbara "appar"
+
+di98jgu: Okej, berätta.
+
+Daniel Granlund: Egentligen skulle jag kanske spara det till när dom andra deltagarna är med
+
+di98jgu: Nej, nu har du sagt A ... :-)
+
+Daniel Granlund: Vi säger såhär, alternativ A är en app för att visualisera data som ligger lagrat på en central server samt att generera larm om datat överskrider vissa gränser
+
+Daniel Granlund: Alternativ B är en sk. social app som ska användas för att samordna diverse aktiviteter
+
+Daniel Granlund: Alternativ C är en app för att anpassa mobiltelefonens inställningar till rådande förutsättningar utifrån kalender, tid, position osv. 
+
+Daniel Granlund: Det var nog dom alternativ jag hade :)
+
+Daniel Granlund: Något som låter intressant?
+
+Daniel Granlund: Jag vet att det är extremt vaga beskrivningar men tanken är att utforma iden i gruppen
+
+di98jgu: Var där ett D också ?
+
+di98jgu: Tyckte du sa fyra.
+
+Daniel Granlund: Nej, jag tror att alternativ D är för orelevant
+
+di98jgu: Första har jag nog idé om, Lek med SQL.
+
+Daniel Granlund: mm, centrala servern finns dock redan
+
+Daniel Granlund: med ett Restful-API
+
+Daniel Granlund: Så det blir XML-data som ska behandlas
+
+di98jgu: Ah, så helt nytt där också.
+
+di98jgu: Bra då har jag en idé om vad som finns.
+
+Daniel Granlund: Vi får som sagt höra lite vad som andra i gruppen föredrar också
+
+Daniel Granlund: men då har du fått lite information om vad projektet kommer att handla om i alla fall
+
+di98jgu: Tredje är lite intressant, undra om telefonen kan gå över till trådlöst nätverk automatiskt.
+
+di98jgu: Det var en sån där visonär idé 90-talet tror jag.
+
+Daniel Granlund: Att automatiskt gå över till trådlöst?
+
+di98jgu: Jag om telefonen kan koppla upp sig mot trådlöst nätverk så väljer den det i första hand för datortrafik. Men utan att användaren behöver tillfrågas.
+
+di98jgu: Fast det görs kanske redan.
+
+Daniel Granlund: nja, nästan
+
+Daniel Granlund: den byter automatiskt men inte "sömlöst" dvs. pågående sessioner byter inte
+
+Daniel Granlund: i och med att man i princip alltid byter ip-address när man byter accessnät så är det ganska knepigt
+
+di98jgu: Tja det väl det som SCTP ska råda bot på :-)
+
+Daniel Granlund: SCTP, SIP, Mobile IP det finns många föreslagna lösningar
+
+di98jgu: Det ska kul att leka lite mer med Android, så mycket att lära.
+
+Daniel Granlund: jo, det finns mycket möjligheter!
+
+Daniel Granlund: Jag gör så att jag skickar ut ett mail med kallelse till nästa veckas möte
+
+Daniel Granlund: fungerar samma tid nästa onsdag?
+
+di98jgu: Ja det fungera, hoppas att det dyker om folk då. Ska se om jag kan få ljudet att fungera. Rekomenderad läsning ? Vet vad en aktivitet är och hur man plockar fram bilder och så. 
+
+Daniel Granlund: Rekommenderad läsning är scrum-boken
+
+Daniel Granlund: samt givetvis att sätta igång android-miljön men det har du kanske redan gjort?
+
+di98jgu: Den fungera sen senast.
+
+Daniel Granlund: kanon
+
+di98jgu: Min telefon överlevde första kursen :-)
+
+di98jgu: Hehe :-)
+
+Daniel Granlund: Det är viktigt att man inte börjar knäcka telefoner :)
+
+Daniel Granlund: nu ska jag springa iväg till nästa möte, men vi ses nästa vecka då
+
+Daniel Granlund: ha en trevlig helg så länge!
+
+di98jgu: Detsamma, ses.
