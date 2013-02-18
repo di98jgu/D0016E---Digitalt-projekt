@@ -37,7 +37,25 @@
              android:paddingRight = "20dp"
          />
          <TextView android:id = "@+id/snow_c" />
+         <TextView 
+             android:id = "@+id/location_id" 
+             android:paddingRight = "20dp"
+         />
       </TableRow>
+      
+      <TableRow
+          android:paddingLeft="110dp"
+          android:paddingTop="100dp" >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:onClick="backMethod"
+            android:text="@string/button_back" 
+        />
+      </TableRow>
+
+      
    </TableLayout>
    
 </ScrollView>
