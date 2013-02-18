@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.test.DicNicApplication.DashboardActivity" android:theme="@style/IceFullscreenTheme" android:label="@string/app_name" >
+        <activity android:name="se.ltu.dicnix.DashboardActivity" android:theme="@style/IceFullscreenTheme" android:label="@string/app_name" >
         </activity>
         
-        <activity android:name="com.test.DicNicApplication.ListViewActivity" android:theme="@style/IceFullscreenTheme" android:label="@string/app_name" >
+        <activity android:name="se.ltu.dicnix.ListViewActivity" android:theme="@style/IceFullscreenTheme" android:label="@string/app_name" >
         </activity>
         
-        <activity android:name="com.test.DicNicApplication.LocationDetailsActivity" android:theme="@style/IceFullscreenTheme" android:label="@string/app_name">
+        <activity android:name="se.ltu.dicnix.LocationDetailsActivity" android:theme="@style/IceFullscreenTheme" android:label="@string/app_name">
         </activity>
         
     </application>
