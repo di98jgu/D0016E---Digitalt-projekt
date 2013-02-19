@@ -167,7 +167,7 @@ public abstract class Snowflake {
     */
    public boolean delete(long row) {
       
-      String at = ID + " = " + row;
+      String at = SnowflakeHelper.ID + " = " + row;
       
       return db.delete(
             field.getTable(),
@@ -205,7 +205,7 @@ public abstract class Snowflake {
     */
    public boolean update(ContentValues values, long row) {
       
-      String at = ID + " = " + row;
+      String at = SnowflakeHelper.ID + " = " + row;
       
       return db.updateWithOnConflict(
             field.getTable(),
