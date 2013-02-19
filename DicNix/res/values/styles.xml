@@ -1,5 +1,10 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppTheme" parent="android:Theme.Light" />
+<color name="ice_blue">#61ace5</color>
 
+    <style name="IceFullscreenTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen">
+  
+    </style>
+    
 </resources>

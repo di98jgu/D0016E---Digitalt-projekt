@@ -50,7 +50,6 @@ public class SplashScreenActivity extends Activity {
          */
         handler.postDelayed(new Runnable() {
  
-            @Override
             public void run() {
  
                 /**

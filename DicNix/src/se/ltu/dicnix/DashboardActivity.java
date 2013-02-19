@@ -15,9 +15,9 @@
 * MA 02110-1301, USA.
 */
 
-package com.test.DicNicApplication;
+package se.ltu.dicnix;
 
-import com.test.DicNicApplication.R;
+import se.ltu.dicnix.R;
 
 import android.app.Activity;
 import android.content.Intent;
