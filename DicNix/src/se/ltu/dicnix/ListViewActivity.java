@@ -33,7 +33,7 @@ import android.widget.TextView;
 /**
 * Lists registered measurement locations for the user to choose from 
 *
-* @author Viktor St‰rn
+* @author Viktor St√§rn
 */
 public class ListViewActivity extends ListActivity {
 

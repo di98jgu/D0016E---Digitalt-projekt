@@ -27,7 +27,7 @@ import android.os.Handler;
 /**
 * Splash screen
 *
-* @author Viktor St‰rn
+* @author Viktor St√§rn
 */
 public class SplashScreenActivity extends Activity {
  

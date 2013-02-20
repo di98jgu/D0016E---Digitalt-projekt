@@ -27,7 +27,7 @@ import android.view.View;
 /**
 * Dashboard. Overview of the most common options of the application.
 *
-* @author Viktor St‰rn
+* @author Viktor St√§rn
 */
 public class DashboardActivity extends Activity {
 	@Override
