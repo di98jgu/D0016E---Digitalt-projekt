@@ -1,0 +1,65 @@
+tisdagen den 19:e februari 2013
+[kl. 12:45:07 CEST] di98jgu: Hej hej
+[kl. 12:45:45 CEST] di98jgu: Vi har ett API, eller i vart fall exempel kod i Python.
+[kl. 12:48:55 CEST] Viktor Stärn: ja, jag såg det... vet inte riktigt hur det är tänkt att det ska fungera.. med tanke på Python alltså
+[kl. 12:49:05 CEST] Viktor Stärn: tänkte även på det här med sensorerna och sensordata
+[kl. 12:49:49 CEST] Viktor Stärn: vilken typ av data är det man kan få från sensorerna? om det är samma typ som man lägger in manuellt, varför räcker det inte med sensordata?
+[kl. 12:51:06 CEST] di98jgu: Python är bara exempel kod, ser inte allt får komplicerat ut. För att hämta data så gör men ett GET med användarnamn och lösenord.
+[kl. 12:51:52 CEST] di98jgu: Lite javascript finns också med i receptet, men har ännu inte satt mig in i detaljerna.
+[kl. 12:56:07 CEST] Viktor Stärn: ok.. har i nuläget ett körbart projekt kopplat till github... enda problemet nu är väl katalogstrukturen... av någon anledning har den kopierat en del av den lokala katalogstrukturen (så att DicNix (som blev SplashScreenActivity pga hur jag skapade projektet) hamnar under TestProjekt.
+[kl. 12:57:40 CEST] di98jgu: Hmm, jo git fungera ju så att den spara även katalogstrukturen.
+[kl. 12:58:18 CEST] di98jgu: Har börjat kopiera över filer från TestBranch.
+[kl. 12:59:12 CEST] di98jgu: Har varit lite upptagen av ett 30 års kalas.
+[kl. 12:59:37 CEST] di98jgu: Har inte lagt upp något ännu.
+[kl. 13:00:21 CEST] di98jgu: Jag har frågat om lov att lägga upp Python filerna på GitHub, så vi kan plocka isär dem.
+[kl. 13:01:42 CEST] Viktor Stärn: ok.. jag har aldrig jobbat på det här sättet.. endast utifrån ett API.. är det meningen vi ska skriva kod i Python eller bara lista ut hur vi skriver Java utifrån exempelkoden?
+[kl. 13:02:06 CEST] di98jgu: Översätta till Java.
+[kl. 13:02:12 CEST] Viktor Stärn: ok
+[kl. 13:03:08 CEST] di98jgu: Jag vet inte riktigt hur mycket du kan, så jag skriver förutsättningslöst. Hoppas att det är ok.
+[kl. 13:04:23 CEST] di98jgu: Vad som händer i mycket grova drag är detta. Servern https://ip30.csse.tt.ltu.se/ssc/api/basic/ anropas med ett GET. Som att hämta en vanlig hemsida.
+[kl. 13:05:16 CEST] di98jgu: Det spelar ingen roll vilket språk du använder, servern ser på bara GET följt av vad parameterar.
+[kl. 13:05:31 CEST] Viktor Stärn: aha, ok
+[kl. 13:06:41 CEST] di98jgu: Men kruxet här är att vi har en ganska bra bild av hur vet gör ett GET men inte så bra bild av vad vi får tillbaka från servern.
+[kl. 13:07:00 CEST] di98jgu: Jag tror att vi får en XML fil tillbaka.
+[kl. 13:07:46 CEST] di98jgu: Jag kommer att köra Python koden ser vad jag får.
+[kl. 13:08:39 CEST] di98jgu: Du jag undrar över och som jag frågat läraren om är hur precist registrera jag mig som användare av API:et. För det måste man tydligen.
+[kl. 13:08:39 CEST] Viktor Stärn: spännande :)
+[kl. 13:08:53 CEST] di98jgu: Det jag undrar - Menar jag.
+[kl. 13:09:53 CEST] di98jgu: Resultatet kommer jag, om jag får lov, att lägga upp på GitHub.
+[kl. 13:10:09 CEST] di98jgu: Jo, spännande.
+[kl. 13:10:11 CEST] di98jgu: :-)
+[kl. 13:11:11 CEST] Viktor Stärn: låter rimligt, har som sagt ingen erfarenhet... men vi bör ju ta reda på vad som returneras :)
+[kl. 13:12:48 CEST] di98jgu: Yupp, tror inte det ska vara några igentilga problem så fort jag får Python koden att fungera så bör det inte vara så svårt att översätta den till Java.
+[kl. 13:13:54 CEST] Viktor Stärn: ok
+[kl. 13:14:23 CEST] di98jgu: Så hur går det för dig, tittat något på databas delen ?
+[kl. 13:14:47 CEST] di98jgu: Jag har inte testat den ännu.
+[kl. 13:15:50 CEST] Viktor Stärn: har mest kämpat med eclipse och git än så länge, tänker du på den lokala då eller?
+[kl. 13:16:15 CEST] di98jgu: Det jag har gjort hittar du på GitHub.
+[kl. 13:16:33 CEST] Viktor Stärn: ok, ska ta en titt!
+[kl. 13:17:21 CEST] di98jgu: Veckomöte imorgon vad ska vi försöka få gjort tills dess ?
+[kl. 13:18:16 CEST] di98jgu: Jag kommer att lägga över så mycket kod som möjligt från din gren.
+[kl. 13:18:43 CEST] Viktor Stärn: ja, jag kan ju visa upp det vi "slagit samman"
+[kl. 13:18:51 CEST] Viktor Stärn: hinner vi slutföra något annat menar du?
+[kl. 13:19:04 CEST] di98jgu: Nej gör vi inte.
+[kl. 13:19:17 CEST] di98jgu: Jag kommer nog att mässa lite om databasen.
+[kl. 13:19:33 CEST] Viktor Stärn: ok, låter bra... nog viktig info för mig också :)
+[kl. 13:20:07 CEST] di98jgu: Så jag ska se till ha det utlovade diagramet klart imorgon.
+[kl. 13:20:50 CEST] Viktor Stärn: ok!
+[kl. 13:21:29 CEST] di98jgu: Så bråkar du vidare med Eclipse så jag flyttar jag kod och gör ett fint diagram.
+[kl. 13:21:56 CEST] Viktor Stärn: yes, så gör vi
+[kl. 13:22:14 CEST] di98jgu: Ok så ses imorgon ?
+[kl. 13:22:54 CEST] Viktor Stärn: jepp :) ses!
+[kl. 13:23:02 CEST] di98jgu: Ses (wave)
+[kl. 17:59:13 CEST] Viktor Stärn: ok, extremt omständigt det här :) och du har rätt i att det nog är lättare att få hjälp om man använder terminalen... menmen.. nu tror jag allt fungerar som det ska... har ett körbart projekt som är kopplat till git och jag laddar upp/ned till TestBranch2. Filerna ligger där de ska men den gamla katalogen TestProject ligger kvar och skräpar (kan du ta bort den med hjälp av terminalen?).
+[kl. 19:59:57 CEST] di98jgu: Ska titta på det, fast du menar TestBranch tror jag ?
+[kl. 20:01:53 CEST] Viktor Stärn: nä, den har jag inte uppdaterat på ett tag
+[kl. 20:02:10 CEST] Viktor Stärn: 2:an pushade jag till sist
+[kl. 20:03:04 CEST] di98jgu: Vänta lite ska titta.
+[kl. 20:04:35 CEST] di98jgu: Du har numera tre grenar på GitHub, TestBranch, TestBranch2 och TestBranch3.
+[kl. 20:05:26 CEST] Viktor Stärn: mmm, den tredje skapade jag för att jag trodde att jag kunde bli av med TestProject-katalogen på det viset... men det gick ju inte
+[kl. 20:05:45 CEST] Viktor Stärn: behöver inte 3:an alls
+[kl. 20:08:34 CEST] di98jgu: Hmmm, det spelar ingen större roll. låt dem skräpa där. I terminal så plockar man bort grenar med git branch -d [din gren] alternativt och permanent med -D istället.
+[kl. 20:09:34 CEST] Viktor Stärn: ja, ingen idé jag försöker mig på att rensa... men om du vill så gör det... använder bara TestBranch2 nu iaf
+[kl. 20:10:52 CEST] di98jgu: Yup, lite min tanke också. Ingen större skada om man gör något galet på sin dator men på uppströms på GitHub är det mindre bra.
+[kl. 20:10:55 CEST] di98jgu: :-)
+[kl. 20:12:00 CEST] Viktor Stärn: :)

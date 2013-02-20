@@ -1,0 +1,43 @@
+måndagen den 18:e februari 2013
+[kl. 12:31:23 CEST] di98jgu: Hej där allt väl?
+[kl. 12:32:15 CEST] di98jgu: Ser att du var skype igår, jag satt skrev på databasen o hade inte Skype på.
+[kl. 12:32:49 CEST] Viktor Stärn: Hej! Jo, de e fint... försöker reda ut hur jag kör git-projekt i eclipse.. efter lite googlande verkar det som att man inte ska importera projektet som git... utan skapa ett android projekt till att börja med... sen välja share
+[kl. 12:34:34 CEST] di98jgu: Okej får du det att fungera, jag kör Android 2.3.3 det är API 10 vårt mål API:
+[kl. 12:35:21 CEST] di98jgu: Men du kanske kommit fram till det, ska framgå av den dokumentation som ligger på GitHub.
+[kl. 12:35:54 CEST] di98jgu: Detta är hänt här, jag har lagt ut en grundläggande stomme för databasen.
+[kl. 12:36:26 CEST] di98jgu: Och som du sett så har vi nu API över fjärdatabasen från Daniel.
+[kl. 12:36:38 CEST] di98jgu: Har ännu inte hunnit titta på det.
+[kl. 12:37:25 CEST] Viktor Stärn: jo, såg det, inte heller reggat mig än
+[kl. 12:37:47 CEST] di98jgu: Jag ska göra bild, UML, över databasen för att vara extra prydlig.
+[kl. 12:38:30 CEST] di98jgu: Men den är okompliserad så det ska inte vara några problem.
+[kl. 12:39:55 CEST] Viktor Stärn: ok, låter bra :)
+[kl. 12:41:34 CEST] di98jgu: Jag gjorde en tabel, men har lagt upp databasen så att det ska enkelt att skapa fler tabeler om så behövs.
+[kl. 12:42:23 CEST] Viktor Stärn: ok, ja vi vet väl fortf. inte exakt vilken info de vill att vi ska lagra/presentera?
+[kl. 12:43:32 CEST] di98jgu: Nej precis, snödata är en tabel, sen har vi möjligen inställningar.
+[kl. 12:43:48 CEST] di98jgu: Men det ser vi sen.
+[kl. 12:44:07 CEST] di98jgu: Hittade följande: grepcode.com/snapshot/repository.grepcode.com/java/ext/com.google.android/android/2.3.3_r1/
+[kl. 12:44:32 CEST] di98jgu: För de tillfällen då dokumentationen inte riktigt räker till. :-)
+[kl. 12:45:20 CEST] di98jgu: Sen är det kul att se hur fungera, förstås 8-| :-)
+[kl. 12:47:11 CEST] Viktor Stärn: hehe, e de hela os:et lr?
+[kl. 12:48:01 CEST] di98jgu: Mja vet inte hur djupt det går, mycket är också skrivet i C det vet jag.
+[kl. 12:49:48 CEST] Viktor Stärn: var ställer man in adressen till github-projektet manuellt? vet du det?
+[kl. 12:50:14 CEST] di98jgu: I Eclipse, eller terminal ?
+[kl. 12:50:43 CEST] Viktor Stärn: tänkte om det står i någon fil jag kommer åt.. inte särskilt hemma på terminalen
+[kl. 12:50:58 CEST] Viktor Stärn: hittar inte i eclipse
+[kl. 12:52:04 CEST] di98jgu: Nej, det är lite därför jag unviker att använda Eclipse till git. Det lätt att hitta info om git i termial.
+[kl. 12:52:29 CEST] Viktor Stärn: ok, kollar vidare...
+[kl. 12:52:47 CEST] Viktor Stärn: det verkar som det blir lite knepigt när man kombinerar android och git.. i eclipse
+[kl. 12:53:31 CEST] di98jgu: Så du leker med det, jag tittar på det du har gjort och försöker impotera det till master.
+[kl. 12:53:38 CEST] di98jgu: Vad tror du ?
+[kl. 12:55:23 CEST] di98jgu: Sen kan vi som nattsaga titta lite på API:et för fjärdatabasen.
+[kl. 12:56:02 CEST] Viktor Stärn: fast det är fortfarande fel androidversion för kompileringen.. men det kan jag nog fixa lite snabbt.. säger till när det är klart
+[kl. 12:56:28 CEST] di98jgu: Nej det är lungt, jag vet att det är fel.
+[kl. 12:56:44 CEST] di98jgu: Jag plockar istället fil för fil.
+[kl. 12:56:57 CEST] Viktor Stärn: aha, ok
+[kl. 12:59:49 CEST] di98jgu: Något mer, kan tyvärr inte vara till någon hjälp vad gäller git o Eclipse.
+[kl. 13:00:18 CEST] Viktor Stärn: nä, de e lugnt, jag kollar vidare måste ju gå att lösa
+[kl. 13:00:36 CEST] Viktor Stärn: annars är det nog inget mer
+[kl. 13:00:55 CEST] di98jgu: Ok så ska vi säga så tills imorgon ?
+[kl. 13:01:07 CEST] Viktor Stärn: jepp, kan vi göra!
+[kl. 13:01:12 CEST] Viktor Stärn: ses imorgon! :)
+[kl. 13:01:23 CEST] di98jgu: Fint, det gör vi (wave)
