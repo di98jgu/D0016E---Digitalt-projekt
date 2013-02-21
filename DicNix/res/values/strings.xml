@@ -4,8 +4,17 @@
    
    <!-- Location details -->
    <string name = "loc_details_snow_img">Location image</string>
-   <string name = "loc_details_snow_a">Snowdata a</string>
-   <string name = "loc_details_snow_b">Snowdata b</string>
-   <string name = "loc_details_snow_c">Snowdata c</string>
+   <string name = "loc_details_serial">Serial: </string>
+   <string name = "loc_details_name">Name: </string>
+   <string name = "loc_details_location">Location:</string>
+   <string name = "loc_details_latitude">Latitude: </string>
+   <string name = "loc_details_longitude">Longitude: </string>
+   <string name = "loc_details_type_name">Type name: </string>
+   <string name = "loc_details_deployed_state">Deployed state: </string>
+   <string name = "loc_details_visibility">Visibility: </string>
+   <string name = "loc_details_info">Info: </string>
+   <string name = "loc_details_domain">Domain: </string>
+   <string name = "loc_details_created">Created: </string>
+   <string name = "loc_details_updated">Updated: </string>
     
 </resources>

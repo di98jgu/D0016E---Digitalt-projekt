@@ -18,26 +18,32 @@
 
 package se.ltu.dicnix;
 
-import se.ltu.dicnix.R;
-
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import database.DatabaseInteractionActivity;
 
 /**
  * View details about a location. A location is position with a set of data.
  * The information is read only, 
  * 
- * @author Jim Gunnarsson, di98jgu
+ * @author Jim Gunnarsson, di98jgu (bastardized by Viktor Stärn)
  */
 public class LocationDetailsActivity extends Activity {
 	
 	/** Location details id tag for use in communication between activity's */
 	public final static String ID_LOCATION_DETAILS = "dicnix.id_location_details";
-	
+	public final static String[] columns = {"id", "timestamp", "serial", "name", "location", "latitude", "longitude", "typename", "deployedstate", "visibility", "info", "domain", "created", "updated"};
+	public final static String tableName = "snowtable";
+	public Cursor returnedCursor = null;
+    ContentValues cv = new ContentValues(14);
+    
+    
 	/**
     * Start of this activity.
     * 
@@ -52,8 +58,32 @@ public class LocationDetailsActivity extends Activity {
       long clicked_item_id = i.getLongExtra("clicked_item_id", 0);
       String location_id = String.valueOf(clicked_item_id);      
      
+      DatabaseInteractionActivity DB = new DatabaseInteractionActivity(getApplicationContext());
+      DB.open();
+      DB.select_columns(tableName, columns);  
+     
+//      cv.put(" " + columns[0], "1");
+//      cv.put(" " + columns[1], "00:03");
+//      cv.put(" " + columns[2], "SKE-824224");
+//      cv.put(" " + columns[3], "Treriksröset");
+//      cv.put(" " + columns[4], "None Given");
+//      cv.put(" " + columns[5], "69.06");
+//      cv.put(" " + columns[6], "20.5486");
+//      cv.put(" " + columns[7], "SnowPressure");
+//      cv.put(" " + columns[8], "DEPLOYED");
+//      cv.put(" " + columns[9], "1");
+//      cv.put(" " + columns[10], "None Given");
+//      cv.put(" " + columns[11], "ThomasDomain");
+//      cv.put(" " + columns[12], "2013-02-21 11:36:25");
+//      cv.put(" " + columns[13], "2013-02-21 11:36:25");
+//      
+//      DB.insert(cv);
+
+      returnedCursor = DB.all();
+      
       DetailsAdp details = new DetailsAdp();
       details.populate(location_id);   
+      DB.close();
 
    }
 	
@@ -76,9 +106,18 @@ public class LocationDetailsActivity extends Activity {
    private class DetailsAdp {
       
       private ImageView img = null;
-      private TextView a = null;
-      private TextView b = null;
-      private TextView c = null;
+      private TextView serial = null;
+      private TextView name = null;
+      private TextView location = null;
+      private TextView latitude = null;
+      private TextView longitude = null;
+      private TextView typename = null;
+      private TextView deployedstate = null;
+      private TextView visibility = null;
+      private TextView info = null;
+      private TextView domain = null;
+      private TextView created = null;
+      private TextView updated = null;
       private TextView id = null;
       
       /**
@@ -87,9 +126,18 @@ public class LocationDetailsActivity extends Activity {
       public DetailsAdp() {
          
          img = (ImageView) findViewById(R.id.snow_img);
-         a = (TextView) findViewById(R.id.snow_a);
-         b = (TextView) findViewById(R.id.snow_b);
-         c = (TextView) findViewById(R.id.snow_c);
+         serial = (TextView) findViewById(R.id.serial);
+         name = (TextView) findViewById(R.id.name);
+         location = (TextView) findViewById(R.id.location);
+         latitude = (TextView) findViewById(R.id.latitude);
+         longitude = (TextView) findViewById(R.id.longitude);
+         typename = (TextView) findViewById(R.id.type_name);
+         deployedstate = (TextView) findViewById(R.id.deployed_state);
+         visibility = (TextView) findViewById(R.id.visibility);
+         info = (TextView) findViewById(R.id.info);
+         domain = (TextView) findViewById(R.id.domain);
+         created = (TextView) findViewById(R.id.created);
+         updated = (TextView) findViewById(R.id.updated);
          id = (TextView) findViewById(R.id.location_id);
     	 
          
@@ -103,10 +151,22 @@ public class LocationDetailsActivity extends Activity {
       public void populate(String clicked_item_id) {
          String location_id = clicked_item_id;
     	  
+         returnedCursor.moveToFirst();
+       
          img.setImageResource(R.drawable.igloo);
-         a.setText("Value a");
-         b.setText("Value b");
-         c.setText("Value c");
+         serial.setText(returnedCursor.getString(returnedCursor.getColumnIndex("serial")));
+         name.setText(returnedCursor.getString(returnedCursor.getColumnIndex("name")));
+         location.setText(returnedCursor.getString(returnedCursor.getColumnIndex("location")));
+         latitude.setText(returnedCursor.getString(returnedCursor.getColumnIndex("latitude")));
+         longitude.setText(returnedCursor.getString(returnedCursor.getColumnIndex("longitude")));
+         typename.setText(returnedCursor.getString(returnedCursor.getColumnIndex("typename")));
+         deployedstate.setText(returnedCursor.getString(returnedCursor.getColumnIndex("deployedstate")));
+         visibility.setText(returnedCursor.getString(returnedCursor.getColumnIndex("visibility")));
+         info.setText(returnedCursor.getString(returnedCursor.getColumnIndex("info")));
+         domain.setText(returnedCursor.getString(returnedCursor.getColumnIndex("domain")));
+         created.setText(returnedCursor.getString(returnedCursor.getColumnIndex("created")));
+         updated.setText(returnedCursor.getString(returnedCursor.getColumnIndex("updated")));
+
          id.setText("Clicked item id: " + location_id);
          
          return;
@@ -119,6 +179,6 @@ public class LocationDetailsActivity extends Activity {
    
    /** Called when the user clicks the Back button */
    public void backMethod(View view) {
-   	finish();
+   		finish();
    }
 }
