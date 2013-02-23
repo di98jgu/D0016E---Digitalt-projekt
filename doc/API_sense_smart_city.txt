@@ -1,0 +1,163 @@
+
+REFERENS 
+
+- ListSensor.py
+- RequestSensor.py
+- AddSensor.py
+- SubmitSnowPressureData.py
+
+Brevkorrespondens, ej återgiven. 
+
+
+
+FÖRUTSÄTTNINGAR
+
+All exempel kod är skriven i Python. Det bör inte göra någon skillnad
+då dataformatet är JSON. 
+
+
+
+ANROP TILL FJÄRRDATABAS
+
+Basadress till fjärrdatabasen:
+https://ip30.csse.tt.ltu.se/ssc/api/basic/
+
+Relativa adresser, som alltså följer efter basadressen
+- sensor/list: Lista över alla sensorer, mätpunkter. 
+- snow_pressure/request: All snödata
+- geo_location/request: Position 
+- free_text/request: Allmän information, om sådan finns
+- temperature/request: Temperatur
+
+Av dessa är 'sensor/list' samt 'snow_pressure/request' de som är 
+av intresse. De är också väldokumenterade vad gäller giltiga
+inparametrar. För att hämta information används SSL tillsammas med 
+autentisering. 
+
+Data hämtas med GET och lämnas med POST, den relativa adressen skiljer
+sig åt. Här redovisas endast GET ty vi är endast intresserade av att
+hämta data. 
+
+
+Parametrar för 'sensor/list' 
+- sensors: JSON formaterad lista med sensor id.
+- public: Visar sensorer från alla 'yes' domäner eller endast vår 'no'.
+- format: Returnera data i form av 'json' eller 'xml'.
+
+Samtliga parametrar är valfria. Utelämnas 'sensors' så fås en lista 
+över samtliga sensorer.
+
+
+Parametrar för 'snow_pressure/request'
+- sensor: JSON formaterad lista med sensor id, 'serial'. 
+- fields: JSON formaterad lista med data fält, kolumner, som önskas.
+- period: Tidsperiod, mätvärden för 'last-hour', 'last-day', 
+   'last-week', 'last-month' eller 'last-year'
+- start: Startpunkt för tidsperiod, (YYYY-MM-DD HH:MM:SS)
+- end: Slutpunkt för tidsperiod, (YYYY-MM-DD HH:MM:SS)
+- limit: Begränsa resultat till så här många poster.
+- offset: Returnera poster från och med den här positionen.
+- sort: Sortering av rader 'desc' eller 'asc'.
+
+Med undantag av sensor så är samtliga parametrar valfria. En 
+tidsperiod kan anges på två sätt under vilken vi har ett okänt antal 
+utförda mätningar. Vad som händer om vi blandar 'period', 'start' och
+'end' är ej dokumenterat. 
+
+
+
+SVAR FRÅN FJÄRDATABASEN
+
+Svar från databasen är mindre väl dokumenterat.
+
+
+Resultat för 'sensor/list'
+För 'sensor/list' kan vi får resultat i form av XML eller JSON.
+
+I JSON så fås följande resultat:
+{"response":[{},{},{"serial":"SKE-472478","name":"LTU kontor","location":"","latitude":"64.7443","longitude":"20.9558","type_name":"SnowPressure","deployed_state":"DEPLOYED","visibility":"0","info":"","domain":"ThomasDomain","created":"2013-02-20 15:06:54","updated":"2013-02-21 09:01:40"},{}]}
+
+Vi har alltså för varje sensor följande information:
+- serial: Detta är unikt id för sensorn, motsvars av 'sensor' ovan.
+- name: Ett mer läsbart namn för oss människor, max 50 tecken.
+- location: Kort platsbeskrivning, max 128 tecken.
+- latitude: I grader, decimalt.
+- longitude: I grader, decimalt.
+- type_name: Typ av sensor, 'FreeText', 'Temperature', 'Motion',  
+             'GeoLocation', SnowPressure. Bör i vårt fall endast vara 
+             'SnowPressure'.
+- deployed_state: Status kan vara 'DEPLOYED' eller 'NOT_DEPLOYED'.
+- visibility: Synlig för andra domänanvändare '1' eller inte '0'.
+- info: Beskrivning av sensorn, max 255 tecken. 
+- domain: Domän som sensorn tillhör.
+- created: Registreringsdatum (YYYY-MM-DD HH:MM:SS)
+- updated: Senast uppdaterad (YYYY-MM-DD HH:MM:SS)
+
+Alla värden oavsett typ anges som strängar, saknas värde är strängen
+tom. Nycklar anges alltid med germaner. 
+
+
+Resultat för 'snow_pressure/request'
+För 'snow_pressure/request' så är resultatet alltid i JSON. Anges
+endast 'sensor' så fås fälten 'data_time', 'weight', 'depth'. Det
+framgår inte inte hur många mättillfällen som fås tillbaka, det är
+fler det senaste. Det är därför klokt att sätta en lämplig period.
+
+Med fälten 'field' satta till 'shoveld', 'weight', 'depth', 'temperature', 'humidity', 'data_time' och 'info' fås följande:
+{"response":{"12345":[{"info":null,"shoveld":"1","weight":"1100","depth":"488","temperature":"-1","humidity":"83","data_time":"2013-02-06 15:21:38"},{"info":"Ett test","shoveld":"1","weight":"12","depth":"23","temperature":"-7","humidity":"80","data_time":"2013-02-19 17:36:53"}],"SKE-472478":[]}}
+
+Vi har alltså:
+- 12345: Detta är unikt id för sensorn.
+- info: Beskrivning av aktuell registrering, max 100 tecken.
+- shoveld: Ange om platsen gjorts ren på snö '1' eller inte '0'.
+- weight: Snövikt i gram.
+- depth: Snödjup i centimeter.
+- temperature: Temperatur i grader celcius.
+- humidity: Relativ fuktighet RH i procent.
+- data_time: Registrering av mätdata (YYYY-MM-DD HH:MM:SS)
+
+Notera att vi här har null för info fältet! Som tidigare så är 
+samtliga nycklar germaner. 
+
+
+
+DATAFORMAT
+
+Nycklar ska alltid anges i germaner. Värden är undantagslöst strängar.
+Saknas värden så anges detta som en tom sträng. Från databasen kan
+null värden förekomma. 
+
+Tid är undantagslöst angivet i formatet 'YYYY-MM-DD HH:MM:SS'. Kan 
+därför lätt läsa av med reguljära uttryck. 
+
+Med undantag för position så är tal angivarna som heltal. Position 
+är angiven i grader med decimal precision, minst 4 siffror. 
+Temperatur anges med tecken i hela grader, '-7'. 
+
+Boolean är '0' för falskt och '1' för sant. 
+
+
+
+ANDROID ALLMÄNNA KRAV
+
+Att översätta given kod i Python till Java och Android dito är inte
+möjligt. Gränssnittet är ett helt annat. Ett problem är att ingen inom
+detta projekt har arbetat med detta tidigare.
+
+Vi vet att formatet är JSON till och från databasen. Anropet ska
+vara autentiserat, preemtive, och SSL är ett krav. Certifikatet är
+självsignerat, kan orsaka varningar. 
+
+Från android-developers.blogspot.se/2011/09/androids-http-clients.html
+(2013-02-22) har vi att:
+
+" For Gingerbread and better, HttpURLConnection is the best choice. 
+Its simple API and small size makes it great fit for Android."
+
+Detta bör rimligen också vara sant för HttpsURLConnection som är en
+direkt underklass till HttpURLConnection. 
+
+JSON hanteras med JSONObject objekt. 
+
+
+

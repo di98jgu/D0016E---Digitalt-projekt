@@ -1,0 +1,60 @@
+fredagen den 22:e februari 2013
+[kl. 12:47:45 CEST] Viktor Stärn: Hej! Har uppdaterat TestBranch2 med lite kod för att testa databasen. Enklast möjliga. Lägger in exemplet du fick tillbaka med Python i databasen, hämtar det och presenterar i vårt gränssnitt. Tog som sagt enklast möjliga väg, så jag fick ändra en del... kringgick t.ex. helt SnowflakeFields.java..
+[kl. 12:51:26 CEST] di98jgu: Var det några problem med använda SnowFields ?
+[kl. 12:51:41 CEST] di98jgu: Eftersom du kringick den.
+[kl. 12:52:24 CEST] Viktor Stärn: koden för att lägga in data i databasen är utkommenterad i nuläget.. behövs ju bara första gången man kör applikationen
+[kl. 12:54:33 CEST] Viktor Stärn: mja, jag var inte säker på var/när informationen  skulle ges till SnowflakeFields... tog mig hela dagen att testa så jag gick runt den när det inte fungerade... säkert enkelt fixat
+[kl. 12:55:48 CEST] di98jgu: Mja okej betyder att jag behöver dokumentera lite mera, du ska inte alls behöva använda SnowFields alls från utsidan.
+[kl. 12:56:53 CEST] di98jgu: Du instansiera Snowdata och Snowdata skapa sedan en instans av SnowFields.
+[kl. 12:57:46 CEST] di98jgu: SnowFields används av Snowflake för att tillexempel veta vilken tabell du arbetar i.
+[kl. 12:58:08 CEST] di98jgu: Ska ta titta på koden, ska bli intressant :-)
+[kl. 12:58:55 CEST] Viktor Stärn: ja, du kan ju tipsa om hur jag lättast ändrar för att inkorporera allt du tänkt dig
+[kl. 12:59:57 CEST] di98jgu: Yupp, det är faktiskt rätt intressant att se hur du tolkar min kod.
+[kl. 13:00:19 CEST] di98jgu: Det visar vad som är tydligt och vad som är mindre bra.
+[kl. 13:01:13 CEST] Viktor Stärn: du behöver nog inte skylla alla feltolkningar på otydlighet från din sida... jag är nog inte kodtolkare nr. 1 om man säger så :)
+[kl. 13:01:57 CEST] di98jgu: Hmmm, ja det är inte jag heller även om jag har börjat kunna läsa andras kod.
+[kl. 13:02:50 CEST] di98jgu: Jag kan "lära mig" från den även jag om jag långt ifrån alltid förstår den.
+[kl. 13:03:44 CEST] Viktor Stärn: ja, det kan vara rätt svårt att sätta sig in i andras kod ibland..
+[kl. 13:04:12 CEST] di98jgu: Yupp, det kan det verkligen.
+[kl. 13:04:24 CEST] di98jgu: Jag har uppdaterat SeeNowDo.
+[kl. 13:04:57 CEST] Viktor Stärn: ah, ok.. ska kolla
+[kl. 13:07:40 CEST] Viktor Stärn: gammal post men "Anpassa databas efter faktisk snödata"... innebär det något mer än vilka kolumner som används? möjligtvis datatyp för kolumnerna...?
+[kl. 13:08:24 CEST] di98jgu: Faktiskt så betyder det en hel del.
+[kl. 13:08:48 CEST] di98jgu: Vi kommer nu att minst ha två tabeller.
+[kl. 13:09:08 CEST] di98jgu: En för snödata som tidigare, och en för sensor data.
+[kl. 13:09:59 CEST] di98jgu: Varje sensor har ett namn, ett id och position plus eventuell annan info.
+[kl. 13:11:15 CEST] di98jgu: Snödata är snötryck, temperatur, luftfuktighet, om det är skottat med mera.
+[kl. 13:12:23 CEST] di98jgu: Att vi behöver två tabeller beror på att för varja mätpunkt, alltså sensor, så har vi mätdata för flera tidpunkter.
+[kl. 13:12:37 CEST] di98jgu: Mätningar görs regelbundet.
+[kl. 13:13:04 CEST] Viktor Stärn: aha, ja då blir det ju lite mer komplicerat
+[kl. 13:13:26 CEST] di98jgu: Ja verkligheten har tyvärr den egenskapen.
+[kl. 13:13:31 CEST] Viktor Stärn: :)
+[kl. 13:13:34 CEST] di98jgu: :-)
+[kl. 13:14:07 CEST] di98jgu: Ja har precis börjat få data från fjärdatabasen.
+[kl. 13:14:35 CEST] di98jgu: Min tanke är att försöka ställa samman tabellerna.
+[kl. 13:14:46 CEST] di98jgu: Vilka kolumner som behövs.
+[kl. 13:15:03 CEST] Viktor Stärn: låter rimligt
+[kl. 13:15:38 CEST] di98jgu: Jag har inte än, betyder glömt, frågat om vi kan anta att positionen är garanterat unik.
+[kl. 13:16:05 CEST] di98jgu: Det bör den ju vara men det är klokast att fråga.
+[kl. 13:16:35 CEST] di98jgu: Man kan ju faktiskt tänka sig att man har en "mätstation" med flera sensorer.
+[kl. 13:16:59 CEST] di98jgu: Men det verkar inte rimligt i det här fallet.
+[kl. 13:17:17 CEST] Viktor Stärn: hmm, ingen aning
+[kl. 13:17:42 CEST] di98jgu: Precis, har liksom ingen anning om hur mätningarna går till.
+[kl. 13:19:15 CEST] di98jgu: Om positionen är unik så är det vår "forigen key"
+[kl. 13:20:02 CEST] di98jgu: Tänkte leka med detta under helgen och se vad jag kommer fram till. Ska också läsa igenom vad du har gjort.
+[kl. 13:20:59 CEST] di98jgu: Kommentera lite.
+[kl. 13:23:05 CEST] Viktor Stärn: ja, jag kommer inte ha jättemkt tid i helgen... möjligtvis söndag... får se... något jag kan kolla på?
+[kl. 13:23:23 CEST] Viktor Stärn: du kan ju skriva när du kollat på min kod
+[kl. 13:23:29 CEST] Viktor Stärn: så kanske jag kän göra ändringar
+[kl. 13:23:38 CEST] di98jgu: Ja det låter som en plan.
+[kl. 13:24:07 CEST] di98jgu: Då har jag lite tid på mig att titta på vad du går och sen går vi från där.
+[kl. 13:24:56 CEST] di98jgu: Jag har varit sysselsatt med att försöka lista ut hur fjärdatabasen fungera.
+[kl. 13:25:17 CEST] di98jgu: Så jag har inte så bra koll på den biten.
+[kl. 13:25:25 CEST] Viktor Stärn: ok
+[kl. 13:25:40 CEST] di98jgu: Något mer ?
+[kl. 13:25:57 CEST] Viktor Stärn: inte som jag kan komma på nu :)
+[kl. 13:26:38 CEST] di98jgu: Ok så jag filar på "TO DO" lista till på söndag. :-)
+[kl. 13:26:54 CEST] Viktor Stärn: låter fint!
+[kl. 13:26:58 CEST] Viktor Stärn: hörs vi då!
+[kl. 13:27:04 CEST] di98jgu: Ok ses (wave) :-)
+[kl. 13:27:10 CEST] Viktor Stärn: ses :)

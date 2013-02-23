@@ -1,0 +1,105 @@
+torsdagen den 21:e februari 2013
+[kl. 12:38:28 CEST] di98jgu: Hej där vi har en API användare !
+[kl. 12:40:38 CEST] Viktor Stärn: har du fått mejl eller?
+[kl. 12:41:38 CEST] di98jgu: Yup, skickade en hälsning till Thomas igår.
+[kl. 12:41:58 CEST] Viktor Stärn: ah, bra ju!
+[kl. 12:42:06 CEST] Viktor Stärn: snabbt..
+[kl. 12:42:45 CEST] di98jgu: Hmmm, 2 - 3 veckor == snabbt ? :-D
+[kl. 12:43:03 CEST] Viktor Stärn: haha, från det att du skickade tänkte jag :)
+[kl. 12:43:13 CEST] di98jgu: Jo jag vet.
+[kl. 12:43:36 CEST] di98jgu: Fast jag tycker att det kunde ha varit ordnat innan kursen.
+[kl. 12:43:51 CEST] Viktor Stärn: jo, de e klart
+[kl. 12:44:34 CEST] di98jgu: Från Thomas:
+
+Hej,
+
+Jo, jag fick lite information om detta av Daniel men jag ser inga direkta problem att ni använder GitHub.
+
+Har lagt upp en API-användare: * / *
+
+Det finns en HTML5-app för att rapportera in snötryck som en tidigare student gjort:
+https://ip30.csse.tt.ltu.se/ssc/snow/
+Ni kan använda den med samma användare, skapa mätplatser(sensorer) och rapportera in lite värden…
+
+Notera att det är själv-signerade SSL-certifikat så ni måste hantera detta när ni kommunicerar med ip30.csse.tt.ltu.se.
+
+Med vänliga hälsningar,
+Thomas Malm
+[kl. 12:46:01 CEST] di98jgu: Jag har kört Python koden för ListSensors och RequestSensorData.
+[kl. 12:46:08 CEST] di98jgu: Och det fungera.
+[kl. 12:46:18 CEST] Viktor Stärn: ok, vad fick man tillbaka?
+[kl. 12:46:45 CEST] di98jgu: XML
+[kl. 12:47:07 CEST] di98jgu: Ser ut så här för en sensor:
+<item>
+   <serial>SKE-824224</serial>
+   <name>Treriksröset</name>
+   <location></location>
+   <latitude>69.06</latitude>
+   <longitude>20.5486</longitude>
+   <type_name>SnowPressure</type_name>
+   <deployed_state>DEPLOYED</deployed_state>
+   <visibility>1</visibility>
+   <info></info>
+   <domain>ThomasDomain</domain>
+   <created>2013-02-21 11:36:25</created>
+   <updated>2013-02-21 11:36:25</updated>
+</item>
+[kl. 12:47:25 CEST] Viktor Stärn: ah, ok
+[kl. 12:49:58 CEST] Viktor Stärn: hur delar vi upp arbetet nu då? blir det databasgenomgång idag? :)
+[kl. 12:50:51 CEST] di98jgu: Vänta ett ögonblick...
+[kl. 12:54:39 CEST] di98jgu: Okej, tillbaka.
+[kl. 12:55:21 CEST] di98jgu: Databasgenomgång... Visst låt oss göra det.
+[kl. 12:55:33 CEST] di98jgu: Har du bilden över databasen ?
+[kl. 12:57:01 CEST] Viktor Stärn: UML_snowflake.png?
+[kl. 12:57:19 CEST] di98jgu: Yupp den.
+[kl. 12:57:31 CEST] Viktor Stärn: ok, har den framme
+[kl. 12:58:10 CEST] di98jgu: Låt oss gå från vänster till höger, som man läser.
+[kl. 12:59:34 CEST] di98jgu: Man har alltid en hjälpklass används för att skapa och updatera databasen.
+[kl. 12:59:46 CEST] di98jgu: Det är där man skapa SQL table alltså.
+[kl. 13:00:18 CEST] di98jgu: Man kan ha en eller flera tabeller. Det är inget större problem.
+[kl. 13:00:48 CEST] di98jgu: Jag har valt en struktur som fungera för flera om vi behöver det.
+[kl. 13:00:57 CEST] Viktor Stärn: ok
+[kl. 13:01:44 CEST] di98jgu: I SnowflakeHelper hittar du också namnen på Kolumnerna, alltså ID, TIMESTAMP, STR_VALUE_A och så vidare.
+[kl. 13:02:48 CEST] di98jgu: Snowflake i mitten använder SnowflakeHelper.
+[kl. 13:03:35 CEST] di98jgu: Man öppna och stänger databasen med open och close.
+[kl. 13:04:11 CEST] di98jgu: Att öppna är måste. Man bör också stänga efter sig precis som med en fil.
+[kl. 13:04:42 CEST] di98jgu: Snowflake är en abstract class.
+[kl. 13:04:56 CEST] di98jgu: Det är inte meningen att den ska användas direkt.
+[kl. 13:06:02 CEST] di98jgu: Den innehåller grundläggande funktioner för, select, insert, delete och update.
+[kl. 13:06:29 CEST] di98jgu: De är ganska enkla.
+[kl. 13:07:18 CEST] di98jgu: Snowdata ärver från Snowflake.
+[kl. 13:07:44 CEST] di98jgu: Snowdata representera tabelen TABLE_SNOW som du ser i SnowflakeHelper.
+[kl. 13:08:11 CEST] di98jgu: Den innehåller just nu bara en konstruktor.
+[kl. 13:08:47 CEST] di98jgu: De fält som du ser i Snowflake hämtas från SnowflakeHelper.
+[kl. 13:09:21 CEST] di98jgu: Snowdata menar jag inte Snowflake.
+[kl. 13:11:08 CEST] di98jgu: Man kan säga så här, alla fält eller kolumner finns samlade i SnowflakeHelper. De classer, snowdata, som ärver från Snowflake väljer de kolumner som behövs för just den klassen från SnowflakeHelper.
+[kl. 13:12:00 CEST] di98jgu: Lite rörigt kanske men någon bättre hantering av kolumn namn har jag inte hittat.
+[kl. 13:14:00 CEST] Viktor Stärn: ok, ska nog reda ut det.. sitter och kollar lite på själva koden nu också..
+[kl. 13:15:12 CEST] Viktor Stärn: men då blir det så (lite mer översiktligt här) att användaren kommunicerar med den lokala databasen med appen och uppdaterar databasen med data från servern via synkroniseringsfunktionen?
+[kl. 13:15:37 CEST] Viktor Stärn: är det meningen användaren ska kunna lägga till data via vår app?
+[kl. 13:15:47 CEST] di98jgu: Nej det ska de inte.
+[kl. 13:16:04 CEST] di98jgu: De ska kunna se datat det är allt.
+[kl. 13:16:08 CEST] Viktor Stärn: ok
+[kl. 13:16:47 CEST] di98jgu: Också, vi skilljer databas och koden för att hämta data.
+[kl. 13:17:28 CEST] di98jgu: Så man hämatar alltid data från databasen.
+[kl. 13:17:56 CEST] di98jgu: Synkar innebär att man anropar fjärdatabasen och updatera databasen.
+[kl. 13:19:17 CEST] di98jgu: Det blir enklare då.
+[kl. 13:19:30 CEST] Viktor Stärn: ok
+[kl. 13:21:12 CEST] di98jgu: Så leker du med databasen tills imorgen. Jag tänkte gå igenom SeeNowDo och analysera Sensor datat.
+[kl. 13:22:32 CEST] Viktor Stärn: ja, vad exakt blir det jag ska titta på då? lägga in testvärden (utifrån vad man får tillbaka från fjärrdatabasen) i databasen och presentera dem i gränssnittet?
+[kl. 13:24:09 CEST] di98jgu: Hmmm, visst ja. Det finns inget data i databasen det är sant.
+[kl. 13:24:46 CEST] di98jgu: Du prova att skriva lite kod för att lägga till och hämta data.
+[kl. 13:26:04 CEST] Viktor Stärn: vet inte om vi kanske snackade om detta på något av mötena med David innan, men var lagras databasen (mellan sessioner?)? skapas en databas för varje användare?
+[kl. 13:28:26 CEST] di98jgu: Sparas i en fil, sant du måste kanske lägga till SD kort, så att enheten har någonstans att lagra datat. Vet inte riktigt vad som gäller.
+[kl. 13:28:38 CEST] di98jgu: Jag kan i vart fall inte se vart du lägger till.
+[kl. 13:29:08 CEST] di98jgu: Mellan session på din dator kommer inte att vara några problem.
+[kl. 13:29:57 CEST] Viktor Stärn: blir väl sålänge jag har AVD:n igång? (som det inte blir några problem menar jag)
+[kl. 13:30:59 CEST] di98jgu: Har du SD kort så minns den ditt data permanent, till dess att du tömer SD kortet.
+[kl. 13:31:18 CEST] Viktor Stärn: aha, ok
+[kl. 13:32:14 CEST] di98jgu: Så vad tror du, leka lite med dabasen och se du kan lägga till och hämta data ?
+[kl. 13:32:25 CEST] Viktor Stärn: jepp, testar!
+[kl. 13:32:29 CEST] di98jgu: :-)
+[kl. 13:33:42 CEST] Viktor Stärn: höras imorgon då?
+[kl. 13:33:51 CEST] di98jgu: Yupp låter bra.
+[kl. 13:33:57 CEST] Viktor Stärn: ok, ses! :)
+[kl. 13:34:06 CEST] di98jgu: Ses (wave)
