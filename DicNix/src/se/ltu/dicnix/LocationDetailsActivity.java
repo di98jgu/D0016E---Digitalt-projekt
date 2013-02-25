@@ -42,8 +42,7 @@ public class LocationDetailsActivity extends Activity {
 	public final static String[] columns = {"id", "timestamp", "serial", "name", "location", "latitude", "longitude", "typename", "deployedstate", "visibility", "info", "domain", "created", "updated"};
 	public final static String tableName = "snowtable";
 
-	Cursor returnedCursor = null;
-     
+	Cursor returnedCursor = null;     
 
 	ContentValues cv = new ContentValues(14);
 	
@@ -87,6 +86,7 @@ public class LocationDetailsActivity extends Activity {
       
       DetailsAdp details = new DetailsAdp();
       details.populate(location_id);   
+      
       DB.close();
 
    }

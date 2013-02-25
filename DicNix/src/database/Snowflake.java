@@ -87,22 +87,21 @@ public abstract class Snowflake {
     *
     * @param columns
     */
-//   public void setColumns(String[] columns) {
-//      
-//      field.setColumns(columns);
-//      
-//      return;
-//      
-//   }
-   
    public void setColumns(String[] columns) {
-	      
-	      field.setColumns(columns);
+      
+      field.setColumns(columns);
+      
+      return;
+      
+   }
+   
+//   public void setColumns(String table, String[] columns) {
+//	      
 //	      tableName = table;
 //	      columnList = columns;
-	      return;
-	      
-	   }
+//	      return;
+//	      
+//   }
    
    /**
     * Get all rows for current table. Table is set by subclass and can't be
