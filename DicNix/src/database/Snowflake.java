@@ -35,7 +35,7 @@ import android.database.sqlite.SQLiteDatabase;
 * class. This should be improved with something more safe but for now this get
 * things done.
 *
-* @author Jim Gunnarsson, di98jgu (bastardized by Viktor St‰rn)
+* @author Jim Gunnarsson, di98jgu (edited by Viktor St√§rn)
 */
 public abstract class Snowflake {
    
@@ -46,8 +46,8 @@ public abstract class Snowflake {
    /** Manager class for inquiries */
    protected SnowflakeFields field = null;
    
-   public String tableName = null;
-   public String[] columnList = null;
+//   public String tableName = null;
+//   public String[] columnList = null;
    
    /**
     * Initialise our database.
@@ -95,11 +95,11 @@ public abstract class Snowflake {
 //      
 //   }
    
-   public void setColumns(String table, String[] columns) {
+   public void setColumns(String[] columns) {
 	      
-//	      field.setColumns(columns);
-	      tableName = table;
-	      columnList = columns;
+	      field.setColumns(columns);
+//	      tableName = table;
+//	      columnList = columns;
 	      return;
 	      
 	   }
@@ -110,41 +110,41 @@ public abstract class Snowflake {
     *
     * @return Cursor with all rows
     */
-//   public Cursor all() {
-//      
-//      // Skip a few method calls
-//      return db.queryWithFactory(
-//            null, // No factory
-//            false, // Accept identical rows
-//            field.getTable(),
-//            field.columns,
-//            null,
-//            null,
-//            null,
-//            null,
-//            field.order_by,
-//            null); // No limit
-//      
-//      
-//   }
-   
    public Cursor all() {
+      
+      // Skip a few method calls
+      return db.queryWithFactory(
+            null, // No factory
+            false, // Accept identical rows
+            field.getTable(),
+            field.columns,
+            null,
+            null,
+            null,
+            null,
+            field.order_by,
+            null); // No limit
+      
+      
+   }
+   
+//   public Cursor all() {
 	      
 	      // Skip a few method calls
-	      return db.queryWithFactory(
-	            null, // No factory
-	            false, // Accept identical rows
-	            tableName,
-	            null,
-	            null,
-	            null,
-	            null,
-	            null,
-	            null,
-	            null); // No limit
-	      
-	      
-	   }
+//	      return db.queryWithFactory(
+//	            null, // No factory
+//	            false, // Accept identical rows
+//	            tableName,
+//	            null,
+//	            null,
+//	            null,
+//	            null,
+//	            null,
+//	            null,
+//	            null); // No limit
+//	      
+//	      
+//	   }
    
    /**
     * Select data from database, this is a query in Android terminology.
@@ -158,33 +158,33 @@ public abstract class Snowflake {
    public Cursor select(String selection, String[] args) {
       
       // Skip a few method calls
-//      return db.queryWithFactory(
-//            null, // No factory
-//            false, // Accept identical rows
-//            field.getTable(),
-//            field.columns,
-//            selection,
-//            args,
-//            null,
-//            null,
-//            field.order_by,
-//            null); // No limit
-//      
-//   }
+      return db.queryWithFactory(
+            null, // No factory
+            false, // Accept identical rows
+            field.getTable(),
+            field.columns,
+            selection,
+            args,
+            null,
+            null,
+            field.order_by,
+            null); // No limit
+      
+   }
    
-   return db.queryWithFactory(
-           null, // No factory
-           false, // Accept identical rows
-           tableName,
-           columnList,
-           selection,
-           args,
-           null,
-           null,
-           null,
-           null); // No limit
-     
-  }
+//   return db.queryWithFactory(
+//           null, // No factory
+//           false, // Accept identical rows
+//           tableName,
+//           columnList,
+//           selection,
+//           args,
+//           null,
+//           null,
+//           null,
+//           null); // No limit
+//     
+//  }
    
    /**
     * Insert values into snowflake database. Which table used is determined by
@@ -197,7 +197,7 @@ public abstract class Snowflake {
    public long insert(ContentValues values) {
       
       return db.insert(
-            tableName,
+    		field.getTable(),
             null,
             values);
 

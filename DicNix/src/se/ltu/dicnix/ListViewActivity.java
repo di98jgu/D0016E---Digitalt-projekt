@@ -17,7 +17,7 @@
 
 package se.ltu.dicnix;
 
-import se.ltu.dicnix.R; 
+//import se.ltu.dicnix.R;  
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -33,7 +33,7 @@ import android.widget.TextView;
 /**
 * Lists registered measurement locations for the user to choose from 
 *
-* @author Viktor St‰rn
+* @author Viktor St√§rn
 */
 public class ListViewActivity extends ListActivity {
 

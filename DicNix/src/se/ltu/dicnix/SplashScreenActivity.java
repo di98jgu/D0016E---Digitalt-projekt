@@ -17,7 +17,7 @@
 
 package se.ltu.dicnix;
 
-import se.ltu.dicnix.R;
+//import se.ltu.dicnix.R; 
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,7 +27,7 @@ import android.os.Handler;
 /**
 * Splash screen
 *
-* @author Viktor St‰rn
+* @author Viktor St√§rn
 */
 public class SplashScreenActivity extends Activity {
  

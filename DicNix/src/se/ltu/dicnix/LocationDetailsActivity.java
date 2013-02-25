@@ -18,7 +18,7 @@
 
 package se.ltu.dicnix;
 
-import android.app.Activity;
+import android.app.Activity;  
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,13 +26,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import database.DatabaseInteractionActivity;
+import database.*;
+//import database.*;
 
 /**
  * View details about a location. A location is position with a set of data.
  * The information is read only, 
  * 
- * @author Jim Gunnarsson, di98jgu (bastardized by Viktor Stärn)
+ * @author Jim Gunnarsson, di98jgu (edited by Viktor StÃ¤rn)
  */
 public class LocationDetailsActivity extends Activity {
 	
@@ -40,9 +41,12 @@ public class LocationDetailsActivity extends Activity {
 	public final static String ID_LOCATION_DETAILS = "dicnix.id_location_details";
 	public final static String[] columns = {"id", "timestamp", "serial", "name", "location", "latitude", "longitude", "typename", "deployedstate", "visibility", "info", "domain", "created", "updated"};
 	public final static String tableName = "snowtable";
-	public Cursor returnedCursor = null;
-    ContentValues cv = new ContentValues(14);
-    
+
+	Cursor returnedCursor = null;
+     
+
+	ContentValues cv = new ContentValues(14);
+	
     
 	/**
     * Start of this activity.
@@ -58,14 +62,14 @@ public class LocationDetailsActivity extends Activity {
       long clicked_item_id = i.getLongExtra("clicked_item_id", 0);
       String location_id = String.valueOf(clicked_item_id);      
      
-      DatabaseInteractionActivity DB = new DatabaseInteractionActivity(getApplicationContext());
+      Snowdata DB = new Snowdata(getApplicationContext());
       DB.open();
-      DB.select_columns(tableName, columns);  
+      DB.setColumns(columns);  
      
 //      cv.put(" " + columns[0], "1");
 //      cv.put(" " + columns[1], "00:03");
 //      cv.put(" " + columns[2], "SKE-824224");
-//      cv.put(" " + columns[3], "Treriksröset");
+//      cv.put(" " + columns[3], "TreriksrÃ¶set");
 //      cv.put(" " + columns[4], "None Given");
 //      cv.put(" " + columns[5], "69.06");
 //      cv.put(" " + columns[6], "20.5486");
@@ -151,7 +155,7 @@ public class LocationDetailsActivity extends Activity {
       public void populate(String clicked_item_id) {
          String location_id = clicked_item_id;
     	  
-         returnedCursor.moveToFirst();
+         returnedCursor.moveToPosition(0);
        
          img.setImageResource(R.drawable.igloo);
          serial.setText(returnedCursor.getString(returnedCursor.getColumnIndex("serial")));

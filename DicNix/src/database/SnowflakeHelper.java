@@ -27,13 +27,13 @@ import android.util.Log;
 * class is also a name manifest for all tables and columns. New subclasses
 * require update of this class.
 *
-* @author Jim Gunnarsson, di98jgu (bastardized by Viktor St‰rn)
+* @author Jim Gunnarsson, di98jgu (edited by Viktor St√§rn)
 */
 public class SnowflakeHelper extends SQLiteOpenHelper {
    
    private static final String TAG = "logogram.DbRista";
 
-   private static final String DB_FILENAME = "snowflake3.db";
+   private static final String DB_FILENAME = "snowflake4.db";
    private static final int VERSION = 1;
 
    /** Main table for snow data */
@@ -92,16 +92,38 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    @Override
    public void onCreate(SQLiteDatabase db) {
 
-	  String tableData = "CREATE TABLE " + TABLE_SNOW + " ( " + 
-	  ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " 
-	  + TIMESTAMP + " TEXT NOT NULL, " + SERIAL 
-	  + " TEXT NOT NULL, " + NAME + " TEXT NOT NULL, " 
-	  + LOCATION + " TEXT NOT NULL, " + LATITUDE 
-	  + " TEXT NOT NULL, " + LONGITUDE + " TEXT NOT NULL, " + 
-	  TYPENAME + " TEXT NOT NULL, " + DEPLOYEDSTATE + 
-	  " TEXT NOT NULL, " + VISIBILITY + " TEXT NOT NULL, " + 
-	  INFO + " TEXT NOT NULL, " + DOMAIN + " TEXT NOT NULL, " + 
-	  CREATED + " TEXT NOT NULL, " + UPDATED + " TEXT NOT NULL );";
+	  String tableData = 
+			  "CREATE TABLE " + 
+			  TABLE_SNOW + 
+			  " ( " + 
+			  ID + 
+			  " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+			  TIMESTAMP + 
+			  " TEXT NOT NULL, " + 
+			  SERIAL + 
+			  " TEXT NOT NULL, " + 
+			  NAME + 
+			  " TEXT NOT NULL, " + 
+			  LOCATION + 
+			  " TEXT NOT NULL, " + 
+			  LATITUDE + 
+			  " TEXT NOT NULL, " + 
+			  LONGITUDE + 
+			  " TEXT NOT NULL, " + 
+			  TYPENAME + 
+			  " TEXT NOT NULL, " + 
+			  DEPLOYEDSTATE + 
+			  " TEXT NOT NULL, " + 
+			  VISIBILITY + 
+			  " TEXT NOT NULL, " + 
+			  INFO + 
+			  " TEXT NOT NULL, " + 
+			  DOMAIN + 
+			  " TEXT NOT NULL, " + 
+			  CREATED + 
+			  " TEXT NOT NULL, " + 
+			  UPDATED + 
+			  " TEXT NOT NULL );";
 	   
 	  db.execSQL(tableData);	  
         

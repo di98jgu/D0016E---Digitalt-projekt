@@ -1,5 +1,5 @@
 /*
-* This program is free software; you can redistribute it and/or modify
+* This program is free software; you can redistribute it and/or modify 
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation; either version 2 of the License, or
 * (at your option) any later version.
@@ -23,7 +23,7 @@ import android.content.Context;
 * set of data measured at that position. The number of row is thus equal to
 * the number of positions.
 *
-* @author Jim Gunnarsson, di98jgu (bastardized by Viktor St‰rn)
+* @author Jim Gunnarsson, di98jgu (edited by Viktor St√§rn)
 */
 public class Snowdata extends Snowflake {
    
