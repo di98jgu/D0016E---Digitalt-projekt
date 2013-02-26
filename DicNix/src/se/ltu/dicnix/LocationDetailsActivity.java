@@ -23,7 +23,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import database.Snowdata;
@@ -73,28 +72,7 @@ public class LocationDetailsActivity extends Activity {
       /**
        * Create columns for database
        */
-      DB.setColumns(columns);  
-     
-      
-      /**
-       * Insert test-data into database
-       */
-//      cv.put(columns[0], "1");
-//      cv.put(columns[1], "00:03");
-//      cv.put(columns[2], "SKE-824224");
-//      cv.put(columns[3], "Treriksröset");
-//      cv.put(columns[4], "None Given");
-//      cv.put(columns[5], "69.06");
-//      cv.put(columns[6], "20.5486");
-//      cv.put(columns[7], "SnowPressure");
-//      cv.put(columns[8], "DEPLOYED");
-//      cv.put(columns[9], "1");
-//      cv.put(columns[10], "None Given");
-//      cv.put(columns[11], "ThomasDomain");
-//      cv.put(columns[12], "2013-02-21 11:36:25");
-//      cv.put(columns[13], "2013-02-21 11:36:25");
-//      
-//      DB.insert(cv);
+      DB.setColumns(columns);     
 
       /**
        * Query database for all of its information
@@ -208,8 +186,4 @@ public class LocationDetailsActivity extends Activity {
 
    }
    
-   /** Called when the user clicks the Back button */
-   public void backMethod(View view) {
-   		finish();
-   }
 }

@@ -33,7 +33,7 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    
    private static final String TAG = "logogram.DbRista";
 
-   private static final String DB_FILENAME = "snowflake5.db";
+   private static final String DB_FILENAME = "snowflake.db";
    private static final int VERSION = 1;
 
    /** Main table for snow data */
