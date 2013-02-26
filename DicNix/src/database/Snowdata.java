@@ -34,30 +34,31 @@ public class Snowdata extends Snowflake {
    public static final String ID = SnowflakeHelper.ID;
    /** Time of last update */
    public static final String TIMESTAMP = SnowflakeHelper.TIMESTAMP;
-
+   /** Serial number of measurement-point */
    public static final String SERIAL = SnowflakeHelper.SERIAL;
-
+   /** Name of measurement-point */
    public static final String NAME = SnowflakeHelper.NAME;
-
+   /** Location of measurement-point */
    public static final String LOCATION = SnowflakeHelper.LOCATION;
-
+   /** Latitude of measurement-point */
    public static final String LATITUDE = SnowflakeHelper.LATITUDE;
-
+   /** Longitude of measurement-point */
    public static final String LONGITUDE = SnowflakeHelper.LONGITUDE;
-
+   /** Type of measurement-point */
    public static final String TYPENAME = SnowflakeHelper.TYPENAME;
-
+   /** State of measurement-point */
    public static final String DEPLOYEDSTATE = SnowflakeHelper.DEPLOYEDSTATE;
-
+   /** Visibility at measurement-point */
    public static final String VISIBILITY = SnowflakeHelper.VISIBILITY;
-
+   /** Info about measurement-point */
    public static final String INFO = SnowflakeHelper.INFO;
-
+   /** Domain */
    public static final String DOMAIN = SnowflakeHelper.DOMAIN;
-
+   /** Measurement-point time of creation */
    public static final String CREATED = SnowflakeHelper.CREATED;
-
+   /** Time when measurement-point was last updated*/
    public static final String UPDATED = SnowflakeHelper.UPDATED;
+
    
    /**
     * Initialize our database snowflake and table snowdata. The database
@@ -70,7 +71,7 @@ public class Snowdata extends Snowflake {
       
       super(ctxt);
       
-      String[] columns = {SERIAL, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, DEPLOYEDSTATE, VISIBILITY, INFO, DOMAIN, CREATED, UPDATED};
+      String[] columns = {ID, TIMESTAMP, SERIAL, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, DEPLOYEDSTATE, VISIBILITY, INFO, DOMAIN, CREATED, UPDATED};
       
       super.field = new SnowflakeFields(TABLE_NAME, columns);
      

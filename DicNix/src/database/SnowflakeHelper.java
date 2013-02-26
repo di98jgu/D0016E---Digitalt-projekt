@@ -33,7 +33,7 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    
    private static final String TAG = "logogram.DbRista";
 
-   private static final String DB_FILENAME = "snowflake4.db";
+   private static final String DB_FILENAME = "snowflake5.db";
    private static final int VERSION = 1;
 
    /** Main table for snow data */
@@ -43,29 +43,29 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    public static final String ID = "id";
    /** Time of last update */
    public static final String TIMESTAMP = "timestamp";
-
+   /** Serial number of measurement-point */
    public static final String SERIAL = "serial";
-
+   /** Name of measurement-point */
    public static final String NAME = "name";
-
+   /** Location of measurement-point */
    public static final String LOCATION = "location";
-
+   /** Latitude of measurement-point */
    public static final String LATITUDE = "latitude";
-   
+   /** Longitude of measurement-point */
    public static final String LONGITUDE = "longitude";
-
+   /** Type of measurement-point */
    public static final String TYPENAME = "typename";
-
+   /** State of measurement-point */
    public static final String DEPLOYEDSTATE = "deployedstate";
-
+   /** Visibility at measurement-point */
    public static final String VISIBILITY = "visibility";
-
+   /** Info about measurement-point */
    public static final String INFO = "info";
-
+   /** Domain */
    public static final String DOMAIN = "domain";
-
+   /** Measurement-point time of creation */
    public static final String CREATED = "created";
-
+   /** Time when measurement-point was last updated*/
    public static final String UPDATED = "updated";
    
    

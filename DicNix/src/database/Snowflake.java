@@ -35,7 +35,7 @@ import android.database.sqlite.SQLiteDatabase;
 * class. This should be improved with something more safe but for now this get
 * things done.
 *
-* @author Jim Gunnarsson, di98jgu (edited by Viktor Stärn)
+* @author Jim Gunnarsson, di98jgu
 */
 public abstract class Snowflake {
    
@@ -46,8 +46,6 @@ public abstract class Snowflake {
    /** Manager class for inquiries */
    protected SnowflakeFields field = null;
    
-//   public String tableName = null;
-//   public String[] columnList = null;
    
    /**
     * Initialise our database.
@@ -95,13 +93,6 @@ public abstract class Snowflake {
       
    }
    
-//   public void setColumns(String table, String[] columns) {
-//	      
-//	      tableName = table;
-//	      columnList = columns;
-//	      return;
-//	      
-//   }
    
    /**
     * Get all rows for current table. Table is set by subclass and can't be
@@ -127,23 +118,6 @@ public abstract class Snowflake {
       
    }
    
-//   public Cursor all() {
-	      
-	      // Skip a few method calls
-//	      return db.queryWithFactory(
-//	            null, // No factory
-//	            false, // Accept identical rows
-//	            tableName,
-//	            null,
-//	            null,
-//	            null,
-//	            null,
-//	            null,
-//	            null,
-//	            null); // No limit
-//	      
-//	      
-//	   }
    
    /**
     * Select data from database, this is a query in Android terminology.
@@ -171,19 +145,6 @@ public abstract class Snowflake {
       
    }
    
-//   return db.queryWithFactory(
-//           null, // No factory
-//           false, // Accept identical rows
-//           tableName,
-//           columnList,
-//           selection,
-//           args,
-//           null,
-//           null,
-//           null,
-//           null); // No limit
-//     
-//  }
    
    /**
     * Insert values into snowflake database. Which table used is determined by
