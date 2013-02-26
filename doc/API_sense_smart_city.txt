@@ -6,6 +6,8 @@ REFERENS
 - AddSensor.py
 - SubmitSnowPressureData.py
 
+- ListSensor.java
+
 Brevkorrespondens, ej återgiven. 
 
 
@@ -158,6 +160,28 @@ Detta bör rimligen också vara sant för HttpsURLConnection som är en
 direkt underklass till HttpURLConnection. 
 
 JSON hanteras med JSONObject objekt. 
+
+
+
+PILOT PROJEKT I JAVA
+
+I ett första försök att gå kommunicera med fjärrdatabasen, "Sense 
+Smart City". Skrevs kod motsvarande ListSensor.py. JSON-java och 
+Java standard version 6 användes. JSON-java finns tillgängligt 
+i Android som standard.
+
+JSON-java: github.com/douglascrockford/JSON-java.git
+
+Resultatet är ListSensor.java. Under Java så växer antalet rader 
+dramatiskt jämfört med Python och docs.python-requests.org. Men 
+det fungera.
+
+Att översätta RequestSensor.py till Java kod bör inte vara några 
+problem alls. Skillnaden ligger endast i adressen och GET förfrågan.
+
+
+
+
 
 
 
