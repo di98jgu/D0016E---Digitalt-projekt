@@ -45,8 +45,8 @@ public class ListSensors {
    // Parameters (change username and password to your API user)
    private static String api_url = "https://ip30.csse.tt.ltu.se/ssc/api/basic/";
    private static String api_fnc = "sensor/list";
-   private static String api_usr = "snowtest";
-   private static String api_pwd = "ltusnowtester";
+   private static String api_usr = "";
+   private static String api_pwd = "";
 
    /**
     * Get a list of sensors. Here is a list of forced exceptions and

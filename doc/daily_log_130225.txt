@@ -1,0 +1,70 @@
+måndagen den 25:e februari 2013
+[kl. 13:04:49 CEST] Viktor Stärn: hur är det tänkt man ska använda Snowflake då? vill ju komma åt den från LocationDetailsActivity.java, men den ärver ju redan från Activity... ska man skapa en instans av Snowflake i LocationDetailsActivity eller?
+[kl. 13:05:39 CEST] di98jgu: Importera och använd.
+[kl. 13:06:11 CEST] di98jgu: Det är faktiskt så enkelt.
+[kl. 13:06:37 CEST] Viktor Stärn: så pass... ja, det var ju en onödig omväg jag tog isåfall :)
+[kl. 13:07:35 CEST] di98jgu: Jo, så jag sa du slog knut på dig själv. Men det är lungt, Android är knöligt på så många olika sätt.
+[kl. 13:08:05 CEST] di98jgu: Ibland är det helt enkelt för enkelt att vara sant :-D
+[kl. 13:08:38 CEST] Viktor Stärn: hehe, ja, det får det ju gärna vara... fast gäller ju att man vet om det också :)
+[kl. 13:09:17 CEST] di98jgu: Jag är pysslat med att försöka få kontakt med fjärrdatabasen.
+[kl. 13:09:46 CEST] Viktor Stärn: bakåt-knappen förresten, den använder jag bara i emulatorn... vet inte om det finns något annat sätt att backa i den... mest det
+[kl. 13:10:00 CEST] Viktor Stärn: ok, hur går det?
+[kl. 13:10:08 CEST] di98jgu: Du ska ha alla knappar vid sidan om skärmen.
+[kl. 13:10:42 CEST] Viktor Stärn: aha, ja det har jag nog sett någon screenshot av ja...
+[kl. 13:10:56 CEST] Viktor Stärn: en inställning för AVD:n då antar jag.. ska kolla
+[kl. 13:11:31 CEST] di98jgu: Hmm, gör så.
+[kl. 13:12:03 CEST] di98jgu: Om fjärrdatabasen, jag har skrivet ett litet API papper som du hittar på GitHub.
+[kl. 13:12:12 CEST] di98jgu: Under doc
+[kl. 13:12:41 CEST] di98jgu: Att kontakta databasen från Java var en utmaning.
+[kl. 13:13:17 CEST] di98jgu: Det såg väldigt enkelt ut i Python, några få rader.
+[kl. 13:13:32 CEST] di98jgu: Det blev typ 150 rader kod i Java.
+[kl. 13:13:42 CEST] Viktor Stärn: oj, jäklar
+[kl. 13:14:15 CEST] di98jgu: Oja, mycket mycket krångligare.
+[kl. 13:14:23 CEST] Viktor Stärn: testade du dig fram eller hur gjorde du?
+[kl. 13:14:56 CEST] di98jgu: Letade med lupp över hela nätet o klippte ihopp lite här o lite där.
+[kl. 13:16:00 CEST] di98jgu: Saken är den att servern använder SSL själv signerat med autentisering, inloggning alltså, samt JSON.
+[kl. 13:16:18 CEST] di98jgu: Plus en radda GET parametrar.
+[kl. 13:16:59 CEST] di98jgu: Mycket nytt att lära. :-)
+[kl. 13:17:15 CEST] Viktor Stärn: ja, verkligen!
+[kl. 13:17:18 CEST] Viktor Stärn: imponerande!
+[kl. 13:17:35 CEST] di98jgu: Sen var det också viktigt att använda klasser som finns tillgängliga i Android.
+[kl. 13:18:11 CEST] di98jgu: Men visst jag lyckades till slut få tillbaka en lista på sensorer.
+[kl. 13:18:13 CEST] Viktor Stärn: aldrig stött på JSON
+[kl. 13:19:02 CEST] di98jgu: Tydligen JavaScript inspererat sätt att utbyta data mellan klient o fjärrdatabas.
+[kl. 13:20:56 CEST] di98jgu: Min plan nu är snygga till koden och lägga upp den på Github.
+[kl. 13:21:26 CEST] di98jgu: Det blir grundbulten i kommunikationen med fjärrdatabasen.
+[kl. 13:21:38 CEST] Viktor Stärn: låter jättebra
+[kl. 13:21:50 CEST] Viktor Stärn: jag har ju en del att slipa på här
+[kl. 13:22:14 CEST] di98jgu: Så du pysslar vidare med databasen ?
+[kl. 13:22:52 CEST] Viktor Stärn: ja, jag gör så
+[kl. 13:23:39 CEST] di98jgu: Okej, det vi vad göra tills imorgon.
+[kl. 13:23:54 CEST] di98jgu: Något mer ?
+[kl. 13:24:25 CEST] Viktor Stärn: jag kanske ställer någon fråga senare isåfall.. om jag fastnar :) annars inget..
+[kl. 13:24:53 CEST] di98jgu: Okej, ska hålla ögona öppna.
+[kl. 13:25:05 CEST] Viktor Stärn: bra! då ses vi imorgon :)
+[kl. 13:25:16 CEST] di98jgu: Det gör vi, ses (wave)
+[kl. 14:20:04 CEST] Viktor Stärn: Är det meningen jag ska skapa databasen via Snowdata? Testade instantiera Snowdata - Snowdata DB = new Snowdata(getApplicationContext()); - och sedan öppna med - DB.open(); - men den verkar ge upp redan på instantieringen
+[kl. 14:20:46 CEST] di98jgu: Vad fick du för felmedelande ?
+[kl. 14:23:29 CEST] * Viktor Stärn sent file "log.txt"
+[kl. 14:24:54 CEST] di98jgu: No such file or directory, du har importerat den ?
+[kl. 14:25:20 CEST] Viktor Stärn: importerade hela database package
+[kl. 14:25:31 CEST] Viktor Stärn: import database.*;
+[kl. 14:25:49 CEST] Viktor Stärn: den klagar ju inte på koden.. först när jag kör den
+[kl. 14:28:27 CEST] Viktor Stärn: ah...  sista felmeddelandet var pga att jag glömt kommentera bort DB.close();
+[kl. 14:28:37 CEST] Viktor Stärn: nu får jag inte no such file or directory längre
+[kl. 14:28:49 CEST] Viktor Stärn: resten dock samma
+[kl. 14:29:41 CEST] di98jgu: Okej, du har en null pointer.
+[kl. 14:30:03 CEST] di98jgu: Men varför, prova att köra i debug läge.
+[kl. 14:33:05 CEST] di98jgu: Noterade: Unable to start activity ComponentInfo{se.ltu.dicnix/se.ltu.dicnix.LocationDetailsActivity}:
+[kl. 14:33:41 CEST] di98jgu: Du har två se.ltu.dicnix.
+[kl. 14:34:00 CEST] di98jgu: Bara en gissning dock.
+[kl. 14:34:45 CEST] Viktor Stärn: skulle isåfall vara fel i manifestet va? ser rätt ut... och har ju fungerat innan...
+[kl. 14:35:57 CEST] di98jgu: Jag skulle först börja med att kommentera bort delar av koden.
+[kl. 14:36:44 CEST] Viktor Stärn: mmm, har bara Snowdata DB = new Snowdata(getApplicationContext());
+[kl. 14:36:46 CEST] Viktor Stärn: som relaterar till databasen
+[kl. 14:37:29 CEST] di98jgu: Om du kommentera bort det fungera det då ?
+[kl. 14:39:32 CEST] Viktor Stärn: nix... någonting annat måste ha gått galet med koden... får kika runt
+[kl. 14:44:01 CEST] di98jgu: Ah, ok.
+[kl. 14:49:45 CEST] di98jgu: Ok, måste lämna datorn... 
+Tillbaka senare.
+[kl. 14:50:12 CEST] Viktor Stärn: ok, ses!

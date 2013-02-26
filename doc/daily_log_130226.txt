@@ -1,0 +1,161 @@
+tisdagen den 26:e februari 2013
+[kl. 13:02:30 CEST] Viktor Stärn: Hej! Gick igenom listan i mejlet... blir dock problem när jag försöker använda SnowflakeFields precis som innan... kringgår jag den så fungerar det... har laddat upp koden (min gamla kod bortkommenterad) på github.. så som jag tror den ska se ut.. har du möjlighet att snabbt kolla igenom och se om jag gjort något uppenbart galet?
+[kl. 13:03:27 CEST] di98jgu: Hej hur går det ?
+[kl. 13:04:11 CEST] Viktor Stärn: Hej! Gick igenom listan i mejlet... blir dock problem när jag försöker använda SnowflakeFields precis som innan... kringgår jag den så fungerar det... har laddat upp koden (min gamla kod bortkommenterad) på github.. så som jag tror den ska se ut.. har du möjlighet att snabbt kolla igenom och se om jag gjort något uppenbart galet?
+[kl. 13:04:48 CEST] di98jgu: Okej, gör det nu. Vänta...
+[kl. 13:08:02 CEST] di98jgu: Okej, jag tittar ska försöka köra för att se vad som händer.
+[kl. 13:08:18 CEST] Viktor Stärn: ok :)
+[kl. 13:09:45 CEST] di98jgu: Du kan titta på ListSensor.java under tiden, finns under ref på GitHub.
+[kl. 13:09:55 CEST] Viktor Stärn: ah, ok
+[kl. 13:23:49 CEST] di98jgu: Okej, AVD:n tog exxxxtra lång tid på sig att start.
+[kl. 13:24:05 CEST] di98jgu: Okej så vi har ett problem med Cursor.
+[kl. 13:24:37 CEST] di98jgu: Letar efter felkällor...
+[kl. 13:24:58 CEST] Viktor Stärn: ok, kollar igenom ListSensor... mkt nytt :)
+[kl. 13:31:04 CEST] Viktor Stärn: galet, det där hade tagit mig en evighet..
+[kl. 13:31:24 CEST] di98jgu: Hittade något ?
+[kl. 13:31:33 CEST] di98jgu: Jag kör just nu debuggern.
+[kl. 13:31:50 CEST] Viktor Stärn: nä, mest att ListSensor introducerar så mkt nytt
+[kl. 13:36:10 CEST] di98jgu: Hmm, i mitt fall så är databasen tom.
+[kl. 13:36:24 CEST] di98jgu: Därför får jag problem.
+[kl. 13:37:34 CEST] Viktor Stärn: jaa, just det, sorry... koden för att lägga in data i databasen är ju bortkommenterad (ska ju bara göras första gången... kanske gör på fel sätt även där, vet ej... men den ligger i locationdetailsactivity)
+[kl. 13:37:56 CEST] Viktor Stärn: i onCreate
+[kl. 13:38:06 CEST] di98jgu: Jo ser den
+[kl. 13:38:20 CEST] di98jgu: I ditt, prova funktionen moveToFirst()
+[kl. 13:38:32 CEST] Viktor Stärn: den hade jag innan
+[kl. 13:38:57 CEST] Viktor Stärn: kör igen för säkerhets skull, men tror det kommer bli samma
+[kl. 13:40:31 CEST] Viktor Stärn: 02-26 12:40:06.850: E/CursorWindow(7490): Failed to read row 0, column -1 from a CursorWindow which has 1 rows, 10 columns.
+[kl. 13:41:32 CEST] di98jgu: Column -1 ??
+[kl. 13:41:50 CEST] Viktor Stärn: ja, precis... förstår inte var den får det ifrån
+[kl. 13:47:41 CEST] di98jgu: Okej kör debugger igen, lägger först in en rad...
+[kl. 14:09:01 CEST] di98jgu: Okej, får en class not found då jag försöker köra DetailsAdp.
+[kl. 14:11:31 CEST] Viktor Stärn: ok? så du kan inte skapa en instans? förstår inte varför det skulle skilja sig..
+[kl. 14:12:02 CEST] di98jgu: Nja nu fungerade det, vet ej varför det var ett problem.
+[kl. 14:12:23 CEST] Viktor Stärn: ah, ok
+[kl. 14:30:35 CEST] di98jgu: Ungefär vid rad  170 created.setText(returnedCursor.getString(returnedCursor.getColumnIndex("created")));
+[kl. 14:30:43 CEST] di98jgu: Där krasha den.
+[kl. 14:31:30 CEST] di98jgu: Vad du för bör göra nu är att ersätta public final static String[] columns = {"id", "timestamp", "serial", "name", "l......
+[kl. 14:32:30 CEST] di98jgu: Med Snowdata.ID, Snowdata.TIMESTAMP etc
+[kl. 14:33:59 CEST] di98jgu: Tycker du att det jobbit långa rader så gör som i Snowdata, skapa lokala variabler.
+[kl. 14:34:15 CEST] di98jgu: att det blir jobbit långa - Menar jag.
+[kl. 14:34:35 CEST] Viktor Stärn: ok, fungerar det om jag byter ut till variablerna från Snowdata?
+[kl. 14:36:02 CEST] di98jgu: Hmm, vet inte riktigt vad du menar. Saken är den är att du aldrig utanför databasen ska använda de faktiska kolumnnamnen.
+[kl. 14:36:35 CEST] di98jgu: Det ska bara defineras på ett enda ställe.
+[kl. 14:37:05 CEST] Viktor Stärn: ok, makes sense..
+
+var det ett stavfel som orsakade kraschen eller?
+[kl. 14:38:22 CEST] di98jgu: Vet ej ännu kan bara än så länge säga var den krashade.
+[kl. 14:39:01 CEST] di98jgu: Så den hittar något i databasen.
+[kl. 14:39:38 CEST] di98jgu: Jag håller nu på att leta efter en SQlite läsare för Android.
+[kl. 14:39:57 CEST] di98jgu: Så att jag kan se vad som faktiskt finns i databasen.
+[kl. 14:40:12 CEST] Viktor Stärn: hade ju varit väldigt smidigt
+[kl. 14:48:17 CEST] di98jgu: Okej så inga problem, under windows -> open perspective -> DDMS
+[kl. 14:48:36 CEST] di98jgu: samt: http://stackoverflow.com/questions/5762389/how-to-view-data-saved-in-android-databasesqlite
+[kl. 14:49:24 CEST] di98jgu: Uppe till höger finns sen en knapp "pull file from device".
+[kl. 14:50:10 CEST] di98jgu: Sen var det bara att öppna databasen i terminal, i mitt fall sqlite3 snowflake4.db.
+[kl. 14:50:38 CEST] di98jgu: Det ser bra allt finns där som det borde.
+[kl. 14:50:54 CEST] Viktor Stärn: ok, ska installera den
+[kl. 14:51:11 CEST] di98jgu: Jag skickar över de smärre ändringar som jag gjort i koden.
+[kl. 14:51:30 CEST] di98jgu: Det krashar fortfarande men bara så att du vet vad jag har gjort.
+[kl. 14:52:32 CEST] Viktor Stärn: ok, bra!
+[kl. 14:53:23 CEST] di98jgu: returnedCursor = DB.all();
+
+      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor);
+      details.populate(location_id);
+[kl. 14:53:36 CEST] di98jgu: Detta är runt rad 85.
+[kl. 14:53:42 CEST] di98jgu: och nedåt.
+[kl. 14:56:04 CEST] di98jgu: 
+private class LocationDetailsAdp {
+      
+      private ImageView img = null;
+      [ ... och så vidare ...]
+      updated = (TextView) findViewById(R.id.updated);
+      id = (TextView) findViewById(R.id.location_id);
+      
+      Cursor returnedCursor = null;
+      
+      /**
+       * Create a new container for location details view
+       */
+      public LocationDetailsAdp(Cursor data) {
+         
+         this.returnedCursor = data;
+         
+         img = (ImageView) findViewById(R.id.snow_img);
+         serial = (TextView) findViewById(R.id.serial);
+         [... och så vidare ...]
+[kl. 14:56:25 CEST] di98jgu: Detta är från rad 110.
+[kl. 14:57:05 CEST] di98jgu: Det som har hänta är att jag har byt namn och skickar nu "returnedCursor till konstruktorn.
+[kl. 14:57:34 CEST] di98jgu: Så att vi har en lokal kopia, det gör den syns då man debuggar.
+[kl. 14:57:46 CEST] di98jgu: det gör att den - Menar jag.
+[kl. 14:58:48 CEST] di98jgu: Slutligen
+public void populate(String clicked_item_id) {
+      String location_id = clicked_item_id;
+              
+      returnedCursor.moveToFirst();
+       
+      img.setImageResource(R.drawable.igloo);
+      [... och så vidare ...]
+[kl. 14:59:02 CEST] di98jgu: Alltså moveToFirst.
+[kl. 14:59:58 CEST] di98jgu: Ah missade kanske det viktigaste:
+//      cv.put(columns[1], "00:03");
+//     cv.put(columns[2], "SKE-824224");
+//     cv.put(columns[3], "Treriksröset");
+//      cv.put(columns[4], "None Given");
+//      cv.put(columns[5], "69.06");
+//      cv.put(columns[6], "20.5486");
+//      cv.put(columns[7], "SnowPressure");
+//     cv.put(columns[8], "DEPLOYED");
+//      cv.put(columns[9], "1");
+//      cv.put(columns[10], "None Given");
+//      cv.put(columns[11], "ThomasDomain");
+//      cv.put(columns[12], "2013-02-21 11:36:25");
+//      cv.put(columns[13], "2013-02-21 11:36:25");
+      
+//      DB.insert(cv);
+[kl. 15:00:48 CEST] di98jgu: Notera columns[1] inte '" " + columns[1]' som tidigare.
+[kl. 15:02:17 CEST] di98jgu: Vad du gör att du skapar kolumn med namn " timestamp" med ett mellanslag i början, det är inte alls samma sak som "timestamp".
+[kl. 15:03:13 CEST] di98jgu: Det är ganska troligit att din databas är tom.
+[kl. 15:03:47 CEST] Viktor Stärn: mja, har ju hämtat ur den, så det ska den ju inte vara
+[kl. 15:04:06 CEST] Viktor Stärn: mellanslaget är nog kopierat från nätet, tror inte det är mitt eget påfund :)
+[kl. 15:04:11 CEST] di98jgu: Okej så den är förlåtande, bra.
+[kl. 15:04:47 CEST] Viktor Stärn: men det låter ju inte särskilt meningsfullt att ha med det :)
+[kl. 15:05:27 CEST] di98jgu: Nej detta är typiskt ett ställe där du ska använda Snowdata.TIMESTAMP istället.
+[kl. 15:06:13 CEST] di98jgu: Då har du som bonus också talat om precis vilket fält, kolumn du använder.
+[kl. 15:06:25 CEST] di98jgu: och vilken tabell det gäller.
+[kl. 15:07:05 CEST] Viktor Stärn: ja, just det
+[kl. 15:07:22 CEST] di98jgu: Ska leta vidare efter buggen...
+[kl. 15:27:19 CEST] di98jgu: Buggen hittad, tog tid men nu är den fångad !! :-)
+[kl. 15:27:37 CEST] Viktor Stärn: hah, super! :)
+[kl. 15:27:39 CEST] Viktor Stärn: vad var det?
+[kl. 15:28:28 CEST] di98jgu: Gå till Snowdata
+
+Rad 73 i konstruktorn
+String[] columns = {ID, TIMESTAMP, SERIAL, NAME, LOCAT
+[kl. 15:28:48 CEST] di98jgu: Notera de två första kolumnerna, de var inte med.
+[kl. 15:33:24 CEST] Viktor Stärn: ja, där ser man... slarv från min sida... ska testa här med
+[kl. 15:34:38 CEST] di98jgu: Så städa och snygga till tills imorgon ? Sen kan du flytta över koden till master.
+[kl. 15:35:09 CEST] Viktor Stärn: men ska vi ha den i master när den bara hanterar test-data?
+[kl. 15:35:31 CEST] di98jgu: Bra fråga, hmm.
+[kl. 15:35:44 CEST] di98jgu: Gör så här skapa en ny gren.
+[kl. 15:36:14 CEST] di98jgu: Ta bort testdata och etc.
+[kl. 15:36:32 CEST] di98jgu: Och sen flytta över till master.
+[kl. 15:36:50 CEST] di98jgu: Sen kan du gå tillbaka till din Test gren.
+[kl. 15:37:34 CEST] Viktor Stärn: hur ska det fungera med skapandet av databasen? ska ju bara göras en gång.. ska koden för att lägga till data vara med?
+[kl. 15:38:17 CEST] di98jgu: Nej den ska den inte, koden behöver inte vara körbar i master.
+[kl. 15:38:45 CEST] Viktor Stärn: ok
+[kl. 15:40:07 CEST] di98jgu: Fint något mer ?
+[kl. 15:41:12 CEST] Viktor Stärn: nä, inte som jag kommer på nu, ses imorgon? :)
+[kl. 15:41:59 CEST] di98jgu: Jag kommer att läsa på om services i Android så att jag kan hämta riktig data till Android.
+[kl. 15:42:39 CEST] Viktor Stärn: va de det här med getParam i ListSensors eller?
+[kl. 15:44:05 CEST] di98jgu: getParm, ta webadress säg www.thedomain?search=fun&lang=eng
+[kl. 15:44:42 CEST] di98jgu: Allt efter och inklusive ? skapas av getParm.
+[kl. 15:45:01 CEST] di98jgu: Det är GET request parameters på engelska.
+[kl. 15:46:25 CEST] di98jgu: Behövs för att tala om för fjärrdatabasen vad exact vi vill ha.
+[kl. 15:46:48 CEST] Viktor Stärn: ok
+[kl. 15:46:53 CEST] Viktor Stärn: men då kör vi på det då
+[kl. 15:47:37 CEST] di98jgu: Yupp, och om du tycker Java koden är lite klurig så kan jag bara hålla med, vet knappt själv riktigt vad den gör. :-)
+[kl. 15:48:15 CEST] Viktor Stärn: haha, jo... kan inte påstå att den är helt klar för mig
+[kl. 15:49:26 CEST] di98jgu: Så vi ses imorgon, med lärare ?
+[kl. 15:49:38 CEST] Viktor Stärn: jepp, låter bra
+[kl. 15:49:47 CEST] di98jgu: Ok ses (wave)
+[
