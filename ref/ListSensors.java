@@ -41,7 +41,7 @@ import javax.xml.bind.DatatypeConverter;
 import javax.net.ssl.*;
 
 public class ListSensors {
-   
+   // februari 
    // Parameters (change username and password to your API user)
    private static String api_url = "https://ip30.csse.tt.ltu.se/ssc/api/basic/";
    private static String api_fnc = "sensor/list";
