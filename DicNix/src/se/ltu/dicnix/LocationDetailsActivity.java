@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import database.Snowdata;
 //import database.*;
+import database.Snowsensor;
 
 /**
  * View details about a location. A location is position with a set of data.
@@ -39,11 +40,14 @@ public class LocationDetailsActivity extends Activity {
 	
 	/** Location details id tag for use in communication between activity's */
 	public final static String ID_LOCATION_DETAILS = "dicnix.id_location_details";
-	public final static String[] columns = {Snowdata.ID, Snowdata.TIMESTAMP, Snowdata.SERIAL, Snowdata.NAME, Snowdata.LOCATION, Snowdata.LATITUDE, Snowdata.LONGITUDE, Snowdata.TYPENAME, Snowdata.DEPLOYEDSTATE, Snowdata.VISIBILITY, Snowdata.INFO, Snowdata.DOMAIN, Snowdata.CREATED, Snowdata.UPDATED};
+	public final static String[] columns1 = {Snowsensor.SERIAL, Snowsensor.TIMESTAMP, Snowsensor.NAME, Snowsensor.LOCATION, Snowsensor.LATITUDE, Snowsensor.LONGITUDE, Snowsensor.TYPENAME, Snowsensor.DEPLOYEDSTATE, Snowsensor.INFO, Snowsensor.DOMAIN, Snowsensor.CREATED, Snowsensor.UPDATED};
+	public final static String[] columns2 = {Snowdata.ID, Snowdata.VISIBILITY, Snowdata.SERIAL};
 
-    Cursor returnedCursor = null;
+    Cursor returnedCursor1 = null;
+    Cursor returnedCursor2 = null;
 	
-	ContentValues cv = new ContentValues(14);
+	ContentValues cv1 = new ContentValues(12);
+	ContentValues cv2 = new ContentValues(3);
 	
     
 	/**
@@ -63,54 +67,65 @@ public class LocationDetailsActivity extends Activity {
       /**
        * Create database
        */
-      Snowdata DB = new Snowdata(getApplicationContext());
+      Snowsensor SS = new Snowsensor(getApplicationContext());
+      Snowdata SD = new Snowdata(getApplicationContext());
+     
       
       /**
        * Open database
        */
-      DB.open();
+      SS.open();
+      SD.open();
+
       
       /**
        * Create columns for database
        */
-      DB.setColumns(columns);  
+      SS.setColumns(columns1);  
+      SD.setColumns(columns2);  
      
       
       /**
        * Insert test-data into database
        */
-//      cv.put(columns[0], "1");
-//      cv.put(columns[1], "00:03");
-//      cv.put(columns[2], "SKE-824224");
-//      cv.put(columns[3], "Treriksröset");
-//      cv.put(columns[4], "None Given");
-//      cv.put(columns[5], "69.06");
-//      cv.put(columns[6], "20.5486");
-//      cv.put(columns[7], "SnowPressure");
-//      cv.put(columns[8], "DEPLOYED");
-//      cv.put(columns[9], "1");
-//      cv.put(columns[10], "None Given");
-//      cv.put(columns[11], "ThomasDomain");
-//      cv.put(columns[12], "2013-02-21 11:36:25");
-//      cv.put(columns[13], "2013-02-21 11:36:25");
-//      
-//      DB.insert(cv);
+      cv1.put(columns1[0], "SKE-824224");
+      cv1.put(columns1[1], "00:03");
+      cv1.put(columns1[2], "Treriksröset");
+      cv1.put(columns1[3], "None Given");
+      cv1.put(columns1[4], "69.06");
+      cv1.put(columns1[5], "20.5486");
+      cv1.put(columns1[6], "SnowPressure");
+      cv1.put(columns1[7], "DEPLOYED");
+      cv1.put(columns1[8], "None Given");
+      cv1.put(columns1[9], "ThomasDomain");
+      cv1.put(columns1[10], "2013-02-21 11:36:25");
+      cv1.put(columns1[11], "2013-02-21 11:36:25");
+      
+      cv2.put(columns2[0], "1");
+      cv2.put(columns2[1], "1");
+      cv2.put(columns2[2], "SKE-824224");
+
+      
+      SS.insert(cv1);
+      SD.insert(cv2);
 
       /**
        * Query database for all of its information
        */
-      returnedCursor = DB.all();
+      returnedCursor1 = SS.all();
+      returnedCursor2 = SD.all();
       
       /**
        * Send information to LocationDetailsAdp for presentation
        */
-      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor);      
+      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);      
       details.populate(location_id);
       
       /**
        * Close database
        */
-      DB.close();
+      SS.close();
+      SD.close();
 
    }
 	
@@ -147,14 +162,16 @@ public class LocationDetailsActivity extends Activity {
       private TextView updated = null;
       private TextView id = null;
       
-      Cursor returnedCursor = null;
+      Cursor returnedCursor1 = null;
+      Cursor returnedCursor2 = null;
       
       /**
        * Create a new container for location details view
        */
-      public LocationDetailsAdp(Cursor data) {
+      public LocationDetailsAdp(Cursor data1, Cursor data2) {
          
-    	 this.returnedCursor = data;
+    	 this.returnedCursor1 = data1;
+    	 this.returnedCursor2 = data2;
     	  
          img = (ImageView) findViewById(R.id.snow_img);
          serial = (TextView) findViewById(R.id.serial);
@@ -182,21 +199,22 @@ public class LocationDetailsActivity extends Activity {
       public void populate(String clicked_item_id) {
          String location_id = clicked_item_id;
     	  
-         returnedCursor.moveToFirst();
+         returnedCursor1.moveToFirst();
+         returnedCursor2.moveToFirst();
        
          img.setImageResource(R.drawable.igloo);
-         serial.setText(returnedCursor.getString(returnedCursor.getColumnIndex("serial")));
-         name.setText(returnedCursor.getString(returnedCursor.getColumnIndex("name")));
-         location.setText(returnedCursor.getString(returnedCursor.getColumnIndex("location")));
-         latitude.setText(returnedCursor.getString(returnedCursor.getColumnIndex("latitude")));
-         longitude.setText(returnedCursor.getString(returnedCursor.getColumnIndex("longitude")));
-         typename.setText(returnedCursor.getString(returnedCursor.getColumnIndex("typename")));
-         deployedstate.setText(returnedCursor.getString(returnedCursor.getColumnIndex("deployedstate")));
-         visibility.setText(returnedCursor.getString(returnedCursor.getColumnIndex("visibility")));
-         info.setText(returnedCursor.getString(returnedCursor.getColumnIndex("info")));
-         domain.setText(returnedCursor.getString(returnedCursor.getColumnIndex("domain")));
-         created.setText(returnedCursor.getString(returnedCursor.getColumnIndex("created")));
-         updated.setText(returnedCursor.getString(returnedCursor.getColumnIndex("updated")));
+         serial.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("serial")));
+         name.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("name")));
+         location.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("location")));
+         latitude.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("latitude")));
+         longitude.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("longitude")));
+         typename.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("typename")));
+         deployedstate.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("deployedstate")));
+         visibility.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("visibility")));
+         info.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("info")));
+         domain.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("domain")));
+         created.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("created")));
+         updated.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("updated")));
 
          id.setText("Clicked item id: " + location_id);
          

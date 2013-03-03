@@ -25,17 +25,35 @@ import android.content.Context;
 *
 * @author Jim Gunnarsson, di98jgu (edited by Viktor Stärn)
 */
-public class Snowdata extends Snowflake {
+public class Snowsensor extends Snowflake {
    
    /** Name of sensor-table, defined in SnowflakeHelper */
-   public static final String TABLE_NAME = SnowflakeHelper.TABLE_SNOW;
+   public static final String TABLE_NAME = SnowflakeHelper.TABLE_SENSOR;
 	
-   /** ID, this is always the primary key in all tables */
-   public static final String ID = SnowflakeHelper.ID;
+   /** Time of last update */
+   public static final String TIMESTAMP = SnowflakeHelper.TIMESTAMP;
    /** Serial number of measurement-point */
    public static final String SERIAL = SnowflakeHelper.SERIAL;
-   /** Visibility at measurement-point */
-   public static final String VISIBILITY = SnowflakeHelper.VISIBILITY;
+   /** Name of measurement-point */
+   public static final String NAME = SnowflakeHelper.NAME;
+   /** Location of measurement-point */
+   public static final String LOCATION = SnowflakeHelper.LOCATION;
+   /** Latitude of measurement-point */
+   public static final String LATITUDE = SnowflakeHelper.LATITUDE;
+   /** Longitude of measurement-point */
+   public static final String LONGITUDE = SnowflakeHelper.LONGITUDE;
+   /** Type of measurement-point */
+   public static final String TYPENAME = SnowflakeHelper.TYPENAME;
+   /** State of measurement-point */
+   public static final String DEPLOYEDSTATE = SnowflakeHelper.DEPLOYEDSTATE;
+   /** Info about measurement-point */
+   public static final String INFO = SnowflakeHelper.INFO;
+   /** Domain */
+   public static final String DOMAIN = SnowflakeHelper.DOMAIN;
+   /** Measurement-point time of creation */
+   public static final String CREATED = SnowflakeHelper.CREATED;
+   /** Time when measurement-point was last updated*/
+   public static final String UPDATED = SnowflakeHelper.UPDATED;
 
    
    /**
@@ -45,11 +63,11 @@ public class Snowdata extends Snowflake {
     *
     * @param ctxt Context
     */
-   public Snowdata(Context ctxt) {
+   public Snowsensor(Context ctxt) {
       
       super(ctxt);
       
-      String[] columns = {ID, VISIBILITY, SERIAL};
+      String[] columns = {SERIAL, TIMESTAMP, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, DEPLOYEDSTATE, INFO, DOMAIN, CREATED, UPDATED};
          
       super.field = new SnowflakeFields(TABLE_NAME, columns);
            

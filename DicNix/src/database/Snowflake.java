@@ -47,6 +47,7 @@ public abstract class Snowflake {
    protected SnowflakeFields field = null;
    
    
+   
    /**
     * Initialise our database.
 	*

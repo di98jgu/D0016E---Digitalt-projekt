@@ -33,11 +33,14 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    
    private static final String TAG = "logogram.DbRista";
 
-   private static final String DB_FILENAME = "snowflake5.db";
+   private static final String DB_FILENAME = "snowflake8.db";
    private static final int VERSION = 1;
 
-   /** Main table for snow data */
+   /** Table for snow data */
    public static final String TABLE_SNOW = "snowtable";
+   
+   /** Table for sensor data */
+   public static final String TABLE_SENSOR = "sensortable";
    
    /** ID, this is always the primary key in all tables */
    public static final String ID = "id";
@@ -92,15 +95,13 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    @Override
    public void onCreate(SQLiteDatabase db) {
 
-	  String tableData = 
+	  String table1Data = 
 			  "CREATE TABLE " + 
-			  TABLE_SNOW + 
+			  TABLE_SENSOR + 
 			  " ( " + 
-			  ID + 
-			  " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-			  TIMESTAMP + 
-			  " TEXT NOT NULL, " + 
 			  SERIAL + 
+			  " TEXT PRIMARY KEY, " + 
+			  TIMESTAMP + 
 			  " TEXT NOT NULL, " + 
 			  NAME + 
 			  " TEXT NOT NULL, " + 
@@ -113,9 +114,7 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  TYPENAME + 
 			  " TEXT NOT NULL, " + 
 			  DEPLOYEDSTATE + 
-			  " TEXT NOT NULL, " + 
-			  VISIBILITY + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT NOT NULL, " + 			  
 			  INFO + 
 			  " TEXT NOT NULL, " + 
 			  DOMAIN + 
@@ -125,8 +124,24 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  UPDATED + 
 			  " TEXT NOT NULL );";
 	   
-	  db.execSQL(tableData);	  
+	  db.execSQL(table1Data);	  
         
+	  String table2Data = 
+			  "CREATE TABLE " + 
+			  TABLE_SNOW + 
+			  " ( " + 
+			  ID + 
+			  " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+			  VISIBILITY +	
+			  " TEXT NOT NULL, " + 
+			  SERIAL + 
+			  " TEXT NOT NULL, " + 
+			  " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+SERIAL+"));";
+	   
+	  db.execSQL(table2Data);	
+	  
+	  db.execSQL("PRAGMA foreign_keys = ON;");
+	  
       return;
 
    }
