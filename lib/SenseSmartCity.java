@@ -9,7 +9,8 @@ import org.json.*;
  
 public class SenseSmartCity {
    
-   private final RestfulClient ssc_client = null;
+   private final RestfulClient ssc_client;
+
    private SSCResources resource = new SSCResources();
   
    private String user = null;
@@ -20,7 +21,11 @@ public class SenseSmartCity {
    /**
     * 
     */
-   private SenseSmartCity() {}
+   private SenseSmartCity() {
+   
+      ssc_client = null;
+      
+   }
   
    /**
     * 
@@ -48,15 +53,16 @@ public class SenseSmartCity {
       Map<String, String> args = new HashMap<String, String>();
       
       if (!sensors.isEmpty()) {
-         args.put(resource.Query.SENSORS, new JSONArray(sensors));
+         String sensors_str = (new JSONArray(sensors)).toString();
+         args.put(SSCResources.Query.SENSORS, sensors_str);
       }
       
-      args.put(resource.Query.PUBLIC_SENSORS, ((all)? "yes": "no"));
-      args.put(resource.Query.FORMAT, "json");
+      args.put(SSCResources.Query.PUBLIC_SENSORS, ((all)? "yes": "no"));
+      args.put(SSCResources.Query.FORMAT, "json");
       
       String data = ssc_client.getData(
-         resource.Url.HTTPS_SSC + 
-         resource.Url.GET_SENSOR_LIST,
+         SSCResources.Url.HTTPS_SSC + 
+         SSCResources.Url.GET_SENSOR_LIST,
          args);
       
       return parseSensorData(responseArray(data));
@@ -67,19 +73,22 @@ public class SenseSmartCity {
     * 
     */
    public Map<Sensor, List<SnowPressure>> requestSnowPressure(
-      List<Sensor> sensors, List<String> Querys, String period) {
+      List<Sensor> sensors, List<String> querys, String period) {
          
       Map<String, String> args = new HashMap<String, String>();
       
-      args.put(
-         resource.Query.SENSOR, 
-         new JSONArray(getSensorSerials(sensors, "SnowPressure")));
-      args.put(resource.Query.FIELDS, new JSONArray(Querys));
-      args.put(resource.Query.PERIOD, new JSONArray(period));
+      JSONArray sensors_json = 
+         new JSONArray(getSensorSerials(sensors, "SnowPressure"));
+      JSONArray fields_json = 
+         new JSONArray(querys);
+      
+      args.put(SSCResources.Query.SENSOR, sensors_json.toString());
+      args.put(SSCResources.Query.FIELDS, fields_json.toString());
+      args.put(SSCResources.Query.PERIOD, period);
       
       String data = ssc_client.getData(
-         resource.Url.HTTPS_SSC + 
-         resource.Url.GET_SNOWPRESURE,
+         SSCResources.Url.HTTPS_SSC + 
+         SSCResources.Url.GET_SNOWPRESURE,
          args);
          
          
@@ -98,11 +107,11 @@ public class SenseSmartCity {
       
       while (i.hasNext()) {
          
-         Sensor s = i.next();
+         Sensor s = (Sensor) i.next();
          
          if (s.getTypeName().equals(type)) {
             
-            serials.add(s.serial());
+            serials.add(s.getSerial());
             
          }
       }
@@ -118,7 +127,8 @@ public class SenseSmartCity {
       try {
          
          JSONObject response = new JSONObject(data);
-         data_array = getJSONArray(resource.Field.RESPONSE);
+         data_array = 
+            response.getJSONArray(SSCResources.Query.RESPONSE);
       
       } catch (org.json.JSONException e) {
       
@@ -132,13 +142,13 @@ public class SenseSmartCity {
    
    private JSONObject responseObject(String data) {
       
-      JSONArray data_obj;
+      JSONObject data_obj;
       
       try {
          
          JSONObject response = new JSONObject(data);
          data_obj = 
-            getJSONObject(resource.Field.RESPONSE);
+            response.getJSONObject(SSCResources.Query.RESPONSE);
       
       } catch (org.json.JSONException e) {
       
@@ -162,20 +172,20 @@ public class SenseSmartCity {
    /**
     * 
     */
-   private Map<Sensor, SnowPressure> parseSnowPressureData(
+   private Map<Sensor, List<SnowPressure>> parseSnowPressureData(
       List<Sensor> sensors, JSONObject data) {
       
-      Map<Sensor, SnowPressure> readings = 
+      Map<Sensor, List<SnowPressure>> readings = 
          new HashMap<Sensor, List<SnowPressure>>();
          
       Iterator i = sensors.iterator();
       
       while (i.hasNext()) {
          
-         Sensor sensor = i.next();
+         Sensor sensor = (Sensor) i.next();
          JSONArray fields = data.getJSONArray(sensor.getSerial());
          List<SnowPressure> snowdata = 
-            SnowPressure.SnowPressure(sensor.getSerial(), fields);
+            SnowPressure.getSnowPressure(sensor.getSerial(), fields);
             
          readings.put(sensor, snowdata);
          

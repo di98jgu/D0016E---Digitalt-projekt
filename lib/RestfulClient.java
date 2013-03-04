@@ -24,8 +24,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import javax.net.ssl.*;
 
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.*;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -43,8 +42,10 @@ class RestfulClient {
    
    }
 
-   public String getData(String url, Map args)
+   public String getData(String url, Map<String, String> args)
       throws SSCException {
+         
+      String result;
      
       try {
          
@@ -64,23 +65,18 @@ class RestfulClient {
          
          // Service is of type json
          request.setRequestProperty("Content-Type", "application/json");
-         request.setRequestProperty (
-            "Authorization", basicAuth(api_usr, api_pwd));
+         request.setRequestProperty(
+            "Authorization", basicAuth(user, pwd));
          
          // Then connect to server
          request.connect();
          
          // Get sensor list from server
          InputStream ssc_in = request.getInputStream();
-         String result = toString(ssc_in);
+         result = toString(ssc_in);
          ssc_in.close();
          
          mangleResponse(request);
-         
-      } catch (IOException e) {
-         // Might be raised by any activity regarding IO activities. 
-         
-         throw new SSCException(e);
          
       } catch (java.net.UnknownHostException e) {
          // Most likely a incorrect url address.
@@ -104,6 +100,11 @@ class RestfulClient {
          
          throw new SSCException.Mystery(e);
          
+      } catch (IOException e) {
+         // Might be raised by any activity regarding IO activities. 
+         
+         throw new SSCException(e); 
+         
       }
          
       return result;
@@ -121,9 +122,10 @@ class RestfulClient {
     * @throws SSCException.ConnectionFailed Any code other then 
     * 200.
     * @throws SSCException.Mystery Errors unknown to us.
+    * @throws java.io.IOException Connection may throw this at us
     */
-   
-   private void mangleResponse(HttpsURLConnection connection) {
+   private void mangleResponse(HttpsURLConnection connection) 
+      throws java.io.IOException {
    
       int code = connection.getResponseCode();
       URL url = connection.getURL();
@@ -147,8 +149,6 @@ class RestfulClient {
       
       // Should not get here...
       throw new SSCException.Mystery(code + ": " + msg + " " + url);
-      
-      return;
    
    }
    
@@ -160,7 +160,7 @@ class RestfulClient {
     * 
     * return Authentication string 
     */ 
-   private void basicAuth(String user, String pwd) {
+   private String basicAuth(String user, String pwd) {
      
       String secret = user + ":" + pwd;
       String auth = "Basic " + 
@@ -176,6 +176,8 @@ class RestfulClient {
     * a very crude work. No checks just line them up. Not critical
     * since we have almost absolute control over what goes here.
     * 
+    * FIXME: Method encode in java.net.URLEncoder has been deprecated
+    * 
     * @param request Mapped key value parameters
     * 
     * @return The GET request parameters as a string. 
@@ -190,7 +192,7 @@ class RestfulClient {
          
          Map.Entry p = (Map.Entry) i.next();
          
-         if (p.getValue == null) {
+         if (p.getValue() == null) {
             continue;
          }
          
@@ -219,11 +221,14 @@ class RestfulClient {
     * @param stream A InputStream
     * 
     * @return String encoded in UTF-8
+    * 
     * @throws java.io.UnsupportedEncodingException if this method
     * fails to encode received data as UTF-8
+    * @throws java.io.IOException Any IO error
     */
-   private String toString(InputStream stream) 
-      throws java.io.UnsupportedEncodingException {
+   private String toString(InputStream stream) throws 
+      java.io.UnsupportedEncodingException, 
+      java.io.IOException {
      
       ByteArrayOutputStream result = new ByteArrayOutputStream();
       
@@ -239,5 +244,45 @@ class RestfulClient {
       return result.toString("UTF-8");
       
    }
+   
+   /**
+    * This class is needed to ignore java.io.IOException: HTTPS 
+    * hostname wrong error due to self-signed SSL certificate.
+    */
+   private static HostnameVerifier ignoreHost = new HostnameVerifier() {
+      
+      public boolean verify(String urlHostName, SSLSession session) {
+                    
+         return true;
+            
+      }
+   };
+   /**
+    * This is a trust all manager for SSL certificate. The server is 
+    * self-signed and this is the standard solution. Note that 
+    * getAcceptedIssuers should NOT return null according to 
+    * official documentation but may return a empty array.
+    */
+   private static TrustManager[] trustAll = new TrustManager[] {
+      
+      new X509TrustManager() {
+         
+         public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            
+            return new java.security.cert.X509Certificate[]{};
+            
+         }
+         public void checkClientTrusted(
+            java.security.cert.X509Certificate[] certs,
+            String authType) {
+               
+         }
+         public void checkServerTrusted(
+            java.security.cert.X509Certificate[] certs,
+            String authType) {
+               
+         }
+      }
+   };
 
 }

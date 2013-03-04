@@ -1,10 +1,11 @@
+
 /**
  * 
  */
 
-public class SSCResources {
+public final class SSCResources {
    
-   public static class Url {
+   public static final class Url {
          
       public static final String HTTPS_SSC = 
          "https://ip30.csse.tt.ltu.se/ssc/api/basic/";
@@ -26,7 +27,9 @@ public class SSCResources {
          
    }
    
-   public static class Query {
+   public static final class Query {
+      
+      public static final String RESPONSE = "response";
       
       public static final String SENSORS = "sensors";
       
@@ -69,8 +72,6 @@ public class SSCResources {
          return this.value;
       }
       
-      
-      @Nullable
       public static Period getState(String field) {
          
          if (field == null) {
@@ -86,7 +87,7 @@ public class SSCResources {
          
          // Not matching value found so...
          throw new SSCException.MalformedData(
-            "Period: " + value + " is not a valid time period");
+            "Period: " + field + " is not a valid time period");
             
       }
    }
@@ -119,7 +120,7 @@ public class SSCResources {
       
       public static final String SHOVELD = "shoveld";
       
-      public static final String WEIGH = "weigh";
+      public static final String WEIGHT = "weigh";
       
       public static final String DEPTH = "depth";
       
@@ -150,8 +151,6 @@ public class SSCResources {
          return this.value;
       }
       
-      
-      @Nullable
       public static TypeName getState(String field) {
          
          if (field == null) {
@@ -167,7 +166,7 @@ public class SSCResources {
          
          // Not matching value found so...
          throw new SSCException.MalformedData(
-            "TypeName: " + value + " is not a valid type_name");
+            "TypeName: " + field + " is not a valid type_name");
             
       }
    }
@@ -191,24 +190,22 @@ public class SSCResources {
          return this.value;
       }
       
-      
-      @Nullable
-      public static DeployedState getState(String value) {
+      public static DeployedState getState(String field) {
          
-         if (value == null) {
+         if (field == null) {
             return null;
          }
          
          for (DeployedState i: DeployedState.values()) {
             
-            if (value.equalsIgnoreCase(i.value)) {
+            if (field.equalsIgnoreCase(i.value)) {
                return i;
             }
          }
          
          // Not matching value found so...
          throw new SSCException.MalformedData(
-            "DeployedState: " + value + " is not a valid deploy state");
+            "DeployedState: " + field + " is not a valid deploy state");
             
       }
    }

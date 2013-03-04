@@ -17,91 +17,6 @@ public class Sensor {
    /** Max length for field info */
    private static final int INFO_LENGTH = 255;
    
-   /** 
-    * Private enum TypeName. This is the allowed type of sensors
-    * used. 
-    * 
-    * */
-   private enum TypeName { 
-      FREETEXT("FreeText"), 
-      TEMPERATURE("Temperature"), 
-      MOTION("Motion"), 
-      GEOLOCATION("GeoLocation"), 
-      SNOWPRESSURE("SnowPressure");
-      
-      private String value;
-      
-      private TypeName(String value) {
-         
-         this.value = value;
-      }
-      
-      public String getValue() {
-         
-         return this.value;
-      }
-      
-      
-      @Nullable
-      public static TypeName getTypeName(String value) {
-         
-         if (value == null) {
-            return null;
-         }
-         
-         for (TypeName i: TypeName.values()) {
-            
-            if (value.equalsIgnoreCase(i.value)) {
-               return i;
-            }
-         }
-         
-         // Not matching value found so...
-         throw new SSCException.MalformedData(
-            "TypeName: " + value + " is not a valid type_name");
-            
-      }
-   }
-   
-   /** */
-   private enum DeployedState {
-      DEPLOYED("DEPLOYED"), 
-      NOT_DEPLOYED("NOT_DEPLOYED");
-      
-      private String value;
-      
-      private DeployedState(String value) {
-         
-         this.value = value;
-      }
-      
-      public String getValue() {
-         
-         return this.value;
-      }
-      
-      
-      @Nullable
-      public static DeployedState getDeployedState(String value) {
-         
-         if (value == null) {
-            return null;
-         }
-         
-         for (DeployedState i: DeployedState.values()) {
-            
-            if (value.equalsIgnoreCase(i.value)) {
-               return i;
-            }
-         }
-         
-         // Not matching value found so...
-         throw new SSCException.MalformedData(
-            "DeployedState: " + value + " is not a valid deploy state");
-            
-      }
-   }
-   
    /**  */
    private String serial = null;
    /**  */
@@ -111,9 +26,9 @@ public class Sensor {
    /**  */
    private SSCPosition position = null;
    /**  */
-   private TypeName type_name;
+   private SSCResources.TypeName type_name;
    /**  */
-   private DeployedState deployed_state;
+   private SSCResources.DeployedState deployed_state;
    /**  */
    private boolean visibility = false;
    /**  */
@@ -131,38 +46,38 @@ public class Sensor {
    public Sensor(JSONObject obj) {
       
       this.serial = 
-         obj.getString(resource.Field.SERIAL);
+         obj.getString(SSCResources.Field.SERIAL);
       
       this.name = truncate(
-         obj.getString(resource.Field.NAME), NAME_LENGTH);
+         obj.getString(SSCResources.Field.NAME), NAME_LENGTH);
          
       this.location = truncate(
-         obj.getString(resource.Field.LOCATION), LOCATION_LENGTH);
+         obj.getString(SSCResources.Field.LOCATION), LOCATION_LENGTH);
          
       this.position = new SSCPosition(
-         obj.getDouble(resource.Field.LATITUDE),
-         obj.getDouble(resource.Field.LONGITUDE));
+         obj.getDouble(SSCResources.Field.LATITUDE),
+         obj.getDouble(SSCResources.Field.LONGITUDE));
          
-      this.type_name = TypeName.getTypeName(
-         obj.getString(resource.Field.TYPE_NAME));
+      this.type_name = SSCResources.TypeName.getState(
+         obj.getString(SSCResources.Field.TYPE_NAME));
          
-      this.deployed_state = DeployedState.getDeployedState(
-         obj.getString(resource.Field.DEPLOYED_STATE));
+      this.deployed_state = SSCResources.DeployedState.getState(
+         obj.getString(SSCResources.Field.DEPLOYED_STATE));
          
       this.visibility = 
-         obj.getBoolean(resource.Field.VISIBILITY);
+         obj.getBoolean(SSCResources.Field.VISIBILITY);
       
       this.info = truncate(
-         obj.getString(resource.Field.INFO), INFO_LENGTH);
+         obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
          
       this.domain = 
-         obj.getString(resource.Field.DOMAIN);
+         obj.getString(SSCResources.Field.DOMAIN);
       
       this.created = new SSCTimeUnit(
-         obj.getString(resource.Field.CREATED));
+         obj.getString(SSCResources.Field.CREATED));
          
       this.updated = new SSCTimeUnit(
-         obj.getString(resource.Field.UPDATED));
+         obj.getString(SSCResources.Field.UPDATED));
       
    }
    
@@ -176,7 +91,7 @@ public class Sensor {
       for (int i = 0; i < obj_array.length(); i++) {
          
          JSONObject obj = obj_array.getJSONObject(i);
-         sensors.add(new Status(obj));
+         sensors.add(new Sensor(obj));
       }
         
       return sensors;
@@ -188,7 +103,7 @@ public class Sensor {
     */
    public String getSerial() {
       
-      return serial();
+      return serial;
    }
    
    /**  
@@ -236,7 +151,7 @@ public class Sensor {
     */
    public String getTypeName() {
       
-      return type_name.getValue();
+      return type_name.getField();
    }
    
    /**  
@@ -244,7 +159,7 @@ public class Sensor {
     */
    public String getDeployedState() {
       
-      return deployed_state.getValue();
+      return deployed_state.getField();
    }
    
    /**  
@@ -340,7 +255,7 @@ public class Sensor {
     */
    public void setTypeName(String type_name) {
       
-      this.type_name = TypeName.setTypeName(type_name);
+      this.type_name = SSCResources.TypeName.getState(type_name);
    }
    
    /**  
@@ -349,13 +264,13 @@ public class Sensor {
    public void setDeployedState(String deployed_state) {
       
       this.deployed_state = 
-         DeployedState.setDeployedState(deployed_state);
+         SSCResources.DeployedState.getState(deployed_state);
    }
    
    /**  
     * 
     */
-   public boolean setVisibility(String visibility) {
+   public void setVisibility(boolean visibility) {
       
       this.visibility = visibility;
    }
@@ -379,7 +294,7 @@ public class Sensor {
    /**  
     * 
     */
-   public SSCTimeUnit setCreated(SSCTimeUnit created) {
+   public void setCreated(SSCTimeUnit created) {
       
       this.created = created;
    }
@@ -387,7 +302,7 @@ public class Sensor {
    /**  
     * 
     */
-   public SSCTimeUnit setUpdated(SSCTimeUnit updated) {
+   public void setUpdated(SSCTimeUnit updated) {
       
       this.updated = updated;
    }
@@ -421,8 +336,8 @@ public class Sensor {
       sb.append("location: ").append(location);
       sb.append("latitude: ").append(position.getLatitude());
       sb.append("longitude: ").append(position.getLongitude());
-      sb.append("type_name: ").append(type_name.getValue());
-      sb.append("deployed_state: ").append(deployed_state.getValue);
+      sb.append("type_name: ").append(type_name.getField());
+      sb.append("deployed_state: ").append(deployed_state.getField());
       sb.append("visibility: ").append(visibility);
       sb.append("info: ").append(info);
       sb.append("domain: ").append(domain);

@@ -41,6 +41,10 @@ class SSCException extends RuntimeException {
 		public Mystery(String msg) {
 			super(msg);
 		}
+      
+      public Mystery(Exception e) {
+			super(e);
+		}
 	}
    
    /**
@@ -53,6 +57,10 @@ class SSCException extends RuntimeException {
       
 		public ConnectionFailed(String msg) {
 			super(msg);
+		}
+      
+      public ConnectionFailed(Exception e) {
+			super(e);
 		}
 	}
    

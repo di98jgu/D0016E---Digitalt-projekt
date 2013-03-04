@@ -5,6 +5,7 @@
  
 import java.util.*;
 import org.json.*;
+import java.lang.Math;
 
 class SnowPressure implements Comparable<SnowPressure> {
    
@@ -16,7 +17,7 @@ class SnowPressure implements Comparable<SnowPressure> {
    /**  */
    private String serial = null;
    /**  */
-   private String info = 0;
+   private String info = null;
    /**  */
    private boolean shoveld = false;
    /**  */
@@ -35,30 +36,30 @@ class SnowPressure implements Comparable<SnowPressure> {
       this.serial = sensor;
       
       this.info = truncate(
-            obj.getString(resource.Field.INFO), INFO_LENGTH);
+            obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
       
       this.shoveld = 
-         obj.getBoolean(resource.Field.SHOVELD);
+         obj.getBoolean(SSCResources.Field.SHOVELD);
       
       this.weight = 
-         obj.getInt(resource.Field.WEIGHT);
+         obj.getInt(SSCResources.Field.WEIGHT);
       
       this.depth = 
-         obj.getInt(resource.Field.DEPTH);
+         obj.getInt(SSCResources.Field.DEPTH);
       
       this.temperature = 
-         obj.getInt(resource.Field.TEMPERATURE);
+         obj.getInt(SSCResources.Field.TEMPERATURE);
       
       this.humidity = 
-         obj.getInt(resource.Field.HUMIDITY);
+         obj.getInt(SSCResources.Field.HUMIDITY);
       
       this.data_time = new SSCTimeUnit(
-         obj.getString(resource.Field.DATA_TIME));
+         obj.getString(SSCResources.Field.DATA_TIME));
       
    }
    
    public static List<SnowPressure> getSnowPressure(
-      String sensor, JSONArray obj) {
+      String sensor, JSONArray obj_array) {
       
        List<SnowPressure> snowdata = new ArrayList<SnowPressure>();
         
@@ -89,8 +90,8 @@ class SnowPressure implements Comparable<SnowPressure> {
    }
    /**  */
    public int getWeight() {
-      
-      return this.weigth;
+   
+      return this.weight;
    }
    /**  */
    public int getDepth() {
@@ -131,7 +132,7 @@ class SnowPressure implements Comparable<SnowPressure> {
    /**  */
    public void setWeight(int weight) {
       
-      this.weigth = weight;
+      this.weight = weight;
    }
    /**  */
    public void setDepth(int depth) {
@@ -181,7 +182,7 @@ class SnowPressure implements Comparable<SnowPressure> {
             "SnowPressure: Can't compare with null");
       }
       
-      return sgn(this.data_time.diffSeconds(obj.getDataTime()));
+      return (int) Math.signum(this.data_time.diffSeconds(obj.getDataTime()));
    
    }
    
