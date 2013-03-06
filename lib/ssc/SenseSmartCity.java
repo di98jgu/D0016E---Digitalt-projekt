@@ -1,3 +1,4 @@
+package ssc;
 /**
  * 
  * @author Jim Gunnarsson

@@ -1,3 +1,4 @@
+package ssc;
 /**
  * A runtime exception for all well know exceptions. Main source
  * of exceptions is the restfulClient. All {@link SenseSmartCity} 
@@ -11,7 +12,7 @@
  * @author Jim Gunnarsson
  */
 
-class SSCException extends RuntimeException {
+public class SSCException extends RuntimeException {
    
    private static final long serialVersionUID = 2114723132L;
    

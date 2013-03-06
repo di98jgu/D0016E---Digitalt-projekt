@@ -1,3 +1,4 @@
+package ssc;
 /**
  * 
  * @author Jim Gunnarsson
@@ -7,7 +8,7 @@ import java.util.*;
 import org.json.*;
 import java.lang.Math;
 
-class SnowPressure implements Comparable<SnowPressure> {
+public class SnowPressure implements Comparable<SnowPressure> {
    
    private SSCResources resource = new SSCResources();
    

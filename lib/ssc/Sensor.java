@@ -1,3 +1,4 @@
+package ssc;
 /**
  * 
  * @author Jim Gunnarsson
@@ -64,8 +65,8 @@ public class Sensor {
       this.deployed_state = SSCResources.DeployedState.getState(
          obj.getString(SSCResources.Field.DEPLOYED_STATE));
          
-      this.visibility = 
-         obj.getBoolean(SSCResources.Field.VISIBILITY);
+      String v = obj.getString(SSCResources.Field.VISIBILITY);
+      this.visibility = (v == "1")? true: false;
       
       this.info = truncate(
          obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
@@ -332,17 +333,18 @@ public class Sensor {
       StringBuilder sb = new StringBuilder(400);
       
       sb.append("Sense Smart City sensor (");
-      sb.append("serial: ").append(serial);
-      sb.append("location: ").append(location);
-      sb.append("latitude: ").append(position.getLatitude());
-      sb.append("longitude: ").append(position.getLongitude());
-      sb.append("type_name: ").append(type_name.getField());
-      sb.append("deployed_state: ").append(deployed_state.getField());
-      sb.append("visibility: ").append(visibility);
-      sb.append("info: ").append(info);
-      sb.append("domain: ").append(domain);
-      sb.append("created: ").append(created.toString());
-      sb.append("updated: ").append(updated.toString());
+      sb.append(" serial: ").append(serial);
+      sb.append(" name: ").append(name);
+      sb.append(" location: ").append(location);
+      sb.append(" latitude: ").append(position.getLatitude());
+      sb.append(" longitude: ").append(position.getLongitude());
+      sb.append(" type_name: ").append(type_name.getField());
+      sb.append(" deployed_state: ").append(deployed_state.getField());
+      sb.append(" visibility: ").append(visibility);
+      sb.append(" info: ").append(info);
+      sb.append(" domain: ").append(domain);
+      sb.append(" created: ").append(created.toString());
+      sb.append(" updated: ").append(updated.toString());
       sb.append(")");
          
       return sb.toString();

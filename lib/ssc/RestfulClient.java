@@ -1,3 +1,4 @@
+package ssc;
 /**
  * 
  * Class: RestfulClient
