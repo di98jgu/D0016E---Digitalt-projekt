@@ -18,8 +18,8 @@ from time import localtime, strftime
 api_url     = 'https://ip30.csse.tt.ltu.se/ssc/api/basic/'
 api_fnc     = 'snow_pressure/request'
 # api_fnc     = 'free_text/request'
-api_usr     = 'snowtest'
-api_pwd     = 'ltusnowtester'
+api_usr     = ''
+api_pwd     = ''
 
 # All parameters are OPTIONAL (except sensors array) in sensor update request.
 # Parameters:
@@ -33,10 +33,21 @@ api_pwd     = 'ltusnowtester'
 #   limit           - Limit result set to this many records
 #   offset          - Return data from this offset position in the possible result set
 #   sort            - Sort data in 'desc' or 'asc' order.
-           
+           #~ 
+#~ api_data = { \
+               #~ 'sensors': json.dumps(['12345']), \
+               #~ 'fields':json.dumps(['shoveld', 'weight', 'depth', 'temperature', 'humidity', 'data_time', 'info']), \
+               #~ #'period':'last-month', \
+               #~ #'start':'2012-12-18 11:04:00', \
+               #~ #'end':'2012-12-18 16:04:30', \
+               #~ #'limit':'100', \
+               #~ #'offset':'0', \
+               #~ #'sort':'desc', \
+           #~ }
+
+
 api_data = { \
-               'sensors': json.dumps(['12345']), \
-               'fields':json.dumps(['shoveld', 'weight', 'depth', 'temperature', 'humidity', 'data_time', 'info']), \
+               'sensors': json.dumps(['12345']),
                #'period':'last-month', \
                #'start':'2012-12-18 11:04:00', \
                #'end':'2012-12-18 16:04:30', \
@@ -44,7 +55,6 @@ api_data = { \
                #'offset':'0', \
                #'sort':'desc', \
            }
-
            
 # Make the server request
 bh = BasicHttp.BasicHttp(api_url)

@@ -53,7 +53,7 @@ public class SenseSmartCity {
       
       Map<String, String> args = new HashMap<String, String>();
       
-      if (!sensors.isEmpty()) {
+      if (notNull(sensors) && !sensors.isEmpty()) {
          String sensors_str = (new JSONArray(sensors)).toString();
          args.put(SSCResources.Query.SENSORS, sensors_str);
       }
@@ -76,23 +76,36 @@ public class SenseSmartCity {
    public Map<Sensor, List<SnowPressure>> requestSnowPressure(
       List<Sensor> sensors, List<String> querys, String period) {
          
+      nullWatch(sensors);
+         
       Map<String, String> args = new HashMap<String, String>();
       
+      // Requested sensors, for now we only accept SnowPressure
       JSONArray sensors_json = 
          new JSONArray(getSensorSerials(sensors, "SnowPressure"));
-      JSONArray fields_json = 
-         new JSONArray(querys);
+      args.put(SSCResources.Query.SENSORS, sensors_json.toString());
       
-      args.put(SSCResources.Query.SENSOR, sensors_json.toString());
-      args.put(SSCResources.Query.FIELDS, fields_json.toString());
-      args.put(SSCResources.Query.PERIOD, period);
+      // Fields, none provided means all available.
+      if (notNull(querys) && !querys.isEmpty()) {
+
+         JSONArray fields_json = new JSONArray(querys);
+         args.put(SSCResources.Query.FIELDS, fields_json.toString());
+      }
+      
+      // Time period, just ignore it if null.
+      if (notNull(period) && period.trim() != "") {
+         
+         args.put(SSCResources.Query.PERIOD, validatePeriod(period));
+      }
+      
+      // Undocumented option but needed, else we get XML in return.
+      args.put(SSCResources.Query.FORMAT, "json");
       
       String data = ssc_client.getData(
          SSCResources.Url.HTTPS_SSC + 
          SSCResources.Url.GET_SNOWPRESURE,
          args);
-         
-         
+      
       return parseSnowPressureData(sensors, responseObject(data));
       
    }
@@ -150,7 +163,7 @@ public class SenseSmartCity {
          JSONObject response = new JSONObject(data);
          data_obj = 
             response.getJSONObject(SSCResources.Query.RESPONSE);
-      
+            
       } catch (org.json.JSONException e) {
       
          throw new SSCException.MalformedData(e);
@@ -178,7 +191,7 @@ public class SenseSmartCity {
       
       Map<Sensor, List<SnowPressure>> readings = 
          new HashMap<Sensor, List<SnowPressure>>();
-         
+      
       Iterator i = sensors.iterator();
       
       while (i.hasNext()) {
@@ -194,5 +207,34 @@ public class SenseSmartCity {
          
       return readings;
    }
+   
+   private <T> T nullWatch(T obj) {
       
+      if (obj == null) {
+         
+         String msg = "Need a value and none was provided";
+         throw new java.lang.NullPointerException(msg);
+         
+      }
+      
+      return obj;
+   
+   }
+   
+   private <T> boolean notNull(T obj) {
+      
+      return (obj == null)? false: true;
+      
+   }
+   
+   private String validatePeriod(String period) {
+      
+      String str = period.trim();
+      
+      // Will throw a suitable exception if period is not valid
+      SSCResources.Period.getState(period);
+      
+      return str;
+      
+   }
 }

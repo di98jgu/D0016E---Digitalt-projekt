@@ -34,28 +34,37 @@ public class SnowPressure implements Comparable<SnowPressure> {
    
    public SnowPressure(String sensor, JSONObject obj) {
       
+      String INFO = SSCResources.Field.INFO;
+      String SHOVELD = SSCResources.Field.SHOVELD;
+      String WEIGHT = SSCResources.Field.WEIGHT;
+      String DEPTH = SSCResources.Field.DEPTH;
+      String TEMP = SSCResources.Field.TEMPERATURE;
+      String HUMIDITY = SSCResources.Field.HUMIDITY;
+      String TIME = SSCResources.Field.DATA_TIME;
+      
       this.serial = sensor;
       
-      this.info = truncate(
-            obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
+      this.info = (obj.has(INFO))? 
+         truncate(obj.getString(INFO), INFO_LENGTH): "";
       
-      this.shoveld = 
-         obj.getBoolean(SSCResources.Field.SHOVELD);
+      this.shoveld = (obj.has(SHOVELD))? 
+         toBoolean(obj.getString(SHOVELD)): false;
       
-      this.weight = 
-         obj.getInt(SSCResources.Field.WEIGHT);
+      this.weight = (obj.has(WEIGHT))? 
+         obj.getInt(WEIGHT): 0;
       
-      this.depth = 
-         obj.getInt(SSCResources.Field.DEPTH);
+      this.depth = (obj.has(DEPTH))? 
+         obj.getInt(DEPTH): 0;
       
-      this.temperature = 
-         obj.getInt(SSCResources.Field.TEMPERATURE);
+      this.temperature = (obj.has(TEMP))? 
+         obj.getInt(TEMP): -273;
       
-      this.humidity = 
-         obj.getInt(SSCResources.Field.HUMIDITY);
+      this.humidity = (obj.has(HUMIDITY))? 
+         obj.getInt(HUMIDITY): 0;
       
-      this.data_time = new SSCTimeUnit(
-         obj.getString(SSCResources.Field.DATA_TIME));
+      this.data_time = (obj.has(TIME))? 
+         new SSCTimeUnit(obj.getString(TIME)):
+         new SSCTimeUnit("1970-01-01 00:00:00");
       
    }
    
@@ -251,5 +260,10 @@ public class SnowPressure implements Comparable<SnowPressure> {
       }
       
       return str;
+   }
+   
+   private boolean toBoolean(String str) {
+      
+      return (str != null && str == "1")? true: false;
    }
 }

@@ -72,12 +72,12 @@ class RestfulClient {
          // Then connect to server
          request.connect();
          
+         mangleResponse(request);
+         
          // Get sensor list from server
          InputStream ssc_in = request.getInputStream();
          result = toString(ssc_in);
          ssc_in.close();
-         
-         mangleResponse(request);
          
       } catch (java.net.UnknownHostException e) {
          // Most likely a incorrect url address.
