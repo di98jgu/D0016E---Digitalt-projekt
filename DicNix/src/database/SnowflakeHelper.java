@@ -33,7 +33,7 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    
    private static final String TAG = "logogram.DbRista";
 
-   private static final String DB_FILENAME = "snowflake8.db";
+   private static final String DB_FILENAME = "snowflake17.db";
    private static final int VERSION = 1;
 
    /** Table for snow data */
@@ -70,7 +70,18 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    public static final String CREATED = "created";
    /** Time when measurement-point was last updated*/
    public static final String UPDATED = "updated";
-   
+   /** Snow shoveled at measurement-point */
+   public static final String SHOVELED = "shoveled";
+   /** Snow weight at measurement-point */
+   public static final String WEIGHT = "weight";
+   /** Snow depth at measurement-point */
+   public static final String DEPTH = "depth";
+   /** Temperature at measurement-point */
+   public static final String TEMPERATURE = "temperature";
+   /** Humidity at measurement-point */
+   public static final String HUMIDITY = "humidity";
+   /** Data time */
+   public static final String DATA_TIME = "data_time";
    
    
    /**
@@ -99,8 +110,8 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  "CREATE TABLE " + 
 			  TABLE_SENSOR + 
 			  " ( " + 
-			  SERIAL + 
-			  " TEXT PRIMARY KEY, " + 
+			  ID + 
+			  " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 			  TIMESTAMP + 
 			  " TEXT NOT NULL, " + 
 			  NAME + 
@@ -134,9 +145,21 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			  VISIBILITY +	
 			  " TEXT NOT NULL, " + 
+			  SHOVELED +	
+			  " TEXT NOT NULL, " + 
+			  WEIGHT +	
+			  " TEXT NOT NULL, " + 
+			  DEPTH +	
+			  " TEXT NOT NULL, " + 
+			  TEMPERATURE +	
+			  " TEXT NOT NULL, " + 
+			  HUMIDITY +	
+			  " TEXT NOT NULL, " + 
+			  DATA_TIME +	
+			  " TEXT NOT NULL, " + 
 			  SERIAL + 
 			  " TEXT NOT NULL, " + 
-			  " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+SERIAL+"));";
+			  " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+ID+"));";
 	   
 	  db.execSQL(table2Data);	
 	  

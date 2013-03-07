@@ -30,12 +30,23 @@ public class Snowdata extends Snowflake {
    /** Name of sensor-table, defined in SnowflakeHelper */
    public static final String TABLE_NAME = SnowflakeHelper.TABLE_SNOW;
 	
-   /** ID, this is always the primary key in all tables */
-   public static final String ID = SnowflakeHelper.ID;
    /** Serial number of measurement-point */
    public static final String SERIAL = SnowflakeHelper.SERIAL;
    /** Visibility at measurement-point */
    public static final String VISIBILITY = SnowflakeHelper.VISIBILITY;
+   /** Snow shoveled at measurement point */
+   public static final String SHOVELED = SnowflakeHelper.SHOVELED;
+   /** Snow weight at measurement-point */
+   public static final String WEIGHT = SnowflakeHelper.WEIGHT;
+   /** Snow depth at measurement-point */
+   public static final String DEPTH = SnowflakeHelper.DEPTH;
+   /** Temperature at measurement-point */
+   public static final String TEMPERATURE = SnowflakeHelper.TEMPERATURE;
+   /** Humidity at measurement-point */
+   public static final String HUMIDITY = SnowflakeHelper.HUMIDITY;
+   /** Data time */
+   public static final String DATA_TIME = SnowflakeHelper.DATA_TIME;
+
 
    
    /**
@@ -49,7 +60,7 @@ public class Snowdata extends Snowflake {
       
       super(ctxt);
       
-      String[] columns = {ID, VISIBILITY, SERIAL};
+      String[] columns = {VISIBILITY, SHOVELED, WEIGHT, DEPTH, TEMPERATURE, HUMIDITY, DATA_TIME, SERIAL};
          
       super.field = new SnowflakeFields(TABLE_NAME, columns);
            

@@ -18,7 +18,7 @@
 
 package se.ltu.dicnix;
 
-import android.app.Activity;
+import android.app.Activity; 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -27,8 +27,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import database.Snowdata;
-//import database.*;
 import database.Snowsensor;
+//import database.*;
 
 /**
  * View details about a location. A location is position with a set of data.
@@ -40,14 +40,14 @@ public class LocationDetailsActivity extends Activity {
 	
 	/** Location details id tag for use in communication between activity's */
 	public final static String ID_LOCATION_DETAILS = "dicnix.id_location_details";
-	public final static String[] columns1 = {Snowsensor.SERIAL, Snowsensor.TIMESTAMP, Snowsensor.NAME, Snowsensor.LOCATION, Snowsensor.LATITUDE, Snowsensor.LONGITUDE, Snowsensor.TYPENAME, Snowsensor.DEPLOYEDSTATE, Snowsensor.INFO, Snowsensor.DOMAIN, Snowsensor.CREATED, Snowsensor.UPDATED};
-	public final static String[] columns2 = {Snowdata.ID, Snowdata.VISIBILITY, Snowdata.SERIAL};
+	public final static String[] columns1 = {Snowsensor.ID, Snowsensor.TIMESTAMP, Snowsensor.NAME, Snowsensor.LOCATION, Snowsensor.LATITUDE, Snowsensor.LONGITUDE, Snowsensor.TYPENAME, Snowsensor.DEPLOYEDSTATE, Snowsensor.INFO, Snowsensor.DOMAIN, Snowsensor.CREATED, Snowsensor.UPDATED};
+	public final static String[] columns2 = {Snowdata.VISIBILITY, Snowdata.SHOVELED, Snowdata.WEIGHT, Snowdata.DEPTH, Snowdata.TEMPERATURE, Snowdata.HUMIDITY, Snowdata.DATA_TIME, Snowdata.SERIAL};
 
     Cursor returnedCursor1 = null;
     Cursor returnedCursor2 = null;
 	
 	ContentValues cv1 = new ContentValues(12);
-	ContentValues cv2 = new ContentValues(3);
+	ContentValues cv2 = new ContentValues(8);
 	
     
 	/**
@@ -88,7 +88,7 @@ public class LocationDetailsActivity extends Activity {
       /**
        * Insert test-data into database
        */
-      cv1.put(columns1[0], "SKE-824224");
+      cv1.put(columns1[0], "1");
       cv1.put(columns1[1], "00:03");
       cv1.put(columns1[2], "Treriksröset");
       cv1.put(columns1[3], "None Given");
@@ -102,8 +102,13 @@ public class LocationDetailsActivity extends Activity {
       cv1.put(columns1[11], "2013-02-21 11:36:25");
       
       cv2.put(columns2[0], "1");
-      cv2.put(columns2[1], "1");
-      cv2.put(columns2[2], "SKE-824224");
+      cv2.put(columns2[1], "No");
+      cv2.put(columns2[2], "Some weight");
+      cv2.put(columns2[3], "Some depth");
+      cv2.put(columns2[4], "Some temperature");
+      cv2.put(columns2[5], "Humidity level");
+      cv2.put(columns2[6], "Data time");
+      cv2.put(columns2[7], "SKE-824224");
 
       
       SS.insert(cv1);
@@ -118,7 +123,8 @@ public class LocationDetailsActivity extends Activity {
       /**
        * Send information to LocationDetailsAdp for presentation
        */
-      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);      
+      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);    
+//      LocationDetailsAdp details = new LocationDetailsAdp(); 
       details.populate(location_id);
       
       /**
@@ -161,6 +167,12 @@ public class LocationDetailsActivity extends Activity {
       private TextView created = null;
       private TextView updated = null;
       private TextView id = null;
+      private TextView shoveled = null;
+      private TextView weight = null;
+      private TextView depth = null;
+      private TextView temperature = null;
+      private TextView humidity = null;
+      private TextView data_time = null;
       
       Cursor returnedCursor1 = null;
       Cursor returnedCursor2 = null;
@@ -169,6 +181,7 @@ public class LocationDetailsActivity extends Activity {
        * Create a new container for location details view
        */
       public LocationDetailsAdp(Cursor data1, Cursor data2) {
+//          public LocationDetailsAdp() {
          
     	 this.returnedCursor1 = data1;
     	 this.returnedCursor2 = data2;
@@ -187,7 +200,12 @@ public class LocationDetailsActivity extends Activity {
          created = (TextView) findViewById(R.id.created);
          updated = (TextView) findViewById(R.id.updated);
          id = (TextView) findViewById(R.id.location_id);
-    	 
+         shoveled = (TextView) findViewById(R.id.shoveled);
+         weight = (TextView) findViewById(R.id.weight);
+         depth = (TextView) findViewById(R.id.depth);
+         temperature = (TextView) findViewById(R.id.temperature);
+         humidity = (TextView) findViewById(R.id.humidity);
+         data_time = (TextView) findViewById(R.id.data_time);
          
          return;
 
@@ -203,19 +221,27 @@ public class LocationDetailsActivity extends Activity {
          returnedCursor2.moveToFirst();
        
          img.setImageResource(R.drawable.igloo);
-         serial.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("serial")));
          name.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("name")));
          location.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("location")));
          latitude.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("latitude")));
          longitude.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("longitude")));
          typename.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("typename")));
          deployedstate.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("deployedstate")));
-         visibility.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("visibility")));
          info.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("info")));
          domain.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("domain")));
          created.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("created")));
          updated.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("updated")));
 
+         visibility.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("visibility")));
+         shoveled.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("shoveled")));
+         weight.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("weight")));
+         depth.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("depth")));
+         temperature.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("temperature")));
+         humidity.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("humidity")));
+         data_time.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("data_time")));
+         serial.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("serial")));
+         
+         
          id.setText("Clicked item id: " + location_id);
          
          return;

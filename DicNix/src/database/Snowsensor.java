@@ -30,10 +30,10 @@ public class Snowsensor extends Snowflake {
    /** Name of sensor-table, defined in SnowflakeHelper */
    public static final String TABLE_NAME = SnowflakeHelper.TABLE_SENSOR;
 	
+   /** ID, this is always the primary key in all tables */
+   public static final String ID = SnowflakeHelper.ID;
    /** Time of last update */
    public static final String TIMESTAMP = SnowflakeHelper.TIMESTAMP;
-   /** Serial number of measurement-point */
-   public static final String SERIAL = SnowflakeHelper.SERIAL;
    /** Name of measurement-point */
    public static final String NAME = SnowflakeHelper.NAME;
    /** Location of measurement-point */
@@ -67,7 +67,7 @@ public class Snowsensor extends Snowflake {
       
       super(ctxt);
       
-      String[] columns = {SERIAL, TIMESTAMP, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, DEPLOYEDSTATE, INFO, DOMAIN, CREATED, UPDATED};
+      String[] columns = {ID, TIMESTAMP, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, DEPLOYEDSTATE, INFO, DOMAIN, CREATED, UPDATED};
          
       super.field = new SnowflakeFields(TABLE_NAME, columns);
            
