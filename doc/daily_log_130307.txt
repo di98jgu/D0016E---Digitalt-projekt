@@ -1,0 +1,79 @@
+torsdagen den 7:e mars 2013
+[kl. 13:06:42 CEST] Viktor Stärn: Hej! Hur går det?
+[kl. 13:08:50 CEST] Viktor Stärn: Har fixat mitt projekt så att det är körbart igen med rätt tabeller och kolumner, men att plocka kolumnnamnen från strings.xml visade sig klurigare än förväntat... jag försökte med getString(R.string.[kolumnnamn]); men det ville sig inte :/
+[kl. 13:09:45 CEST] Viktor Stärn: Likaså verkar det här med att lagra objekt i databasen vara lite klurigt... tittade t.ex. på svaret till frågan på den här sidan: 
+http://stackoverflow.com/questions/9593532/store-custom-objects-user-defined-obj-in-sqlite-android-database
+[kl. 13:10:07 CEST] Viktor Stärn: På det svaret låter det ju nästan som att det är enklare att spara i JSON-form? Eller har jag missupfattat?
+[kl. 13:14:27 CEST] di98jgu: Ja och nej, objekt i meningen av säg myObject behöver göras om till en blob av något slag.
+[kl. 13:15:22 CEST] di98jgu: Men vad du får du får ut från SSC är enkla string eller primitiva datatyper int, double etc.
+[kl. 13:15:47 CEST] di98jgu: Det är inget problem alls att peta in i databasen.
+[kl. 13:16:48 CEST] di98jgu: Visst finns det en del hjälp object som SSCTimeUnit men de har funktionen toString.
+[kl. 13:17:17 CEST] Viktor Stärn: ah, ja, precis.. timeunit och position var det väl jag tänkte på
+[kl. 13:17:18 CEST] Viktor Stärn: men ok
+[kl. 13:17:31 CEST] Viktor Stärn: då duger det ju med TEXT som fälttyp
+[kl. 13:17:43 CEST] di98jgu: Javisst
+[kl. 13:18:27 CEST] di98jgu: De är hjälp classer för att just gå från text till säg position och tillbaka igen.
+[kl. 13:19:35 CEST] di98jgu: Position kan ju pressenteras på så många olika sätt, i grader decimalt, i grader fot och tum, RT90 och så vidare.
+[kl. 13:20:58 CEST] di98jgu: Det går framåt här också, har juint testat huvud klassen SenseSmartCity och den fungera nu som den ska.
+[kl. 13:21:14 CEST] di98jgu: Har lagt upp senast koden.
+[kl. 13:21:28 CEST] di98jgu: Med juint tester under validation
+[kl. 13:22:03 CEST] Viktor Stärn: ah, va bra! :)
+[kl. 13:22:30 CEST] Viktor Stärn: ska ta en titt..
+[kl. 13:22:33 CEST] di98jgu: Okej så det börja dra ihop sig.
+[kl. 13:23:02 CEST] di98jgu: Du behöver börja flytta kod till huvud grenen master.
+[kl. 13:23:29 CEST] di98jgu: Jag tänkt ta o titta närmare på application objekt.
+[kl. 13:24:05 CEST] di98jgu: Enklast att jag gör det då jag kan behöva utöka / anpassa biblioteket allt efter som.
+[kl. 13:24:14 CEST] Viktor Stärn: ok
+[kl. 13:24:45 CEST] Viktor Stärn: men då kollar jag igenom min kod och pushar den till testbranch2 först, så kan du ta en snabb titt... säkert något som behöver ändras innan jag pushar till master
+[kl. 13:25:36 CEST] di98jgu: Du kan alltid göra en diff direkt på GitHub.
+[kl. 13:26:01 CEST] di98jgu: Men vad du bör göra är att först merga master med din gren.
+[kl. 13:26:16 CEST] di98jgu: Sen se att allt fungera.
+[kl. 13:26:49 CEST] di98jgu: Då har du inte ändrat något alls i master men kan samtidigt se att allt fungera.
+[kl. 13:29:17 CEST] Viktor Stärn: ok, körde en merge.. men verkar inte gjort mkt skillnad (den nämnde två av mina egna commits)
+[kl. 13:29:26 CEST] Viktor Stärn: jag ska inte köra fetch alltså?
+[kl. 13:29:55 CEST] di98jgu: Okej först måste du göra en fetch av master för att få den senast verisonen.
+[kl. 13:30:20 CEST] Viktor Stärn: okej, så fetch master och sen merge master
+[kl. 13:30:46 CEST] di98jgu: Ja, under förutsättning att du är i din gren.
+[kl. 13:30:57 CEST] Viktor Stärn: jepp
+[kl. 13:30:59 CEST] Viktor Stärn: testar..
+[kl. 13:32:03 CEST] Viktor Stärn: jag antar att jag ska välja source master och destination testbranch2
+[kl. 13:34:42 CEST] di98jgu: Ja.
+[kl. 13:35:06 CEST] Viktor Stärn: hmm, rejected
+[kl. 13:35:14 CEST] Viktor Stärn: kanske måste pusha min egen först
+[kl. 13:35:20 CEST] di98jgu: Nej
+[kl. 13:35:28 CEST] Viktor Stärn: till testbranch menar jag
+[kl. 13:35:50 CEST] Viktor Stärn: mina senaste ändringar är ju inte commit:ade
+[kl. 13:35:55 CEST] di98jgu: Ahh.
+[kl. 13:37:28 CEST] di98jgu: Du kan enkelt kolla att merge fungerade, det ska finnas en katalog validation under lib.
+[kl. 13:38:18 CEST] Viktor Stärn: blir fortfarande rejected på fetch
+[kl. 13:38:31 CEST] di98jgu: Vad är felmedelandet ?
+[kl. 13:40:39 CEST] Viktor Stärn: ingenting egentligen, bara rejected
+[kl. 13:40:39 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 13:40:41 CEST] * Viktor Stärn sent file "2.jpg"
+[kl. 13:43:15 CEST] di98jgu: Ah, - Du måste göra fetch från GitHub, det är din källa.
+[kl. 13:43:39 CEST] di98jgu: Så Källa GitHub master - Mål den katalog master.
+[kl. 13:43:54 CEST] di98jgu: din katalog master - Menar jag.
+[kl. 13:44:58 CEST] Viktor Stärn: hmm, finns bara lokala alternativ
+[kl. 13:45:01 CEST] Viktor Stärn: verkar det som
+[kl. 13:45:42 CEST] di98jgu: Ingen källa i still med refs/remotes/origin ?
+[kl. 13:46:26 CEST] Viktor Stärn: nä, de ligger under destination... varför gör de det när jag använder fetch... skumt
+[kl. 13:46:41 CEST] Viktor Stärn: men om jag vänder på det då
+[kl. 13:46:54 CEST] Viktor Stärn: destination master source testbranch2?
+[kl. 13:47:19 CEST] di98jgu: Låter inte som en bra idé.
+[kl. 13:47:34 CEST] di98jgu: Du får läsa på helt enkelt.
+[kl. 13:47:57 CEST] di98jgu: Jag arbetar på Application object och hur det fungera.
+[kl. 13:48:20 CEST] Viktor Stärn: ok, kollar vidare på detta då
+[kl. 13:48:25 CEST] di98jgu: Fundera på om du kan hämta hem en terminal verison av git.
+[kl. 13:48:40 CEST] di98jgu: Då kan jag mycket enklare hjälp till.
+[kl. 13:48:57 CEST] Viktor Stärn: ok
+[kl. 13:49:25 CEST] di98jgu: Man får dessutom lite mer vettiga felmedelande.
+[kl. 13:49:55 CEST] di98jgu: == Mer utförliga klagomål ;-)
+[kl. 13:50:25 CEST] di98jgu: Så något mer på agendan för denna dag ?
+[kl. 13:51:16 CEST] Viktor Stärn: :)
+[kl. 13:51:21 CEST] Viktor Stärn: nä, det tror jag inte
+[kl. 13:51:25 CEST] Viktor Stärn: isåfall hamnar det här lite senare
+[kl. 13:51:39 CEST] di98jgu: Låter som en god idé...
+[kl. 13:51:55 CEST] di98jgu: Då pysslar vi vidare tills imorgon... :-)
+[kl. 13:52:28 CEST] Viktor Stärn: gör vi!
+[kl. 13:52:29 CEST] Viktor Stärn: ses imorgon :)
+[kl. 13:52:36 CEST] di98jgu: Ses (wave)
