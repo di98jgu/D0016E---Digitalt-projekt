@@ -34,4 +34,15 @@ public class SSCPosition {
       this.longitude = longitude;
    }
    
+   @Override
+   public String toString() {
+      
+      String str = 
+         "Latitude: " + String.valueOf(this.latitude) +
+         " Longitude: " + String.valueOf(this.longitude);
+      
+      return str;
+      
+   }
+   
 }

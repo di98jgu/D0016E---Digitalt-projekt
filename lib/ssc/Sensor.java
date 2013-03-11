@@ -4,12 +4,13 @@ package ssc;
  * @author Jim Gunnarsson
  */
  
-import java.util.*;
-import org.json.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Sensor {
-   
-   private SSCResources resource = new SSCResources();
    
    /** Max length for field location */
    private static final int LOCATION_LENGTH = 128;
@@ -45,40 +46,48 @@ public class Sensor {
     * 
     */
    public Sensor(JSONObject obj) {
-      
-      this.serial = 
-         obj.getString(SSCResources.Field.SERIAL);
-      
-      this.name = truncate(
-         obj.getString(SSCResources.Field.NAME), NAME_LENGTH);
+
+      try {
          
-      this.location = truncate(
-         obj.getString(SSCResources.Field.LOCATION), LOCATION_LENGTH);
+         this.serial = 
+            obj.getString(SSCResources.Field.SERIAL);
          
-      this.position = new SSCPosition(
-         obj.getDouble(SSCResources.Field.LATITUDE),
-         obj.getDouble(SSCResources.Field.LONGITUDE));
+         this.name = truncate(
+            obj.getString(SSCResources.Field.NAME), NAME_LENGTH);
+            
+         this.location = truncate(
+            obj.getString(SSCResources.Field.LOCATION), LOCATION_LENGTH);
+            
+         this.position = new SSCPosition(
+            obj.getDouble(SSCResources.Field.LATITUDE),
+            obj.getDouble(SSCResources.Field.LONGITUDE));
+            
+         this.type_name = SSCResources.TypeName.getState(
+            obj.getString(SSCResources.Field.TYPE_NAME));
+            
+         this.deployed_state = SSCResources.DeployedState.getState(
+            obj.getString(SSCResources.Field.DEPLOYED_STATE));
+            
+         String v = obj.getString(SSCResources.Field.VISIBILITY);
+         this.visibility = (v == "1")? true: false;
          
-      this.type_name = SSCResources.TypeName.getState(
-         obj.getString(SSCResources.Field.TYPE_NAME));
+         this.info = truncate(
+            obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
+            
+         this.domain = 
+            obj.getString(SSCResources.Field.DOMAIN);
          
-      this.deployed_state = SSCResources.DeployedState.getState(
-         obj.getString(SSCResources.Field.DEPLOYED_STATE));
+         this.created = new SSCTimeUnit(
+            obj.getString(SSCResources.Field.CREATED));
+            
+         this.updated = new SSCTimeUnit(
+            obj.getString(SSCResources.Field.UPDATED));
          
-      String v = obj.getString(SSCResources.Field.VISIBILITY);
-      this.visibility = (v == "1")? true: false;
-      
-      this.info = truncate(
-         obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
+      } catch (org.json.JSONException e) {
          
-      this.domain = 
-         obj.getString(SSCResources.Field.DOMAIN);
-      
-      this.created = new SSCTimeUnit(
-         obj.getString(SSCResources.Field.CREATED));
+         throw new SSCException.MalformedData(e);
          
-      this.updated = new SSCTimeUnit(
-         obj.getString(SSCResources.Field.UPDATED));
+      }
       
    }
    
@@ -88,11 +97,19 @@ public class Sensor {
    public static List<Sensor> getSensors(JSONArray obj_array) {
       
       List<Sensor> sensors = new ArrayList<Sensor>();
-        
-      for (int i = 0; i < obj_array.length(); i++) {
+      
+      try {
          
-         JSONObject obj = obj_array.getJSONObject(i);
-         sensors.add(new Sensor(obj));
+         for (int i = 0; i < obj_array.length(); i++) {
+            
+            JSONObject obj = obj_array.getJSONObject(i);
+            sensors.add(new Sensor(obj));
+         }
+         
+      } catch (org.json.JSONException e) {
+         
+         throw new SSCException.MalformedData(e);
+         
       }
         
       return sensors;

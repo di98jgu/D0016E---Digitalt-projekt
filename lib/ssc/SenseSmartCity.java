@@ -4,20 +4,22 @@ package ssc;
  * @author Jim Gunnarsson
  */
 
-import java.util.*;
-import org.json.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
  
 public class SenseSmartCity {
    
    private final RestfulClient ssc_client;
-
-   private SSCResources resource = new SSCResources();
   
    private String user = null;
    private String pwd = null;
-   
-   private Map<Sensor, List<SnowPressure>> snowdata = null;
    
    /**
     * 
@@ -117,7 +119,7 @@ public class SenseSmartCity {
       
       List<String> serials = new ArrayList<String>();
 
-      Iterator i = sensors.iterator();
+      Iterator<Sensor> i = sensors.iterator();
       
       while (i.hasNext()) {
          
@@ -192,16 +194,24 @@ public class SenseSmartCity {
       Map<Sensor, List<SnowPressure>> readings = 
          new HashMap<Sensor, List<SnowPressure>>();
       
-      Iterator i = sensors.iterator();
+      Iterator<Sensor> i = sensors.iterator();
       
-      while (i.hasNext()) {
+      try {
          
-         Sensor sensor = (Sensor) i.next();
-         JSONArray fields = data.getJSONArray(sensor.getSerial());
-         List<SnowPressure> snowdata = 
-            SnowPressure.getSnowPressure(sensor.getSerial(), fields);
+         while (i.hasNext()) {
             
-         readings.put(sensor, snowdata);
+            Sensor sensor = (Sensor) i.next();
+            JSONArray fields = data.getJSONArray(sensor.getSerial());
+            List<SnowPressure> snowdata = 
+               SnowPressure.getSnowPressure(sensor.getSerial(), fields);
+               
+            readings.put(sensor, snowdata);
+            
+         }
+      
+      } catch (org.json.JSONException e) {
+         
+         throw new SSCException.MalformedData(e);
          
       }
          

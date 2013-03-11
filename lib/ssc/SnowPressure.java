@@ -4,13 +4,13 @@ package ssc;
  * @author Jim Gunnarsson
  */
  
-import java.util.*;
-import org.json.*;
-import java.lang.Math;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class SnowPressure implements Comparable<SnowPressure> {
-   
-   private SSCResources resource = new SSCResources();
    
    /**  */
    private static final int INFO_LENGTH = 100;
@@ -44,39 +44,55 @@ public class SnowPressure implements Comparable<SnowPressure> {
       
       this.serial = sensor;
       
-      this.info = (obj.has(INFO))? 
-         truncate(obj.getString(INFO), INFO_LENGTH): "";
-      
-      this.shoveld = (obj.has(SHOVELD))? 
-         toBoolean(obj.getString(SHOVELD)): false;
-      
-      this.weight = (obj.has(WEIGHT))? 
-         obj.getInt(WEIGHT): 0;
-      
-      this.depth = (obj.has(DEPTH))? 
-         obj.getInt(DEPTH): 0;
-      
-      this.temperature = (obj.has(TEMP))? 
-         obj.getInt(TEMP): -273;
-      
-      this.humidity = (obj.has(HUMIDITY))? 
-         obj.getInt(HUMIDITY): 0;
-      
-      this.data_time = (obj.has(TIME))? 
-         new SSCTimeUnit(obj.getString(TIME)):
-         new SSCTimeUnit("1970-01-01 00:00:00");
+      try {
+         
+         this.info = (obj.has(INFO))? 
+            truncate(obj.getString(INFO), INFO_LENGTH): "";
+         
+         this.shoveld = (obj.has(SHOVELD))? 
+            toBoolean(obj.getString(SHOVELD)): false;
+         
+         this.weight = (obj.has(WEIGHT))? 
+            obj.getInt(WEIGHT): 0;
+         
+         this.depth = (obj.has(DEPTH))? 
+            obj.getInt(DEPTH): 0;
+         
+         this.temperature = (obj.has(TEMP))? 
+            obj.getInt(TEMP): -273;
+         
+         this.humidity = (obj.has(HUMIDITY))? 
+            obj.getInt(HUMIDITY): 0;
+         
+         this.data_time = (obj.has(TIME))? 
+            new SSCTimeUnit(obj.getString(TIME)):
+            new SSCTimeUnit("1970-01-01 00:00:00");
+         
+      } catch (org.json.JSONException e) {
+         
+         throw new SSCException.MalformedData(e);
+         
+      }
       
    }
    
    public static List<SnowPressure> getSnowPressure(
       String sensor, JSONArray obj_array) {
       
-       List<SnowPressure> snowdata = new ArrayList<SnowPressure>();
-        
-      for (int i = 0; i < obj_array.length(); i++) {
+      List<SnowPressure> snowdata = new ArrayList<SnowPressure>();
+      
+      try {
+      
+         for (int i = 0; i < obj_array.length(); i++) {
+            
+            JSONObject obj = obj_array.getJSONObject(i);
+            snowdata.add(new SnowPressure(sensor, obj));
+         }
+      
+      } catch (org.json.JSONException e) {
          
-         JSONObject obj = obj_array.getJSONObject(i);
-         snowdata.add(new SnowPressure(sensor, obj));
+         throw new SSCException.MalformedData(e);
+         
       }
         
       return snowdata;
@@ -182,8 +198,7 @@ public class SnowPressure implements Comparable<SnowPressure> {
     * object. 
     * 
     * @throws NullPointerException if specified reading is null
-    */
-   @Override 
+    */ 
    public int compareTo(SnowPressure obj) {
       
       if (obj == null) {

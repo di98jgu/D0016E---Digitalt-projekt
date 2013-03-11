@@ -19,15 +19,22 @@ package ssc;
  * @author Jim Gunnarsson
  */
 
-import java.io.*;
-
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLEncoder;
-import javax.net.ssl.*;
+import java.util.Iterator;
+import java.util.Map;
 
-import java.util.*;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
-import javax.xml.bind.DatatypeConverter;
+import android.util.Base64;
 
 class RestfulClient {
    
@@ -113,13 +120,12 @@ class RestfulClient {
    }
    
    /**
-    * Mangle the response code. If everything is fine, code 200, null
-    * is returned. If connection failed or server can't handle the
-    * request a error is thrown.
+    * Mangle the response code. If everything is fine, code 200, this method
+    * just return without any return value. If connection failed or server 
+    * can't handle the request a error is thrown. 
     * 
     * @param connection The URLConnection 
     * 
-    * @return Null if everything is fine else throw a error
     * @throws SSCException.ConnectionFailed Any code other then 
     * 200.
     * @throws SSCException.Mystery Errors unknown to us.
@@ -159,13 +165,20 @@ class RestfulClient {
     * @param user Username
     * @param pwd Password
     * 
-    * return Authentication string 
+    * @return Authentication string 
     */ 
-   private String basicAuth(String user, String pwd) {
-     
+   private String basicAuth(String user, String pwd) throws 
+      java.io.UnsupportedEncodingException {
+      
+      /* DatatypeConverter don't exist under Android
       String secret = user + ":" + pwd;
       String auth = "Basic " + 
          DatatypeConverter.printBase64Binary(secret.getBytes());
+      */
+      
+      String secret = user + ":" + pwd;
+      String auth = "Basic " + 
+            Base64.encodeToString(secret.getBytes("UTF-8"), Base64.NO_WRAP);
             
       return auth;
      
@@ -187,11 +200,11 @@ class RestfulClient {
       
       String request_str = "";
 
-      Iterator i = request.entrySet().iterator();
+      Iterator<Map.Entry<String, String>> i = request.entrySet().iterator();
       
       while (i.hasNext()) {
          
-         Map.Entry p = (Map.Entry) i.next();
+         Map.Entry<String, String> p = i.next();
          
          if (p.getValue() == null) {
             continue;
