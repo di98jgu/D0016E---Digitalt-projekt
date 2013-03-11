@@ -1,1 +1,31 @@
+<<<<<<< HEAD
 /bin
+=======
+# Myself
+.gitignore
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Sandbox projects
+tfk11jgs.rista.Gallery
+
+# Eclipse project files
+.metadata
+.classpath
+.project
+>>>>>>> refs/remotes/choose_remote_name/TestBranch2

@@ -1,0 +1,294 @@
+måndagen den 11:e februari 2013
+[kl. 12:46:06 CEST] Tord Larsson: Hej
+[kl. 12:46:34 CEST] di98jgu: Hej
+[kl. 12:46:35 CEST] Viktor Stärn: Hej!
+Har lagt upp lite nya bilder.. tyckte det blev bättre med Tords ikon. Gjorde också en dashboard-vy, tyckte det kändes lite onödigt med tanke på hur lite funktionalitet vi har, men det blir kanske snyggare/mer intiutivt.
+[kl. 12:47:00 CEST] Tord Larsson: Viktor, har du skickat upp med git gui eller terminal?
+[kl. 12:47:07 CEST] di98jgu: Har precis lagt upp UML diagram.
+[kl. 12:47:13 CEST] Viktor Stärn: via gui i eclipse
+[kl. 12:47:57 CEST] Tord Larsson: Ja ok. Det kommer jag behöva lära mig hur man gör.
+[kl. 12:48:25 CEST] Tord Larsson: Jag försökte via gui som vanligt men är nog fel på mitt program. Följde guider och blev inte rätt.
+[kl. 12:50:04 CEST] Viktor Stärn: ok :/ jag importerade projektet med adressen på github, sen la jag bildfilerna i rätt mapp i min lokala version.. refresh i eclipse, commit och push...
+[kl. 12:50:38 CEST] Viktor Stärn: tror inte det var fler steg iaf
+[kl. 12:51:35 CEST] Tord Larsson: Så man lägger till gitmappen i workspace?
+[kl. 12:52:11 CEST] di98jgu: Vitor, en liten bild serie kanske. :-)
+[kl. 12:52:29 CEST] di98jgu: Sorry Viktor menar jag.
+[kl. 12:53:02 CEST] Viktor Stärn: bildserie? hur menar du? :)
+[kl. 12:53:31 CEST] di98jgu: Om att använda Git från Eclipse.
+[kl. 12:53:46 CEST] Viktor Stärn: aha, då e jag med :)
+[kl. 12:54:07 CEST] Viktor Stärn: ska jag nog kunna fixa..
+[kl. 12:55:11 CEST] di98jgu: En sak som som han sa i filmen om Git var att man skapar en gren som man arbetar med och send merge med huvudgrenen, master.
+[kl. 12:57:48 CEST] Tord Larsson: Hur var det nu med att alla skulle göra en lista. Är det fortfarande aktuellt?
+[kl. 12:58:12 CEST] di98jgu: Listan är där på SeeNowDo.
+[kl. 12:58:21 CEST] di98jgu: Den är inte huggen i sten.
+[kl. 12:58:59 CEST] di98jgu: Jag har ändrat lite i och med att jag gjorde UML diagramet.
+[kl. 12:59:09 CEST] di98jgu: Diagramet ligger på GitHub.
+[kl. 13:00:16 CEST] di98jgu: Jag har också bjudit in Daniel på bägge ställerna, se han kan se vad vi pysslar med. :-)
+[kl. 13:01:23 CEST] di98jgu: Föresten, det är ok att jag lägger ut möterna på GitHub ? Tänkte det kunnde vara bra att ha när vi sen skriver på dokumentationen.
+[kl. 13:01:36 CEST] Tord Larsson: Jaja , går bra
+[kl. 13:02:06 CEST] Viktor Stärn: yes, bra idé
+[kl. 13:02:56 CEST] * Viktor Stärn sent file "GitEclipse.zip"
+[kl. 13:03:15 CEST] Viktor Stärn: mellan 4 och 5 har jag alltså lagt bilderna i mappen i den lokala databasen
+[kl. 13:08:40 CEST] di98jgu: Fint, jag hänger med.
+[kl. 13:10:51 CEST] di98jgu: Fast gör först en fetch innan push.
+[kl. 13:12:03 CEST] Tord Larsson: Jag har inte git som en möjlighet under import.
+[kl. 13:14:09 CEST] Tord Larsson: Har ni installerat nåt vid sidan om eller ni fick det automatiskt?
+[kl. 13:14:48 CEST] di98jgu: Det har inte jag heller, använder version: 3.7.2.
+[kl. 13:15:33 CEST] di98jgu: Plugin kanske ?
+[kl. 13:15:47 CEST] Viktor Stärn: jag har Juno, fick installera med den här rep:en:  http://download.eclipse.org/releases/juno
+[kl. 13:15:54 CEST] Viktor Stärn: har jag för mig
+[kl. 13:17:36 CEST] Viktor Stärn: Help -> Install new software -> http://download.eclipse.org/releases/juno -> Egit
+[kl. 13:24:03 CEST] Tord Larsson: Ja det fanns där
+[kl. 13:24:19 CEST] Tord Larsson: Fanns många som hette egit, så jag satte allihop i installation
+[kl. 13:24:41 CEST] Tord Larsson: Nu finns git under import
+[kl. 13:25:14 CEST] Viktor Stärn: stiligt! borde det ju fungera tycker man..
+[kl. 13:25:49 CEST] di98jgu: Fint :-)
+[kl. 13:27:17 CEST] di98jgu: Vi behöver prata lite om vad som ska göras, det är dags att skriva lite kod. :-)
+[kl. 13:28:13 CEST] di98jgu: Jag har uppdaterat SeeNowDo och lagt i UML-diagram under design på GitHub.
+[kl. 13:29:05 CEST] di98jgu: Det blir tre prydliga bitar, plus en fjärde som extra.
+[kl. 13:31:23 CEST] Viktor Stärn: jag kan ta listan om ingen börjat med den
+[kl. 13:31:52 CEST] Tord Larsson: git funkade inte jag provar starta om
+[kl. 13:33:03 CEST] di98jgu: Fint, ni förstår UML-diagramet ?
+[kl. 13:33:45 CEST] Viktor Stärn: var hittar jag det? kollade igenom materialet som är märkt "added UML..." men tyckte mig inte hitta något diagram?
+[kl. 13:34:34 CEST] di98jgu: Under design på GitHub.
+[kl. 13:34:50 CEST] di98jgu: UML_130211.png
+[kl. 13:35:13 CEST] di98jgu: Det är enkelt men det mer tänkt att visa tårtbitarna.
+[kl. 13:36:28 CEST] Viktor Stärn: RowAdp vet jag inte riktigt vad det syftar till, men annars är det väl klart... klarnar nog när jag börjar koda annars
+[kl. 13:37:26 CEST] di98jgu: I korthet, listan är autogenererad. Du behöver en adapter för att hantera det, fylla varje rad med information.
+[kl. 13:38:11 CEST] di98jgu: Varje rad har en speciel klass, container, RowAdp.
+[kl. 13:38:32 CEST] di98jgu: eller RowContainer kanske är bättre.
+[kl. 13:38:47 CEST] Viktor Stärn: ok
+[kl. 13:39:02 CEST] Tord Larsson: Giten funkar fortfarande inte för mig. Detta är frustrerande.
+[kl. 13:39:33 CEST] Viktor Stärn: startat om eclipse?
+[kl. 13:39:44 CEST] Viktor Stärn: behöver man kanske inte i linux iofs :)
+[kl. 13:39:46 CEST] Tord Larsson: Ja och datorn
+[kl. 13:39:50 CEST] Viktor Stärn: ah.. :/
+[kl. 13:40:03 CEST] Tord Larsson: Jag har en windowsdata till denna kursen.
+[kl. 13:40:32 CEST] Tord Larsson: Bärbar bredvid mig.
+[kl. 13:40:57 CEST] di98jgu: Hmm, på vilket av Viktors foton är du ?
+[kl. 13:41:11 CEST] di98jgu: Alltså hur långt har du kommit.
+[kl. 13:41:58 CEST] Tord Larsson: När jag trycker next på bild 4
+[kl. 13:42:17 CEST] Tord Larsson: Kommer ett långt rött felmeddelande
+[kl. 13:43:40 CEST] Tord Larsson: Förresten. I vilka filer ska vi koda? De som ligger under se.ltu.dicnic?
+[kl. 13:45:53 CEST] di98jgu: En tårtbit består av minst en activity under DicNix/src och en eller flera vyer under /res/layout
+[kl. 13:47:20 CEST] Tord Larsson: Ja ok.
+[kl. 13:48:32 CEST] Tord Larsson: Vad innefatta "location details"
+[kl. 13:49:17 CEST] di98jgu: Var hittar du den ?
+[kl. 13:49:27 CEST] Tord Larsson: Högst upp i not started
+[kl. 13:49:34 CEST] di98jgu: Sorry.
+[kl. 13:49:39 CEST] di98jgu: Hänger med
+[kl. 13:49:40 CEST] Tord Larsson: alla mätdata om viss plats.
+[kl. 13:49:45 CEST] di98jgu: Precis
+[kl. 13:50:02 CEST] Tord Larsson: Jomen va ska jag göra om jag tar den uppgiften?
+[kl. 13:50:18 CEST] Tord Larsson: Skapa en klass som har strängparametrar?
+[kl. 13:50:42 CEST] di98jgu: Tänkte som så, att den som tar den tittar också på actionbar.
+[kl. 13:51:24 CEST] di98jgu: Det är lite små struligt att ha actionbar i API 10, kommer inbyggt först i 11 an.
+[kl. 13:52:08 CEST] di98jgu: Men hittade följande:
+https://github.com/johannilsson/android-actionbar
+[kl. 13:52:34 CEST] di98jgu: Om dashboard hittade jag:
+[kl. 13:52:45 CEST] di98jgu: http://blahti.wordpress.com/2011/03/14/build-dashboard-ui-for-android/
+[kl. 13:54:15 CEST] Tord Larsson: Jag kan ge det ett försök
+[kl. 13:54:54 CEST] di98jgu: Jupp, fast först details kanse då ser vi att alla delar liksom fungera.
+[kl. 13:56:31 CEST] di98jgu: En sak till, la till CODE STYLE i README.
+[kl. 13:56:56 CEST] di98jgu: Tänkte att vore en bra idé om vi har vissa grundregler.
+[kl. 13:57:59 CEST] di98jgu: Vad tror ni ?
+[kl. 13:58:33 CEST] Tord Larsson: Ja
+[kl. 13:59:50 CEST] Viktor Stärn: Ja, det är väl bäst
+[kl. 14:00:20 CEST] di98jgu: :-)
+[kl. 14:01:05 CEST] di98jgu: Något mer ?
+[kl. 14:01:37 CEST] Viktor Stärn: inte för tillfället :)
+[kl. 14:02:02 CEST] di98jgu: Tord hur går det med git.
+[kl. 14:02:11 CEST] Tord Larsson: Nope , får inte igång det.
+[kl. 14:02:29 CEST] di98jgu: Hmm, och medelandet ?
+[kl. 14:03:12 CEST] Tord Larsson: Men jag kan importera från en gitmapp.
+[kl. 14:03:29 CEST] Tord Larsson: Och git gui kan jag hämta med men inte skicka.
+[kl. 14:04:02 CEST] di98jgu: Men jag såg in gren master/ikoner som jag tror att du la till.
+[kl. 14:04:20 CEST] di98jgu: eller ikonerna.
+[kl. 14:05:08 CEST] Tord Larsson: Ja men filerna kom inte med.
+[kl. 14:05:53 CEST] di98jgu: Har du möjlighet att köra git i terminal ?
+[kl. 14:06:58 CEST] Tord Larsson: Ja , ett program ingick som heter git bash
+[kl. 14:07:13 CEST] di98jgu: Ok så kör igång det.
+[kl. 14:07:21 CEST] Tord Larsson: Ja det är igång
+[kl. 14:07:44 CEST] di98jgu: Låt oss prova följande: "git status"
+[kl. 14:08:28 CEST] Tord Larsson: fatal: not a git repository (or any of the parent directories): .git
+[kl. 14:08:40 CEST] Tord Larsson: Jag har min gitmapp på skrivbordet ,
+[kl. 14:10:18 CEST] di98jgu: Gå till en tom katalog och kör "git init"
+[kl. 14:11:11 CEST] Tord Larsson: Gjort
+[kl. 14:11:22 CEST] di98jgu: Fint nu git status
+[kl. 14:11:40 CEST] Tord Larsson: on branch master
+[kl. 14:11:46 CEST] Tord Larsson: initial commit
+[kl. 14:11:51 CEST] Tord Larsson: nothing to commit
+[kl. 14:13:11 CEST] di98jgu: Nu git clone https://github.com/di98jgu/D0016E---Digitalt-projekt.git
+[kl. 14:13:28 CEST] Tord Larsson: mm cribblings
+[kl. 14:13:57 CEST] Tord Larsson: clone nu?
+[kl. 14:14:09 CEST] di98jgu: Yupp
+[kl. 14:14:18 CEST] di98jgu: Kör clone
+[kl. 14:14:42 CEST] Tord Larsson: ska adressen vara med [] eller är det bara som du har skrivit så i texten?
+[kl. 14:15:34 CEST] di98jgu: Kopiera o klistra in bör fungera.
+[kl. 14:15:49 CEST] di98jgu: Jag kör samma kommandon här.
+[kl. 14:15:56 CEST] Tord Larsson: Gick inte att klistra in, sitter och skriver det
+[kl. 14:16:01 CEST] di98jgu: Okej.
+[kl. 14:16:33 CEST] di98jgu: Teckenkodning antagligen.
+[kl. 14:16:49 CEST] di98jgu: Jag använder UTF-8 :-/
+[kl. 14:17:17 CEST] Tord Larsson: Det gick att hämta
+[kl. 14:17:23 CEST] Tord Larsson: Ska jag prova lägga med en fil?
+[kl. 14:17:43 CEST] di98jgu: Ja gör så läg till en fil.
+[kl. 14:18:34 CEST] Tord Larsson: push direkt eller skulle den jämföra det gamla på servern mot det nya?
+[kl. 14:18:59 CEST] di98jgu: Nix nu git status
+[kl. 14:19:38 CEST] Tord Larsson: Nä den ser inte filen jag lagt till
+[kl. 14:20:14 CEST] Tord Larsson: Står on branch master 
+initial commit
+untracked files(use"git add file)
+[kl. 14:20:41 CEST] Tord Larsson: nothing added to commit but untracked files present.
+[kl. 14:20:51 CEST] di98jgu: Perfect :-)
+[kl. 14:21:30 CEST] di98jgu: En untract file, är en fil som git ser men som inte finns i dess "minne".
+[kl. 14:21:40 CEST] Tord Larsson: så add?
+[kl. 14:21:45 CEST] di98jgu: Nu gör git add *
+[kl. 14:22:16 CEST] di98jgu: Och sen git status.
+[kl. 14:24:57 CEST] di98jgu: Problem ?
+[kl. 14:25:20 CEST] Tord Larsson: Får syntaxerror
+[kl. 14:25:48 CEST] di98jgu: Okej, tycker inte om stjärna.
+[kl. 14:26:08 CEST] di98jgu: gör git /folder/myfile istället.
+[kl. 14:26:35 CEST] Tord Larsson: fatal pathspec 'testgit.txt' did not match any files
+[kl. 14:27:36 CEST] di98jgu: Var det med stjärna eller utan ?
+[kl. 14:28:31 CEST] Tord Larsson: När jag gjorde med stjärna så ändrades statusen nu
+[kl. 14:28:43 CEST] Tord Larsson: changes to be commited.
+[kl. 14:29:13 CEST] Tord Larsson: Men man vill ju kunna göra det med hela projektet sen. Med många filer.
+[kl. 14:29:48 CEST] di98jgu: Med stjärna så säger du allt.
+[kl. 14:30:34 CEST] Tord Larsson: Jag skrev git commit och då kom en ruta upp
+[kl. 14:30:47 CEST] Tord Larsson: please enter a message.... , hur kommer jag förbi det?
+[kl. 14:31:07 CEST] di98jgu: Skulle precis komma till det.
+[kl. 14:31:46 CEST] di98jgu: Prova och se om du kan skriva kolon ":" sen q enter.
+[kl. 14:32:19 CEST] Tord Larsson: no write sinve last change (add ! to overrid2)
+[kl. 14:32:32 CEST] di98jgu: Utmärkt.
+[kl. 14:32:47 CEST] di98jgu: Det var vi som du besökte.
+[kl. 14:32:55 CEST] di98jgu: En text editor.
+[kl. 14:33:20 CEST] di98jgu: Skriv nu git commit -m "A nice message here"
+[kl. 14:33:34 CEST] Tord Larsson: Jag har inte kommit ur den sidan
+[kl. 14:34:30 CEST] di98jgu: Kolon ":" ger dig ingen promt nere i hörnet ?
+[kl. 14:35:02 CEST] Tord Larsson: Nä inte nu längre det gjorde det den första gången. Nu kan jag ändra texten bara
+[kl. 14:35:27 CEST] di98jgu: Tryck "Esc"
+[kl. 14:36:06 CEST] Tord Larsson: Detta är ju mycket omständigare än om vi hade skickat via skype.
+[kl. 14:36:30 CEST] Tord Larsson: Ja då gav kolon resultat , jag har nu skrivit git commit -m "a nice message here"
+[kl. 14:37:18 CEST] di98jgu: Och vad ger git status ?
+[kl. 14:37:49 CEST] Tord Larsson: not an editor command_ git status
+[kl. 14:38:05 CEST] di98jgu: Ah ok du är inte ute ännu.
+[kl. 14:38:31 CEST] di98jgu: Nere till höger vad står där ?
+[kl. 14:38:42 CEST] di98jgu: Command eller Insert eller.
+[kl. 14:38:43 CEST] Tord Larsson: 18,1 all
+[kl. 14:38:59 CEST] di98jgu: Tryck nu "Esc" till det står kommand.
+[kl. 14:39:00 CEST] Tord Larsson: insert nu
+[kl. 14:39:28 CEST] Tord Larsson: tryckt ungefär 20 gånger och det står inte command
+[kl. 14:41:39 CEST] di98jgu: Vad står det nu.
+[kl. 14:41:55 CEST] Tord Larsson: står inget, blankt
+[kl. 14:42:30 CEST] di98jgu: Tryck ":" får du en prompt längst ned till vänster ?
+[kl. 14:42:36 CEST] Tord Larsson: ja
+[kl. 14:42:45 CEST] di98jgu: Tryck "q" sen enter.
+[kl. 14:42:59 CEST] Tord Larsson: no write since last change
+[kl. 14:46:33 CEST] di98jgu: Ok, mitt fel. Skriv ":" igen.
+[kl. 14:46:41 CEST] di98jgu: Får du en promt?
+[kl. 14:46:51 CEST] Tord Larsson: Ja jag kan skriva nere i hörnet
+[kl. 14:47:05 CEST] di98jgu: Skriv "q!"
+[kl. 14:47:14 CEST] Tord Larsson: JA!
+[kl. 14:47:22 CEST] Tord Larsson: Nu är jag ute
+[kl. 14:47:31 CEST] di98jgu: (ninja) :-)
+[kl. 14:47:40 CEST] Tord Larsson: Men status säger fortfarande ner file.
+[kl. 14:47:46 CEST] Tord Larsson: Så commiten funkade inte.
+[kl. 14:48:07 CEST] Tord Larsson: new*
+[kl. 14:48:12 CEST] di98jgu: Okej jag ska uppdatera cribbings.
+[kl. 14:48:18 CEST] di98jgu: Låt oss fortsätta.
+[kl. 14:48:33 CEST] di98jgu: Nu ska du skriva git commit -m "My message"
+[kl. 14:49:23 CEST] Tord Larsson: 1 file changed 1 insertion
+[kl. 14:49:42 CEST] di98jgu: Ja - nu git status
+[kl. 14:50:08 CEST] Tord Larsson: changes not staged for commit
+[kl. 14:50:35 CEST] Tord Larsson: no changes added to commit
+[kl. 14:50:59 CEST] di98jgu: Och det står "On branch master"
+[kl. 14:51:04 CEST] Tord Larsson: Ja
+[kl. 14:51:50 CEST] di98jgu: Fint nu ska du göra en push, alltså git push origin master
+[kl. 14:52:33 CEST] Tord Larsson: "git push origin master" ?
+[kl. 14:52:40 CEST] Tord Larsson: eller adressen?
+[kl. 14:52:50 CEST] di98jgu: Jag vet det låter kryptiskt.
+[kl. 14:52:58 CEST] Tord Larsson: Det gav fel
+[kl. 14:53:29 CEST] Tord Larsson: fatal: 'origin' does not appear to be a git repository
+[kl. 14:53:31 CEST] Tord Larsson: och
+[kl. 14:53:42 CEST] Tord Larsson: fata: could not read from remote repository
+[kl. 14:54:01 CEST] Tord Larsson: Jag kanske har fel på min dator eller git-programmet.
+[kl. 14:54:07 CEST] Tord Larsson: Har ni routrar?
+[kl. 14:56:02 CEST] Tord Larsson: please make sure you have the correct acces rights.
+[kl. 14:56:10 CEST] Tord Larsson: Man måste kanske logga in?
+[kl. 14:56:26 CEST] Tord Larsson: git name och git mail
+[kl. 14:56:44 CEST] di98jgu: Låt oss ställa in det.
+[kl. 14:57:11 CEST] di98jgu: Kör git config --global user.name "Din nick"
+[kl. 14:57:30 CEST] di98jgu: git config --global user.email "Den e-mail"
+[kl. 14:57:53 CEST] di98jgu: Detta visar vem du är som gjort ändringen.
+[kl. 14:58:23 CEST] Tord Larsson: gjort
+[kl. 14:58:32 CEST] Tord Larsson: inga felmeddelanden
+[kl. 14:58:56 CEST] di98jgu: Ok kör nu git push origin master
+[kl. 14:59:11 CEST] Tord Larsson: nä samma fel
+[kl. 14:59:21 CEST] di98jgu: Vad är felet ?
+[kl. 14:59:45 CEST] Tord Larsson: origin does not appear to be a git repository
+[kl. 15:00:04 CEST] Tord Larsson: could not read from remote repository
+[kl. 15:00:23 CEST] Tord Larsson: please make sure you have the correct acces..
+[kl. 15:00:29 CEST] di98jgu: Ok, så se om "tree -a" fungera.
+[kl. 15:01:15 CEST] Tord Larsson: istället för origin master?
+[kl. 15:01:44 CEST] di98jgu: Jag undra vad origin heter på din dator eller om den ens finns.
+[kl. 15:02:07 CEST] di98jgu: Så därför "tree -a" för att få ett fint träd över alla filer.
+[kl. 15:02:21 CEST] Tord Larsson: det blev felmeddelande på bara tree -a
+[kl. 15:02:36 CEST] di98jgu: Ah okänt kommando ?
+[kl. 15:02:39 CEST] Tord Larsson: Ja
+[kl. 15:05:09 CEST] Tord Larsson: vad heter vår repository?
+[kl. 15:06:18 CEST] di98jgu: Vänta, prova att gå in i git katalogen, den är gömd men ska finnas där
+[kl. 15:06:38 CEST] Tord Larsson: är inne i mappen
+[kl. 15:06:58 CEST] Tord Larsson: ~/gitmapp (master)
+[kl. 15:07:11 CEST] di98jgu: Gå till ref > remotes
+[kl. 15:07:11 CEST] Tord Larsson: Står ovanför där jag kan skriva.
+[kl. 15:07:55 CEST] Tord Larsson: cd ref funkade inte
+[kl. 15:08:34 CEST] Tord Larsson: och cd remotes gav felmeddelande.
+[kl. 15:08:46 CEST] di98jgu: Vi struntar i det gå tillbaka ur git katalogen.
+[kl. 15:08:58 CEST] Tord Larsson: ute
+[kl. 15:09:33 CEST] di98jgu: Nu kör git push https://github.com/di98jgu/D0016E---Digitalt-projekt.git master
+[kl. 15:10:13 CEST] di98jgu: Det är detta som origin står för, vår källa på GitHub.
+[kl. 15:10:48 CEST] Tord Larsson: push: command not found
+[kl. 15:11:27 CEST] di98jgu: Du skrev git först ?
+[kl. 15:11:32 CEST] di98jgu: git push ...
+[kl. 15:11:51 CEST] Tord Larsson: nä:D
+men det fungerar ändå inte
+[kl. 15:12:21 CEST] Tord Larsson: fatal: not a git repository (or any of the parent directories): .git
+[kl. 15:12:51 CEST] Tord Larsson: provade utan .git och gick inte heller.
+[kl. 15:13:28 CEST] di98jgu: Var exact står du, du måste stå i roten av projektet, Där README finns.
+[kl. 15:14:07 CEST] Tord Larsson: jag gick ju ut gitmappen tidigare
+[kl. 15:14:33 CEST] di98jgu: Så om du gör ls så ser du README ?
+[kl. 15:14:59 CEST] Tord Larsson: nä den säger bara D0016---...
+[kl. 15:15:07 CEST] di98jgu: Gå in i den.
+[kl. 15:16:00 CEST] Tord Larsson: fick logga in och nu står everything up to date
+[kl. 15:16:13 CEST] di98jgu: Vänta ...
+[kl. 15:16:43 CEST] Tord Larsson: Ingen ny fil på github
+[kl. 15:17:43 CEST] di98jgu: Var la du till den ?
+[kl. 15:18:05 CEST] Tord Larsson: i mappen liksom git_cribblings.txt
+[kl. 15:18:19 CEST] Tord Larsson: Den kom inte med. Den heter testgit.txt och är tom.
+[kl. 15:18:47 CEST] di98jgu: Okej det är märkligt.
+[kl. 15:19:35 CEST] Tord Larsson: Ska vi strunta i det och ta det via skype?
+[kl. 15:20:01 CEST] di98jgu: Du kommer att behöva github senare, det är det som är problemet.
+[kl. 15:20:03 CEST] Tord Larsson: Jag kan ju skicka mina förändringar till nån av er och kan hämta aktualiteter själv.
+[kl. 15:20:10 CEST] Tord Larsson: Mm
+[kl. 15:21:00 CEST] di98jgu: Nå du kan hämta från github, det är viktigt, det viktigaste.
+[kl. 15:22:03 CEST] di98jgu: Så ja, det är klumpigt men om du se till att fungera localt så kan en av oss lägga till dina ändringar.
+[kl. 15:22:30 CEST] Tord Larsson: Det vore fint om det gick.
+[kl. 15:22:50 CEST] Tord Larsson: Ofta problem i vår utbildning med mjukvara.
+[kl. 15:23:37 CEST] di98jgu: Men jag kommer att lägga dagens skype. Om du inte är alldeles trött på allt så kan du göra ett nytt försök senare. :-/.
+[kl. 15:23:49 CEST] Tord Larsson: Ja.
+[kl. 15:24:10 CEST] di98jgu: Då har du också räddningsplanken för att komma ur VI. :-)
+[kl. 15:24:41 CEST] Tord Larsson: :q!
+[kl. 15:24:43 CEST] Tord Larsson: :D
+[kl. 15:24:46 CEST] di98jgu: :-D
+[kl. 15:25:13 CEST] di98jgu: Så dags för min dagliga runda. Ses :-)
+[kl. 15:25:25 CEST] Tord Larsson: Jag har ingen uppgift
+[kl. 15:25:57 CEST] di98jgu: Ah, du funderade på details och actionbar ?
+[kl. 15:25:58 CEST] Tord Larsson: ska jag ta dashboard?
+[kl. 15:26:04 CEST] di98jgu: :-)
+[kl. 15:26:23 CEST] di98jgu: Gör så så, så leker jag med details och actionbar.
+[kl. 15:26:31 CEST] Tord Larsson: Ja det kan jag göra.
+[kl. 15:27:02 CEST] di98jgu: Du tar dashboard ?
+[kl. 15:27:06 CEST] Tord Larsson: Ja
+[kl. 15:27:18 CEST] di98jgu: Fint ses (wave) :-)
+[kl. 15:27:30 CEST] Tord Larsson: ses
