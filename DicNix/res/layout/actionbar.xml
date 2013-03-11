@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--
+    Actionbar or titlebar for DicNix. This replace the normal titlebar
+    with a more usable home made actionbar.
+    -->
+
+    <LinearLayout
+        android:id="@+id/titlebar_actionbar"
+        style="@style/titlebar_main" >
+
+        <ImageView
+            android:id="@+id/titlebar_logo"
+            style="@style/titlebar_logo"
+            android:contentDescription="@string/titlebar_logo"
+            android:src="@drawable/ic_stat_dicnix" />
+
+        <TextView
+            android:id="@+id/titlebar_text"
+            style="@style/titlebar_text"
+            android:text="@string/titlebar_text" />
+    </LinearLayout>
+
+</merge>

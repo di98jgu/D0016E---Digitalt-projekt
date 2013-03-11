@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-<color name="ice_blue">#61ace5</color>
+    <!-- FIXME: Move this to colors -->
+    <color name="ice_blue">#61ace5</color>
 
-    <style name="IceFullscreenTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen">
-  
+    <style name="IceFullscreenTheme" parent="android:Theme.Light.NoTitleBar"></style>
+
+    <!-- Replacement of titlebar, a actionbar to be -->
+    <style name="titlebar_main">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">5dip</item>
+        <item name="android:paddingRight">5dip</item>
+        <item name="android:background">@color/skyblue_dark</item>
     </style>
-    
+
+    <!-- The home button, get user to dashboard -->
+    <style name="titlebar_logo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:clickable">false</item>
+    </style>
+
+    <!-- Current user action -->
+    <style name="titlebar_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

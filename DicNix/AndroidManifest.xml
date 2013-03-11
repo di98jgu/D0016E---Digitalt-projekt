@@ -7,40 +7,33 @@
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="10" />
-    
-    <uses-permission 
-        android:name="android.permission.INTERNET" />
-    
-    <application
-        android:allowBackup="true"
-        android:name=".DicNixApp"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" 
-        android:theme="@style/IceFullscreenTheme">
 
-        
-        <activity android:name=".SplashScreenActivity">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".DicNixApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/IceFullscreenTheme" >
+        <activity android:name=".SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity 
-            android:name="se.ltu.dicnix.DashboardActivity" 
+        <activity
+            android:name="se.ltu.dicnix.DashboardActivity"
             android:label="@string/app_name" >
         </activity>
-        
-        <activity 
-            android:name="se.ltu.dicnix.ListViewActivity" 
+        <activity
+            android:name="se.ltu.dicnix.ListViewActivity"
             android:label="@string/app_name" >
         </activity>
-        
-        <activity 
-            android:name="se.ltu.dicnix.LocationDetailsActivity" 
-            android:label="@string/app_name">
+        <activity
+            android:name="se.ltu.dicnix.LocationDetailsActivity"
+            android:label="@string/app_name" >
         </activity>
-        
     </application>
 
 </manifest>

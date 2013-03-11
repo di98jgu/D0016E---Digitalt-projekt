@@ -2,6 +2,10 @@
    <string name="app_name">DicNix</string>
    <string name="button_back">Back</string>
    
+   <!-- Actionbar -->
+   <string name = "titlebar_text">DicNix</string>
+   <string name = "titlebar_logo">DicNix logo</string>
+   
    <!-- Location details -->
    <string name = "loc_details_snow_img">Location image</string>
    <string name = "loc_details_snow_a">Snowdata a</string>
