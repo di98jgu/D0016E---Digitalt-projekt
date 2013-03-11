@@ -1,0 +1,108 @@
+fredagen den 8:e mars 2013
+[kl. 12:59:24 CEST] di98jgu: Hej, allt väl ?
+[kl. 13:00:07 CEST] Viktor Stärn: Hej! Japp, allt väl... försöker bekanta mig med min nyinstallerade git-bash-terminal ;)
+[kl. 13:00:14 CEST] Viktor Stärn: Hur går det för dig?
+[kl. 13:01:18 CEST] di98jgu: Jodå har läst in mig på application object.
+[kl. 13:01:37 CEST] di98jgu: Det ska inte vara några större problem.
+[kl. 13:02:00 CEST] di98jgu: Tvärtom tror att det blir enklare.
+[kl. 13:03:38 CEST] di98jgu: Hjälp funktioner kan läggas där. Gemensama objekt som databas är också lämpligt att lägga där.
+[kl. 13:04:05 CEST] di98jgu: Databasen användes ju av de flesta av aktiviteterna.
+[kl. 13:05:33 CEST] Viktor Stärn: ok, ja application object ska vara ensamt om att kommunicera direkt med databasen menar du?
+[kl. 13:06:07 CEST] di98jgu: Mja mer att du ber application object om en referens till databasen.
+[kl. 13:06:38 CEST] di98jgu: Då behöver ju ett nytt databas object skapas i varje acktivitet.
+[kl. 13:06:48 CEST] di98jgu: inte skapas menar jag.
+[kl. 13:07:29 CEST] Viktor Stärn: ok
+[kl. 13:08:18 CEST] di98jgu: Skulle problem uppstå, exceptions, så händer det när appen startar o kan då hanteras med en gång.
+[kl. 13:08:51 CEST] Viktor Stärn: jasså? hur går det till?
+[kl. 13:09:06 CEST] Viktor Stärn: eller just för databasen tänker du då ja
+[kl. 13:09:41 CEST] di98jgu: Just så.
+[kl. 13:10:17 CEST] di98jgu: Blir det problem med databasen så är det bäst att det sker med en gång.
+[kl. 13:11:26 CEST] Viktor Stärn: ok, låter vettigt
+[kl. 13:11:51 CEST] Viktor Stärn: vad innebär det för den kod vi redan skrivit?
+[kl. 13:12:16 CEST] di98jgu: Inte mycket ett par rader behöver ändras det är allt.
+[kl. 13:13:18 CEST] Viktor Stärn: smidigt!
+[kl. 13:14:05 CEST] di98jgu: Yupp, det fina här är att all hantering av bibliotektet SSC sker i bakgrunden aldrig i någon aktivitet.
+[kl. 13:14:31 CEST] di98jgu: Aktiviterna arbetar alltid mot databasen.
+[kl. 13:15:13 CEST] di98jgu: De ser aldrig, de känner inte alls till, SSC.
+[kl. 13:16:00 CEST] Viktor Stärn: ok, ja det låter ju praktiskt
+[kl. 13:17:19 CEST] di98jgu: Vi kommer dock att behöva synkronisera databasen, bäst att det sker i Snowflake. Men det kommer sen.
+[kl. 13:17:29 CEST] di98jgu: Men hur går det för dig ?
+[kl. 13:17:41 CEST] di98jgu: Har lyckats att merga.
+[kl. 13:17:50 CEST] di98jgu: Har du lyckats menar jag.
+[kl. 13:18:36 CEST] Viktor Stärn: tänkte höra med dig om terminalen.. installerade git for windows.. git gui och git bash
+[kl. 13:18:58 CEST] Viktor Stärn: med git gui fick jag välja min git-folder så att den hittade mitt projekt
+[kl. 13:19:12 CEST] Viktor Stärn: men med git bash verkar det nästan som att det räcker med att jag ställer mig i rätt folder
+[kl. 13:19:13 CEST] Viktor Stärn: stämmer det?
+[kl. 13:19:22 CEST] di98jgu: Ja det gör det.
+[kl. 13:19:23 CEST] Viktor Stärn: den känner iaf igen vilken branch jag är i
+[kl. 13:19:40 CEST] Viktor Stärn: ok, har ställt in användarnamn och e-mail
+[kl. 13:19:54 CEST] Viktor Stärn: tänkte höra med dig om rätt kommandon/ordning för att göra fetch och merge
+[kl. 13:20:12 CEST] di98jgu: Okej fint så låt oss leka :-)
+[kl. 13:20:26 CEST] di98jgu: Jag öppna Terminal.
+[kl. 13:20:56 CEST] Viktor Stärn: :)
+[kl. 13:21:23 CEST] di98jgu: Kör git status
+[kl. 13:23:05 CEST] di98jgu: Vad säger den ?
+[kl. 13:25:26 CEST] Viktor Stärn: den radar upp en massa filer som "deleted" (verkar vara mest filer relaterade till splashscreen... projektet är intakt iaf... gjorde detta innan också)
+
+sen står det "no changes added to commit (use "git add" and/or "git commit -a")
+[kl. 13:26:17 CEST] di98jgu: Och överst står det "On branch Test..." någonting ?
+[kl. 13:27:19 CEST] Viktor Stärn: japp TestBranch2
+[kl. 13:28:04 CEST] di98jgu: Låt oss först add och commit ändringar.
+[kl. 13:28:20 CEST] di98jgu: Kör git add -u
+[kl. 13:29:03 CEST] di98jgu: Du behöver lägga till "-u" eftersom du har deletat filer.
+[kl. 13:29:04 CEST] Viktor Stärn: ok, ingen feedback på den
+[kl. 13:29:11 CEST] di98jgu: Nej det får du inte.
+[kl. 13:29:20 CEST] di98jgu: Nu kör git status
+[kl. 13:30:08 CEST] Viktor Stärn: nu blev det grön istället för rött... (alla "deleted: ..." posterna)
+[kl. 13:30:46 CEST] di98jgu: Och du har rad som säger "Changes to be committed...." ?
+[kl. 13:32:51 CEST] Viktor Stärn: ja, alla deleted-poster kommer efter den (och "(use "git reset HEAD <file>... " to unstage)")
+[kl. 13:33:40 CEST] di98jgu: Fint, saken är den att med git så talar du först om vad du vill göra.
+[kl. 13:34:16 CEST] di98jgu: Sen ber du git att utföra det du vill göra.
+[kl. 13:34:28 CEST] di98jgu: Det ska vi göra nu.
+[kl. 13:35:10 CEST] di98jgu: Så git commit -m "My commit message"
+[kl. 13:36:45 CEST] Viktor Stärn: ok
+[kl. 13:36:48 CEST] Viktor Stärn: done
+[kl. 13:37:40 CEST] di98jgu: Fint, så den sa "created node ..... "
+[kl. 13:37:48 CEST] di98jgu: Nu git status
+[kl. 13:41:19 CEST] di98jgu: Din skype har problem... (think)
+[kl. 13:51:51 CEST] di98jgu: Förskte väcka upp linjen.
+[kl. 13:52:55 CEST] di98jgu: Är du med ?
+[kl. 13:53:50 CEST] Viktor Stärn: aha, ja, jag är med!
+[kl. 13:53:56 CEST] di98jgu: Fint...
+[kl. 13:54:12 CEST] di98jgu: Okej så vi var vid git status efter commit...
+[kl. 13:54:28 CEST] di98jgu: Vad får du ?
+[kl. 13:54:45 CEST] Viktor Stärn: sa inget om created node dock...
+[kl. 13:54:50 CEST] Viktor Stärn: vad jag kan se iaf
+[kl. 13:55:44 CEST] di98jgu: Kan finnas skillnader, efter att jag har kört en commit så får jag "Created node...".
+[kl. 13:56:06 CEST] di98jgu: Men kör git status och kolla att allt är ok.
+[kl. 13:56:39 CEST] Viktor Stärn: On branch TestBranch2
+nothing to commit, working directory clean
+[kl. 13:56:57 CEST] Viktor Stärn: undra om jag har ställt in remote repository för den här
+[kl. 13:57:19 CEST] Viktor Stärn: har ju bara lagt till användarnamn och e-mail... inte adressen till github
+[kl. 13:57:39 CEST] di98jgu: Ska inte vara några problem, vi kommer till det strax.
+[kl. 13:57:53 CEST] di98jgu: Nu kör git checkout master
+[kl. 13:58:21 CEST] Viktor Stärn: ok done
+[kl. 13:58:36 CEST] di98jgu: Nu git fetch origin
+[kl. 14:00:01 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:02:38 CEST] di98jgu: Hmm... ok...
+[kl. 14:02:54 CEST] di98jgu: Vänta lite ska söka lite...
+[kl. 14:14:20 CEST] Viktor Stärn: jag måste iväg en vända, vi kanske kan fortsätta lite senare!
+[kl. 14:14:46 CEST] Viktor Stärn: tack för hjälpen så här långt iaf :)
+[kl. 14:15:12 CEST] di98jgu: Det är lungt...
+[kl. 14:16:08 CEST] di98jgu: Jag misstänker att du inte kan hämta data från GitHub då skillnaden mellan din lokal kopia och den uppströms är allt för stor.
+[kl. 14:16:58 CEST] di98jgu: Okej, vi gör så här skapa en ny katalog någon annanstans på din Hd.
+[kl. 14:17:11 CEST] di98jgu: En ren fin katalog.
+[kl. 14:21:21 CEST] di98jgu: Fortfarande där ?
+[kl. 14:22:19 CEST] di98jgu: Ah, läste inte....
+[kl. 14:23:09 CEST] di98jgu: Så vi ses senare, vid 20 ?
+[kl. 14:23:23 CEST] di98jgu: Jag kommer då omkring att vara på Skype.
+[kl. 14:29:35 CEST] di98jgu: Tågordning:
+- Skapa en ny katalog, utanför aktuellt projekt.
+- git clone https://github.com/di98jgu/D0016E---Digitalt-projekt.git
+- Ställ in namn o adress
+
+Du ska du ha den senaste versionen av vad som finns på GitHub. Gå tillbaka till den TestGren i ditt lokala projekt. Jämför de två, din testgren och master. Nu ska du ha två versioner av projektet en gammal med alla dina ändringar och ny som är i synk med GitHub.
+[kl. 14:30:32 CEST] di98jgu: Ses senare... (wave)
+[kl. 17:14:46 CEST] Viktor Stärn: kommer tyvärr inte kunna vara online vid 20, sticker hemifrån strax, men jag ska kolla på det här så fort jag får tid! :)
+
+

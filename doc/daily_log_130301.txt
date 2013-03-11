@@ -1,0 +1,31 @@
+fredagen den 1:e mars 2013
+[kl. 13:02:42 CEST] Viktor Stärn: Hej! Hur går det med fjärrdatabasen? Har varit mkt annat här så jag har inte hunnit kolla på tabell nr. 2.. får göra det nu.. men det går nog snabbt när jag väl kommer igång
+[kl. 13:03:36 CEST] di98jgu: Det går fint, har bestämt att Sense Smart City hamnar i eget bibliotek.
+[kl. 13:03:56 CEST] di98jgu: Vi hämtar in bibliteket i Android.
+[kl. 13:04:08 CEST] di98jgu: Det blir prydligast så.
+[kl. 13:05:38 CEST] di98jgu: Ringer, det återaktivera skype ibland.
+[kl. 13:05:59 CEST] di98jgu: Fungera inte.
+[kl. 13:12:46 CEST] di98jgu: Tillbaka,
+[kl. 13:15:19 CEST] Viktor Stärn: aha, ok, låter fint
+[kl. 13:15:26 CEST] Viktor Stärn: ligger det på github än?
+[kl. 13:17:20 CEST] di98jgu: En bild över biblioteket ligger under design.
+[kl. 13:17:50 CEST] di98jgu: Jag håller på att rulla ett ramverk.
+[kl. 13:19:19 CEST] Viktor Stärn: ok, ska kolla på den
+[kl. 13:19:54 CEST] di98jgu: Använder BOUML... man skapar ett diagram sen rullar man ett ramverk från det.
+[kl. 13:23:31 CEST] di98jgu: Okej, min tanke är den att över helgen så fixar du till databasen och lägger över lämplig kod till master. Jag skriver en första version av SSC biblioteket.
+[kl. 13:24:04 CEST] di98jgu: Sen kan vi klistra ihop de två med application object.
+[kl. 13:24:17 CEST] Viktor Stärn: ok, låter bra
+[kl. 13:25:52 CEST] Viktor Stärn: kollar på UML-diagrammet.. ser att det finns en metod getSnowPressure.. har tänkt på det innan (var den infon finns/blir av)... var presenterar vi det? vi har väl inga kolumner för det?
+[kl. 13:26:50 CEST] di98jgu: Snowdata == SnowPressure
+[kl. 13:27:40 CEST] Viktor Stärn: ok, så vi hanterar egentligen ingen data om snötryck? (än iaf) :)
+[kl. 13:28:25 CEST] di98jgu: Nja, du har en poäng här, det finns flera olika typer av sensorer.
+[kl. 13:29:16 CEST] di98jgu: Igenligen skulle Snowdata vara SnowPressure alternativt skulle SnowPressure ärva från Snowdata.
+[kl. 13:29:46 CEST] di98jgu: Men vi använder endast data från SnowPressure.
+[kl. 13:31:04 CEST] Viktor Stärn: ok
+[kl. 13:31:44 CEST] Viktor Stärn: men då kör vi på det i helgen? kan ju höras här om det är något
+[kl. 13:32:29 CEST] di98jgu: Visst, så planen är att vara redo för klistret på Måndag. :-)
+[kl. 13:32:44 CEST] Viktor Stärn: jepp :)
+[kl. 13:33:18 CEST] di98jgu: Okej, ska den här gång försöka hålla ett vakande öga på Skype, brukar sällan vara det.
+[kl. 13:33:37 CEST] Viktor Stärn: gör så :)
+[kl. 13:34:18 CEST] di98jgu: Ok ses (wave)
+[kl. 13:34:26 CEST] Viktor Stärn: ses! :)

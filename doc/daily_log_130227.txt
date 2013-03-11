@@ -1,0 +1,57 @@
+onsdagen den 27:e februari 2013
+[kl. 13:43:11 CEST] Viktor Stärn: har vi någon mer direkt plan of action?
+[kl. 13:43:19 CEST] Viktor Stärn: tills imorgon?
+[kl. 13:44:14 CEST] di98jgu: Läst API:et ?
+[kl. 13:44:27 CEST] Viktor Stärn: har vi någon mer direkt plan of action?
+[kl. 13:44:28 CEST] Viktor Stärn: meeen
+[kl. 13:44:33 CEST] Viktor Stärn: klistrar in fel saker här
+[kl. 13:44:43 CEST] Viktor Stärn: menar du det från Sense Smart City?
+[kl. 13:45:03 CEST] di98jgu: Japp, tänkte du kunde lägga till tabellen för Sensor.
+[kl. 13:45:20 CEST] di98jgu: Samma mönster som för Snowdata.
+[kl. 13:45:58 CEST] Viktor Stärn: blir det den andra tabellen då eller hur va det du sa?
+[kl. 13:46:22 CEST] di98jgu: Det blir två tabeler.
+[kl. 13:46:38 CEST] di98jgu: Snowdata och Snowsensor.
+[kl. 13:46:55 CEST] Viktor Stärn: ok
+[kl. 13:47:32 CEST] Viktor Stärn: så det ska läggas in ett testantal sensorer i en tabell?
+[kl. 13:47:54 CEST] di98jgu: Yupp, med foregin key till snowdata.
+[kl. 13:48:21 CEST] di98jgu: Antar att sensor serial blir lämpligt.
+[kl. 13:49:07 CEST] Viktor Stärn: ok, så varje sensor i sensortabellen har en snowdata tabell kopplad till sig via foreign key "serial"
+[kl. 13:49:54 CEST] di98jgu: Yupp, så måste det, en till många, sensor till sensordata.
+[kl. 13:50:37 CEST] Viktor Stärn: men vad för sorts data ska sensortabellen innehålla då?
+[kl. 13:50:59 CEST] di98jgu: Det finns API:et
+[kl. 13:51:32 CEST] di98jgu: Ta bara rubbet.
+[kl. 13:51:50 CEST] di98jgu: Det gör det enklare.
+[kl. 13:52:21 CEST] di98jgu: Då kan vi stoppa data rätt in.
+[kl. 13:52:48 CEST] Viktor Stärn: jo, fast det känns ju som de har blandat data och metadata... data om sensorn och mätdata från sensorerna?
+[kl. 13:54:02 CEST] di98jgu: Har de ? Var tänker du
+[kl. 13:54:46 CEST] di98jgu: Jag tolkar sensor som en beskrivning av sensorn och var den är.
+[kl. 13:55:06 CEST] Viktor Stärn: ok, men då borde ju inte longitude och latitude ligga i snowdata
+[kl. 13:56:06 CEST] di98jgu: Ah, klurig, det finns sensorer som mäter förflyttning.
+[kl. 13:56:33 CEST] di98jgu: Så då är ju position en del av mätdatat.
+[kl. 13:56:43 CEST] di98jgu: Finns API för det också.
+[kl. 13:57:12 CEST] Viktor Stärn: deployed state? created och updated.. gränsfall kanske
+[kl. 13:58:16 CEST] di98jgu: Precis, men då vi inte vet riktigt något om mätningarna så är det kanske säkrast att bara ta rubbet.
+[kl. 13:58:27 CEST] di98jgu: Vi kan ju sen välja vad pressentera.
+[kl. 13:58:43 CEST] Viktor Stärn: ok
+[kl. 13:59:41 CEST] di98jgu: Samla allt och pressentera det vi tror är viktigt för användaren.
+[kl. 14:00:19 CEST] Viktor Stärn: så bara leta upp all info jag tror jag kan få genom API:t och sedan dela upp det i två tabeller?
+[kl. 14:01:14 CEST] di98jgu: Snowdata har tror jag alla fält.
+[kl. 14:01:47 CEST] di98jgu: Jag kollade dock inte jättenoga.
+[kl. 14:02:06 CEST] Viktor Stärn: jaha, ok, men dåså
+[kl. 14:02:13 CEST] Viktor Stärn: inte mkt ren data då alltså
+[kl. 14:02:17 CEST] Viktor Stärn: mest data om sensorn
+[kl. 14:02:46 CEST] di98jgu: Yupp det är den som saknas.
+[kl. 14:04:17 CEST] di98jgu: Jag pysslar med att Synka databasen, Att se till att fylla databasen med data från fjärrdatabasen.
+[kl. 14:05:04 CEST] di98jgu: Vad tror du, vi har något att pyssla med ?
+[kl. 14:05:11 CEST] di98jgu: tills imorgon.
+[kl. 14:05:14 CEST] Viktor Stärn: japp, vi kör på det
+[kl. 14:05:44 CEST] Viktor Stärn: jag la förresten aldrig över TestBranch4 till master... lika bra du kollar så att det är ok först
+[kl. 14:05:56 CEST] di98jgu: Okej, ska kolla.
+[kl. 14:06:44 CEST] di98jgu: Tänkte använda en knapp på dashboarden för att synka.
+[kl. 14:07:04 CEST] di98jgu: Så något mer ?
+[kl. 14:07:31 CEST] Viktor Stärn: ja, en är ju tänkt för det
+[kl. 14:07:36 CEST] Viktor Stärn: nä, det var väl allt
+[kl. 14:07:43 CEST] Viktor Stärn: ses imorgon :)
+[kl. 14:07:56 CEST] di98jgu: Det gör vi (wave) :-)
+[kl. 19:05:14 CEST] Viktor Stärn: Hej! Min chef kommer ner till min arbetsplats från Stockholm imorgon så jag ska in till jobbet en vända över lunch.. blir därför svårt att hinna med 13.00... kanske har tid över på eftermiddagen.. får se hur det ser ut!
+[kl. 19:10:01 CEST] di98jgu: Okej, inga problem.

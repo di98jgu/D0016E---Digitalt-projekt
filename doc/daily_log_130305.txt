@@ -1,0 +1,76 @@
+tisdagen den 5:e mars 2013
+[kl. 13:03:40 CEST] di98jgu: Hej där hur går det ?
+[kl. 13:04:50 CEST] Viktor Stärn: Hallå! Jovars... har kollat runt lite efter application object och som jag förstår det introducerades det redan i API nr 1, så det ska väl gå bra att använda: 
+http://developer.android.com/reference/android/app/Application.html
+http://www.intridea.com/blog/2011/5/24/how-to-use-application-object-of-android#
+[kl. 13:05:36 CEST] Viktor Stärn: med Yamba.. menade du applikationen som verkar tillhöra någon lärobok, som källkoden finns tillgänglig till?
+[kl. 13:05:57 CEST] di98jgu: Leta på gitHub och Youtube :-)
+[kl. 13:06:18 CEST] Viktor Stärn: hittade något som kanske är av intresse isåfall:
+https://github.com/marakana/LearningAndroidYamba/blob/master/Yamba-8/src/com/marakana/yamba8/YambaApplication.java
+[kl. 13:06:33 CEST] di98jgu: Yupp, bingo.
+[kl. 13:07:02 CEST] di98jgu: Yambo innehåller väldigt mycket av det vi försöker göra.
+[kl. 13:08:39 CEST] di98jgu: Det finns mycket video material på youtube också.
+[kl. 13:09:04 CEST] di98jgu: Där kan följa uppbyggnaden av yamba steg för steg.
+[kl. 13:09:09 CEST] Viktor Stärn: ok, smidigt!
+[kl. 13:10:00 CEST] di98jgu: Just nu så pysslar jag med att skriva Junit tests för SSC.
+[kl. 13:10:12 CEST] Viktor Stärn: Junit? :)
+[kl. 13:11:01 CEST] di98jgu: Ett ramverk för att testa program. Man skickar in något och se vad man får tillbaka.
+[kl. 13:13:03 CEST] di98jgu: Vad händer om jag skickar in ett null värde, ansluta till servern med felaktigt lössenord, frågar efter en sensor som inte finns och så vidare.
+[kl. 13:13:47 CEST] Viktor Stärn: gör det någon form av systematiskt test med hjälp av din kod eller hur menar du?
+[kl. 13:14:14 CEST] di98jgu: Ja precis, det är det som Junit är till för, att systematisera testerna.
+[kl. 13:15:19 CEST] di98jgu: Det tar lite extra tid men å andra sidan så vet vi sen att bibliotektet fungera.
+[kl. 13:15:37 CEST] Viktor Stärn: ja, låter ju som att resultatet blir mer gediget
+[kl. 13:16:32 CEST] di98jgu: Det är min förhoppning. :-)
+[kl. 13:17:57 CEST] Viktor Stärn: appropå det, SnowPressure.java i lib
+https://github.com/marakana/LearningAndroidYamba/blob/master/Yamba-8/src/com/marakana/yamba8/YambaApplication.java
+
+fälten där.. är det sånt vi vet vi kommer hämta från fjärrdatabasen eller är det bara exempel?
+[kl. 13:20:11 CEST] di98jgu: SnowPressure är datat, det är vad vi ser från android. Ingen JSON i Android bara trevliga object.
+[kl. 13:20:50 CEST] Viktor Stärn: så då borde jag kunna anpassa Snowdata-tabellen efter Snowpressure-fälten?
+[kl. 13:21:29 CEST] di98jgu: Ja det kan du och sen har Senor också.
+[kl. 13:21:41 CEST] di98jgu: Sensor - Menar jag.
+[kl. 13:22:05 CEST] Viktor Stärn: ok, ja men då gör jag så
+[kl. 13:22:59 CEST] di98jgu: Notera att vissa av dessa värden är objekt.
+[kl. 13:23:34 CEST] di98jgu: Du har SSCTimeUnit och SSCPosition.
+[kl. 13:24:04 CEST] Viktor Stärn: ok, så tabellen ska anpassas då? inte TEXT NOT NULL  som gäller längre :)
+[kl. 13:25:09 CEST] di98jgu: Nej det skulle inte fungera, fast jag tror att tom sträng är lämpligt då data saknas.
+[kl. 13:26:02 CEST] di98jgu: Vad du kan fundera på är hur data ska flyttas från biblioteket till databasen.
+[kl. 13:26:18 CEST] di98jgu: Det kommer att behövas metoder för det.
+[kl. 13:28:03 CEST] Viktor Stärn: kan du ge något exempel?
+[kl. 13:30:55 CEST] di98jgu: Application Object kommer att behöver metoder för att hämta data från biblioteket och sen överföra data till databasen.
+[kl. 13:32:34 CEST] di98jgu: Fast jag inser nu att enklast är jag skriver en funktion asMap i SnowPressure och Sensor som returnera samtliga värden paketerade i Map.
+[kl. 13:33:37 CEST] di98jgu: Då kan de lätt flyttas över till lämpligt objekt i Android.
+[kl. 13:35:16 CEST] Viktor Stärn: ok
+[kl. 13:35:23 CEST] Viktor Stärn: ja, du har nog bäst koll på det :)
+[kl. 13:35:49 CEST] di98jgu: Som nycklar i Map kommer jag att använda Field SSCResources.
+[kl. 13:36:24 CEST] di98jgu: Så titta där när du skapar tabellerna i databasen.
+[kl. 13:37:50 CEST] di98jgu: Du har något att pyssla med tills imorgon ?
+[kl. 13:38:28 CEST] Viktor Stärn: är det någon skillnad mellan dem i SSCResources och SnowPressure/SnowSensor menar du?
+[kl. 13:38:38 CEST] Viktor Stärn: ja, det har jag :)
+[kl. 13:40:22 CEST] di98jgu: Ja och nej, Det ingen skillnad men Field i SSCResources innehåller alla faktiska fält. De är konstanter. Motsvarande i Snowpressure / Sensor är lokala variabler.
+[kl. 13:40:43 CEST] Viktor Stärn: ok
+[kl. 13:42:46 CEST] di98jgu: En idè, prova om du kan lägga dom i DicNix/res/values -> strings.xml.
+[kl. 13:43:31 CEST] di98jgu: Då kan använda strings.xml som referens då du skapar kolumnerna.
+[kl. 13:43:45 CEST] Viktor Stärn: ja, kan jag testa
+[kl. 13:44:33 CEST] di98jgu: Så jag kommer att pyssla vidare med bibliotekt, ska förhoppningsvis fungera imorgon.
+[kl. 13:44:51 CEST] di98jgu: Något mer ?
+[kl. 13:45:10 CEST] Viktor Stärn: tror inte det :) du kan väl hålla ett öga på Skype som vanligt
+[kl. 13:45:31 CEST] di98jgu: Yapp, kommer att göra så.
+[kl. 13:45:43 CEST] Viktor Stärn: bra! då ses vi imorgon! :)
+[kl. 13:45:54 CEST] di98jgu: Ok, ses (wave) :-)
+[kl. 14:12:08 CEST] Viktor Stärn: fattas ett "t" i "weight" i SSCResources... kanske skapar problem någonstans
+[kl. 14:12:17 CEST] Viktor Stärn: ändrade även shoveld till shoveled
+[kl. 14:12:36 CEST] Viktor Stärn: i min branch alltså :)
+[kl. 15:15:10 CEST] di98jgu: Väl obsaverat, det stämmer med weight. Brukar variera stavningen på just det ordet. :-) Det andra shoveld är däremot korrekt.
+[kl. 15:16:16 CEST] Viktor Stärn: men det stavas väl shoveled? eller det kanske finns någon annan anledning till att stava det shoveld just här? strunt samma egentligen... :)
+[kl. 15:17:58 CEST] di98jgu: Well API:et säger shoveld :-)
+[kl. 15:18:46 CEST] di98jgu: Det är visst inte bara jag som har lite svårt med stavningen...
+[kl. 15:18:49 CEST] Viktor Stärn: men då kör vi på det juh.. inte vårt problem om det är rätt eller fel isåfall
+[kl. 15:20:21 CEST] di98jgu: Men jag ska skriva en notering...
+[kl. 15:21:53 CEST] Viktor Stärn: gör så
+[kl. 15:24:26 CEST] di98jgu: Hmmm, vi gör så här....
+från 
+public static final String SHOVELD = "shoveld";
+till
+public static final String SHOVELED = "shoveld";
+[kl. 15:25:20 CEST] di98jgu: Nu stämmer stavning och inget, tror att det är säkrast.

@@ -1,0 +1,22 @@
+onsdagen den 6:e mars 2013
+[kl. 14:08:34 CEST] di98jgu: Så hur ser det ut ?
+[kl. 14:08:54 CEST] Viktor Stärn: du, minns du vad som var galet när min kod klagade på Cursor tidigare? var det inte som jag missat någon kolumn i snowdata.java?
+[kl. 14:09:03 CEST] Viktor Stärn: (letar buggar)
+[kl. 14:09:44 CEST] di98jgu: Javisst minns jag det, det var i Snowdata, ett antal fät saknades i konstruktorn.
+[kl. 14:10:11 CEST] di98jgu: Alla fält måste radas upp där.
+[kl. 14:11:05 CEST] Viktor Stärn: jo, men tycker det ser rätt ut.. jaja ska fortsätta titta
+[kl. 14:11:22 CEST] Viktor Stärn: får försöka få rätt på det här tills imorgon
+[kl. 14:11:44 CEST] di98jgu: Hmm okej, jag har pyssel med junit.
+[kl. 14:12:08 CEST] di98jgu: Koden kompilera med det finns problem.
+[kl. 14:12:19 CEST] Viktor Stärn: ok
+[kl. 14:12:45 CEST] di98jgu: Så vi pysslar vidare o ses imorgon ?
+[kl. 14:13:37 CEST] Viktor Stärn: ja, vi gör så!
+[kl. 14:13:43 CEST] di98jgu: Ok ses :-)
+[kl. 14:13:48 CEST] di98jgu: (wave)
+[kl. 14:13:56 CEST] Viktor Stärn: ses :)
+[kl. 14:39:53 CEST] Viktor Stärn: du nämnde att jag kunde lägga till kolumnerna i strings.xml, vart menar du isåfall att jag ska länka dem? SnowflakeHelper?
+[kl. 14:45:28 CEST] di98jgu: Ja, fast jag har inte gjort det själv.
+[kl. 14:45:38 CEST] di98jgu: Det var en idé.
+[kl. 14:46:03 CEST] Viktor Stärn: ok, ja, bara så jag är med på hur du tänkt
+
+

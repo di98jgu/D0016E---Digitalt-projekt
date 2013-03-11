@@ -1,0 +1,107 @@
+måndagen den 4:e mars 2013
+[kl. 13:00:09 CEST] Viktor Stärn: Hej! Hur har det gått?
+[kl. 13:06:36 CEST] di98jgu: Hej allt väl ?
+[kl. 13:07:02 CEST] di98jgu: Har precis lagt upp lite kod.
+[kl. 13:07:38 CEST] di98jgu: Ligger under lib.
+[kl. 13:07:54 CEST] di98jgu: Det fortfarande en hel del att göra.
+[kl. 13:09:55 CEST] di98jgu: Hur har det gått för dig ?
+[kl. 13:11:43 CEST] di98jgu: Skype har problem igen, försöker ringa.
+[kl. 13:13:09 CEST] di98jgu: Nope fungera inte...
+[kl. 13:29:32 CEST] di98jgu: Ok, provar igen...
+[kl. 13:29:37 CEST] di98jgu: Fungera det nu ?
+[kl. 14:11:07 CEST] di98jgu: Hmm, kommer att vara på skype vid 16...
+[kl. 15:59:56 CEST] Viktor Stärn: hur ser det ut? fungerar det?
+[kl. 16:00:03 CEST] Viktor Stärn: jag har också laddat upp kod
+[kl. 16:00:20 CEST] di98jgu: Hej
+[kl. 16:00:21 CEST] Viktor Stärn: men jag blev osäker på om jag verkligen lyckats skapa foreign key...
+[kl. 16:00:33 CEST] Viktor Stärn: när jag kollade med sqlite-pluginen
+[kl. 16:00:55 CEST] Viktor Stärn: serial stod omnämt som vanligt text not null fält
+[kl. 16:01:42 CEST] di98jgu: Hmm...
+[kl. 16:02:06 CEST] di98jgu: Du kan köra SQLite ?
+[kl. 16:02:47 CEST] di98jgu: Enklast är i så fall att skapa din tabeller där och testa med olika SQL kommandon.
+[kl. 16:03:36 CEST] di98jgu: Jag brukar göra så, då vet jag att SQL kommandot blir rätt.
+[kl. 16:03:57 CEST] Viktor Stärn: vet inte om jag kan köra SQLite direkt, aldrig provat
+[kl. 16:04:29 CEST] di98jgu: Mja tror inte ska vara några problem under Windows.
+[kl. 16:05:03 CEST] di98jgu: Under Linux kör man i Termina.
+[kl. 16:05:05 CEST] di98jgu: l.
+[kl. 16:05:26 CEST] Viktor Stärn: ok, får titta på det
+[kl. 16:05:54 CEST] di98jgu: Men du kan klistra in ditt kommando för att skapa en tabell.
+[kl. 16:06:16 CEST] Viktor Stärn: som jag använder nu menar du?
+[kl. 16:06:23 CEST] di98jgu: Yupp.
+[kl. 16:07:16 CEST] Viktor Stärn:    String table1Data = 
+     "CREATE TABLE " + 
+     TABLE_SENSOR + 
+     " ( " + 
+     SERIAL + 
+     " TEXT PRIMARY KEY, " + 
+     TIMESTAMP + 
+     " TEXT NOT NULL, " + 
+     NAME + 
+     " TEXT NOT NULL, " + 
+     LOCATION + 
+     " TEXT NOT NULL, " + 
+     LATITUDE + 
+     " TEXT NOT NULL, " + 
+     LONGITUDE + 
+     " TEXT NOT NULL, " + 
+     TYPENAME + 
+     " TEXT NOT NULL, " + 
+     DEPLOYEDSTATE + 
+     " TEXT NOT NULL, " +      
+     INFO + 
+     " TEXT NOT NULL, " + 
+     DOMAIN + 
+     " TEXT NOT NULL, " + 
+     CREATED + 
+     " TEXT NOT NULL, " + 
+     UPDATED + 
+     " TEXT NOT NULL );";
+    
+   db.execSQL(table1Data);   
+        
+   String table2Data = 
+     "CREATE TABLE " + 
+     TABLE_SNOW + 
+     " ( " + 
+     ID + 
+     " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+     VISIBILITY + 
+     " TEXT NOT NULL, " + 
+     SERIAL + 
+     " TEXT NOT NULL, " + 
+     " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+SERIAL+"));";
+    
+   db.execSQL(table2Data);
+[kl. 16:07:26 CEST] Viktor Stärn: den här koden är alltså körbar
+[kl. 16:07:55 CEST] Viktor Stärn: och jag kan hämta data från tabellerna... bara foreign key jag är lite osäker på
+[kl. 16:12:21 CEST] di98jgu: Det ser ok,
+[kl. 16:13:23 CEST] di98jgu: Ser inga problem.
+[kl. 16:14:22 CEST] di98jgu: Jag pysslar som sagt med Sense Smart City biblioteket.
+[kl. 16:14:31 CEST] di98jgu: Mer arbete än väntat.
+[kl. 16:15:19 CEST] di98jgu: Än har jag inte kunnat test köra den.
+[kl. 16:15:51 CEST] Viktor Stärn: aha, ok.. får kolla på koden du laddat upp... se om jag hänger med :)
+[kl. 16:16:14 CEST] di98jgu: Ja, gör så, fast det finns mycket fel i den.
+[kl. 16:17:17 CEST] di98jgu: Jag försöker få java att acceptera den men... :-)
+[kl. 16:18:25 CEST] di98jgu: Klassen SenseSmartCity är huvudklassen.
+[kl. 16:19:28 CEST] di98jgu: RestfulClient hämtar data från servern.
+[kl. 16:20:01 CEST] di98jgu: Sensor och SnowPressure är data kontainers.
+[kl. 16:20:41 CEST] di98jgu: SSCResources håller en lista över alla konstanter.
+[kl. 16:21:10 CEST] di98jgu: Exceptions tas om hand av SSCExceptions.
+[kl. 16:21:11 CEST] Viktor Stärn: verkar vara ett jättejobb!!
+[kl. 16:21:26 CEST] di98jgu: Det blev lite kod som sagt.
+[kl. 16:23:45 CEST] di98jgu: Problem är allt pyssel med att rull ut och rulla ihop JSON objekt och arrayer överallt.
+[kl. 16:26:19 CEST] di98jgu: Du har lite att läsa :-)
+[kl. 16:27:45 CEST] Viktor Stärn: haha, helt klart
+[kl. 16:28:08 CEST] Viktor Stärn: något annat som ska fixas nu?
+[kl. 16:28:37 CEST] di98jgu: Vi kommer att behöva "application object".
+[kl. 16:28:48 CEST] di98jgu: Tror att det heter så.
+[kl. 16:29:17 CEST] di98jgu: Jag har inte ännu kollat om det finns tillgänglit i vårt API men jag hoppas det.
+[kl. 16:30:09 CEST] di98jgu: Det är ett object som skapas när appen startar och är tillgängligt för att aktiviteter.
+[kl. 16:30:51 CEST] di98jgu: Poängen är att övergripande funktioner ligger där. Som att hantera bibliotek.
+[kl. 16:30:51 CEST] Viktor Stärn: okej, jag kanske kan google runt lite
+[kl. 16:31:22 CEST] di98jgu: Yupp, då har du lite att pyssla med, sök på Yamba.
+[kl. 16:31:42 CEST] di98jgu: Det är ett utmärkt skolexempel.
+[kl. 16:32:48 CEST] di98jgu: Jag lånade rätt mycket från där till vårt SSC bibliotek.
+[kl. 16:34:19 CEST] Viktor Stärn: ok, ska kolla det.. måste kila nu, men kan vara online igen vid 19 om det är ngt mer!
+[kl. 16:34:42 CEST] di98jgu: Annars ses vi imorgon vanlig tid :-).
+[kl. 16:35:16 CEST] di98jgu: Ses (wave)

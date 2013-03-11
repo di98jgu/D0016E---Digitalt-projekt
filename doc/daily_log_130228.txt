@@ -1,0 +1,25 @@
+torsdagen den 28:e februari 2013
+[kl. 15:48:36 CEST] Viktor Stärn: Har installerat den där sqlite-pluginen och nu sitter jag och försöker modifiera koden för att lägga till en extra tabell.. är det tänkt att jag ska kunna göra det utan att modifiera metoderna i t.ex. Snowflake? Isåfall; hur håller den reda på vilken tabell den jobbar i utan två instanser av SnowflakeFields t.ex.? Jag tänkte mig att man i Snodata skapar två String[] arrays med kolumner och sen skapar två instanser av SnowflakeFields, men det kanske inte är tanken?
+[kl. 15:48:56 CEST] Viktor Stärn: *Snowdata
+[kl. 15:49:49 CEST] di98jgu: Se Snowdata som en tabell.
+[kl. 15:49:59 CEST] di98jgu: Det är så som är tanken.
+[kl. 15:50:35 CEST] di98jgu: Skapa du en ny tabell så behövs en klass.
+[kl. 15:51:04 CEST] di98jgu: Snowsensor var min idé om namn, men du väljer.
+[kl. 15:51:23 CEST] di98jgu: Precis som Snowdata så ärver den från Snowflake.
+[kl. 15:51:29 CEST] Viktor Stärn: ok, räcker det att ange samma tabellnamn för att det inte ska skapas en ny databas?
+[kl. 15:51:53 CEST] di98jgu: Databas och tabell är två skilda saker.
+[kl. 15:52:14 CEST] di98jgu: Databas är den fil där all data hamnar.
+[kl. 15:52:27 CEST] di98jgu: En databas kan ha en eller flera tabeller.
+[kl. 15:52:52 CEST] Viktor Stärn: jo, de e jag med på, men jag har nog inte koll på exakt när databasen skapas isåfall
+[kl. 15:53:41 CEST] Viktor Stärn: jag trodde ett försök att skapa gjordes varje gång man instantierade Snowdata
+[kl. 15:53:49 CEST] Viktor Stärn: om den inte redan fanns dvs.
+[kl. 15:54:58 CEST] Viktor Stärn: Snowdata -> Snowflake -> SnowflakeHelper -> SQLiteOpenHelper
+[kl. 15:57:03 CEST] Viktor Stärn: Jag måste kila, men jag tror att jag kan fixa det utifrån vad du redan sagt :)
+[kl. 15:57:21 CEST] di98jgu: Okej min pause klocka gick in.
+[kl. 15:57:37 CEST] di98jgu: Öppnar Eclipse.
+[kl. 15:58:35 CEST] di98jgu: SnowflakeHelper -> onCreate
+[kl. 15:58:52 CEST] di98jgu: Här skapas som du vet tabellen / tabellerna.
+[kl. 15:59:19 CEST] di98jgu: Men det skera _bara_ om det inte finns någon databas.
+[kl. 15:59:53 CEST] di98jgu: Annars skulle ju datat försvinna då man stänger appen :-)
+[kl. 16:00:21 CEST] di98jgu: Så onCreate körs bara en gång.
+[kl. 16:02:40 CEST] di98jgu: Hörs - håller ett vakande öga på skype.
