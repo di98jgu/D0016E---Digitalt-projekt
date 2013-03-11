@@ -9,7 +9,7 @@ snow situation and alert when certain thresholds are exceeded.
 
 PARTICIPANTS
 Students, the team
-Jim Gunnarsson, Tord Larsson och Viktor Stärn
+Jim Gunnarsson, (Tord Larsson) och Viktor Stärn
 
 Teacher, at www.ltu.se
 Daniel Granlund
@@ -46,6 +46,8 @@ STRUCTURE
 -  doc: Collection of notes och logs
 -  design: Ideas and proposals for GUI and code
 -  DicNix: The actual Android project
+-  lib: Home of Sense Smart City client
+-  ref: Sense Smart City API reference material
 
 
 CODE STYLE
