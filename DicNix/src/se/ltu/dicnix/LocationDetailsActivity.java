@@ -18,8 +18,7 @@
 
 package se.ltu.dicnix;
 
-import se.ltu.dicnix.R;
-
+import ssc.Sensor;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +37,8 @@ public class LocationDetailsActivity extends Activity {
 	/** Location details id tag for use in communication between activity's */
 	public final static String ID_LOCATION_DETAILS = "dicnix.id_location_details";
 	
+	protected DicNixApp application;
+	
 	/**
     * Start of this activity.
     * 
@@ -47,6 +48,7 @@ public class LocationDetailsActivity extends Activity {
       
       super.onCreate(state);
       setContentView(R.layout.location_details_view);
+      application = (DicNixApp) getApplication();
       
       Intent i = getIntent();   
       long clicked_item_id = i.getLongExtra("clicked_item_id", 0);
@@ -102,11 +104,13 @@ public class LocationDetailsActivity extends Activity {
        */
       public void populate(String clicked_item_id) {
          String location_id = clicked_item_id;
-    	  
+         
+         Sensor sensor = application.getSensor();
+         
          img.setImageResource(R.drawable.igloo);
-         a.setText("Value a");
-         b.setText("Value b");
-         c.setText("Value c");
+         a.setText(sensor.getSerial());
+         b.setText(sensor.getName());
+         c.setText(String.valueOf(sensor.getLatitude()));
          id.setText("Clicked item id: " + location_id);
          
          return;

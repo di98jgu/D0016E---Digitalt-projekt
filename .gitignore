@@ -19,6 +19,7 @@ gen/
 local.properties
 
 # Sandbox projects
+com.wglxy.example.dash1.HomeActivity
 tfk11jgs.rista.Gallery
 
 # Eclipse project files
