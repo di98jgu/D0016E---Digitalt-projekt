@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-    
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
-   android:layout_width = "fill_parent"
-   android:layout_height = "fill_parent">
-   
-   <include layout="@layout/actionbar" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width = "match_parent"
+   android:layout_height = "match_parent">
 
    <TableLayout
        android:layout_width="match_parent"
@@ -24,42 +20,147 @@
       
       <TableRow>
          <TextView 
-             android:text = "@string/loc_details_snow_a" 
+             android:text = "@string/loc_details_serial" 
              android:paddingRight="20dp" />
-         <TextView android:id = "@+id/snow_a" />
+         <TextView android:id = "@+id/serial" />
       </TableRow>
       <TableRow>
          <TextView 
-             android:text = "@string/loc_details_snow_b" 
+             android:text = "@string/loc_details_name" 
              android:paddingRight = "20dp"
          />
-         <TextView android:id = "@+id/snow_b" />
+         <TextView android:id = "@+id/name" />
       </TableRow>
       <TableRow>
          <TextView 
-             android:text = "@string/loc_details_snow_c" 
+             android:text = "@string/loc_details_location" 
              android:paddingRight = "20dp"
          />
-         <TextView android:id = "@+id/snow_c" />
+         <TextView android:id = "@+id/location" />
+      </TableRow>
+            <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_latitude" 
+             android:paddingRight="20dp" />
+         <TextView android:id = "@+id/latitude" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_longitude" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/longitude" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_type_name" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/type_name" />
+      </TableRow>
+            <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_deployed_state" 
+             android:paddingRight="20dp" />
+         <TextView android:id = "@+id/deployed_state" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_visibility" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/visibility" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_info" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/info" />
+      </TableRow>
+            <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_domain" 
+             android:paddingRight="20dp" />
+         <TextView android:id = "@+id/domain" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_created" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/created" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_updated" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/updated" />
+      </TableRow>
+      
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_shoveled" 
+             android:paddingRight="20dp" />
+         <TextView android:id = "@+id/shoveled" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_weight" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/weight" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_depth" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/depth" />
+      </TableRow>
+                <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_temperature" 
+             android:paddingRight="20dp" />
+         <TextView android:id = "@+id/temperature" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_humidity" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/humidity" />
+      </TableRow>
+      <TableRow>
+         <TextView 
+             android:text = "@string/loc_details_data_time" 
+             android:paddingRight = "20dp"
+         />
+         <TextView android:id = "@+id/data_time" />
+      </TableRow>
+      
+      <TableRow>
          <TextView 
              android:id = "@+id/location_id" 
+             android:paddingTop = "20dp"
              android:paddingRight = "20dp"
          />
       </TableRow>
       
-      <TableRow
-          android:paddingLeft="110dp"
-          android:paddingTop="100dp" >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="34dp"
-            android:onClick="backMethod"
-            android:text="@string/button_back" 
-        />
+      <TableRow android:paddingTop="80dp" >
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginBottom="34dp"
+              android:layout_weight="1"
+              android:onClick="backMethod"
+              android:text="@string/button_back" 
+          />
       </TableRow>
 
       
    </TableLayout>
    
-</LinearLayout>
+</ScrollView>

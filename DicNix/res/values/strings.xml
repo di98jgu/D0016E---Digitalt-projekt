@@ -8,8 +8,47 @@
    
    <!-- Location details -->
    <string name = "loc_details_snow_img">Location image</string>
-   <string name = "loc_details_snow_a">Snowdata a</string>
-   <string name = "loc_details_snow_b">Snowdata b</string>
-   <string name = "loc_details_snow_c">Snowdata c</string>
-    
+   <string name = "loc_details_serial">Serial: </string>
+   <string name = "loc_details_name">Name: </string>
+   <string name = "loc_details_location">Location:</string>
+   <string name = "loc_details_latitude">Latitude: </string>
+   <string name = "loc_details_longitude">Longitude: </string>
+   <string name = "loc_details_type_name">Type name: </string>
+   <string name = "loc_details_deployed_state">Deployed state: </string>
+   <string name = "loc_details_visibility">Visibility: </string>
+   <string name = "loc_details_info">Info: </string>
+   <string name = "loc_details_domain">Domain: </string>
+   <string name = "loc_details_created">Created: </string>
+   <string name = "loc_details_updated">Updated: </string>
+   <string name = "loc_details_shoveled">Shoveled: </string>
+   <string name = "loc_details_weight">Weight: </string>
+   <string name = "loc_details_depth">Depth: </string>
+   <string name = "loc_details_temperature">Temperature: </string>
+   <string name = "loc_details_humidity">Humidity: </string>
+   <string name = "loc_details_data_time">Data time: </string>
+   
+<!--    <string name = "TABLE_SNOW">snowtable</string> -->
+<!--    <string name = "TABLE_SENSOR">sensortable</string> -->
+<!--    <string name = "ID">id</string> -->
+<!--    <string name = "SERIAL">serial</string> -->
+<!--    <string name = "DEPLOYED_STATE">deployed_state</string> -->
+<!--    <string name = "LONGITUDE">longitude</string> -->
+<!--    <string name = "UPDATED">updated</string> -->
+<!--    <string name = "CREATED">created</string> -->
+<!--    <string name = "DOMAIN">domain</string> -->
+<!--    <string name = "INFO">info</string> -->
+<!--    <string name = "VISIBILITY">visibility</string> -->
+<!--    <string name = "TYPE_NAME">type_name</string> -->
+<!--    <string name = "LATITUDE">latitude</string> -->
+<!--    <string name = "NAME">name</string> -->
+<!--    <string name = "LOCATION">location</string> -->
+<!--    <string name = "SHOVELED">shoveled</string> -->
+<!--    <string name = "WEIGHT">weight</string> -->
+<!--    <string name = "DEPTH">depth</string> -->
+<!--    <string name = "TEMPERATURE">temperature</string> -->
+<!--    <string name = "HUMIDITY">humidity</string> -->
+<!--    <string name = "DATA_TIME">data_time</string>   -->
+     
+  
+   
 </resources>
