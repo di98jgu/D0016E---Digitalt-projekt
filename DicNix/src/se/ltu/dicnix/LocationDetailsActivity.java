@@ -85,7 +85,7 @@ public class LocationDetailsActivity extends Activity {
       SD.setColumns(columns2);  
       
       ssc.Sensor sensor = application.getSensor();
-//	  Motsvarande för SnowPressure
+//	  Motsvarande fÃ¶r SnowPressure
       
       /**
        * Insert test-data into database
@@ -101,7 +101,7 @@ public class LocationDetailsActivity extends Activity {
       cv1.put(columns1[10], String.valueOf(sensor.getCreated()));
       cv1.put(columns1[11], String.valueOf(sensor.getUpdated()));
       
-      // Behöver komma åt get-metoderna
+      // BehÃ¶ver komma Ã¥t get-metoderna
       cv2.put(columns2[0], "1");
       cv2.put(columns2[1], "Yes");
       cv2.put(columns2[2], "Some weight");
@@ -147,7 +147,7 @@ public class LocationDetailsActivity extends Activity {
     * Container for all information about a selected data point. Represent
     * the location_details_view.
     * 
-    * @author Jim Gunnarsson, di98jgu (edited by Viktor Stärn)
+    * @author Jim Gunnarsson, di98jgu (edited by Viktor StÃ¤rn)
     */
    private class LocationDetailsAdp {
       

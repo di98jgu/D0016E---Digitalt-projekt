@@ -27,7 +27,7 @@ import android.util.Log;
 * class is also a name manifest for all tables and columns. New subclasses
 * require update of this class.
 *
-* @author Jim Gunnarsson, di98jgu (edited by Viktor St‰rn)
+* @author Jim Gunnarsson, di98jgu (edited by Viktor St√§rn)
 */
 public class SnowflakeHelper extends SQLiteOpenHelper {
    

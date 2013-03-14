@@ -23,7 +23,7 @@ import android.content.Context;
 * set of data measured at that position. The number of row is thus equal to
 * the number of positions.
 *
-* @author Jim Gunnarsson, di98jgu (edited by Viktor St‰rn)
+* @author Jim Gunnarsson, di98jgu (edited by Viktor St√§rn)
 */
 public class Snowdata extends Snowflake {
    
