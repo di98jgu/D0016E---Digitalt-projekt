@@ -1,11 +1,31 @@
+/*
+ *      This program is free software; you can redistribute it and/or modify
+ *      it under the terms of the GNU General Public License as published by
+ *      the Free Software Foundation; either version 2 of the License, or
+ *      (at your option) any later version.
+ *      
+ *      This program is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU General Public License for more details.
+ *      
+ *      You should have received a copy of the GNU General Public License
+ *      along with this program; if not, write to the Free Software
+ *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ *      MA 02110-1301, USA.
+ */
 package ssc;
 /**
- * A runtime exception for all well know exceptions. Main source
- * of exceptions is the restfulClient. All {@link SenseSmartCity} 
- * methods can throw this. 
+ * Class SSCException
  * 
- * The level of details in exception handling could be improved but
- * this is the first version. 
+ * A runtime exception wrapper for all well know exceptions. Main 
+ * source of exceptions is the restfulClient. All {@link SenseSmartCity} 
+ * methods can throw this.
+ * 
+ * This exception wrapper may not follow the narrow road of Java 
+ * wisdom, each exception in its own class. But this helps to keep 
+ * things neat and easy to maintain. I have yet see why static inner
+ * exception classes is such a bad idea.
  * 
  * All exceptions is unchecked.
  * 
@@ -17,6 +37,7 @@ public class SSCException extends RuntimeException {
    private static final long serialVersionUID = 2114723132L;
    
    /**
+    * 
 	 * Wrap an exception as a SSCException.
 	 */
    public SSCException(Exception e) {
@@ -49,6 +70,8 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
+    * Class ConnectionFailed
+    * 
 	 * Restful client failed to establish connection with
     * server.
 	 */
@@ -66,7 +89,11 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-	 * Restful client, response code 4xx.
+    * Class ClientError
+    * 
+	 * Restful client, in case of response code 4xx.
+    * 
+    * FIXME: Divide this class for different 4xx codes.
 	 */
 	public static class ClientError extends SSCException {
       
@@ -78,7 +105,9 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-	 * Restful client, response code 5xx.
+    * Class ServerError
+    * 
+	 * Restful client, in case of response code 5xx.
 	 */
 	public static class ServerError extends SSCException {
       
@@ -90,6 +119,8 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
+    * Class MalformedData
+    * 
 	 * Malformed data exception is throw then data is in wrong form.
     * 
     * Normal get operations, fetching data from server, should not
@@ -110,8 +141,11 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-    * To get data from server user credentials is mandatory. Thus
-    * lack of such, user name or password is null, is a exception.
+    * Class NoUserCredentials
+    * 
+    * In order to get data from server user credentials is mandatory. 
+    * Thus lack of such, user name or password is null or missing, is 
+    * an exception.
     */
    public static class NoUserCredentials extends SSCException {
       

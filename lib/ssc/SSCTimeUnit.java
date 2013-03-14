@@ -1,6 +1,12 @@
 package ssc;
 /**
+ * Class SSCTimeUnit
  * 
+ * Date and time is always in the format yyyy-MM-dd HH:mm:ss, 
+ * example '1987-01-23 18:19:34'. This format is used by Sense Smart 
+ * City for all timestamps. It is the SSC time unit.
+ * 
+ * @author Jim Gunnarsson, di98jgu
  */
 
 import java.util.Date;
@@ -43,6 +49,11 @@ public class SSCTimeUnit {
       
    }
    
+   /**
+    * Get time, example '18:19:34', for this time unit. 
+    * 
+    * @return Time for this time unit
+    */
    public String getTime() {
       
       SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
@@ -51,6 +62,11 @@ public class SSCTimeUnit {
       
    }
    
+   /**
+    * Get date, example '1987-01-23', for this time unit. 
+    * 
+    * @return Date for this time unit
+    */
    public String getDate() {
       
       SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd");
@@ -79,6 +95,12 @@ public class SSCTimeUnit {
       
    }
    
+   /**
+    * Return time and date for this unit in the form 
+    * '1987-01-23 18:19:34'
+    * 
+    * @return String with date and time
+    */
    @Override
    public String toString() {
       
