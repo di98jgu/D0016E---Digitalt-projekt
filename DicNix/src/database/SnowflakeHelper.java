@@ -33,7 +33,7 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    
    private static final String TAG = "logogram.DbRista";
 
-   private static final String DB_FILENAME = "snowflake18.db";
+   private static final String DB_FILENAME = "snowflake.db";
    private static final int VERSION = 1;
 
    /** Table for snow data */
@@ -113,27 +113,27 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  ID + 
 			  " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
 			  TIMESTAMP + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  NAME + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  LOCATION + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  LATITUDE + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  LONGITUDE + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  TYPENAME + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  DEPLOYEDSTATE + 
-			  " TEXT NOT NULL, " + 			  
+			  " TEXT, " + 			  
 			  INFO + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  DOMAIN + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  CREATED + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  UPDATED + 
-			  " TEXT NOT NULL );";
+			  " TEXT );";
 	   
 	  db.execSQL(table1Data);	  
         
@@ -144,21 +144,21 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  ID + 
 			  " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			  VISIBILITY +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  SHOVELED +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  WEIGHT +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  DEPTH +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  TEMPERATURE +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  HUMIDITY +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  DATA_TIME +	
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  SERIAL + 
-			  " TEXT NOT NULL, " + 
+			  " TEXT, " + 
 			  " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+ID+"));";
 	   
 	  db.execSQL(table2Data);	

@@ -27,6 +27,7 @@
    <string name = "loc_details_humidity">Humidity: </string>
    <string name = "loc_details_data_time">Data time: </string>
    
+   
 <!--    <string name = "TABLE_SNOW">snowtable</string> -->
 <!--    <string name = "TABLE_SENSOR">sensortable</string> -->
 <!--    <string name = "ID">id</string> -->
