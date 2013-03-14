@@ -18,6 +18,7 @@
          android:contentDescription="@string/loc_details_snow_img"
       />
       
+      
       <TableRow>
          <TextView 
              android:text = "@string/loc_details_serial" 

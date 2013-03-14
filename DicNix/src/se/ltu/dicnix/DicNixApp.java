@@ -16,11 +16,13 @@
  */
 package se.ltu.dicnix;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.List;
+import java.util.Map;
 
 import ssc.SenseSmartCity;
 import ssc.Sensor;
+import ssc.SnowPressure;
 import android.app.Application;
 import android.util.Log;
 
@@ -73,5 +75,6 @@ public class DicNixApp extends Application {
       return s_args.get(0);
       
    }
+   
 
 }

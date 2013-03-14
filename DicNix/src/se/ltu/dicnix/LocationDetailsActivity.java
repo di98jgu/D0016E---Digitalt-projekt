@@ -83,42 +83,37 @@ public class LocationDetailsActivity extends Activity {
        */
       SS.setColumns(columns1);  
       SD.setColumns(columns2);  
-     
-      /**
-       * Create columns for database
-       */
-      SS.setColumns(columns1);  
-      SD.setColumns(columns2);  
-     
       
-//      /**
-//       * Insert test-data into database
-//       */
-//      cv1.put(columns1[0], "1");
-//      cv1.put(columns1[1], "00:03");
-//      cv1.put(columns1[2], "Treriksröset");
-//      cv1.put(columns1[3], "None Given");
-//      cv1.put(columns1[4], "69.06");
-//      cv1.put(columns1[5], "20.5486");
-//      cv1.put(columns1[6], "SnowPressure");
-//      cv1.put(columns1[7], "DEPLOYED");
-//      cv1.put(columns1[8], "None Given");
-//      cv1.put(columns1[9], "ThomasDomain");
-//      cv1.put(columns1[10], "2013-02-21 11:36:25");
-//      cv1.put(columns1[11], "2013-02-21 11:36:25");
-//      
-//      cv2.put(columns2[0], "1");
-//      cv2.put(columns2[1], "No");
-//      cv2.put(columns2[2], "Some weight");
-//      cv2.put(columns2[3], "Some depth");
-//      cv2.put(columns2[4], "Some temperature");
-//      cv2.put(columns2[5], "Humidity level");
-//      cv2.put(columns2[6], "Data time");
-//      cv2.put(columns2[7], "SKE-824224");
-//
-//      
-//      SS.insert(cv1);
-//      SD.insert(cv2);
+      ssc.Sensor sensor = application.getSensor();
+//	  Motsvarande för SnowPressure
+      
+      /**
+       * Insert test-data into database
+       */
+      cv1.put(columns1[2], sensor.getName());
+      cv1.put(columns1[3], sensor.getLocation());
+      cv1.put(columns1[4], String.valueOf(sensor.getLatitude()));
+      cv1.put(columns1[5], String.valueOf(sensor.getLongitude()));
+      cv1.put(columns1[6], sensor.getTypeName());
+      cv1.put(columns1[7], sensor.getDeployedState());
+      cv1.put(columns1[8], sensor.getInfo());
+      cv1.put(columns1[9], sensor.getDomain());
+      cv1.put(columns1[10], String.valueOf(sensor.getCreated()));
+      cv1.put(columns1[11], String.valueOf(sensor.getUpdated()));
+      
+      // Behöver komma åt get-metoderna
+      cv2.put(columns2[0], "1");
+      cv2.put(columns2[1], "Yes");
+      cv2.put(columns2[2], "Some weight");
+      cv2.put(columns2[3], "Some depth");
+      cv2.put(columns2[4], "Some temperature");
+      cv2.put(columns2[5], "Humidity level");
+      cv2.put(columns2[6], "Data time");
+      cv2.put(columns2[7], sensor.getSerial());
+
+      
+      SS.insert(cv1);
+      SD.insert(cv2);
       
       /**
        * Query database for all of its information
@@ -126,7 +121,7 @@ public class LocationDetailsActivity extends Activity {
       returnedCursor1 = SS.all();
       returnedCursor2 = SD.all();
       
-      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);    
+      LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);
       details.populate(location_id);   
 
       /**
@@ -145,7 +140,8 @@ public class LocationDetailsActivity extends Activity {
 
       super.onDestroy();
 
-   }
+   } 
+   
    
    /**
     * Container for all information about a selected data point. Represent
