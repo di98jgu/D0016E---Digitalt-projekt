@@ -197,8 +197,8 @@ public final class SSCResources {
       /** Have sensor location been cleaned from snow */
       public static final String SHOVELD = "shoveld";
       /** The snow weight in grams */
-      public static final String WEIGHT = "weigh";
-      /** The snow depth in centimeters */
+      public static final String WEIGHT = "weight";
+      /** The snow depth in centimetres */
       public static final String DEPTH = "depth";
       /** The temperature in celcius degrees */
       public static final String TEMPERATURE = "temperature";
