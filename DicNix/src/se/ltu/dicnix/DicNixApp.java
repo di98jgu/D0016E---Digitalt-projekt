@@ -61,18 +61,33 @@ public class DicNixApp extends Application {
       
    }
    
-   public Sensor getSensor() {
+   public List<Sensor> getSensors() {
       
-      List<String> args = new ArrayList<String>();
+      List<Sensor> sensors = ssc.getSensors();
       
-      args.add("SKE-824224");
+      if (sensors == null || sensors.isEmpty()) {
+         
+         Log.d(TAG, "Faild to fetched sensors!");
+      }
       
-      List<Sensor> s_args =
-            getSSC().requestSensorList(args, false);
+      Log.d(TAG, "Fetched a list of sensors");
       
-      Log.d(TAG, "Fetched sensor: " + s_args.get(0).getSerial());
+      return sensors;
       
-      return s_args.get(0);
+   }
+   
+   public List<SnowPressure> getReadings(Sensor sensor) {
+      
+      List<SnowPressure> readings = ssc.getSnowPressure(sensor);
+      
+      if (readings == null || readings.isEmpty()) {
+         
+         Log.d(TAG, "No readings for this sensor: " + sensor.getSerial());
+      }
+      
+      Log.d(TAG, "Fetched readings for this sensor: " + sensor.getSerial());
+      
+      return readings;
       
    }
    
