@@ -40,7 +40,7 @@ public class ListViewActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- 
+
         /**
          * Storing string resources into Array
          */

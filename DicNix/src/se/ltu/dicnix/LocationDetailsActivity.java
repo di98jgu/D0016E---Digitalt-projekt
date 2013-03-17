@@ -18,10 +18,14 @@
 
 package se.ltu.dicnix;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.hardware.Sensor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -47,6 +51,9 @@ public class LocationDetailsActivity extends Activity {
 	
 	ContentValues cv1 = new ContentValues(12);
 	ContentValues cv2 = new ContentValues(8);
+	
+	List<ssc.Sensor> sensorList = new ArrayList<ssc.Sensor>();
+	ssc.Sensor sensor = null;
 	
 	protected DicNixApp application;
 	
@@ -84,7 +91,10 @@ public class LocationDetailsActivity extends Activity {
       SS.setColumns(columns1);  
       SD.setColumns(columns2);  
       
-      ssc.Sensor sensor = application.getSensor();
+      
+      sensorList = application.getSensors();
+      sensor = sensorList.get(0);
+//    ssc.Sensor sensor = application.getSensors();
 //	  Motsvarande för SnowPressure
       
       /**
