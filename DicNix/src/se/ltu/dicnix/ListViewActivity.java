@@ -17,7 +17,8 @@
 
 package se.ltu.dicnix;
 
-import se.ltu.dicnix.R; 
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -37,19 +38,33 @@ import android.widget.TextView;
 */
 public class ListViewActivity extends ListActivity {
 
+	List<ssc.Sensor> sensorList = new ArrayList<ssc.Sensor>();
+	ssc.Sensor sensor = null;	
+	String[] sensors = null;
+	
+	protected DicNixApp application;
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         /**
-         * Storing string resources into Array
+         * Fetch registered measurement locations
          */
-        String[] locations = getResources().getStringArray(R.array.registered_measurement_locations);
+        application = (DicNixApp) getApplication();
+        sensorList = application.getSensors();        
+        sensors = new String[sensorList.size()];
+        
+        for (int i = 0; i < sensorList.size(); i++) {
+            sensors[i] = sensorList.get(i).getSerial();
+        }
+ 
  
         /**
          * Binding resources Array to ListAdapter
          */
-        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.list_item, locations));
+        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.list_item, sensors));
  
         ListView lv = getListView();
         
