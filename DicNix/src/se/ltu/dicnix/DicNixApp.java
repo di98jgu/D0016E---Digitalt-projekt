@@ -16,9 +16,7 @@
  */
 package se.ltu.dicnix;
 
-import java.util.ArrayList; 
 import java.util.List;
-import java.util.Map;
 
 import ssc.SenseSmartCity;
 import ssc.Sensor;

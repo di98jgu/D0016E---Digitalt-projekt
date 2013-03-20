@@ -1,86 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-    
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
-   android:layout_width = "fill_parent"
-   android:layout_height = "fill_parent">
-   
-   <include layout="@layout/actionbar" />
-    
-    <TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/dashboard"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_weight="1"
+        layout="@layout/actionbar" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-    	xmlns:tools="http://schemas.android.com/tools"
-   		android:background="@drawable/dashboard"
-    	tools:context=".FullscreenActivity" >
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
 
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="65dp"
-            android:paddingTop="65dp" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" >
 
             <ImageButton
                 android:id="@+id/imageButton1"
-                android:contentDescription="@drawable/list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@drawable/list"
                 android:onClick="listMethod"
                 android:src="@drawable/list" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:contentDescription="@drawable/map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@drawable/map"
                 android:src="@drawable/map" />
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="65dp" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" >
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:contentDescription="@drawable/alarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@drawable/alarm"
                 android:src="@drawable/alarm" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
-                android:contentDescription="@drawable/sync"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@drawable/sync"
                 android:src="@drawable/sync" />
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="65dp" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal" >
 
             <ImageButton
                 android:id="@+id/imageButton5"
-                android:contentDescription="@drawable/edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@drawable/edit"
                 android:src="@drawable/edit" />
         </TableRow>
+    </LinearLayout>
 
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-        </TableRow>
-        
-    </TableLayout>
 </LinearLayout>

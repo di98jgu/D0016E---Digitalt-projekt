@@ -18,10 +18,14 @@
 
 package se.ltu.dicnix;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.hardware.Sensor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -47,6 +51,11 @@ public class LocationDetailsActivity extends Activity {
 	
 	ContentValues cv1 = new ContentValues(12);
 	ContentValues cv2 = new ContentValues(8);
+	
+	List<ssc.Sensor> sensorList = new ArrayList<ssc.Sensor>();
+	List<ssc.SnowPressure> readingsList = new ArrayList<ssc.SnowPressure>();
+	ssc.Sensor sensor = null;
+	ssc.SnowPressure readings = null;
 	
 	protected DicNixApp application;
 	
@@ -84,7 +93,12 @@ public class LocationDetailsActivity extends Activity {
       SS.setColumns(columns1);  
       SD.setColumns(columns2);  
       
-      ssc.Sensor sensor = application.getSensor();
+      
+      sensorList = application.getSensors();
+      sensor = sensorList.get(0);
+      readingsList = application.getReadings(sensor);
+      readings = readingsList.get(0);
+//    ssc.Sensor sensor = application.getSensors();
 //	  Motsvarande för SnowPressure
       
       /**
@@ -102,13 +116,13 @@ public class LocationDetailsActivity extends Activity {
       cv1.put(columns1[11], String.valueOf(sensor.getUpdated()));
       
       // Behöver komma åt get-metoderna
-      cv2.put(columns2[0], "1");
-      cv2.put(columns2[1], "Yes");
-      cv2.put(columns2[2], "Some weight");
-      cv2.put(columns2[3], "Some depth");
-      cv2.put(columns2[4], "Some temperature");
-      cv2.put(columns2[5], "Humidity level");
-      cv2.put(columns2[6], "Data time");
+      cv2.put(columns2[0], sensor.getVisibility());
+      cv2.put(columns2[1], readings.getShoveld());
+      cv2.put(columns2[2], readings.getWeight());
+      cv2.put(columns2[3], readings.getDepth());
+      cv2.put(columns2[4], readings.getTemperature());
+      cv2.put(columns2[5], readings.getHumidity());
+      cv2.put(columns2[6], String.valueOf(readings.getDataTime()));
       cv2.put(columns2[7], sensor.getSerial());
 
       

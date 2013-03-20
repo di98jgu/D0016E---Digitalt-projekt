@@ -179,11 +179,13 @@ public class SenseSmartCity {
          
       Map<String, String> args = new HashMap<String, String>();
       
-      // Requested sensors, for now we only accept SnowPressure
-      JSONArray sensors_json = 
-         new JSONArray(getSensorSerials(sensors, "SnowPressure"));
-      args.put(SSCResources.Query.SENSORS, sensors_json.toString());
+      // Filter requested sensors, for now we only accept SnowPressure
+      List<Sensor> sensors_sp = getSensorType(sensors, "SnowPressure");
+      emptyWatch(sensors_sp);
       
+      JSONArray sensors_json = new JSONArray(getSensorSerials(sensors_sp));
+      args.put(SSCResources.Query.SENSORS, sensors_json.toString());
+     
       // Fields, none provided means all available.
       if (notNull(querys) && !querys.isEmpty()) {
 
@@ -205,14 +207,41 @@ public class SenseSmartCity {
          SSCResources.Url.GET_SNOWPRESURE,
          args);
       
-      return parseSnowPressureData(sensors, responseObject(data));
+      return parseSnowPressureData(sensors_sp, responseObject(data));
+      
+   }
+   
+   /**
+    *
+    * @param 
+    * @param 
+    * @return
+    */
+   private List<Sensor> getSensorType(List<Sensor> sensors, String type) {
+      
+      List<Sensor> sensor_type = new ArrayList<Sensor>();
+
+      Iterator<Sensor> i = sensors.iterator();
+      
+      while (i.hasNext()) {
+         
+         Sensor s = i.next();
+         
+         if (s.getTypeName().equals(type)) {
+            
+            sensor_type.add(s);
+            
+         }
+      }
+         
+      return sensor_type;
       
    }
    
    /**
     * 
     */
-   private List<String> getSensorSerials(List<Sensor> sensors, String type) {
+   private List<String> getSensorSerials(List<Sensor> sensors) {
       
       List<String> serials = new ArrayList<String>();
 
@@ -220,13 +249,9 @@ public class SenseSmartCity {
       
       while (i.hasNext()) {
          
-         Sensor s = (Sensor) i.next();
-         
-         if (s.getTypeName().equals(type)) {
+         Sensor s = i.next();
+         serials.add(s.getSerial());
             
-            serials.add(s.getSerial());
-            
-         }
       }
          
       return serials;
@@ -297,7 +322,7 @@ public class SenseSmartCity {
          
          while (i.hasNext()) {
             
-            Sensor sensor = (Sensor) i.next();
+            Sensor sensor =  i.next();
             JSONArray fields = data.getJSONArray(sensor.getSerial());
             List<SnowPressure> snowdata = 
                SnowPressure.getSnowPressure(sensor.getSerial(), fields);
@@ -327,6 +352,21 @@ public class SenseSmartCity {
       return obj;
    
    }
+   
+   private <T> List<T> emptyWatch(List<T> list) {
+      
+      if (list.isEmpty()) {
+         
+         String msg = "List must not be empty, need at least one list item";
+         throw new SSCException.MalformedData(msg);
+      }
+      
+      
+      return list;
+      
+   }
+   
+      
    
    private <T> boolean notNull(T obj) {
       
