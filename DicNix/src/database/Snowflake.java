@@ -44,6 +44,7 @@ public abstract class Snowflake {
    private SnowflakeHelper db_helper = null;
    /** Manager class for inquiries */
    protected SnowflakeFields field = null;
+
    
    /**
     * Initialise our database.
@@ -116,7 +117,7 @@ public abstract class Snowflake {
    }
    
    /** 
-    * Select data from database, this is a query in Andriod terminology.
+    * Select data from database, this is a query in Android terminology.
     * 
     * @param selection The WHERE clause, ?s can be used as placeholders for 
     * arguments
@@ -236,4 +237,5 @@ public abstract class Snowflake {
       
    }
    
+
 }

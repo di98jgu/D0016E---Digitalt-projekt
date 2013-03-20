@@ -31,13 +31,14 @@
                 android:contentDescription="@drawable/list"
                 android:onClick="listMethod"
                 android:src="@drawable/list" />
-
+            
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@drawable/map"
-                android:src="@drawable/map" />
+                android:contentDescription="@drawable/sync"
+                android:src="@drawable/sync" />
+            
         </TableRow>
 
         <TableRow
@@ -47,19 +48,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal" >
 
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@drawable/alarm"
-                android:src="@drawable/alarm" />
 
-            <ImageButton
-                android:id="@+id/imageButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@drawable/sync"
-                android:src="@drawable/sync" />
         </TableRow>
 
         <TableRow

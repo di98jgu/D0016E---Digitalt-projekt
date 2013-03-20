@@ -1,6 +1,5 @@
 <resources>
    <string name="app_name">DicNix</string>
-   <string name="button_back">Back</string>
    
    <!-- Actionbar -->
    <string name = "titlebar_text">DicNix</string>
