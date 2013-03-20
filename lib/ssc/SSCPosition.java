@@ -14,7 +14,6 @@
  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  *      MA 02110-1301, USA.
  */
-
 package ssc;
 /**
  * Class SSCPosition
@@ -31,7 +30,6 @@ package ssc;
  * @author Jim Gunnarsson, di98jgu
  * 
  */
- 
 public class SSCPosition {
    
    private double latitude;
