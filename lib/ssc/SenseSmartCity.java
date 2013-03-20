@@ -15,38 +15,6 @@
  *      MA 02110-1301, USA.
  */
 package ssc;
-/**
- * Class SenseSmartCity
- * 
- * This library is the client side of Sense Smart City. SSC is a restful 
- * server providing snow information such as weight, humidity, depth and 
- * temperature for a given location. The aim is to protect people and property.
- * 
- * SSC is developed and maintained by the Swedish city of Skellefteå. It is
- * part of the city's goal of using technology to improve service for citizens 
- * and utilize resources more efficiently. 
- * 
- * This library is the result of a student project in the course D0016E digital
- * projekt lp 3 2013. The target system is Android but this library is tested 
- * on standard JDK 6 without problem. 
- * 
- * Snow information is collected using a sensor. There is different kinds of
- * sensors depending on type of measurement. Here only snow pressure is 
- * implemented. Measurement is done periodly and each reading is taged with
- * time and date and the id of the sensor. So for each sensor there is a set of 
- * readings. 
- * 
- * Sensors belongs to a specific domain. In order to collect data from a sensor
- * a user creditials is needed. A sensor can be visible to all users or
- * private for users in the domain of that particular sensor. A sensor have 
- * location. Important here is that sensor and snow data collected by the 
- * sensor is not mixed.  
- * 
- * Much functionality is missing but it should not be any problem to continue 
- * the development. At least that was the idea behind the code structure. 
- * 
- * @author Jim Gunnarsson
- */
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,21 +26,59 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
- 
+/**
+ * Class SenseSmartCity
+ * 
+ * This library is the client side of Sense Smart City. SSC is a restful 
+ * server providing snow information such as weight, humidity, depth and 
+ * temperature for a given location. The aim is to protect people and property.
+ * 
+ * SSC is developed and maintained by the Swedish city of Skellefteå. It is
+ * part of the city's goal of using technology to improve service for citizens  
+ * and utilize resources more efficiently. 
+ * 
+ * This library is the result of a student project in the course D0016E digital
+ * projekt lp 3 2013. The target system is Android but this library is tested 
+ * on standard JDK 6 without problem. Some minor changes was needed in 
+ * RestfulClient to make it work on Android.
+ * 
+ * Snow information is collected using sensors. There is different kinds of
+ * sensors depending on type of measurement. Here only snow pressure is 
+ * implemented. Measurement is done periodly and each reading is taged with
+ * time, date and the id of the sensor. So for each sensor there is a set of 
+ * readings. 
+ * 
+ * Sensors belongs to a specific domain. In order to collect data from a sensor
+ * user credentials is needed. A sensor can be visible to all users or private 
+ * for users in the domain of that particular sensor. A sensor have location. 
+ * 
+ * Note that the sensor itself and snow data collected by the same sensor is two
+ * different entities
+ *
+ * Much functionality is missing but it should not be any problem to continue 
+ * the development. At least that was the idea behind the code structure. 
+ * 
+ * @author Jim Gunnarsson
+ */
 public class SenseSmartCity {
    
+   /** Restful client */
    private final RestfulClient ssc_client;
    
-   /** Persistent data */
+   /** Map sensor to readings */
    protected Map<Sensor, List<SnowPressure>> ssc_data;
+   /** Default fields at request if none is given */
    protected Map<String, List<String>> ssc_fields;
+   /** Default time period at request if none is given */
    protected String ssc_period; 
    
+   /** Username */
    private String user = null;
+   /** Password */
    private String pwd = null;
    
    /**
-    * 
+    * User credentials is mandatory. 
     */
    private SenseSmartCity() {
    
@@ -81,7 +87,12 @@ public class SenseSmartCity {
    }
   
    /**
+    * Initialises a new library given the user credentials
     * 
+    * @param user Username 
+    * @param pwd Password
+    * 
+    * @throws SSCException.NoUserCredentials if no user or password is provided
     */
    public SenseSmartCity(String user, String pwd) {
      
@@ -102,6 +113,11 @@ public class SenseSmartCity {
       
    }
    
+   /**
+    * Get a list of all sensors available for this user.
+    * 
+    * @return A list of all sensors
+    */
    public List<Sensor> getSensors() {
       
       if (ssc_data.isEmpty()) {
@@ -113,6 +129,14 @@ public class SenseSmartCity {
       
    }
    
+   /**
+    * Return all readings for a particular sensor. A empty list is returned if
+    * no readings is found.
+    * 
+    * @param sensor A valid sensor
+    * 
+    * @return List of readings
+    */
    public List<SnowPressure> getSnowPressure(Sensor sensor) {
       
       if (ssc_data.isEmpty()) {
@@ -131,6 +155,13 @@ public class SenseSmartCity {
       
    }
    
+   /** 
+    * Request all data available for this user. Predefined values is used for 
+    * fields and time period is to collect data. Default is last year and all
+    * fields.
+    * 
+    * @return Map with Sensor as keys and values as a list of readings
+    */
    public Map<Sensor, List<SnowPressure>> requestAll() {
       
       List<Sensor> sensors = 
@@ -146,7 +177,15 @@ public class SenseSmartCity {
    }
    
    /**
+    * Request list of sensors. A list of sensor id, serials, can be provided. A
+    * empty list equals all sensors. All sensors regardless of domain sensors is
+    * requested by setting all to true. 
     * 
+    * @param sensors List of sensor id, empty for all sensors
+    * @param all <code>True</code> for all public sensors, <code>false</code> 
+    * for private sensors only 
+    * 
+    * @return List with sensors.
     */
    public List<Sensor> requestSensorList(List<String> sensors, boolean all) {
       
@@ -170,7 +209,20 @@ public class SenseSmartCity {
    }
    
    /**
+    * Request snow pressure readings. This is a compromise greatly simplify the
+    * design of this library but of course limit readings to snow pressure only.
+    * Should of course be able to handle all type of sensors.
     * 
+    * Need a list of sensors, at least one. None throws an exception. Desired
+    * fields is given as a list of queries, this can be empty but only a limit
+    * number of fields is then returned. A time period might be given, none is
+    * needed. All valid periods is found in SSCResources.
+    * 
+    * @param sensors List of sensors
+    * @param querys List of fields
+    * @param period Time period
+    * 
+    * @return A map with sensor as keys and list of readings as value
     */
    public Map<Sensor, List<SnowPressure>> requestSnowPressure(
       List<Sensor> sensors, List<String> querys, String period) {
@@ -212,10 +264,13 @@ public class SenseSmartCity {
    }
    
    /**
-    *
-    * @param 
-    * @param 
-    * @return
+    * Get sensors of a given type. A filter simply, returning a list of Sensors
+    * of a desired type.
+    * 
+    * @param sensors List of sensors
+    * @param type Type of sensor desired
+    * 
+    * @return A sublist of sensors of desired type or empty if none is found
     */
    private List<Sensor> getSensorType(List<Sensor> sensors, String type) {
       
@@ -239,7 +294,11 @@ public class SenseSmartCity {
    }
    
    /**
+    * Get a list of sensor serials. Serials is the unique id for each sensor.
     * 
+    * @param sensors List of sensors
+    * 
+    * @return List of serials
     */
    private List<String> getSensorSerials(List<Sensor> sensors) {
       
@@ -258,6 +317,17 @@ public class SenseSmartCity {
       
    }
    
+   /** 
+    * Take a response object and return response array. The response object is
+    * the raw JSON data retrieved from SSC server. It contain a key and a value.
+    * Here the value is assumed to be an array.
+    * 
+    * @param data Raw JSON object from SSC server
+    * 
+    * @return A JSON array containing the requested data
+    * 
+    * @SSCException.MalformedData if data is not extractable
+    */
    private JSONArray responseArray(String data) {
       
       JSONArray data_array;
@@ -278,6 +348,17 @@ public class SenseSmartCity {
       
    }
    
+   /** 
+    * Take a response object and return response object. The response object is
+    * the raw JSON data retrieved from SSC server. It contain a key and a value.
+    * Here the value is assumed to be a object.
+    * 
+    * @param data Raw JSON object from SSC server
+    * 
+    * @return A JSON object containing the requested data
+    * 
+    * @SSCException.MalformedData if data is not extractable 
+    */
    private JSONObject responseObject(String data) {
       
       JSONObject data_obj;
@@ -299,7 +380,11 @@ public class SenseSmartCity {
    }
    
    /**
+    * Parse the sensor data in a JSON array. 
     * 
+    * @param data A JSON array with sensor data
+    * 
+    * @return List with sensors
     */
    private List<Sensor> parseSensorData(JSONArray data) {
       
@@ -308,7 +393,15 @@ public class SenseSmartCity {
    }
    
    /**
+    * Parse a JSON object for sensor readings. A list of sensors is needed to
+    * verify and link sensor and readings together. 
     * 
+    * @param sensors List of Sensors
+    * @param data A JSON object with sensor readings
+    * 
+    * @return A map with Sensors as keys and list of readings as values 
+    * 
+    * @throws SSCException.MalformedData if data is not extractable 
     */
    private Map<Sensor, List<SnowPressure>> parseSnowPressureData(
       List<Sensor> sensors, JSONObject data) {
@@ -340,6 +433,15 @@ public class SenseSmartCity {
       return readings;
    }
    
+   /**
+    * Null watch. If given object is null a exception is thrown.
+    * 
+    * @param obj Object to check
+    * 
+    * @return obj if it is not null
+    * 
+    * @throws java.lang.NullPointerException if obj is null
+    */
    private <T> T nullWatch(T obj) {
       
       if (obj == null) {
@@ -353,6 +455,15 @@ public class SenseSmartCity {
    
    }
    
+   /**
+    * Empty watch. If given list is empty a exception is thrown.
+    * 
+    * @param list List to check
+    * 
+    * @return list if it is not empty
+    * 
+    * @throws SSCException.MalformedData if list is empty
+    */
    private <T> List<T> emptyWatch(List<T> list) {
       
       if (list.isEmpty()) {
@@ -366,14 +477,27 @@ public class SenseSmartCity {
       
    }
    
-      
-   
+   /**
+    * Return true if obj is not null. 
+    * 
+    * @param obj Object to check
+    * 
+    * @return <code>true</code> if obj is not null else <code>false</code>
+    */
    private <T> boolean notNull(T obj) {
       
       return (obj == null)? false: true;
       
    }
    
+   /**
+    * Validate a given time period. All valid time periods is defined by
+    * SSCResources.Period.
+    * 
+    * @param period Time period to validate
+    * 
+    * @throws SSCException.MalformedData if period is not valid
+    */
    private String validatePeriod(String period) {
       
       String str = period.trim();
@@ -408,6 +532,14 @@ public class SenseSmartCity {
       
    }
    
+   /**
+    * Set values for default fields. If no fields is given at a request to SSC 
+    * server this is the values to to use. Each sensor type have set of valid
+    * fields. A map is created there keys is the type of sensor and value is a
+    * list of all valid fields for that type. 
+    * 
+    * @return A map with type of sensor as key and a list of fields as value
+    */
    private Map<String, List<String>> defaultFields() {
       
       Map<String, List<String>> default_fields = 
