@@ -55,9 +55,18 @@ public class ListViewActivity extends ListActivity {
         application = (DicNixApp) getApplication();
         sensorList = application.getSensors();        
         sensors = new String[sensorList.size()];
-        
+       
+        /**
+         * Present with name or, if name is not available, serial number
+         */
         for (int i = 0; i < sensorList.size(); i++) {
-            sensors[i] = sensorList.get(i).getSerial();
+            String temp_name = sensorList.get(i).getName();               
+            if (!temp_name.equals("")) {
+            	sensors[i] = sensorList.get(i).getName();
+            }
+            else {
+            	sensors[i] = sensorList.get(i).getSerial();
+            }
         }
  
  
@@ -79,17 +88,18 @@ public class ListViewActivity extends ListActivity {
                * Selected item
                */
               String location = ((TextView) view).getText().toString();
-              long clicked_item_id = id;
+              int sensor_id = (int)id;
               
               /**
                * Launching new Activity on selecting single List Item
                */
               Intent i = new Intent(getApplicationContext(), LocationDetailsActivity.class);
+              
               /**
                * Sending data to new activity
                */
               i.putExtra("location", location);
-              i.putExtra("clicked_item_id", clicked_item_id);
+           	  i.putExtra("sensor_serial", sensorList.get(sensor_id).getSerial());
               startActivity(i);
  
           }

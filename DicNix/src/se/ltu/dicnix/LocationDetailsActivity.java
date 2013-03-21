@@ -25,9 +25,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.hardware.Sensor;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import database.Snowdata;
@@ -52,6 +50,8 @@ public class LocationDetailsActivity extends Activity {
 	ContentValues cv1 = new ContentValues(12);
 	ContentValues cv2 = new ContentValues(8);
 	
+	boolean database_data_inserted = false;
+	
 	List<ssc.Sensor> sensorList = new ArrayList<ssc.Sensor>();
 	List<ssc.SnowPressure> readingsList = new ArrayList<ssc.SnowPressure>();
 	ssc.Sensor sensor = null;
@@ -72,68 +72,88 @@ public class LocationDetailsActivity extends Activity {
       
       Intent i = getIntent();   
       long clicked_item_id = i.getLongExtra("clicked_item_id", 0);
+      String sensor_serial = i.getStringExtra("sensor_serial");
       String location_id = String.valueOf(clicked_item_id);      
+ 
+      
+      /**
+       * Get sensors
+       */
+      sensorList = application.getSensors();
      
       /**
        * Create database
        */
       Snowsensor SS = new Snowsensor(getApplicationContext());
       Snowdata SD = new Snowdata(getApplicationContext());
-     
-      
+           
       /**
        * Open database
        */
       SS.open();
       SD.open();
-      
-      /**
-       * Create columns for database
-       */
-      SS.setColumns(columns1);  
-      SD.setColumns(columns2);  
-      
-      
-      sensorList = application.getSensors();
-      sensor = sensorList.get(0);
-      readingsList = application.getReadings(sensor);
-      readings = readingsList.get(0);
-//    ssc.Sensor sensor = application.getSensors();
-//	  Motsvarande för SnowPressure
-      
-      /**
-       * Insert test-data into database
-       */
-      cv1.put(columns1[2], sensor.getName());
-      cv1.put(columns1[3], sensor.getLocation());
-      cv1.put(columns1[4], String.valueOf(sensor.getLatitude()));
-      cv1.put(columns1[5], String.valueOf(sensor.getLongitude()));
-      cv1.put(columns1[6], sensor.getTypeName());
-      cv1.put(columns1[7], sensor.getDeployedState());
-      cv1.put(columns1[8], sensor.getInfo());
-      cv1.put(columns1[9], sensor.getDomain());
-      cv1.put(columns1[10], String.valueOf(sensor.getCreated()));
-      cv1.put(columns1[11], String.valueOf(sensor.getUpdated()));
-      
-      // Behöver komma åt get-metoderna
-      cv2.put(columns2[0], sensor.getVisibility());
-      cv2.put(columns2[1], readings.getShoveld());
-      cv2.put(columns2[2], readings.getWeight());
-      cv2.put(columns2[3], readings.getDepth());
-      cv2.put(columns2[4], readings.getTemperature());
-      cv2.put(columns2[5], readings.getHumidity());
-      cv2.put(columns2[6], String.valueOf(readings.getDataTime()));
-      cv2.put(columns2[7], sensor.getSerial());
 
       
-      SS.insert(cv1);
-      SD.insert(cv2);
+          /**
+           * Create columns for database
+           */
+          SS.setColumns(columns1);  
+          SD.setColumns(columns2);  
+    	  
+	      /**
+	       * Insert remote database data into local database
+	       */
+	      for (int k = 0; k < sensorList.size(); k++) {
+	    	  readingsList = application.getReadings(sensorList.get(k));
+	          readings = readingsList.get(0);
+	    	  
+	          cv1.put(columns1[2], sensorList.get(k).getName());
+	          cv1.put(columns1[3], sensorList.get(k).getLocation());
+	          cv1.put(columns1[4], String.valueOf(sensorList.get(k).getLatitude()));
+	          cv1.put(columns1[5], String.valueOf(sensorList.get(k).getLongitude()));
+	          cv1.put(columns1[6], sensorList.get(k).getTypeName());
+	          cv1.put(columns1[7], sensorList.get(k).getDeployedState());
+	          cv1.put(columns1[8], sensorList.get(k).getInfo());
+	          cv1.put(columns1[9], sensorList.get(k).getDomain());
+	          cv1.put(columns1[10], String.valueOf(sensorList.get(k).getCreated()));
+	          cv1.put(columns1[11], String.valueOf(sensorList.get(k).getUpdated()));
+	          
+	          cv2.put(columns2[0], sensorList.get(k).getVisibility());
+	          cv2.put(columns2[1], readings.getShoveld());
+	          cv2.put(columns2[2], readings.getWeight());
+	          cv2.put(columns2[3], readings.getDepth());
+	          cv2.put(columns2[4], readings.getTemperature());
+	          cv2.put(columns2[5], readings.getHumidity());
+	          cv2.put(columns2[6], String.valueOf(readings.getDataTime()));
+	          cv2.put(columns2[7], sensorList.get(k).getSerial());
+	
+	          
+	          SS.insert(cv1);
+	          SD.insert(cv2);
+
+	      }
+      
+      
       
       /**
-       * Query database for all of its information
+       * Determine sensor
        */
-      returnedCursor1 = SS.all();
-      returnedCursor2 = SD.all();
+      for (int j = 0; j < sensorList.size(); j++) {
+    	  String temp_sensor = sensorList.get(j).getSerial();
+    	  if (temp_sensor.equals(sensor_serial)) {
+    		  sensor = sensorList.get(j);
+        	  readingsList = application.getReadings(sensor);
+    	      readings = readingsList.get(0);
+    		  break;
+    	  }
+      }
+      
+      
+      /**
+       * Query database for wanted information
+       */
+      returnedCursor1 = SS.select("latitude = " + String.valueOf(sensor.getLatitude()), null);
+      returnedCursor2 = SD.select("temperature = " + String.valueOf(readings.getTemperature()), null);
       
       LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);
       details.populate(location_id);   
@@ -227,7 +247,6 @@ public class LocationDetailsActivity extends Activity {
 	       * Populate location details view.
 	       */
 	      public void populate(String clicked_item_id) {
-	         String location_id = clicked_item_id;
 	    	  
 	         returnedCursor1.moveToFirst();
 	         returnedCursor2.moveToFirst();
@@ -254,18 +273,10 @@ public class LocationDetailsActivity extends Activity {
 	         serial.setText(returnedCursor2.getString(returnedCursor2.getColumnIndex("serial")));
 	         
 	         
-	         id.setText("Clicked item id: " + location_id);
-	         
          return;
 
       }
       
 
-
-   }
-   
-   /** Called when the user clicks the Back button */
-   public void backMethod(View view) {
-   	finish();
    }
 }
