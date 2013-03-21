@@ -16,22 +16,22 @@
  */
 package ssc;
 /**
- * Class SSCException
- * 
- * A runtime exception wrapper for all well know exceptions. Main 
+ * <p>A runtime exception wrapper for all well know exceptions. Main 
  * source of exceptions is the restfulClient. All {@link SenseSmartCity} 
  * methods can throw this.
+ * </p>
  * 
- * This exception wrapper may not follow the narrow road of Java 
- * wisdom, each exception in its own class. But this helps to keep 
+ * <p>This exception wrapper may not follow the narrow road of Java 
+ * wisdom i.e. each exception in its own class. But this helps to keep 
  * things neat and easy to maintain. I have yet see why static inner
  * exception classes is such a bad idea.
+ * </p>
  * 
- * All exceptions is unchecked.
+ * <p>All exceptions is unchecked.
+ * </p>
  * 
- * @author Jim Gunnarsson
+ * @author Jim Gunnarsson, di98jgu
  */
-
 public class SSCException extends RuntimeException {
    
    private static final long serialVersionUID = 2114723132L;
@@ -54,7 +54,7 @@ public class SSCException extends RuntimeException {
    }
    
    /**
-	 * Something has gone very wrong...
+	 * Exception at places no exception is expected
 	 */
 	public static class Mystery extends SSCException {
       
@@ -70,9 +70,7 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-    * Class ConnectionFailed
-    * 
-	 * Restful client failed to establish connection with
+    * Restful client failed to establish connection with
     * server.
 	 */
 	public static class ConnectionFailed extends SSCException {
@@ -89,9 +87,7 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-    * Class ClientError
-    * 
-	 * Restful client, in case of response code 4xx.
+    * Restful client, in case of response code 4xx.
     * 
     * FIXME: Divide this class for different 4xx codes.
 	 */
@@ -105,9 +101,7 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-    * Class ServerError
-    * 
-	 * Restful client, in case of response code 5xx.
+    * Restful client, in case of response code 5xx.
 	 */
 	public static class ServerError extends SSCException {
       
@@ -119,9 +113,7 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-    * Class MalformedData
-    * 
-	 * Malformed data exception is throw then data is in wrong form.
+    * Malformed data exception is throw then data is in wrong form.
     * 
     * Normal get operations, fetching data from server, should not
     * generate this kind of exception. It would indicate changes in
@@ -141,8 +133,6 @@ public class SSCException extends RuntimeException {
 	}
    
    /**
-    * Class NoUserCredentials
-    * 
     * In order to get data from server user credentials is mandatory. 
     * Thus lack of such, user name or password is null or missing, is 
     * an exception.

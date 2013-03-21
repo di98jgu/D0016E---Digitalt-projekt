@@ -15,39 +15,51 @@
  *      MA 02110-1301, USA.
  */
 package ssc;
-/**
- * 
- * @author Jim Gunnarsson
- */
- 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Container for a reading of type SnowPressure. This is a reading meaning it
+ * wraps all data for this reading and provide get and set methods to the data. 
+ * No information about the location of this readning is provided here, it is
+ * found in the Sensor. 
+ * 
+ * @author Jim Gunnarsson, di98jgu
+ */
 public class SnowPressure implements Comparable<SnowPressure> {
    
-   /**  */
-   private static final int INFO_LENGTH = 100;
+   /** Maximum length of info field */
+   public static final int INFO_LENGTH = 100;
    
-   /**  */
+   /** Id to the sensor this reading belongs, default empty string */
    private String serial = null;
-   /**  */
+   /** Additional information about this particular reading, default empty string */
    private String info = null;
-   /**  */
+   /** Have the sensor location been shoveled, default false */
    private boolean shoveld = false;
-   /**  */
+   /** The snow weight in grams, default 0 */
    private int weight = 0;
-   /**  */
+   /** The snow depth in centimetres, default 0 */
    private int depth = 0;
-   /**  */
+   /** The temperature in Celsius degrees, default -273 */
    private int temperature = 0;
-   /**  */
+   /** Percentage in relative humidity, default 0 */
    private int humidity = 0;
-   /**  */
+   /** Time and date of registration, default 1970-01-01 00:00:00 */
    private SSCTimeUnit data_time = null;
    
+   /**
+    * Create a new SnowPressure reading from a JSON object. A sensor serial to
+    * which this reading belongs needs to provided. Fields not provided by the
+    * JSON object is filled with default values.
+    * 
+    * @param sensor Sensor serial to which this reading belong
+    * @param obj Snow data
+    */
    public SnowPressure(String sensor, JSONObject obj) {
       
       String INFO = SSCResources.Field.INFO;
@@ -92,6 +104,17 @@ public class SnowPressure implements Comparable<SnowPressure> {
       
    }
    
+   /**
+    * Create a list of readings from a JSON array. All readings is asumed to be
+    * from the same sensor. 
+    * 
+    * @param sensor Sensor serial to which this reading belong
+    * @param obj_array JSON array with readings
+    * 
+    * @return List of readings of type SnowPressure
+    * 
+    * @throws SSCException.MalformedData if obj_array is not extractable
+    */
    public static List<SnowPressure> getSnowPressure(
       String sensor, JSONArray obj_array) {
       
@@ -115,90 +138,164 @@ public class SnowPressure implements Comparable<SnowPressure> {
       
    }
    
-   /**  */
+   /**  
+    * Get sensor serial to which this reading belongs.
+    * 
+    * @return Sensor serial
+    */
    public String getSensorSerial() {
       
       return this.serial;
    }
-   /**  */
+   
+   /**  
+    * Get optional information about this reading.
+    * 
+    * @return Info about this reading
+    */
    public String getInfo() {
       
       return this.info;
    }
-   /**  */
+   
+   /**
+    * Have the sensor location been shoveled.
+    * 
+    * @return <code>true</code> if the sensor location been shoveled
+    *  
+    */
    public boolean getShoveld() {
       
       return this.shoveld;
    }
-   /**  */
+   
+   /**  
+    * Get snow weight.
+    * 
+    * @return Snow weight
+    */
    public int getWeight() {
    
       return this.weight;
    }
-   /**  */
+   
+   /**
+    * Get snow depth 
+    * 
+    * @return Snow depth
+    */
    public int getDepth() {
    
       return this.depth;
    }
-   /**  */
+   
+   /**  
+    * Get temperature in grader Celsius.
+    * 
+    * @return Temperature
+    */
    public int getTemperature() {
       
       return this.temperature;
    }
-   /**  */
+   
+   /**
+    * Get humidity in percent
+    * 
+    * @return Humidity
+    */
    public int getHumidity() {
       
       return this.humidity;
    }
-   /**  */
+   
+   /**
+    * Get time unit, date and time
+    * 
+    * @return SSC time unit
+    */
    public SSCTimeUnit getDataTime() {
       
       return this.data_time;
    }
    
-   /**  */
+   /**  
+    * Set sensor serial to which this reading should belong.
+    * 
+    * @param sensor Sensor serial
+    */
    public void setSensorSerial(String sensor) {
       
       this.serial = sensor;
    }
-   /**  */
+   /**
+    * Add optional information about this reading.
+    * 
+    * @param info Info about this reading
+    */
    public void setInfo(String info) {
       
       this.info = info;
    }
-   /**  */
+   /**
+    * Mark if the sensor location been shoveled.
+    * 
+    * @param shoveld Boolean <code>true</code> if location have been shoveled
+    */
    public void setShoveld(boolean shoveld) {
       
       this.shoveld = shoveld;
    }
-   /**  */
+   
+   /**
+    * Set snow weight.
+    * 
+    * @param weight Snow weight
+    */
    public void setWeight(int weight) {
       
       this.weight = weight;
    }
-   /**  */
+   /**
+    * Set snow depth 
+    * 
+    * @param depth Snow depth
+    */
    public void setDepth(int depth) {
    
       this.depth = depth;
    }
-   /**  */
+   /**
+    * Set temperature in grader Celsius.
+    * 
+    * @param temperature Temperature in grader Celsius
+    */
    public void setTemperature(int temperature) {
       
       this.temperature = temperature;
    }
-   /**  */
+   /**
+    * Get humidity in percent
+    * 
+    * @param humidity Humidity
+    */
    public void setHumidity(int humidity) {
       
       this.humidity = humidity;
    }
-   /**  */
+   
+   /**
+    * Set time unit, date and time
+    * 
+    * @param unit A SSC time unit
+    */
    public void setDataTime(SSCTimeUnit unit) {
       
       this.data_time = unit;
    }
    
    /**
-    * Compares this object with the specified object for order. 
+    * Compares this object with the specified object to determine the order. 
     * Returns a negative integer, zero, or a positive integer as this 
     * object is less than, equal to, or greater than the specified 
     * object. 
@@ -227,6 +324,13 @@ public class SnowPressure implements Comparable<SnowPressure> {
    
    }
    
+   /** 
+    * Indicates whether given object is equal to this one.
+    * 
+    * @param obj Object with which to compare
+    * 
+    * @return <code>true</code> if equal
+    */
    @Override
    public boolean equals(Object obj) {
       
@@ -239,6 +343,11 @@ public class SnowPressure implements Comparable<SnowPressure> {
       
    }
    
+   /**
+    * Returns a hash code value for this object. 
+    * 
+    * @return A hash code value
+    */
    @Override
    public int hashCode() {
       
@@ -253,6 +362,11 @@ public class SnowPressure implements Comparable<SnowPressure> {
       
    }
    
+   /**
+    * Returns a string representation of this object.
+    * 
+    * @return A string representation
+    */
    @Override
    public String toString() {
       
@@ -274,8 +388,8 @@ public class SnowPressure implements Comparable<SnowPressure> {
    }
    
    /**
-    * Truncate a String to the given length with no warnings or error 
-    * raised if it is bigger.
+    * Truncate a string to a precise length. This prevents a field to exceeds a
+    * given size limit.
     * 
     * @param  str String to be truncated
     * @param  length  Maximum length of string
@@ -293,6 +407,15 @@ public class SnowPressure implements Comparable<SnowPressure> {
       return str;
    }
    
+   /**
+    * Boolean from SSC server is represented as 1 and 0. This method transforms
+    * those values to boolean. Note only 1 return true 0 or any other string
+    * inclusive a null value return false. 
+    * 
+    * @param str String with 1 or 0
+    * 
+    * @return <code>true</code> for 1 and <code>false</code> for 0
+    */
    private boolean toBoolean(String str) {
       
       return (str != null && str == "1")? true: false;

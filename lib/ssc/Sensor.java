@@ -15,51 +15,63 @@
  *      MA 02110-1301, USA.
  */
 package ssc;
-/**
- * 
- * @author Jim Gunnarsson
- */
- 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * This is a Sensor in SSC. It wraps all sensor values and provide get and set 
+ * methods for them. Type of sensor is important. The data collected depends on 
+ * sensor type, in other what kind of reading is conducted. To get a 
+ * predictable response from the SSC server it is important to only use valid 
+ * data fields for a given type of sensor. 
+ * 
+ * What is not implemented but most desirable would be to readings to Sensor and
+ * thus let Sensor manage for relation between sensor and readings. This would I
+ * believe be the natural order of things.
+ * 
+ * @author Jim Gunnarsson, di98jgu
+ */
 public class Sensor {
    
    /** Max length for field location */
-   private static final int LOCATION_LENGTH = 128;
+   public static final int LOCATION_LENGTH = 128;
    /** Max length for field name */
-   private static final int NAME_LENGTH = 50;
+   public static final int NAME_LENGTH = 50;
    /** Max length for field info */
-   private static final int INFO_LENGTH = 255;
+   public static final int INFO_LENGTH = 255;
    
-   /**  */
+   /** Unique sensor serial number to identify this sensor, 
+    * only alphanumeric characters allowed */
    private String serial = null;
-   /**  */
+   /** Name of sensor */
    private String name = null;
-   /**  */
+   /** Description of sensor location */
    private String location = null;
-   /**  */
+   /** Position of sensor */
    private SSCPosition position = null;
-   /**  */
+   /** Type of sensor */
    private SSCResources.TypeName type_name;
-   /**  */
+   /** Current sensor state */
    private SSCResources.DeployedState deployed_state;
-   /**  */
+   /** Visible for other domains i.e. public or private */
    private boolean visibility = false;
-   /**  */
+   /** Additional information about this sensor */
    private String info = null;
-   /**  */
+   /** Domain to which this sensor belongs */
    private String domain = null;
-   /**  */
+   /** Time of registration */
    private SSCTimeUnit created = null;
-   /**  */
+   /** Time of latest modification */
    private SSCTimeUnit updated = null;
    
    /**
+    * Create a new Sensor from a JSON object. 
     * 
+    * @param obj Sensor data
     */
    public Sensor(JSONObject obj) {
 
@@ -108,7 +120,13 @@ public class Sensor {
    }
    
    /**
+    * Create a list of sensors from a JSON array. 
     * 
+    * @param obj_array JSON array with sensor data
+    * 
+    * @return List of sensors
+    * 
+    * @throws SSCException.MalformedData if obj_array is not extractable
     */
    public static List<Sensor> getSensors(JSONArray obj_array) {
       
@@ -133,7 +151,9 @@ public class Sensor {
    }
    
    /**  
+    * Unique sensor serial number to identify this sensor, the sensor id.
     * 
+    * @return Serial number for this sensor
     */
    public String getSerial() {
       
@@ -141,7 +161,9 @@ public class Sensor {
    }
    
    /**  
+    * Get human readable name of this sensor.
     * 
+    * @return Name of the sensor
     */
    public String getName() {
       
@@ -149,7 +171,9 @@ public class Sensor {
    }
    
    /**  
+    * Description of sensor location.
     * 
+    * @return Sensor location for this sensor
     */
    public String getLocation() {
       
@@ -157,7 +181,9 @@ public class Sensor {
    }
    
    /**  
+    * Get latitude in degrees with decimal notation.
     * 
+    * @return Latitude of this sensor
     */
    public double getLatitude() {
       
@@ -165,7 +191,9 @@ public class Sensor {
    }
    
    /**  
+    * Get longitude in degrees with decimal notation.
     * 
+    * @return Longitude of this sensor
     */
    public double getLongitude() {
       
@@ -173,7 +201,9 @@ public class Sensor {
    }
    
    /**  
+    * Get position of sensor
     * 
+    * @return Position of sensor
     */
    public SSCPosition getPosition() {
       
@@ -181,7 +211,9 @@ public class Sensor {
    }
    
    /**  
+    * Get type of sensor, see SSCResources.TypeName for all types.
     * 
+    * @return Type of sensor
     */
    public String getTypeName() {
       
@@ -189,7 +221,9 @@ public class Sensor {
    }
    
    /**  
+    * Get current sensor state. See SSCResources.DeployedState all states.
     * 
+    * @return Current sensor state
     */
    public String getDeployedState() {
       
@@ -197,7 +231,11 @@ public class Sensor {
    }
    
    /**  
+    * Visible for other domains i.e. public or private. A sensor belongs to a
+    * domain but will be visible for all domains if visibility is set to 
+    * <code>true</code>.
     * 
+    * @return Visibility of this sensor
     */
    public boolean getVisibility() {
       
@@ -205,7 +243,9 @@ public class Sensor {
    }
    
    /**  
+    * Get additional information about this sensor.
     * 
+    * @return Additional info about this sensor
     */
    public String getInfo() {
       
@@ -213,7 +253,9 @@ public class Sensor {
    }
    
    /**  
+    * Get domain to which this sensor belongs.
     * 
+    * @return Domain to which this sensor belongs.
     */
    public String getDomain() {
       
@@ -221,7 +263,9 @@ public class Sensor {
    }
    
    /**  
+    * Get time of registration for this sensor.
     * 
+    * @return Time of registration
     */
    public SSCTimeUnit getCreated() {
       
@@ -229,7 +273,9 @@ public class Sensor {
    }
    
    /**  
+    * Get time of latest modification for this sensor.
     * 
+    * @return Time of latest modification
     */
    public SSCTimeUnit getUpdated() {
       
@@ -237,7 +283,10 @@ public class Sensor {
    }
    
    /**  
+    * Unique sensor serial number to identify this sensor, 
+    * only alphanumeric characters allowed
     * 
+    * @param serial Serial number for this sensor
     */
    public void setSerial(String serial) {
       
@@ -245,7 +294,10 @@ public class Sensor {
    }
    
    /**  
+    * Set human readable name of this sensor. Will be truncated if name exceeds
+    * NAME_LENGTH.
     * 
+    * @param name New name of the sensor
     */
    public void setName(String name) {
       
@@ -253,7 +305,10 @@ public class Sensor {
    }
    
    /**  
+    * Description of sensor location, Will be truncated if location exceeds
+    * LOCATION_LENGTH.
     * 
+    * @param location Description of sensor location
     */
    public void setLocation(String location) {
       
@@ -261,15 +316,19 @@ public class Sensor {
    }
    
    /**  
+    * Set latitude, must be in degrees with decimal notation.
     * 
+    * @param latitude Latitude of this sensor
     */
    public void setLatitude(double latitude) {
       
       this.position.setLatitude(latitude);
    }
    
-   /**  
+   /**
+    * Set longitude, must be in degrees with decimal notation.
     * 
+    * @param longitude Longitude of this sensor
     */
    public void setLongitude(double longitude) {
       
@@ -277,7 +336,9 @@ public class Sensor {
    }
    
    /**  
+    * Set position of sensor
     * 
+    * @param position Position of this sensor
     */
    public void setPosition(SSCPosition position) {
       
@@ -285,7 +346,11 @@ public class Sensor {
    }
    
    /**  
+    * Set type of sensor, see SSCResources.TypeName for all valid types.
     * 
+    * @param type_name Type of sensor
+    * 
+    * @throws SSCException.MalformedData if not a valid type name is given
     */
    public void setTypeName(String type_name) {
       
@@ -293,7 +358,11 @@ public class Sensor {
    }
    
    /**  
+    * Set current sensor state. See SSCResources.DeployedState all valid states.
     * 
+    * @param deployed_state New sensor state
+    * 
+    * @throws SSCException.MalformedData if not a valid state is given
     */
    public void setDeployedState(String deployed_state) {
       
@@ -302,7 +371,11 @@ public class Sensor {
    }
    
    /**  
+    * Visible for other domains i.e. public or private. A sensor belongs to a
+    * domain but will be visible for all domains if visibility is set to 
+    * <code>true</code>.
     * 
+    * @param visibility Visibility of this sensor
     */
    public void setVisibility(boolean visibility) {
       
@@ -310,37 +383,23 @@ public class Sensor {
    }
    
    /**  
+    * Provide additional information about this sensor. Will be truncated if
+    * location exceeds INFO_LENGTH.
     * 
+    * @param info Additional info about this sensor
     */
    public void setInfo(String info) {
       
       this.info = truncate(info, INFO_LENGTH);
    }
    
-   /**  
+   /** 
+    * Indicates whether given object is equal to this one.
     * 
-    */
-   public void setDomain(String domain) {
-      
-      this.domain = domain;
-   }
-   
-   /**  
+    * @param obj Object with which to compare
     * 
+    * @return <code>true</code> if equal
     */
-   public void setCreated(SSCTimeUnit created) {
-      
-      this.created = created;
-   }
-   
-   /**  
-    * 
-    */
-   public void setUpdated(SSCTimeUnit updated) {
-      
-      this.updated = updated;
-   }
-   
    @Override
    public boolean equals(Object obj) {
       
@@ -353,6 +412,11 @@ public class Sensor {
       
    }
    
+   /**
+    * Returns a hash code value for this object. 
+    * 
+    * @return A hash code value
+    */
    @Override
    public int hashCode() {
       
@@ -360,6 +424,11 @@ public class Sensor {
       
    }
 
+   /**
+    * Returns a string representation of this object.
+    * 
+    * @return A string representation
+    */
    @Override
    public String toString() {
       
@@ -385,8 +454,8 @@ public class Sensor {
    }
       
    /**
-    * Truncate a String to the given length with no warnings or error 
-    * raised if it is bigger.
+    * Truncate a string to a precise length. This prevents a field to exceeds a
+    * given size limit.
     * 
     * @param  str String to be truncated
     * @param  length  Maximum length of string

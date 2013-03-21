@@ -16,8 +16,6 @@
  */
 package ssc;
 /**
- * Class SSCPosition
- * 
  * Represent a position in SSC. Position system used is latitude and 
  * longitude in degrees using decimal notation. Altitude is not used
  * in SSC and thus not part of a position.

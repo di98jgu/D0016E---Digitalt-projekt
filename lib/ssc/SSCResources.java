@@ -17,8 +17,6 @@
 package ssc;
 
 /**
- * Class SSCResources
- * 
  * Collection of all constant values used for communication with Sense
  * Smart City and management of data. Constants is grouped in Url,
  * Query and Field. Certain fields and query have a fixed set of valid

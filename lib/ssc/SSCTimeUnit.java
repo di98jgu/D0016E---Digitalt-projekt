@@ -15,19 +15,17 @@
  *      MA 02110-1301, USA.
  */
 package ssc;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
- * Class SSCTimeUnit
- * 
  * Date and time is always in the format yyyy-MM-dd HH:mm:ss, 
  * example '1987-01-23 18:19:34'. This format is used by Sense Smart 
  * City for all timestamps. It is the SSC time unit.
  * 
  * @author Jim Gunnarsson, di98jgu
  */
-
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
 public class SSCTimeUnit {
    
    /** All dates is in this form only */

@@ -15,25 +15,6 @@
  *      MA 02110-1301, USA.
  */
 package ssc;
-/**
- * 
- * Class: RestfulClient
- * 
- * This is our restful client used be Sense Smart City. Currently
- * it only GET requests is implemented. No data can be sent 
- * upstreams.
- * 
- * It should only be used for Sense Smart City since it make a few
- * assumptions about the server. The server is assumed to use a 
- * self-signed SSL certificate. User name and password mandatory and 
- * not an option.
- * 
- * Note that JSON is not processed at all in this class.
- * 
- * Known errors is wrapped into SSCExceptions.
- * 
- * @author Jim Gunnarsson
- */
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,22 +31,58 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+/* DatatypeConverter do not exist under Android */
 import android.util.Base64;
 
+/**
+ * This is our restful client used be Sense Smart City. Currently it only GET 
+ * requests is implemented. No data can be sent upstreams.
+ * 
+ * It should only be used for Sense Smart City since it make a few assumptions 
+ * about the server. The server is assumed to use a self-signed SSL certificate.
+ * User name and password mandatory and not an option.
+ * 
+ * Note that JSON is not processed at all in this class.
+ * 
+ * Known errors is wrapped into SSCExceptions.
+ * 
+ * @author Jim Gunnarsson, di98jgu
+ */
 class RestfulClient {
    
-   /** User credentials */
+   /** Username */
    private String user = "";
+   /** Password */
    private String pwd = "";
    
-   
+   /**
+    * Initializes this client for SSC server. Username and password is needed.
+    *
+    * @param user Username
+    * @param pwd Password
+    */
    public RestfulClient(String user, String pwd) {
    
       this.user = user;
       this.pwd = pwd;
    
    }
-
+   
+   /**
+    * Make a GET request to server. User and password is always used.
+    * 
+    * @param url Address to host
+    * @param args Query map
+    * 
+    * @return A JSON respons object
+    * 
+    * @throws SSCException used for all other exceptions
+    * @throws SSCException.ConnectionFailed if a connection can't be establish.
+    * @throws SSCException.ClientError
+    * @throws SSCException.ConnectionFailed for response code 4xx
+    * @throws SSCException.ServerError for response code 5xx
+    * @throws SSCException.Mystery Exception at places no exception is expected
+    */
    public String getData(String url, Map<String, String> args)
       throws SSCException {
          
@@ -142,10 +159,10 @@ class RestfulClient {
     * 
     * @param connection The URLConnection 
     * 
-    * @throws SSCException.ConnectionFailed Any code other then 
-    * 200.
-    * @throws SSCException.Mystery Errors unknown to us.
-    * @throws java.io.IOException Connection may throw this at us
+    * @throws SSCException.ClientError for response code 4xx
+    * @throws SSCException.ServerError for response code 5xx
+    * @throws SSCException.Mystery Errors unknown to us
+    * @throws java.io.IOException HttpsURLConnection may throw this one
     */
    private void mangleResponse(HttpsURLConnection connection) 
       throws java.io.IOException {
@@ -276,8 +293,8 @@ class RestfulClient {
    }
    
    /**
-    * This class is needed to ignore java.io.IOException: HTTPS 
-    * hostname wrong error due to self-signed SSL certificate.
+    * This class is needed to prevent the java.io.IOException "HTTPS 
+    * hostname wrong error" due to self-signed SSL certificate.
     */
    private static HostnameVerifier ignoreHost = new HostnameVerifier() {
       

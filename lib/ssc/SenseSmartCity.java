@@ -27,38 +27,37 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Class SenseSmartCity
- * 
- * This library is the client side of Sense Smart City. SSC is a restful 
+ * <p>This library is the client side of Sense Smart City. SSC is a restful 
  * server providing snow information such as weight, humidity, depth and 
  * temperature for a given location. The aim is to protect people and property.
+ * SSC is developed and maintained by the Swedish city of Skellefteå.
+ * </p>
  * 
- * SSC is developed and maintained by the Swedish city of Skellefteå. It is
- * part of the city's goal of using technology to improve service for citizens  
- * and utilize resources more efficiently. 
- * 
- * This library is the result of a student project in the course D0016E digital
- * projekt lp 3 2013. The target system is Android but this library is tested 
- * on standard JDK 6 without problem. Some minor changes was needed in 
+ * <p>This library is the result of a student project in the course D0016E 
+ * digital projekt lp 3 2013. The target system is Android but this library is 
+ * tested on standard JDK 6 without problem. Some minor changes was needed in 
  * RestfulClient to make it work on Android.
+ * </p>
  * 
- * Snow information is collected using sensors. There is different kinds of
+ * <p>Snow information is collected using sensors. There is different kinds of
  * sensors depending on type of measurement. Here only snow pressure is 
  * implemented. Measurement is done periodly and each reading is taged with
  * time, date and the id of the sensor. So for each sensor there is a set of 
- * readings. 
+ * readings. Sensors belongs to a specific domain. In order to collect data from
+ * SSC user credentials is needed. A sensor can be visible to all users or 
+ * private for users in the domain of that particular sensor. A sensor have 
+ * location. 
+ * </p>
  * 
- * Sensors belongs to a specific domain. In order to collect data from a sensor
- * user credentials is needed. A sensor can be visible to all users or private 
- * for users in the domain of that particular sensor. A sensor have location. 
+ * <p>Note that the sensor itself and snow data collected by the same sensor is 
+ * two different entities.
+ * </p>
  * 
- * Note that the sensor itself and snow data collected by the same sensor is two
- * different entities
- *
- * Much functionality is missing but it should not be any problem to continue 
+ * <p>Much functionality is missing but it should not be any problem to continue
  * the development. At least that was the idea behind the code structure. 
+ * </p>
  * 
- * @author Jim Gunnarsson
+ * @author Jim Gunnarsson, di98jgu
  */
 public class SenseSmartCity {
    
@@ -326,7 +325,7 @@ public class SenseSmartCity {
     * 
     * @return A JSON array containing the requested data
     * 
-    * @SSCException.MalformedData if data is not extractable
+    * @throws SSCException.MalformedData if data is not extractable
     */
    private JSONArray responseArray(String data) {
       
@@ -357,7 +356,7 @@ public class SenseSmartCity {
     * 
     * @return A JSON object containing the requested data
     * 
-    * @SSCException.MalformedData if data is not extractable 
+    * @throws SSCException.MalformedData if data is not extractable 
     */
    private JSONObject responseObject(String data) {
       
