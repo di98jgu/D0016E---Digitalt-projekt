@@ -32,7 +32,7 @@ public class Snowdata extends Snowflake {
 	
    /** Unique row id */
    public static final String ID = SnowflakeHelper.ID;
-   /** Serial number of measurement-point */
+   /** Sensor to which reading belongs */
    public static final String SERIAL = SnowflakeHelper.SERIAL;
    /** Additional information about a reading */
    public static final String INFO = SnowflakeHelper.INFO;
@@ -48,6 +48,8 @@ public class Snowdata extends Snowflake {
    public static final String HUMIDITY = SnowflakeHelper.HUMIDITY;
    /** Time of measurement */
    public static final String DATA_TIME = SnowflakeHelper.DATA_TIME;
+   /** Field for sorting by time */
+   public static final String TIMESTAMP = SnowflakeHelper.TIMESTAMP;
 
 
    
@@ -62,7 +64,9 @@ public class Snowdata extends Snowflake {
       
       super(ctxt);
       
-      String[] columns = {ID, SERIAL, INFO, SHOVELED, WEIGHT, DEPTH, TEMPERATURE, HUMIDITY, DATA_TIME};
+      String[] columns = {
+            ID, SERIAL, INFO, SHOVELED, WEIGHT, DEPTH, 
+            TEMPERATURE, HUMIDITY, DATA_TIME, TIMESTAMP};
          
       super.field = new SnowflakeFields(TABLE_NAME, columns);
            

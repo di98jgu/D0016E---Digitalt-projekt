@@ -38,13 +38,12 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 
    /** Table for snow data */
    public static final String TABLE_SNOW = "snowtable";
-   
    /** Table for sensor data */
    public static final String TABLE_SENSOR = "sensortable";
    
    /** ID, this is always the primary key in all tables */
-   public static final String ID = "id";
-   /** Time of last update */
+   public static final String ID = "_id";
+   /** The Unix epoch, for sorting by time  */
    public static final String TIMESTAMP = "timestamp";
    /** Serial number of measurement-point */
    public static final String SERIAL = "serial";
@@ -60,11 +59,11 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    public static final String TYPENAME = "typename";
    /** State of measurement-point */
    public static final String DEPLOYEDSTATE = "deployedstate";
-   /** Visibility at measurement-point */
+   /** Visible for other domains i.e. public or private */
    public static final String VISIBILITY = "visibility";
    /** Info about measurement-point */
    public static final String INFO = "info";
-   /** Domain */
+   /** Domain to which this sensor belongs */
    public static final String DOMAIN = "domain";
    /** Measurement-point time of creation */
    public static final String CREATED = "created";
@@ -112,8 +111,8 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  " ( " + 
 			  ID + 
 			  " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-			  TIMESTAMP + 
-			  " TEXT, " + 
+			  SERIAL + 
+			  " TEXT UNIQUE, " + 
 			  NAME + 
 			  " TEXT, " + 
 			  LOCATION + 
@@ -125,7 +124,9 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  TYPENAME + 
 			  " TEXT, " + 
 			  DEPLOYEDSTATE + 
-			  " TEXT, " + 			  
+			  " TEXT, " + 		
+			  VISIBILITY +
+			  " TEXT, " +
 			  INFO + 
 			  " TEXT, " + 
 			  DOMAIN + 
@@ -143,8 +144,8 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  " ( " + 
 			  ID + 
 			  " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-			  VISIBILITY +	
-			  " TEXT, " + 
+			  SERIAL +	
+			  " TEXT NOT NULL, " + 
 			  SHOVELED +	
 			  " TEXT, " + 
 			  WEIGHT +	
@@ -157,13 +158,15 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  " TEXT, " + 
 			  DATA_TIME +	
 			  " TEXT, " + 
-			  SERIAL + 
+			  TIMESTAMP + 
 			  " TEXT, " + 
-			  " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+ID+"));";
+			  " FOREIGN KEY ("+SERIAL+") REFERENCES "+TABLE_SENSOR+"("+SERIAL+"));";
 	   
 	  db.execSQL(table2Data);	
 	  
 	  db.execSQL("PRAGMA foreign_keys = ON;");
+	  
+	  Log.d(TAG, "New tables created for snowflake database");
 	  
       return;
 
@@ -194,12 +197,15 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
     * Manually reset table(s) to initial state. All data currently stored
     * in the database will be lost.
     */
-   synchronized public void onReset() {
+   public synchronized void onReset() {
 
       SQLiteDatabase db = getWritableDatabase();
 
-      db.execSQL("DROP TABLE IF EXISTS ?", new Object[] {TABLE_SNOW});
-
+      db.execSQL("DROP TABLE IF EXISTS " + TABLE_SNOW);
+      db.execSQL("DROP TABLE IF EXISTS " + TABLE_SENSOR);
+      
+      Log.d(TAG, "Droped all tables in snowflake database");
+      
       onCreate(db);
       
       return;

@@ -118,18 +118,19 @@ public class DicNixApp extends Application {
       
    }
    
-   public synchronized long addSnowdata(SnowPressure snowdata) {
+   public synchronized long addSnowdata(SnowPressure reading) {
       
       ContentValues values = new ContentValues();
       
-      values.put(Snowdata.SERIAL, snowdata.getSensorSerial());
-      values.put(Snowdata.INFO, snowdata.getInfo());
-      values.put(Snowdata.SHOVELED, snowdata.getShoveld());
-      values.put(Snowdata.WEIGHT, snowdata.getWeight());
-      values.put(Snowdata.DEPTH, snowdata.getDepth());
-      values.put(Snowdata.TEMPERATURE, snowdata.getTemperature());
-      values.put(Snowdata.HUMIDITY, snowdata.getHumidity());
-      values.put(Snowdata.DATA_TIME, snowdata.getDataTime().toString())
+      values.put(Snowdata.SERIAL, reading.getSensorSerial());
+      values.put(Snowdata.INFO, reading.getInfo());
+      values.put(Snowdata.SHOVELED, reading.getShoveld());
+      values.put(Snowdata.WEIGHT, reading.getWeight());
+      values.put(Snowdata.DEPTH, reading.getDepth());
+      values.put(Snowdata.TEMPERATURE, reading.getTemperature());
+      values.put(Snowdata.HUMIDITY, reading.getHumidity());
+      values.put(Snowdata.DATA_TIME, reading.getDataTime().toString());
+      values.put(Snowdata.TIMESTAMP, reading.getDataTime().getEpoch());
       
       return this.snowdata.insert(values);
       

@@ -32,27 +32,29 @@ public class Snowsensor extends Snowflake {
 	
    /** ID, this is always the primary key in all tables */
    public static final String ID = SnowflakeHelper.ID;
-   /** Time of last update */
-   public static final String TIMESTAMP = SnowflakeHelper.TIMESTAMP;
-   /** Name of measurement-point */
+   /** Sensor id */
+   public static final String SERIAL = SnowflakeHelper.SERIAL;
+   /** Name of sensor */
    public static final String NAME = SnowflakeHelper.NAME;
-   /** Location of measurement-point */
+   /** Location of sensor */
    public static final String LOCATION = SnowflakeHelper.LOCATION;
-   /** Latitude of measurement-point */
+   /** Latitude of sensor */
    public static final String LATITUDE = SnowflakeHelper.LATITUDE;
-   /** Longitude of measurement-point */
+   /** Longitude of sensor */
    public static final String LONGITUDE = SnowflakeHelper.LONGITUDE;
-   /** Type of measurement-point */
+   /** Type of sensor */
    public static final String TYPENAME = SnowflakeHelper.TYPENAME;
-   /** State of measurement-point */
+   /** State of sensor */
    public static final String DEPLOYEDSTATE = SnowflakeHelper.DEPLOYEDSTATE;
-   /** Info about measurement-point */
+   /** Visible for other domains i.e. public or private */
+   public static final String VISIBILITY = SnowflakeHelper.VISIBILITY;
+   /** Info about sensor */
    public static final String INFO = SnowflakeHelper.INFO;
-   /** Domain */
+   /** Domain to which this sensor belongs */
    public static final String DOMAIN = SnowflakeHelper.DOMAIN;
-   /** Measurement-point time of creation */
+   /** Sensor time of creation */
    public static final String CREATED = SnowflakeHelper.CREATED;
-   /** Time when measurement-point was last updated*/
+   /** Time when sensor was last updated */
    public static final String UPDATED = SnowflakeHelper.UPDATED;
 
    
@@ -67,7 +69,9 @@ public class Snowsensor extends Snowflake {
       
       super(ctxt);
       
-      String[] columns = {ID, TIMESTAMP, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, DEPLOYEDSTATE, INFO, DOMAIN, CREATED, UPDATED};
+      String[] columns = {
+            ID, SERIAL, NAME, LOCATION, LATITUDE, LONGITUDE, TYPENAME, 
+            DEPLOYEDSTATE, VISIBILITY, INFO, DOMAIN, CREATED, UPDATED};
          
       super.field = new SnowflakeFields(TABLE_NAME, columns);
            
