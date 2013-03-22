@@ -22,6 +22,7 @@ import java.util.List;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,9 +39,16 @@ import android.widget.TextView;
 */
 public class ListViewActivity extends ListActivity {
 
-	List<ssc.Sensor> sensorList = new ArrayList<ssc.Sensor>();
-	ssc.Sensor sensor = null;	
-	String[] sensors = null;
+    Cursor sensorColumn = null;
+    Cursor nameColumn = null;
+	List<String> listOfSensorSerials = new ArrayList<String>();
+	List<String> listOfSensorNames = new ArrayList<String>();
+	List<String> finalList = new ArrayList<String>();
+	static String[] serial = {"serial"};
+	static String[] name = {"name"};
+
+
+	
 	
 	protected DicNixApp application;
 	
@@ -53,27 +61,53 @@ public class ListViewActivity extends ListActivity {
          * Fetch registered measurement locations
          */
         application = (DicNixApp) getApplication();
-        sensorList = application.getSensors();        
-        sensors = new String[sensorList.size()];
-       
+        
         /**
-         * Present with name or, if name is not available, serial number
+         * Fetch serial numbers of registered measurement locations
          */
-        for (int i = 0; i < sensorList.size(); i++) {
-            String temp_name = sensorList.get(i).getName();               
-            if (!temp_name.equals("")) {
-            	sensors[i] = sensorList.get(i).getName();
-            }
-            else {
-            	sensors[i] = sensorList.get(i).getSerial();
-            }
+        application.snowsensor.setColumns(serial);
+        sensorColumn = application.snowsensor.all();	
+        
+
+        sensorColumn.moveToFirst();
+        while (sensorColumn.isAfterLast() == false) 
+        {
+        	listOfSensorSerials.add(sensorColumn.getString(0));
+            sensorColumn.moveToNext();
+        }
+        
+        /**
+         * Fetch names of registered measurement locations
+         */
+        application.snowsensor.setColumns(name);
+        nameColumn = application.snowsensor.all();	
+        
+
+        nameColumn.moveToFirst();
+        while (nameColumn.isAfterLast() == false) 
+        {
+        	listOfSensorSerials.add(nameColumn.getString(0));
+            nameColumn.moveToNext();
+        }
+        
+        
+        /**
+         * Build final list of registered measurement locations
+         */
+        for (int i = 0; i < listOfSensorSerials.size(); i++) {
+        	if (!listOfSensorNames.get(i).equals(null)) {
+        		finalList.add(listOfSensorNames.get(i));
+        	}
+        	else {
+        		finalList.add(listOfSensorSerials.get(i));
+        	}
         }
  
  
         /**
          * Binding resources Array to ListAdapter
          */
-        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.list_item, sensors));
+        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.list_item, finalList));
  
         ListView lv = getListView();
         
@@ -99,7 +133,7 @@ public class ListViewActivity extends ListActivity {
                * Sending data to new activity
                */
               i.putExtra("location", location);
-           	  i.putExtra("sensor_serial", sensorList.get(sensor_id).getSerial());
+           	  i.putExtra("sensor_serial", listOfSensorSerials.get(sensor_id));
               startActivity(i);
  
           }
