@@ -89,6 +89,17 @@ public class SSCTimeUnit {
    }
    
    /**
+    * Get Unix epoch for this time unit.
+    * 
+    * @return Epoch for this time unit
+    */
+   public long getEpoch() {
+   
+      return this.time_unit.getTime() / 1000;
+   
+   }
+   
+   /**
     * Return the difference in seconds between this time unit and
     * specified unit. If this unit is greater, of later date, then
     * specified unit the result is positive. 
