@@ -56,9 +56,11 @@ public class DicNixApp extends Application {
       
       Log.i(TAG, "Start of application");
       
-      openSSC();
       snowdata = new Snowdata(this);
       snowsensor = new Snowsensor(this);
+      
+      openSSC();
+      fetchSSC();
       
    }
    
