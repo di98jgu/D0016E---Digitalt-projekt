@@ -373,14 +373,14 @@ public class SnowPressure implements Comparable<SnowPressure> {
       StringBuilder sb = new StringBuilder(300);
       
       sb.append("Sense Smart City SnowPressure (");
-      sb.append("sensor: ").append(serial);
-      sb.append("info: ").append(info);
-      sb.append("shoveld: ").append(shoveld);
-      sb.append("weight: ").append(weight);
-      sb.append("depth: ").append(depth);
-      sb.append("temperature: ").append(temperature);
-      sb.append("humidity: ").append(humidity);
-      sb.append("data_time: ").append(data_time.toString());
+      sb.append(" sensor: ").append(serial);
+      sb.append(" info: ").append(info);
+      sb.append(" shoveld: ").append(shoveld);
+      sb.append(" weight: ").append(weight);
+      sb.append(" depth: ").append(depth);
+      sb.append(" temperature: ").append(temperature);
+      sb.append(" humidity: ").append(humidity);
+      sb.append(" data_time: ").append(data_time.toString());
       sb.append(")");
          
       return sb.toString();

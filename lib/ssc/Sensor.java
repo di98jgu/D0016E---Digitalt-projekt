@@ -74,42 +74,62 @@ public class Sensor {
     * @param obj Sensor data
     */
    public Sensor(JSONObject obj) {
-
+      
+      String SERIAL = SSCResources.Field.SERIAL;
+      String NAME = SSCResources.Field.NAME;
+      String LOCATION = SSCResources.Field.LOCATION;
+      String LATITUDE = SSCResources.Field.LATITUDE;
+      String LONGITUDE = SSCResources.Field.LONGITUDE;
+      String TYPE_NAME = SSCResources.Field.TYPE_NAME;
+      String DEPLOYED_STATE = SSCResources.Field.DEPLOYED_STATE;
+      String  VISIBILITY = SSCResources.Field.VISIBILITY;
+      String INFO = SSCResources.Field.INFO;
+      String DOMAIN = SSCResources.Field.DOMAIN;
+      String CREATED = SSCResources.Field.CREATED;
+      String UPDATED = SSCResources.Field.UPDATED;
+      
       try {
          
-         this.serial = 
-            obj.getString(SSCResources.Field.SERIAL);
+         this.serial = (obj.has(SERIAL))? 
+            obj.getString(SERIAL): "Not a valid sensor";
          
-         this.name = truncate(
-            obj.getString(SSCResources.Field.NAME), NAME_LENGTH);
-            
-         this.location = truncate(
-            obj.getString(SSCResources.Field.LOCATION), LOCATION_LENGTH);
-            
-         this.position = new SSCPosition(
-            obj.getDouble(SSCResources.Field.LATITUDE),
-            obj.getDouble(SSCResources.Field.LONGITUDE));
-            
-         this.type_name = SSCResources.TypeName.getState(
-            obj.getString(SSCResources.Field.TYPE_NAME));
-            
-         this.deployed_state = SSCResources.DeployedState.getState(
-            obj.getString(SSCResources.Field.DEPLOYED_STATE));
-            
-         String v = obj.getString(SSCResources.Field.VISIBILITY);
-         this.visibility = (v == "1")? true: false;
+         this.name = (obj.has(NAME))? 
+            truncate(obj.getString(NAME), NAME_LENGTH): "";
          
-         this.info = truncate(
-            obj.getString(SSCResources.Field.INFO), INFO_LENGTH);
-            
-         this.domain = 
-            obj.getString(SSCResources.Field.DOMAIN);
+         this.location = (obj.has(LOCATION))? 
+            truncate(obj.getString(LOCATION), LOCATION_LENGTH): "";
          
-         this.created = new SSCTimeUnit(
-            obj.getString(SSCResources.Field.CREATED));
+         this.position = (obj.has(LATITUDE) && obj.has(LONGITUDE))? 
+            new SSCPosition(
+               obj.getDouble(LATITUDE), obj.getDouble(LONGITUDE)): 
+               new SSCPosition(0.0, 0.0);
+         
+         this.type_name = (obj.has(TYPE_NAME))? 
+            SSCResources.TypeName.getState(obj.getString(TYPE_NAME)):
+            SSCResources.TypeName.FREETEXT;
+         
+         this.deployed_state = (obj.has(DEPLOYED_STATE))? 
+            SSCResources.DeployedState.getState(obj.getString(DEPLOYED_STATE)):
+            SSCResources.DeployedState.NOT_DEPLOYED;
             
-         this.updated = new SSCTimeUnit(
-            obj.getString(SSCResources.Field.UPDATED));
+         if (obj.has(VISIBILITY)) {
+            String v = obj.getString(VISIBILITY);
+            this.visibility = (v == "1")? true: false;
+         }
+         
+         this.info = (obj.has(INFO))? 
+            truncate(obj.getString(INFO), INFO_LENGTH): "";
+            
+         this.domain = (obj.has(DOMAIN))? 
+            obj.getString(DOMAIN): "";
+         
+         this.created = (obj.has(CREATED))? 
+            new SSCTimeUnit(obj.getString(CREATED)): 
+            new SSCTimeUnit(obj.getString("1970-01-01 00:00:00"));
+            
+         this.updated = (obj.has(UPDATED))? 
+            new SSCTimeUnit(obj.getString(UPDATED)):
+            new SSCTimeUnit(obj.getString("1970-01-01 00:00:00"));
          
       } catch (org.json.JSONException e) {
          

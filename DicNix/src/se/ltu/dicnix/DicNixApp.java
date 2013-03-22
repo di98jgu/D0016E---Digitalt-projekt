@@ -59,6 +59,9 @@ public class DicNixApp extends Application {
       snowdata = new Snowdata(this);
       snowsensor = new Snowsensor(this);
       
+      snowdata.open();
+      snowsensor.open();
+      
       openSSC();
       fetchSSC();
    }
@@ -115,7 +118,7 @@ public class DicNixApp extends Application {
       values.put(Snowsensor.CREATED, sensor.getCreated().toString());
       values.put(Snowsensor.UPDATED, sensor.getUpdated().toString());
       
-      return this.snowsensor.insert(values);
+      return snowsensor.insert(values);
       
    }
    
@@ -133,7 +136,7 @@ public class DicNixApp extends Application {
       values.put(Snowdata.DATA_TIME, reading.getDataTime().toString());
       values.put(Snowdata.TIMESTAMP, reading.getDataTime().getEpoch());
       
-      return this.snowdata.insert(values);
+      return snowdata.insert(values);
       
    }
 

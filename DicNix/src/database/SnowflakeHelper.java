@@ -34,7 +34,7 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    private static final String TAG = "logogram.DbRista";
 
    private static final String DB_FILENAME = "snowflake.db";
-   private static final int VERSION = 1;
+   private static final int VERSION = 3;
 
    /** Table for snow data */
    public static final String TABLE_SNOW = "snowtable";
@@ -146,6 +146,8 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
 			  " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			  SERIAL +	
 			  " TEXT NOT NULL, " + 
+			  INFO + 
+			  " TEXT, " +
 			  SHOVELED +	
 			  " TEXT, " + 
 			  WEIGHT +	
@@ -184,6 +186,11 @@ public class SnowflakeHelper extends SQLiteOpenHelper {
    public void onUpgrade(SQLiteDatabase db, int old_version, int new_version) {
      
       // Nothing to do here yet...
+      
+      db.execSQL("DROP TABLE IF EXISTS " + TABLE_SNOW);
+      db.execSQL("DROP TABLE IF EXISTS " + TABLE_SENSOR);
+      
+      onCreate(db);
       
       if (VERSION < new_version) {
          Log.d(TAG, "Change of version number in our database!");
