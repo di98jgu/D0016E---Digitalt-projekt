@@ -17,12 +17,17 @@
 package se.ltu.dicnix;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import ssc.SenseSmartCity;
 import ssc.Sensor;
 import ssc.SnowPressure;
 import android.app.Application;
+import android.content.ContentValues;
 import android.util.Log;
+import database.Snowdata;
+import database.Snowsensor;
 
 /**
  * @author Jim Gunnarsson, di98jgu
@@ -32,9 +37,16 @@ public class DicNixApp extends Application {
    
    private static String TAG = DicNixApp.class.getSimpleName();
    
-   public SenseSmartCity ssc = null;
+   /** Library Sense Smart City */
+   private SenseSmartCity ssc = null;
+   
+   /** Local database table snow data */
+   public Snowdata snowdata = null;
+   /** Local database table snow sensor */
+   public Snowsensor snowsensor = null;
 
    /**
+    * Create a new application object for DicNix
     * 
     * @see android.app.Application#onCreate()
     */
@@ -42,12 +54,15 @@ public class DicNixApp extends Application {
    public void onCreate() {
       super.onCreate();
       
-      getSSC();
       Log.i(TAG, "Start of application");
+      
+      openSSC();
+      snowdata = new Snowdata(this);
+      snowsensor = new Snowsensor(this);
       
    }
    
-   public SenseSmartCity getSSC() {
+   public SenseSmartCity openSSC() {
       
       if (this.ssc == null) {
          
@@ -59,35 +74,65 @@ public class DicNixApp extends Application {
       
    }
    
-   public List<Sensor> getSensors() {
+   public synchronized void fetchSSC() {
       
-      List<Sensor> sensors = ssc.getSensors();
+      Log.d(TAG, "Fetching data from SSC");
+
+      Map<Sensor, List<SnowPressure>> ssc_data = ssc.requestAll();
+      Set<Map.Entry<Sensor, List<SnowPressure>>> set = ssc_data.entrySet();
       
-      if (sensors == null || sensors.isEmpty()) {
+      for (Map.Entry<Sensor, List<SnowPressure>> entry: set) {
          
-         Log.d(TAG, "Faild to fetched sensors!");
+         addSensor(entry.getKey());
+         List<SnowPressure> list = entry.getValue();
+         
+         for (SnowPressure reading: list) {
+         
+            addSnowdata(reading);
+            
+         }
       }
       
-      Log.d(TAG, "Fetched a list of sensors");
-      
-      return sensors;
+      return;
       
    }
    
-   public List<SnowPressure> getReadings(Sensor sensor) {
+   public synchronized long addSensor(Sensor sensor) {
       
-      List<SnowPressure> readings = ssc.getSnowPressure(sensor);
+      ContentValues values = new ContentValues();
       
-      if (readings == null || readings.isEmpty()) {
-         
-         Log.d(TAG, "No readings for this sensor: " + sensor.getSerial());
-      }
+      values.put(Snowsensor.SERIAL, sensor.getSerial());
+      values.put(Snowsensor.NAME, sensor.getName());
+      values.put(Snowsensor.LOCATION, sensor.getLocation());
+      values.put(Snowsensor.LATITUDE, sensor.getLatitude());
+      values.put(Snowsensor.LONGITUDE, sensor.getLongitude());
+      values.put(Snowsensor.TYPENAME, sensor.getTypeName());
+      values.put(Snowsensor.DEPLOYEDSTATE, sensor.getDeployedState());
+      values.put(Snowsensor.VISIBILITY, sensor.getVisibility());
+      values.put(Snowsensor.INFO, sensor.getInfo());
+      values.put(Snowsensor.DOMAIN, sensor.getDomain());
+      values.put(Snowsensor.CREATED, sensor.getCreated().toString());
+      values.put(Snowsensor.UPDATED, sensor.getUpdated().toString());
       
-      Log.d(TAG, "Fetched readings for this sensor: " + sensor.getSerial());
-      
-      return readings;
+      return this.snowsensor.insert(values);
       
    }
    
+   public synchronized long addSnowdata(SnowPressure snowdata) {
+      
+      ContentValues values = new ContentValues();
+      
+      values.put(Snowdata.SERIAL, snowdata.getSensorSerial());
+      values.put(Snowdata.INFO, snowdata.getInfo());
+      values.put(Snowdata.SHOVELED, snowdata.getShoveld());
+      values.put(Snowdata.WEIGHT, snowdata.getWeight());
+      values.put(Snowdata.DEPTH, snowdata.getDepth());
+      values.put(Snowdata.TEMPERATURE, snowdata.getTemperature());
+      values.put(Snowdata.HUMIDITY, snowdata.getHumidity());
+      values.put(Snowdata.DATA_TIME, snowdata.getDataTime().toString())
+      
+      return this.snowdata.insert(values);
+      
+   }
 
 }

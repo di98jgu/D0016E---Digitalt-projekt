@@ -152,10 +152,11 @@ public abstract class Snowflake {
     */
    public long insert(ContentValues values) {
       
-      return db.insert(
+      return db.insertWithOnConflict(
             field.getTable(), 
             null, 
-            values);
+            values,
+            SQLiteDatabase.CONFLICT_IGNORE);
 
    }
    
