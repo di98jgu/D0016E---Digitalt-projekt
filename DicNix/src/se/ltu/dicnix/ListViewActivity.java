@@ -86,7 +86,7 @@ public class ListViewActivity extends ListActivity {
         nameColumn.moveToFirst();
         while (nameColumn.isAfterLast() == false) 
         {
-        	listOfSensorSerials.add(nameColumn.getString(0));
+        	listOfSensorNames.add(nameColumn.getString(0));
             nameColumn.moveToNext();
         }
         

@@ -78,8 +78,8 @@ public class LocationDetailsActivity extends Activity {
       /**
        * Query database for wanted information
        */
-      returnedCursor1 = application.snowsensor.select("serial = " + sensor_serial, null);
-      returnedCursor2 = application.snowdata.select("serial = " + sensor_serial, null);
+      returnedCursor1 = application.snowsensor.select("serial = '" + sensor_serial + "'", null);
+      returnedCursor2 = application.snowdata.select("serial = '" + sensor_serial + "'", null);
       
       LocationDetailsAdp details = new LocationDetailsAdp(returnedCursor1, returnedCursor2);
       details.populate(location_id);   
@@ -118,7 +118,6 @@ public class LocationDetailsActivity extends Activity {
 	      private TextView domain = null;
 	      private TextView created = null;
 	      private TextView updated = null;
-	      private TextView id = null;
 	      private TextView shoveled = null;
 	      private TextView weight = null;
 	      private TextView depth = null;
@@ -150,7 +149,6 @@ public class LocationDetailsActivity extends Activity {
 	         domain = (TextView) findViewById(R.id.domain);
 	         created = (TextView) findViewById(R.id.created);
 	         updated = (TextView) findViewById(R.id.updated);
-	         id = (TextView) findViewById(R.id.location_id);
 	         shoveled = (TextView) findViewById(R.id.shoveled);
 	         weight = (TextView) findViewById(R.id.weight);
 	         depth = (TextView) findViewById(R.id.depth);
@@ -172,7 +170,6 @@ public class LocationDetailsActivity extends Activity {
 	         returnedCursor2.moveToFirst();
 	       
 	         img.setImageResource(R.drawable.igloo);
-	         id.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("id")));
 	         serial.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("serial")));
 	         name.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("name")));
 	         location.setText(returnedCursor1.getString(returnedCursor1.getColumnIndex("location")));
