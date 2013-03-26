@@ -60,15 +60,21 @@ public class DicNixApp extends Application {
       snowsensor = new Snowsensor(this);
       
 <<<<<<< HEAD
+<<<<<<< HEAD
       openSSC();
       fetchSSC();
       
 =======
+=======
+>>>>>>> master
       snowdata.open();
       snowsensor.open();
       
       openSSC();
       fetchSSC();
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
    }
    
