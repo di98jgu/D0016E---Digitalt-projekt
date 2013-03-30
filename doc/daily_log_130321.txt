@@ -1,0 +1,61 @@
+torsdagen den 21:e mars 2013
+[kl. 12:59:05 CEST] Viktor Stärn: Hej!
+[kl. 12:59:09 CEST] Viktor Stärn: Hur går det med javadoc?
+[kl. 13:01:37 CEST] di98jgu: Jodå har just rullat den. :-)
+[kl. 13:02:15 CEST] di98jgu: Gick ovanligt smidigt, Javadoc kan vara rätt besvärlig annars.
+[kl. 13:03:50 CEST] Viktor Stärn: rullat den?
+[kl. 13:04:58 CEST] di98jgu: Rulla == Skapa javadoc med javadoc.
+[kl. 13:05:12 CEST] di98jgu: Från engelskas wrap.
+[kl. 13:06:08 CEST] di98jgu: Fast jag ser nu att det finns en smärre saker att titta på.
+[kl. 13:06:24 CEST] Viktor Stärn: ok
+[kl. 13:06:34 CEST] Viktor Stärn: kan skicka över vad jag skrivit
+[kl. 13:07:26 CEST] * Viktor Stärn sent file "Rapport.odt"
+[kl. 13:08:13 CEST] Viktor Stärn: oj, haha, långsamt det går..
+[kl. 13:08:57 CEST] Viktor Stärn: sådärja :)
+[kl. 13:10:58 CEST] di98jgu: Yupp, fint ska klistra in det snarast.
+[kl. 13:12:07 CEST] di98jgu: Så hur går det för det.
+[kl. 13:12:10 CEST] di98jgu: dig.
+[kl. 13:14:27 CEST] Viktor Stärn: har ju mest skrivit sen igår, hade ju kunnat kolla på det här med databasen (dubblettrader i tabellen samt att den väljer fel sensor via readings), men är lite osäker på hur vi bäst lägger upp det... när databasen ska skapas och hur jag bäst undviker dubblettern
+[kl. 13:16:12 CEST] di98jgu: Hmm, ok jag måste fixa till Application object, titta på Snowflake.
+[kl. 13:16:33 CEST] di98jgu: Gör det tills imorgon.
+[kl. 13:17:15 CEST] Viktor Stärn: ok, du kan ju hålla koll på skype... kanske behöver ställa frågor
+[kl. 13:18:00 CEST] di98jgu: Du kan kan fixa till aktiviteterna så att de hämta data från databasen.
+[kl. 13:18:16 CEST] di98jgu: All extra hjälp kod kan du nu plocka bort.
+[kl. 13:18:33 CEST] di98jgu: Se till att kommenter och så är på engelska.
+[kl. 13:19:16 CEST] Viktor Stärn: vad är det de inte hämtar från databasen?
+[kl. 13:19:34 CEST] di98jgu: Ah, du har redan gjort det ?
+[kl. 13:19:53 CEST] di98jgu: Jag har inte hämtat senaste vänta lite...
+[kl. 13:20:36 CEST] Viktor Stärn: vet inte riktigt hur du menar
+[kl. 13:23:46 CEST] di98jgu: Rad 104 till exempel i LocationDetails, Insert remote database data into local database
+[kl. 13:24:34 CEST] di98jgu: Det är sånt jag tänkte på, det behövs inte då du endast behöver hämta data från databasen.
+[kl. 13:25:35 CEST] Viktor Stärn: fast i nuläget är det ju där jag lägger in saker från fjärrdatabasen i den lokala databasen?
+[kl. 13:25:47 CEST] Viktor Stärn: känns ju som att det borde göras någon annanstans
+[kl. 13:26:07 CEST] Viktor Stärn: och isåfall förstår jag att man kunnat hämta lokalt istället i LocationDetailsActivity
+[kl. 13:26:09 CEST] di98jgu: Javisst, det är det som jag kommer att fixa i Application Object.
+[kl. 13:26:41 CEST] di98jgu: Activiteterna arbetar alltid lokalt mot den lokala databasen.
+[kl. 13:27:07 CEST] di98jgu: De ser aldrig biblioteket SSC.
+[kl. 13:27:38 CEST] Viktor Stärn: aha, ja, då förstår jag... men det känns lättare att fixa det när du fixat application
+[kl. 13:29:11 CEST] di98jgu: Varför? du har ju databasen. Det är allt du behöver. Visst det går kanske inte att testa men vi lägger ju samman koden imorgon och då ser vi vad som fungera.
+[kl. 13:29:15 CEST] Viktor Stärn: det finns förmodligen saker jag kan kolla på ändå... ska gå igenom koden
+[kl. 13:29:39 CEST] Viktor Stärn: ja, ok, om jag inte ska testa
+[kl. 13:30:04 CEST] Viktor Stärn: jaja, men då kör vi på det :)
+[kl. 13:30:45 CEST] di98jgu: Yupp, fast om du vill vänta så skulle det vara värt mödan att dela upp ListViewActivity.
+[kl. 13:31:00 CEST] di98jgu: Du lägger nu all kod i onCreate.
+[kl. 13:32:14 CEST] di98jgu: Vad tror du ?
+[kl. 13:33:27 CEST] di98jgu: Jag tänker så här, det går snabbare om vi arbetar tillsammas och parallellt mot en lösning.
+[kl. 13:33:39 CEST] di98jgu: Än att göra en bit och sen nästa.
+[kl. 13:34:30 CEST] Viktor Stärn: jo, det är säkert bäst, jag kan börja titta på hur aktiviteterna hämtar datan
+[kl. 13:35:10 CEST] di98jgu: Så ser jag till att datat hamnar i databasen.
+[kl. 13:36:01 CEST] Viktor Stärn: jepp :) låter fint
+[kl. 13:37:26 CEST] di98jgu: (Vet att jag gjärna styr saker o ting med tämligen bestämd hand med hoppas det är till mer nytta än skada ;-) )
+[kl. 13:38:27 CEST] Viktor Stärn: ja, jag är glad att du tar tag i det... själv känner jag mig lite off när det kommer till den här utbildningen (IngOnline), den har ju legat på hyllan i drygt 2 år medan jag jobbat! :)
+[kl. 13:39:38 CEST] di98jgu: Utmärkt utmärkt. Då har vi har en plan till morgondagen.
+[kl. 13:40:00 CEST] di98jgu: Något mer ?
+[kl. 13:40:03 CEST] Viktor Stärn: det har vi!
+[kl. 13:40:58 CEST] di98jgu: Hmm, skype problem igen ser jag.
+[kl. 13:41:13 CEST] Viktor Stärn: jasså?
+[kl. 13:41:21 CEST] di98jgu: Nej du kom tillbaka igen.
+[kl. 13:41:25 CEST] Viktor Stärn: inget mer just nu
+[kl. 13:41:41 CEST] Viktor Stärn: om jag inte har några funderingar ses vi imorgon :)
+[kl. 13:41:54 CEST] di98jgu: Okej då ses vi imorgon (wave) :-)
+[kl. 13:42:12 CEST] Viktor Stärn: gör vi! :)

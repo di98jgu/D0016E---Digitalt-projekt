@@ -1,0 +1,47 @@
+måndagen den 11:e mars 2013
+[kl. 13:01:20 CEST] di98jgu: Hej hur är det ?
+[kl. 13:08:05 CEST] Viktor Stärn: Hej! Hur går det?
+[kl. 13:08:17 CEST] Viktor Stärn: oj, där kom ditt meddelande :)
+[kl. 13:08:33 CEST] di98jgu: Jodå det går bra.
+[kl. 13:08:44 CEST] di98jgu: Har uppdaterat GitHub med senaste.
+[kl. 13:09:13 CEST] Viktor Stärn: ok
+[kl. 13:09:30 CEST] di98jgu: SSC verkar fungera, javadoc saknas ännu.
+[kl. 13:09:47 CEST] di98jgu: Har exprimenterat med actionbar.
+[kl. 13:10:13 CEST] di98jgu: Men den har ingen funktionallitet ännu.
+[kl. 13:10:59 CEST] Viktor Stärn: ok, hur har du lagt upp det med data som visas... kör du med en testanvändare?
+[kl. 13:11:47 CEST] di98jgu: Man får manuellt skriva in användare o lössenord i DicNicApp.
+[kl. 13:12:33 CEST] di98jgu: Data visas i LocationDetailsActivity.
+[kl. 13:14:12 CEST] Viktor Stärn: ok, så det är i princip komplett? eller vad fattas förutom action-bar och annan extra-funktionalitet?
+[kl. 13:14:39 CEST] di98jgu: Ja koppling till databas.
+[kl. 13:14:51 CEST] di98jgu: saknas
+[kl. 13:15:07 CEST] Viktor Stärn: ok, så den tar infon direkt från fjärrdatabasen och presenterar?
+[kl. 13:15:17 CEST] di98jgu: Yapp.
+[kl. 13:15:34 CEST] Viktor Stärn: ok... och den versionen  ligger på master nu eller?
+[kl. 13:15:41 CEST] di98jgu: Yapp.
+[kl. 13:15:53 CEST] di98jgu: Jag gör endast små ändringar i taget.
+[kl. 13:16:35 CEST] Viktor Stärn: ok, ja, git fungerar ju inte riktigt som det ska här fortfarande... fick inga jättebra svar på stackoverflow, så jag funderar på att installera det på min andra dator...
+[kl. 13:16:55 CEST] di98jgu: Aha, ja det kanske löser problemet.
+[kl. 13:17:28 CEST] Viktor Stärn: (provade installera om git här... men det hjälpte inte...)
+[kl. 13:18:12 CEST] di98jgu: Jag kan se av GitHub att dina testgrenar ligger väldigt långt bakom också. Så du behöver senaste versionen av master från GitHub.
+[kl. 13:18:54 CEST] Viktor Stärn: ja, precis
+[kl. 13:21:28 CEST] di98jgu: Du kan ju prova med Eclipse på din andra dator, det verkar ju som att Eclipse fungerade.
+[kl. 13:21:56 CEST] Viktor Stärn: tja... fram tills dess jag skulle klona
+[kl. 13:22:26 CEST] di98jgu: Jo, fram tills dess.
+[kl. 13:22:54 CEST] di98jgu: Min plan är att dokumentera det jag har gjort.
+[kl. 13:23:06 CEST] di98jgu: Måste ju ändå göra det.
+[kl. 13:24:04 CEST] Viktor Stärn: ja, låter väl som en god idé
+[kl. 13:27:04 CEST] di98jgu: Tänkte också börja på Rapporten.
+[kl. 13:28:29 CEST] di98jgu: Så något mer... ?
+[kl. 13:28:47 CEST] Viktor Stärn: nix... kommer jag på något hör jag av mig!
+[kl. 13:29:24 CEST] di98jgu: Yapp, gör så, synd att Git ska vara så knöligt under Windows.
+[kl. 13:30:29 CEST] Viktor Stärn: ja, lite jobbigt... men gör ett försök till... ska försöka få det att fungera på laptopen... gör det det så kan jag jobba utifrån Barsebäckshamn... så det fungerar lite som incitament också :)
+[kl. 13:31:05 CEST] Viktor Stärn: finns ingen bra workaround heller vad jag kan se... tror inte ens jag kan pusha till master som det ser ut nu
+[kl. 13:32:08 CEST] di98jgu: Nej du måste ha färsk kopia av master, git tillåter helt enkelt inte att du pusha nu ens om allt skulle fungera.
+[kl. 13:33:01 CEST] di98jgu: Det skulle ju vara som att försöka gå tillbaka i tiden.
+[kl. 13:33:15 CEST] di98jgu: :-)
+[kl. 13:33:28 CEST] Viktor Stärn: hehe, tvivlar du på att jag kan resa i tiden? ;)
+[kl. 13:34:43 CEST] di98jgu: Yeah ;-)
+[kl. 13:35:23 CEST] di98jgu: Låt oss pyssla på. :-)
+[kl. 13:35:53 CEST] Viktor Stärn: vi gör så! ses imorgon igen om inget oförutsätt inträffar?
+[kl. 13:36:09 CEST] di98jgu: Det gör vi, ses (wave)
+[kl. 13:36:27 CEST] Viktor Stärn: ses :)

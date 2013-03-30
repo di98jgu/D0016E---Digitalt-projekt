@@ -1,0 +1,160 @@
+tisdagen den 12:e mars 2013
+[kl. 12:40:27 CEST] Viktor Stärn: Ja, det här gick ju sådär...
+[kl. 12:41:10 CEST] Viktor Stärn: git clone via bash fungerade direkt på laptopen... inga problem... problemen dyker istället upp när jag installerat eclipse + android SDK + Egit och försöker koppla mig mot GitHub
+[kl. 12:42:27 CEST] Viktor Stärn: Problemet är att när man importerar ett remote projekt kan man inte välja Android Application (måste välja general projekt) - gör man det så skapar den ett tomt Android-projekt och struntar i infon på GitHub.
+[kl. 12:43:34 CEST] Viktor Stärn: På min andra dator minns jag att jag blev tvungen att skapa ett nytt Android Projekt och sedan koppla det till GitHub... det verkade ju fungera ok åtminstone med min TestBranch2... men samtidigt är det väl säkert denna halvdanna koppling som gjorde att jag inte kunde köra de kommandon du föreslog...
+[kl. 12:45:36 CEST] Viktor Stärn: Tyvärr lyckas jag inte ens ta mig till ovanstående halvdanna situation här... satt hela kvällen igår men lyckas inte få till en acceptabel länk mellan mitt lokala projekt och GitHub... drog ner infon från GitHub med remote fetch och försökte sedan merge:a in infon i mitt projekt, men allt kom inte med och det "buggade ur" helt enkel... kunde inte switcha mellan branches för att den inte kunde commit:a alla filer osv.
+[kl. 12:48:01 CEST] Viktor Stärn: Tror vi får köra på nödlösning... att du kollar över vad jag gjort i TestBranch2 och merge:ar det med master... eller nått
+[kl. 13:11:24 CEST] di98jgu: Ojdå låter som en hel del strul.
+[kl. 13:11:58 CEST] di98jgu: Men för att sammanfatta, kan du nu git på laptop, i terminal alltså ?
+[kl. 13:12:15 CEST] Viktor Stärn: ja, git clone fungerade direkt
+[kl. 13:12:47 CEST] di98jgu: Jättebra :-)
+[kl. 13:13:33 CEST] di98jgu: Okej har idé om du är intresserad. Lite mer möda.
+[kl. 13:13:42 CEST] di98jgu: Men kanske är det värt det.
+[kl. 13:14:01 CEST] Viktor Stärn: ok :)
+[kl. 13:14:04 CEST] di98jgu: Jag gör samma sak här ny katalog klona.
+[kl. 13:14:48 CEST] di98jgu: Sen startar jag eclips och vi prova steg för steg att hämta in projektet i Eclipse.
+[kl. 13:15:04 CEST] di98jgu: Ingen git i Eclipse
+[kl. 13:15:25 CEST] di98jgu: Utan kör all git i terminal.
+[kl. 13:15:39 CEST] Viktor Stärn: ok, vi testar! :)
+[kl. 13:15:59 CEST] di98jgu: Fint ett ögonblick ska rigga allt.
+[kl. 13:19:15 CEST] di98jgu: Skicka din E-post så jag skicka blider i din riktning.
+[kl. 13:19:25 CEST] Viktor Stärn: viktor.starn@gmail.com
+[kl. 13:25:37 CEST] di98jgu: Okej skickat bild.
+[kl. 13:25:54 CEST] di98jgu: Det är grunden.
+[kl. 13:26:07 CEST] di98jgu: Klonat och satt name och e-post.
+[kl. 13:26:13 CEST] di98jgu: Så långt kom du.
+[kl. 13:26:23 CEST] Viktor Stärn: ja, precis!
+[kl. 13:26:58 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 13:28:32 CEST] di98jgu: Fint :-)
+[kl. 13:28:42 CEST] di98jgu: Så starta eclipse
+[kl. 13:29:23 CEST] Viktor Stärn: jepp
+[kl. 13:30:38 CEST] di98jgu: Vid workspace, ska du välja:
+[kl. 13:31:44 CEST] di98jgu: i ditt /d/DicNixMaster/D0016E---Digitalt-projekt
+[kl. 13:32:11 CEST] Viktor Stärn: ska jag välja den katalogen som workspace-katalog menar du?
+[kl. 13:32:43 CEST] di98jgu: Skickar en bild.
+[kl. 13:34:36 CEST] di98jgu: Bild skickad
+[kl. 13:35:44 CEST] Viktor Stärn: ok, done
+[kl. 13:36:05 CEST] di98jgu: Fint så nu har du en helt tom Eclipse.
+[kl. 13:36:54 CEST] di98jgu: Så nu gör du en import, högerklicka på Package Explorer.
+[kl. 13:37:18 CEST] Viktor Stärn: ok
+[kl. 13:37:55 CEST] di98jgu: Titta på bilden du ska precis som jag kunna välja android från listan.
+[kl. 13:38:54 CEST] Viktor Stärn: android -> existing android code into workspace?
+[kl. 13:41:05 CEST] di98jgu: Vänta lite jag, måste kolla en sak först.
+[kl. 13:41:14 CEST] Viktor Stärn: ok
+[kl. 13:41:19 CEST] di98jgu: Inte säker på det blir rätt.
+[kl. 13:41:58 CEST] di98jgu: Ser att Eclipse gjärna vill göra en kopia av projectet vilket vi inte vill.
+[kl. 13:42:10 CEST] di98jgu: Jag har listat ut detta förut.
+[kl. 13:42:23 CEST] di98jgu: Men måste titta lite först.
+[kl. 13:42:31 CEST] Viktor Stärn: aha, ok :)
+[kl. 13:44:24 CEST] Viktor Stärn: jag passar på att göra ett ärende under tiden... tillbaka om en stund!
+[kl. 13:44:43 CEST] di98jgu: Aha, utmärkt.
+[kl. 14:33:55 CEST] Viktor Stärn: Hej! Några framsteg? :)
+[kl. 14:34:14 CEST] di98jgu: Ah, du kom precis i rätt tid.
+[kl. 14:34:56 CEST] di98jgu: Ok, problem är en bugg (eller något motsvarande) i Elicpse.
+[kl. 14:35:05 CEST] di98jgu: Stäng ned eclipse
+[kl. 14:35:16 CEST] Viktor Stärn: ok
+[kl. 14:36:21 CEST] di98jgu: Nu kopiera DicNix till DicNixMaster.
+[kl. 14:36:35 CEST] di98jgu: Ja hela katalogen med innehåll och allt.
+[kl. 14:37:24 CEST] Viktor Stärn: D:\DicNixMaster\D0016E---Digitalt-projekt\DicNix -> D:\DicNixMaster?
+[kl. 14:37:49 CEST] di98jgu: Ja precis.
+[kl. 14:38:03 CEST] Viktor Stärn: ok, gjort
+[kl. 14:38:31 CEST] di98jgu: Problem här är att Eclipse ej acceptera att projektet vi vill impotera finns i arbetskatalogen.
+[kl. 14:38:51 CEST] di98jgu: Okej nu starta Eclispe
+[kl. 14:39:46 CEST] Viktor Stärn: ok..
+[kl. 14:40:12 CEST] di98jgu: Välj nu precis som tidigare att högerklicka o impotera Android projekt.
+[kl. 14:41:14 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:42:09 CEST] di98jgu: Ja precis.
+[kl. 14:43:10 CEST] Viktor Stärn: och så väljer D:\DicNixMaster\DicNix?
+[kl. 14:43:22 CEST] Viktor Stärn: *jag
+[kl. 14:43:24 CEST] di98jgu: Ja precis, har skickat en bilde
+[kl. 14:43:29 CEST] Viktor Stärn: ah
+[kl. 14:43:59 CEST] di98jgu: Copy projekt into workspace ska vara vald.
+[kl. 14:45:24 CEST] Viktor Stärn: ok nu har jag ett projekt som heter SplashScreenActivity
+[kl. 14:45:37 CEST] Viktor Stärn: klagar på DicNixApp.java och LocationDetailsActivity.java
+[kl. 14:45:54 CEST] di98jgu: Ingen problem, vi löser det sen.
+[kl. 14:45:58 CEST] di98jgu: Först namnet.
+[kl. 14:46:06 CEST] di98jgu: Höger klicka
+[kl. 14:46:44 CEST] di98jgu: på projektet och välj Refactor -> rename
+[kl. 14:47:19 CEST] di98jgu: Välj 'DicNix'
+[kl. 14:47:35 CEST] Viktor Stärn: "A folder with that name already exists"
+[kl. 14:47:54 CEST] Viktor Stärn: den gamla
+[kl. 14:48:02 CEST] Viktor Stärn: döpa om? ta bort?
+[kl. 14:48:24 CEST] di98jgu: Okej vad som har hänt nu är att du står med Eclipse i DicNixMaster.
+[kl. 14:49:06 CEST] di98jgu: Du ska stå med Eclipse i DicNixMaster/D0016E-digital-projekt.
+[kl. 14:49:43 CEST] Viktor Stärn: men jag tror att jag gör det... SplashscreenActivity-katalogen ligger ju i D0016E-digitalt-projekt
+[kl. 14:49:49 CEST] Viktor Stärn: men det gör även den gamla DicNix
+[kl. 14:49:55 CEST] di98jgu: Aha !!
+[kl. 14:50:01 CEST] Viktor Stärn: så SplashScreen kan ju inte döpas till DicNix
+[kl. 14:50:18 CEST] di98jgu: Du kopierade bara DicNix till.. Så du har två av DicNix.
+[kl. 14:50:43 CEST] di98jgu: Okej den i D0016E---Digital-projekt ska bort.
+[kl. 14:51:08 CEST] Viktor Stärn: ok, nu är den omdöpt :)
+[kl. 14:51:20 CEST] di98jgu: Den heter nu DicNix.
+[kl. 14:51:24 CEST] di98jgu: Fint.
+[kl. 14:52:01 CEST] di98jgu: Det är ju petigt för annars känner inte git igen den. :-)
+[kl. 14:52:23 CEST] di98jgu: Låt oss nu impotera bibliotektet.
+[kl. 14:52:45 CEST] di98jgu: Höger klicka på DicNix
+[kl. 14:53:14 CEST] di98jgu: Välj Build path - link source
+[kl. 14:53:42 CEST] Viktor Stärn: ok
+[kl. 14:54:29 CEST] di98jgu: Linked folder location ska vara lib i D0016E---Digitalt projekt.
+[kl. 14:54:49 CEST] di98jgu: Folder name ska vara lib.
+[kl. 14:56:14 CEST] Viktor Stärn: ok, de tidigare två felen försvann, nu klagar den på TestSSC och Validate i validation-paketet under lib
+[kl. 14:56:58 CEST] di98jgu: Utmärkt, felen kan vi fixa.
+[kl. 14:57:54 CEST] di98jgu: Högerklica på lib i DicNix o välj Build path -> configure build path
+[kl. 14:58:15 CEST] Viktor Stärn: ok
+[kl. 14:58:38 CEST] di98jgu: Mitt i bild ska du ha included all
+[kl. 14:58:49 CEST] Viktor Stärn: jepp
+[kl. 14:58:54 CEST] di98jgu: klicka på den och välj edit.
+[kl. 14:59:03 CEST] Viktor Stärn: ok
+[kl. 14:59:14 CEST] di98jgu: Välj knapp add
+[kl. 14:59:23 CEST] Viktor Stärn: ok
+[kl. 14:59:36 CEST] di98jgu: under inclusive pattern.
+[kl. 15:00:05 CEST] di98jgu: Skriv: ssc/*.java
+[kl. 15:00:27 CEST] Viktor Stärn: sådärja :)
+[kl. 15:00:32 CEST] Viktor Stärn: nu ser det fint ut!
+[kl. 15:01:26 CEST] di98jgu: den klagar lite på username och password i SenseSmartCity men det gör inget.
+[kl. 15:01:41 CEST] Viktor Stärn: ska jag testköra?
+[kl. 15:01:42 CEST] di98jgu: Nu ska du kunna köra projektet.
+[kl. 15:02:11 CEST] Viktor Stärn: måste konfa AVD
+[kl. 15:02:23 CEST] di98jgu: Funderade just på det.
+[kl. 15:02:27 CEST] Viktor Stärn: vad körde vi för Device?
+[kl. 15:02:37 CEST] Viktor Stärn: 4.7"?
+[kl. 15:03:00 CEST] di98jgu: Nej, Android 2.3.3 API 10
+[kl. 15:03:16 CEST] di98jgu: Använd en General device det enkast.
+[kl. 15:03:23 CEST] Viktor Stärn: jo, det har jag som Target
+[kl. 15:03:39 CEST] Viktor Stärn: General Device finns inte som alternativ
+[kl. 15:04:02 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 15:04:44 CEST] di98jgu: Ja det blir bra, 4,7.
+[kl. 15:05:04 CEST] di98jgu: Dina inställningar skiljer sig här en del från vad jag har.
+[kl. 15:05:44 CEST] Viktor Stärn: ok
+[kl. 15:09:58 CEST] Viktor Stärn: ok, blev en "liggande" skärm... bytte nu...
+[kl. 15:10:06 CEST] Viktor Stärn: men den kraschade när jag valde location
+[kl. 15:14:20 CEST] di98jgu: Hmm, det var lite mystiskt.
+[kl. 15:14:31 CEST] di98jgu: Samma problem här
+[kl. 15:14:43 CEST] di98jgu: Ska om jag kan lista ut vad problemet är.
+[kl. 15:15:25 CEST] Viktor Stärn: Japp, men det verkar väl som att det kan gå att lösa.. så om det fungerar att köra... så kan jag sen köra git-biten bara med hjälp av bash eller?
+[kl. 15:15:41 CEST] di98jgu: Ja precis.
+[kl. 15:15:57 CEST] di98jgu: git i termial
+[kl. 15:16:19 CEST] di98jgu: Enklast är nu att du flytta kod till det här projektet.
+[kl. 15:16:50 CEST] Viktor Stärn: det som skiljer sig mellan min lokala TestBranch2 och den på GitHub menar du?
+[kl. 15:16:58 CEST] di98jgu: Ja precis.
+[kl. 15:17:25 CEST] di98jgu: Här är vad jag brukar göra.
+[kl. 15:17:47 CEST] Viktor Stärn: ok, ja, men det låter ju överkomligt... Daniel får väl ha överseende med att vi inte kopplat ihop det tills imorgon... för mkt gitstrul i min ände...
+[kl. 15:18:18 CEST] di98jgu: Fast nu fungera det :-)
+[kl. 15:18:30 CEST] di98jgu: Vad jag brukar göra är detta.
+[kl. 15:18:50 CEST] di98jgu: Innan jag startar Eclipse byter jag till min arbetsgren.
+[kl. 15:19:20 CEST] di98jgu: Sen startar Eclipse o är 'busy bee".
+[kl. 15:19:41 CEST] di98jgu: Stänger ned Eclispe när jag är klar o går tillbaka till terminal
+[kl. 15:19:55 CEST] di98jgu: Fetch merge och så vidare.
+[kl. 15:20:50 CEST] di98jgu: Minns att jag i gav någon länk i början av projektet. Kanske värt att du tittar på den igen.
+[kl. 15:21:06 CEST] di98jgu: sen finns också git-cribblings
+[kl. 15:21:26 CEST] Viktor Stärn: ok, ska kolla
+[kl. 15:21:57 CEST] Viktor Stärn: ska försöka åtgärda skillnaderna mellan lokalt projekt och github ikväll
+[kl. 15:22:32 CEST] Viktor Stärn: kan du köra projektet nu?
+[kl. 15:25:13 CEST] di98jgu: Nej, lite osäker på vad problem är Logcat har kraschat säger den.
+[kl. 15:25:36 CEST] di98jgu: Så jag får info alls om vad problemet är.
+[kl. 15:28:43 CEST] di98jgu: Har startat om Eclipse.
+[kl. 15:29:35 CEST] Viktor Stärn: ok, måste kila! hojta till om du hittar felet!
+[kl. 15:29:37 CEST] Viktor Stärn: ses :)
+[kl. 15:29:56 CEST] di98jgu: Vi gör så, ses (wave)
+[kl. 15:44:22 CEST] di98jgu: Ah, naturligtvis. i DicNixApp - getSSC - du måste manuellt skriva in användarnamn o lösenord. 'snowtest' / 'ltusnowtester'. Försök att komma ihåg att plocka bort det sen innan du skickar upp koden till GitHub.

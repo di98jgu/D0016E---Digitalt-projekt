@@ -1,0 +1,23 @@
+tisdagen den 19:e mars 2013
+[kl. 13:00:24 CEST] Viktor Stärn: Hej! Gått bra?
+[kl. 13:01:47 CEST] di98jgu: Hej arbetar flitigt på rapporten.
+[kl. 13:02:22 CEST] di98jgu: Kommer lägga upp den senaste versionen lite senare idag.
+[kl. 13:02:28 CEST] Viktor Stärn: ok, bra
+[kl. 13:02:46 CEST] Viktor Stärn: vill vi ha namn eller serienummer i sensorlistan?
+[kl. 13:03:03 CEST] di98jgu: Namn om det finns annars serie nummer.
+[kl. 13:03:21 CEST] di98jgu: Du måste kolla om namn finns.
+[kl. 13:03:46 CEST] Viktor Stärn: ok
+[kl. 13:03:50 CEST] di98jgu: Det är inget krav att man måste namnge sensorn då man skapar den.
+[kl. 13:04:06 CEST] di98jgu: Tror jag i vart fall.
+[kl. 13:06:12 CEST] di98jgu: Hur går det med listan ?
+[kl. 13:07:55 CEST] Viktor Stärn: jo, det går väl framåt.. just nu visar den serialnumber iofs
+[kl. 13:08:24 CEST] Viktor Stärn: sen måste jag ju fixa så att onItemClick väljer rätt sensor också
+[kl. 13:09:10 CEST] di98jgu: Yupp,
+[kl. 13:10:46 CEST] di98jgu: Hashkoden för en sensor eller sensor serial bör funka som id.
+[kl. 13:11:12 CEST] di98jgu: Då spelar ordningen på listan ingen roll.
+[kl. 13:11:34 CEST] Viktor Stärn: ja, det ska nog gå att lösa
+[kl. 13:12:52 CEST] di98jgu: Några problem.
+[kl. 13:15:25 CEST] Viktor Stärn: inte i nuläget.. ska vi fortsätta med det vi håller på med helt enkelt?
+[kl. 13:15:48 CEST] di98jgu: Yupp, det säjer vi.
+[kl. 13:16:13 CEST] Viktor Stärn: ok, då ses vi imorgon :)
+[kl. 13:16:27 CEST] di98jgu: Yupp, ses :-) (wave)

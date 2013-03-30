@@ -1,0 +1,26 @@
+onsdagen den 20:e mars 2013
+[kl. 13:43:34 CEST] Viktor Stärn: testing testing
+[kl. 13:43:51 CEST] di98jgu: Yupp, här
+[kl. 13:44:05 CEST] Viktor Stärn: ok :)
+[kl. 13:44:11 CEST] di98jgu: Ser att fungera.
+[kl. 13:44:33 CEST] di98jgu: Jag arbetar på att få till Javadoc SSC.
+[kl. 13:45:12 CEST] Viktor Stärn: tänkte bara höra om du hade någon tanke kring skapandet av databasen.. och "populerandet" av den
+[kl. 13:45:24 CEST] di98jgu: Tar lite tid, men ska förhoppningsvis vara klart tills imorgon.
+[kl. 13:45:51 CEST] Viktor Stärn: den kör ju koden i LocationDetailsActivity varenda gång man klickar på en post i listan... så det blir en jäkla massa rader i tabellerna nu...
+[kl. 13:46:18 CEST] Viktor Stärn: ok
+[kl. 13:46:24 CEST] di98jgu: Kan tänka mig det :-)
+[kl. 13:47:03 CEST] di98jgu: Ska titta på överföring av data till databasen så snart jag är klar med javadoc.
+[kl. 13:47:38 CEST] Viktor Stärn: ok, ska jag pusha det jag gjort?
+[kl. 13:49:05 CEST] di98jgu: Yupp.
+[kl. 13:50:02 CEST] Viktor Stärn: ok, gör så... ska jag skriva på lokal databas-biten på rapporten tills imorgon?
+[kl. 13:50:19 CEST] di98jgu: Ja skriv på det.
+[kl. 13:51:29 CEST] di98jgu: Jag vet inte hur stor skillnaden är på min och din version av ListViewActivity. Jag ser att all kod är samlad i onCreate.
+[kl. 13:52:25 CEST] di98jgu: Jag skulle plocka isär det och dela upp koden i metoder om du inte redan har gjort det.
+[kl. 13:52:51 CEST] Viktor Stärn: jag pushar så ser du... min tanke var att sätta någon typ av boolean när databasen är skapad... men det känns lite halvdant... hellre "leta efter" skapad databas och bedömma utifrån det...vet dock inte hur det skulle gå till..
+[kl. 13:54:08 CEST] di98jgu: Nja allt blir enklare när databasen uppdateras i Application Object.
+[kl. 13:55:24 CEST] di98jgu: Men det får vänta tills imorgon, javadoc måste bli klar först.
+[kl. 13:55:48 CEST] Viktor Stärn: ok, jag kör rapport då sålänge
+[kl. 13:56:12 CEST] di98jgu: Yupp, senast utkast finns på GitHub.
+[kl. 13:56:22 CEST] Viktor Stärn: bra! :)
+[kl. 13:56:28 CEST] Viktor Stärn: då ses vi imorgon? :)
+[kl. 13:56:44 CEST] di98jgu: Det gör vi (wave)

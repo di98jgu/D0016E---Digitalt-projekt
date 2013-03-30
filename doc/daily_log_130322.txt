@@ -1,0 +1,63 @@
+fredagen den 22:e mars 2013
+[kl. 10:20:33 CEST] Viktor Stärn: Lite förvirrad här... men jag tror att utifrån vad du beskrev så är det egentligen bara att flytta/skriva om den kod du pekade ut (Rad 104 och framåt i LocationDetailsActivity).. det är ju koden för att kopiera data från fjärrdatabasen till lokala databasen... aktiviteterna hämtar redan data från den lokala databasen och hämtar sensorlistan från application
+[kl. 10:20:49 CEST] Viktor Stärn: om jag nu tolkat det du sagt korrekt
+[kl. 10:58:04 CEST] Viktor Stärn: Kommentarerna tycker jag ser bra ut... verkar vara genomgående engelska iaf
+[kl. 12:53:34 CEST] di98jgu: Hej där, ja kommentarer i kod ska alltid vara på engelska.
+[kl. 12:54:21 CEST] di98jgu: Jag har nu uppdaterat Application object och Snowflake.
+[kl. 12:55:39 CEST] di98jgu: Jag kontrollerade också att fälten, i Snowdata och Snowsensor, stämmer med de i SSC.
+[kl. 13:02:35 CEST] di98jgu: Nu har Snowdata och Snowsensor fältet SERIALS och de är sammanlänkade med foreign key. Vet att du klurade en del på det. Man kan se det så att en viss avläsning (Snowdata) kan bara tillhöra en sensor men omvänt så kan en sensor ha utfört flera avläsningar.
+[kl. 13:10:00 CEST] Viktor Stärn: aha, kanske därför det blev konstigt med readings... jag plockade alltid första posten i readingslistan... visste inte riktigt hur jag skulle använda den (tyckte bara det borde finnas en avläsning)
+[kl. 13:13:54 CEST] Viktor Stärn: men har du skrivit kod som lägger in fjärrdatan i den lokala databasen när användaren loggat in?
+[kl. 13:14:37 CEST] di98jgu: Inloggning är inte fixat.
+[kl. 13:15:22 CEST] Viktor Stärn: nä, de e klart, men om man fuskar som vi gjort hittils och har inloggningsuppgifterna i koden
+[kl. 13:15:23 CEST] di98jgu: Vad som finns nu är en fetchSSC() som updatera databasen.
+[kl. 13:16:28 CEST] di98jgu: Den behöver bara anropas en gång i vårt demo.
+[kl. 13:17:11 CEST] Viktor Stärn: aha, så efter det kan man plocka direkt ur den lokala databasen?
+[kl. 13:17:19 CEST] di98jgu: Japp,
+[kl. 13:17:41 CEST] Viktor Stärn: varifrån är det tänkt man ska köra den då?
+[kl. 13:19:09 CEST] di98jgu: Utan inloggning, så är bästa platsen i konstruktor för Application Object. Glömde helt enkelt att lägga dit rad för det. :-)
+[kl. 13:19:48 CEST] Viktor Stärn: jaja, men dåså... inget fjärranrop i activities då
+[kl. 13:20:10 CEST] Viktor Stärn: vad är nästa steg då? inloggning?
+[kl. 13:20:30 CEST] di98jgu: Att föra samma din och min del och se att det fungera.
+[kl. 13:22:01 CEST] di98jgu: Föresten, i Application Object finns en instans av Snowdata och Snowsensor, använd dem i Applikation.
+[kl. 13:28:39 CEST] di98jgu: Är du kvar ?
+[kl. 13:29:22 CEST] Viktor Stärn: japp, hämtade senaste från GitHub för att hänga med på vad du menar
+[kl. 13:31:03 CEST] di98jgu: Utmärkt, överst i DicNixApp har du snowdata och snowsensor.
+[kl. 13:31:26 CEST] di98jgu: Det var de jag menade tidigare.
+[kl. 13:31:58 CEST] Viktor Stärn:    /** Local database table snow data */
+   public Snowdata snowdata = null;
+   /** Local database table snow sensor */
+   public Snowsensor snowsensor = null;
+[kl. 13:32:06 CEST] di98jgu: Yupp, precis.
+[kl. 13:33:01 CEST] di98jgu: Du behöver inte skapa en ny för varje aktivitet de finns redan.
+[kl. 13:33:13 CEST] Viktor Stärn: ah, jaja.. mkt bra
+[kl. 13:34:10 CEST] Viktor Stärn: sätter den kolumnerna också då?
+[kl. 13:34:37 CEST] di98jgu: Hur menar du ?
+[kl. 13:35:13 CEST] Viktor Stärn: skapar den hela databasen med tabeller och kolumner? så att inget sådant behöver göras någon annanstans
+[kl. 13:36:15 CEST] di98jgu: Allt är fixat o klart, allt du behöver göra är att hämta datat från databasen.
+[kl. 13:36:34 CEST] Viktor Stärn: stiligt!
+[kl. 13:36:50 CEST] Viktor Stärn: ja, men då ger jag väl mig på det helt enkelt
+[kl. 13:37:43 CEST] di98jgu: Gör så, så skriver jag skriver på rapporten. Det ser jag som viktigast.
+[kl. 13:38:07 CEST] di98jgu: Skulle vi missa inloggning så är det ingen katastrof.
+[kl. 13:38:58 CEST] Viktor Stärn: ok, då gör vi så
+[kl. 13:39:40 CEST] di98jgu: Ändra konstruktorn för DicNixApp till:
+[kl. 13:40:11 CEST] di98jgu: snowdata = new Snowdata(this);
+snowsensor = new Snowsensor(this);
+      
+openSSC();
+fetchSSC();
+[kl. 13:40:30 CEST] di98jgu: Ordningen är viktig.
+[kl. 13:40:56 CEST] Viktor Stärn: ok
+[kl. 13:41:07 CEST] di98jgu: Något mer ?
+[kl. 13:41:25 CEST] Viktor Stärn: inte just nu, hör av mig isåfall :)
+[kl. 13:41:53 CEST] di98jgu: Fint, håller skype öppet, ses (wave)
+[kl. 13:42:12 CEST] Viktor Stärn: gör vi :)
+[kl. 16:25:53 CEST] Viktor Stärn: Hej! Skulle testköra här, men applikationen kraschar direkt.. tror det är relaterat till fetchSCC
+[kl. 16:25:57 CEST] * Viktor Stärn sent file "log.txt"
+[kl. 16:29:43 CEST] Viktor Stärn: jag kanske borde pusha det jag gjort?
+[kl. 16:32:04 CEST] di98jgu: Gör så så.
+[kl. 16:32:25 CEST] di98jgu: Letar efter orsak... återkommer.
+[kl. 16:32:42 CEST] Viktor Stärn: ok
+[kl. 16:39:35 CEST] Viktor Stärn: ok, pushat
+[kl. 22:37:09 CEST] di98jgu: Ett antal bugar fixade, de var envisa så det tog lite tid.
+[kl. 22:37:20 CEST] di98jgu: Det finns på GitHub.

@@ -1,0 +1,64 @@
+söndagen den 10:e mars 2013
+[kl. 12:12:06 CEST] Viktor Stärn: Hej! E du där?
+[kl. 12:20:13 CEST] Viktor Stärn: får felmeddelande när jag ska klona: "git-upload-pack not found: did you run git update-server-info on the server?"
+[kl. 12:21:52 CEST] di98jgu: Nej, allt jag behöver göra är 
+git clone https://github.com/di98jgu/D0016E---Digitalt-projekt.git
+[kl. 12:22:23 CEST] di98jgu: Då får jag en exact kopia av vad som finns uppströms på GitHub.
+[kl. 12:22:47 CEST] Viktor Stärn: ok, jag skapade en ny katalog, ställde mig i den och försökte köra det kommandot
+[kl. 12:23:19 CEST] di98jgu: Och det fungerade inte ?
+[kl. 12:23:49 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 12:28:50 CEST] di98jgu: Okej, hittat något på Internet ?
+[kl. 12:29:27 CEST] Viktor Stärn: mja, det jag hittat verkar ju relaterat till servern... och den är det väl inget fel på :/
+[kl. 12:32:26 CEST] di98jgu: Nej, och problemet är inte nytt.
+[kl. 12:32:35 CEST] di98jgu: Det finns en del på nätet.
+[kl. 12:32:49 CEST] Viktor Stärn: eller hmm, kanske är config-filen?
+[kl. 12:32:52 CEST] di98jgu: Typ http://code.google.com/p/msysgit/issues/detail?id=227
+[kl. 12:33:59 CEST] di98jgu: Men den diskutionen är ju 4 år gammal.
+[kl. 12:37:02 CEST] di98jgu: Här är en annan, en blog på samma tema http://www.twohard.com/blog/remedy-git-upload-pack-or-git-receive-pack-command-not-found-errors-when-you-have-limited-acces
+[kl. 12:38:53 CEST] Viktor Stärn: var hittar jag config-filen?
+[kl. 12:38:58 CEST] Viktor Stärn: vet du det?
+[kl. 12:39:29 CEST] di98jgu: Saken är den att jag kör Linux.
+[kl. 12:40:07 CEST] di98jgu: Jag behövde inte installera någonting, git följde med som "standard".
+[kl. 12:42:18 CEST] Viktor Stärn: ok, tror jag hittade den nu
+[kl. 12:44:06 CEST] di98jgu: Ah, bra, kan tyvärr inte vara till så stor hjälp.
+[kl. 12:44:26 CEST] Viktor Stärn: har du koll på var upload/receive-packen ligger på serven? enligt sidan du skickade ska man lägga till dem manuellt
+[kl. 12:47:11 CEST] di98jgu: Sök på din dator efter något med det namnet.
+[kl. 12:51:45 CEST] di98jgu: https://help.github.com/articles/https-cloning-errors
+[kl. 13:07:02 CEST] di98jgu: Har du kommit på någon lösning ?
+[kl. 13:12:14 CEST] Viktor Stärn: den gillade inte när jag editerade gitconfig... försöker se vad jag gjort för fel... kanske måste ha en editor som inte lägger till extra tecken eller nått
+[kl. 13:12:58 CEST] di98jgu: Oh, du använder väl inte Windows notepad eller motsvarande hoppas jag.
+[kl. 13:23:43 CEST] Viktor Stärn: :)
+[kl. 13:23:47 CEST] Viktor Stärn: funkar notepad++?
+[kl. 13:24:23 CEST] di98jgu: Ska nog fungera, min favo är 
+http://www.geany.org/Download/Releases
+[kl. 13:25:04 CEST] di98jgu: Har aldrig provat den under windows.
+[kl. 13:26:25 CEST] di98jgu: Det viktiga är att du kan ställa in "utf-8" som teckenkodning.
+[kl. 13:38:31 CEST] Viktor Stärn: hittar exe-filer... "git-upload-pack.exe"/"git-receive-pack.exe"... de som ska länkas tro? den klagar på rad 9 i gitconfig:
+
+uploadpack = C:\Program Files (x86)\Git\libexec\git-core\git-upload-pack.exe
+[kl. 13:38:43 CEST] Viktor Stärn: provat sätta Program Files inom citationstecken...
+[kl. 13:41:26 CEST] di98jgu: Kanske räker det med: libexec/git-core/git-receive-pack
+[kl. 13:42:17 CEST] di98jgu: och motsvarande för git-upload-pack
+[kl. 13:42:34 CEST] Viktor Stärn: hmm... backslash/slash... borde nog testa byta
+[kl. 13:43:05 CEST] di98jgu: Ah, sant...
+[kl. 13:46:06 CEST] Viktor Stärn: ja, nu klagar den inte längre... men blir samma fel som innan
+[kl. 13:46:16 CEST] Viktor Stärn: git-upload-pack not found
+[kl. 13:59:17 CEST] di98jgu: Letade efter en motsvarande config fil på mitt system.
+[kl. 13:59:36 CEST] di98jgu: Men den innehöll endast min e-post adress.
+[kl. 14:05:43 CEST] di98jgu: Kanske detta hjälper:http://www.bluehostforum.com/showthread.php?20304-Bluehost-Solution-to-the-Git-PATH-issue-when-using-a-non-interactive-shell&p=81443#post81443
+[kl. 14:06:13 CEST] di98jgu: Måste tyvärr gå...
+[kl. 14:06:25 CEST] di98jgu: Ses senare...
+[kl. 14:06:28 CEST] di98jgu: (wave)
+[kl. 14:06:32 CEST] Viktor Stärn: gör vi! :)
+[kl. 15:09:56 CEST] Viktor Stärn: hmm.. nä... nu har jag provat allt :/ är rätt i gitconfig nu iaf, men det hjälper inte... fungerar inte med SSH... de flesta lösningar på nätet är för git-upload-pack command not found, inte git-upload-pack not found...
+[kl. 15:11:51 CEST] di98jgu: Hmm, tror att du får fråga om hjälp på stackoverflow.com
+[kl. 15:12:58 CEST] di98jgu: Du kan ju inte vara den ända som vill använda git under windows.
+[kl. 15:13:22 CEST] Viktor Stärn: nä, man tycker det
+[kl. 15:16:48 CEST] di98jgu: En mer trevlig nyhet är att SSC fungera i Android, endast smärre ändringar behövdes.
+[kl. 15:18:00 CEST] Viktor Stärn: jättebra ju :)
+[kl. 15:18:50 CEST] di98jgu: Jupp... :-), kan se riktig data i DetailsView.
+[kl. 15:26:17 CEST] Viktor Stärn: ah, bra! :)
+[kl. 15:26:25 CEST] Viktor Stärn: ok, frågan ligger på stackoverflow nu
+[kl. 15:26:30 CEST] Viktor Stärn: får se om någon nappar
+[kl. 15:28:44 CEST] Viktor Stärn: måste sticka nu iaf, ses imorgon vid 13! :)
+[kl. 15:56:25 CEST] di98jgu: Yupp, ses (wave)

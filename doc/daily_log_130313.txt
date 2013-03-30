@@ -1,0 +1,115 @@
+onsdagen den 13:e mars 2013
+[kl. 13:34:27 CEST] di98jgu: Så hur går det.
+[kl. 13:34:30 CEST] Viktor Stärn: ah, dök upp ett meddelande här nu när du kom online
+[kl. 13:34:32 CEST] Viktor Stärn: inte sett det innan
+[kl. 13:34:54 CEST] Viktor Stärn: men såg även nu i koden på GitHub hur du gjort med sensordatan
+[kl. 13:36:26 CEST] di98jgu: Ja, skype på din sida verkar ibland ha lite problem.
+[kl. 13:37:17 CEST] Viktor Stärn: hur tänker vi oss första "testet" av fullständig koppling undrar jag.. var skulle användarnamn och lösenord skrivas? ska jag hämta all data från fjärrdatabasen, lagra den i lokala och sen presentera så att det ser ut ungefär som nu?
+[kl. 13:38:11 CEST] di98jgu: Först tror jag vi måste en liten Git diskution.
+[kl. 13:38:35 CEST] Viktor Stärn: ok :)
+[kl. 13:39:09 CEST] di98jgu: Jag tror att skulle bli lite enklare om du gjorde fler men mindre commits.
+[kl. 13:39:23 CEST] di98jgu: Som bebis steg helt enkelt.
+[kl. 13:40:16 CEST] di98jgu: Då skulle du kunna pusha till master mycket oftare och koden skulle då vara synkad.
+[kl. 13:41:01 CEST] di98jgu: Jag tror inte risken för du "ställer till" något är någon igentlig risk.
+[kl. 13:42:01 CEST] di98jgu: Vad tror du ?
+[kl. 13:43:58 CEST] Viktor Stärn: vi kan ju göra en push när som helst... men ska jag inte kolla så att jag kan presentera något från fjärrdatabasen först? som det ser ut nu har jag ju tagit bord din kod för att presentera datan från fjärrdatabasen (i DetailsAdp och populate t.ex.)
+[kl. 13:44:02 CEST] Viktor Stärn: eller ska jag ta bort min kod kanske?
+[kl. 13:44:08 CEST] Viktor Stärn: så att det ser ut som innan
+[kl. 13:44:11 CEST] Viktor Stärn: och prova pusha?
+[kl. 13:45:23 CEST] di98jgu: System fungera så att du först måste hämta, fetch så push.
+[kl. 13:45:30 CEST] di98jgu: Sen push.
+[kl. 13:45:46 CEST] Viktor Stärn: ok, vad händer med det jag ändrat?
+[kl. 13:46:09 CEST] di98jgu: Okej detta är vad jag gör.
+[kl. 13:46:48 CEST] di98jgu: Först
+- git checkout master
+- git fetch origin
+[kl. 13:47:22 CEST] di98jgu: Vad som nu händer är att din lokala master fortfarande är oförändrad.
+[kl. 13:47:49 CEST] di98jgu: Ändringar ligger i origin/master.
+[kl. 13:48:13 CEST] di98jgu: Eller kanske origin\master eftersom du kör Windows.
+[kl. 13:48:31 CEST] di98jgu: du kan jämför med diff.
+[kl. 13:49:14 CEST] di98jgu: git diff master ^origin/master
+[kl. 13:49:37 CEST] di98jgu: Då ser du allt som är i master men inte i origin/master.
+[kl. 13:50:28 CEST] di98jgu: Du ser om något kommer att skrivas över eller inte.
+[kl. 13:51:03 CEST] di98jgu: Sen gör du git merge origin/master för att uppdater din lokala master.
+[kl. 13:52:08 CEST] di98jgu: Saken är du kan alltid se vad som kommer att ändras innan du gör ändringen.
+[kl. 13:52:18 CEST] di98jgu: Vad inte om det hjälper.
+[kl. 13:53:25 CEST] Viktor Stärn: jag vet faktiskt inte heller :) kan inte se att det skulle bli annat än en enda röra om den inte helt byter ut min kod från den på GitHub... men det är väl bara att testa och se vad den vill hitta på
+[kl. 13:53:39 CEST] Viktor Stärn: *mot
+[kl. 13:54:29 CEST] di98jgu: De som har byggt git är listiga...
+[kl. 13:54:34 CEST] di98jgu: :-)
+[kl. 13:55:35 CEST] di98jgu: git kan lista ut exakt vad du har lagt till o tagit bort.
+[kl. 13:56:25 CEST] Viktor Stärn: ok så efter git fetch origin steget borde jag kunna välja vad jag vill att git ska ändra och inte ändra?
+[kl. 13:56:56 CEST] di98jgu: Börja med att jämföra de två
+[kl. 13:58:14 CEST] Viktor Stärn: ok, men då testar jag nu direkt då?
+[kl. 13:59:01 CEST] di98jgu: Gör så, jag har ju senaster verison av master på min dator.
+[kl. 13:59:27 CEST] Viktor Stärn: så jag ställer mig i projektets katalog och kör git checkout master?
+[kl. 13:59:48 CEST] di98jgu: Okej börja med att göra git status
+[kl. 14:00:06 CEST] di98jgu: För att se om du har ändringar som behöver commitas.
+[kl. 14:00:25 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:04:01 CEST] Viktor Stärn: har vi tappat kopplingen nu igen?
+[kl. 14:05:09 CEST] di98jgu: Nej, mitt fel glömd att avaktivera pause skärmen.
+[kl. 14:05:51 CEST] di98jgu: Har en pause skärm som går in varje halvtimme så att jag tvingas att göra en pause från datorn.
+[kl. 14:07:06 CEST] Viktor Stärn: ja, ska man tro alla varningstexter för dataspel så ska det ju vara bra med paus iaf :)
+[kl. 14:08:02 CEST] di98jgu: För en gångs skulle så bör man inte bara tro dom utan också följa dom.
+[kl. 14:08:52 CEST] di98jgu: Jag vet...
+[kl. 14:09:08 CEST] di98jgu: Har provat bägge varianterna. :-)
+[kl. 14:09:52 CEST] Viktor Stärn: jasså?? har varit ganska fast i diverse spel.. men tror inte det påverkat mer än betyg och möjligen mathållning :)
+[kl. 14:10:03 CEST] Viktor Stärn: (fysisk hälsa kanske? :) )
+[kl. 14:11:06 CEST] di98jgu: Definitivt fysik hälsa...
+[kl. 14:12:27 CEST] di98jgu: Tycker trännig i alla dess former är trist som attan, men vilken skillnad det för orket, axelna och kroppen.
+[kl. 14:12:45 CEST] di98jgu: Tillbaka till git. :-)
+[kl. 14:13:18 CEST] di98jgu: Så git add DicNix
+[kl. 14:13:41 CEST] di98jgu: Vänta git DicNix -u
+[kl. 14:13:50 CEST] di98jgu: Du har raderat en fil.
+[kl. 14:14:16 CEST] di98jgu: Sen git commit -m "My commit message"
+[kl. 14:14:47 CEST] Viktor Stärn: git DicNix -u eller git add DicNix -u?
+[kl. 14:15:10 CEST] di98jgu: git add -u DicNix
+[kl. 14:15:34 CEST] di98jgu: (ups)
+[kl. 14:15:59 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:16:07 CEST] Viktor Stärn: kör vidare på commit?
+[kl. 14:16:57 CEST] Viktor Stärn: hmm, körde en status igen... verkar som den vill lägga till Snowsensor.java också
+[kl. 14:16:58 CEST] di98jgu: Hände något...
+[kl. 14:18:40 CEST] Viktor Stärn: Snowsensor, under "untracked files"
+[kl. 14:18:51 CEST] di98jgu: Kör i så fal git add DicNix/src/database
+[kl. 14:19:20 CEST] Viktor Stärn: jepp, nu e allt grönt
+[kl. 14:19:40 CEST] di98jgu: Fint, så nu kör du git commit -m "My commit message"
+[kl. 14:20:14 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:21:05 CEST] di98jgu: Okej nu kan vi hämta senaste från GitHub.
+[kl. 14:21:17 CEST] di98jgu: git fetch origin
+[kl. 14:21:57 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:22:41 CEST] Viktor Stärn: checkout master först?
+[kl. 14:22:56 CEST] di98jgu: Du är redan på master.
+[kl. 14:23:03 CEST] di98jgu: Din lokala master.
+[kl. 14:23:11 CEST] Viktor Stärn: ok, men ser ut som den hämtat TestBranch2?
+[kl. 14:23:58 CEST] di98jgu: Kanske körde du ditt gamla Eclipse eller något.
+[kl. 14:24:16 CEST] di98jgu: Vet inte riktigt.
+[kl. 14:24:36 CEST] di98jgu: Du kan kolla skillnande mellan din master och GitHub master.
+[kl. 14:24:56 CEST] di98jgu: Med git diff master ^origin\master
+[kl. 14:26:52 CEST] Viktor Stärn: den ser ut att vilja göra vettiga ändringar... inaktuella saker är rödmarkerade
+[kl. 14:27:14 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:28:49 CEST] di98jgu: Yupp, den listar allt som finns i den master men inte i master uppströms.
+[kl. 14:29:42 CEST] di98jgu: Den finns många många fler sätt att gemföra men jag har kommit dit ännu. Fortfarande väldigt mycket att lära om git.
+[kl. 14:30:04 CEST] di98jgu: Nu kan du pusha till master
+[kl. 14:30:26 CEST] di98jgu: Vänta först merge, sorry.
+[kl. 14:30:41 CEST] di98jgu: git merge origin/master
+[kl. 14:31:24 CEST] Viktor Stärn: already up-to-date säger den
+[kl. 14:31:40 CEST] di98jgu: Precis som det ska vara.
+[kl. 14:31:53 CEST] Viktor Stärn: ok :)
+[kl. 14:32:00 CEST] di98jgu: Jag har inte ändrat något sen i måndags.
+[kl. 14:32:27 CEST] di98jgu: Så nu git push origin master
+[kl. 14:35:21 CEST] * Viktor Stärn sent file "1.jpg"
+[kl. 14:36:35 CEST] di98jgu: Yeah, (y)
+[kl. 14:36:38 CEST] di98jgu: :-)
+[kl. 14:37:06 CEST] di98jgu: Så nu har du ett fungerande system, utmärkt.
+[kl. 14:38:07 CEST] Viktor Stärn: :)
+[kl. 14:38:09 CEST] Viktor Stärn: trevligt!
+[kl. 14:38:36 CEST] Viktor Stärn: men du hade din locationdetailsactivity lokalt?
+[kl. 14:38:41 CEST] Viktor Stärn: jag hade ju behövt kolla på den
+[kl. 14:40:30 CEST] di98jgu: Följande rad tillkommer i onCreate: application = (DicNixApp) getApplication();
+[kl. 14:41:11 CEST] di98jgu: Där application är global:
+protected DicNixApp application;
+[kl. 14:41:45 CEST] di98jgu: Med det så kommer du åt all funktioner i DicNixApp.
+[kl. 14:44:04 CEST] di98jgu: yamba är här en väldigt bra källa.
+[kl. 14:44:53 CEST] di98jgu: Men jag måste gå... vi ses.
+[kl. 14:45:27 CEST] Viktor Stärn: ok, ses :)
+[kl. 14:45:40 CEST] di98jgu: (wave)

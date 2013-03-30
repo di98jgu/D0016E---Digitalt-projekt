@@ -1,0 +1,42 @@
+tisdagen den 26:e mars 2013
+[kl. 13:20:30 CEST] di98jgu: Hej där...
+[kl. 13:21:03 CEST] Viktor Stärn: hej!
+[kl. 13:22:41 CEST] di98jgu: Sensaste version av rapporten ligger på GitHub.
+[kl. 13:22:50 CEST] di98jgu: Håller på att pyssla med bilder.
+[kl. 13:23:08 CEST] Viktor Stärn: okej, fint
+[kl. 13:23:38 CEST] Viktor Stärn: blir väl mest att kolla på presentationen tills imorgon.. hur vill du göra med ev. power point bilder?
+[kl. 13:26:44 CEST] Viktor Stärn: dog det nu? :)
+[kl. 13:27:32 CEST] di98jgu: Nej, glömde som vanligt att stänga av pause klockan.
+[kl. 13:28:03 CEST] di98jgu: Men för min del så använder jag bilder (png) alternativt pdf.
+[kl. 13:28:12 CEST] di98jgu: Det fungera alltid.
+[kl. 13:29:23 CEST] di98jgu: Jag kommer att göra några bilder runt delar som jag ska prata om
+[kl. 13:29:31 CEST] di98jgu: Lista med målsättning.
+[kl. 13:29:38 CEST] Viktor Stärn: ja, men det duger väl säkert... bara de har något att titta på.. men då kanske jag gör något till min presentation också (demobiten presenterar ju sig själv iofs)
+[kl. 13:30:15 CEST] di98jgu: Yupp de har UML-diagrammen på GitHub.
+[kl. 13:30:20 CEST] di98jgu: du menar jag.
+[kl. 13:30:38 CEST] di98jgu: Jag håller just på att uppdatera dem.
+[kl. 13:31:16 CEST] di98jgu: Biblioteket SSC klart.
+[kl. 13:31:35 CEST] di98jgu: Databasen står på tur.
+[kl. 13:31:50 CEST] Viktor Stärn: ok
+[kl. 13:32:06 CEST] di98jgu: Sen UI och aktiviteter.
+[kl. 13:33:09 CEST] Viktor Stärn: Vilka anser du vara de största punkterna för SSC?
+[kl. 13:34:43 CEST] di98jgu: Läs rapporten helt enkelt, i korthet att SSC kapsla in all kommunikation med fjärrdatabasen och retunera trevliga enkla objekt.
+[kl. 13:35:04 CEST] di98jgu: Ingen JSON utanför SSC.
+[kl. 13:35:19 CEST] di98jgu: Det är det som är poängen.
+[kl. 13:35:38 CEST] Viktor Stärn: ok
+[kl. 13:36:41 CEST] di98jgu: Har vi något mer på dagordningen ?
+[kl. 13:37:07 CEST] Viktor Stärn: nix, tror jag inte!
+[kl. 13:37:21 CEST] Viktor Stärn: vi kanske hörs innan morgondagen...
+[kl. 13:37:42 CEST] di98jgu: Yupp, skype är öppet om du undrar över något.
+[kl. 13:37:49 CEST] Viktor Stärn: ok, låter bra!
+[kl. 13:37:57 CEST] Viktor Stärn: säger vi så sålänge!
+[kl. 13:37:59 CEST] Viktor Stärn: :)
+[kl. 13:38:04 CEST] di98jgu: Då ses vi (wave) :-)
+[kl. 15:00:19 CEST] Viktor Stärn: När du vet, vad kommer vara det sista du pratar om? Alltid bra att vara förberedd när det blir ens tur :)
+[kl. 15:52:58 CEST] di98jgu: Oh, det är lungt jag låter dig veta när det din tur att ta över.
+[kl. 15:56:21 CEST] Viktor Stärn: ska du eller jag ta DicNixApp?
+[kl. 16:24:10 CEST] di98jgu: Ligger under din del.
+[kl. 16:24:37 CEST] di98jgu: Jag går inte in på något tekniskt.
+[kl. 16:26:06 CEST] Viktor Stärn: ok, bra, då vet jag
+[kl. 16:31:04 CEST] di98jgu: Utmärkt.
+[kl. 23:00:01 CEST] di98jgu: Första versionen av rapporten finns på GitHub. UML-diagramen är uppdaterade.

@@ -1,0 +1,69 @@
+måndagen den 25:e mars 2013
+[kl. 12:59:43 CEST] di98jgu: Hej där allt väl.
+[kl. 13:00:15 CEST] Viktor Stärn: Hej! Jo, de e fint!
+[kl. 13:00:22 CEST] Viktor Stärn: Själv?
+[kl. 13:00:32 CEST] di98jgu: Håller på att skriver på rapporten. Det kom en del imellan i helgen så det är en del kvar.
+[kl. 13:01:16 CEST] di98jgu: Jag behöver en länk till snögubben och eventuella andra käller till de grafiska elementen.
+[kl. 13:01:36 CEST] di98jgu: Det ser bättre ut så.
+[kl. 13:02:24 CEST] Viktor Stärn: ok, får kolla om jag kan hitta dem igen då
+[kl. 13:02:33 CEST] Viktor Stärn: snögubben var det inte jag som valde dock
+[kl. 13:02:37 CEST] Viktor Stärn: var ju en annan innan
+[kl. 13:03:03 CEST] di98jgu: Ah, så det var Tord som valde den.
+[kl. 13:03:27 CEST] Viktor Stärn: ja, inte jag iaf
+[kl. 13:03:45 CEST] di98jgu: Så allt fungera nu, med namn i listan.
+[kl. 13:04:03 CEST] Viktor Stärn: japp, jag ser inga problem iaf
+[kl. 13:04:26 CEST] di98jgu: Fint, då har vi kommit så långt vi kan.
+[kl. 13:04:50 CEST] Viktor Stärn: ok
+[kl. 13:05:52 CEST] di98jgu: Japp, jag skriver här så jag kommer som mest att titta igneom koden efter fler ställen som behvöer dokumenteras.
+[kl. 13:06:54 CEST] Viktor Stärn: på onsdag, ska jag snacka om gränssnitt och lokal databas? samma uppdelning som med rapporten?
+[kl. 13:07:44 CEST] di98jgu: Låt see vi har 20 min ungefär.
+[kl. 13:08:27 CEST] di98jgu: Så först har vi lite backgrund, för att all ska vara på samma nivå.
+[kl. 13:08:53 CEST] di98jgu: Sen något om hur vi tänker oss användaren.
+[kl. 13:09:02 CEST] di98jgu: Vem är vår app för ?
+[kl. 13:10:17 CEST] di98jgu: Sen uppdelning SSC databas och UI.
+[kl. 13:11:08 CEST] di98jgu: Inte allt för detaljerat, folk minns det inte ändå, utan mer fokus på de delar som appen består av.
+[kl. 13:11:42 CEST] Viktor Stärn: ok, och sen en demonstration?
+[kl. 13:11:50 CEST] di98jgu: Sen demo av app, ja precis.
+[kl. 13:12:09 CEST] di98jgu: Var är vi nu och hur långt kom vi typ.
+[kl. 13:13:00 CEST] di98jgu: Sånt som inte kom med.
+[kl. 13:13:23 CEST] Viktor Stärn: ok
+[kl. 13:13:44 CEST] Viktor Stärn: så hur delar vi enklast upp det='
+[kl. 13:13:46 CEST] Viktor Stärn: *?
+[kl. 13:13:59 CEST] di98jgu: Det är 5 punkter och fyra minuter var.
+[kl. 13:15:24 CEST] di98jgu: Du kan köra demot, det ska alltså vara 4 minuter.
+[kl. 13:17:46 CEST] Viktor Stärn: ja, de blir ju bra.. men jag får ha någon mer punkt?
+[kl. 13:19:04 CEST] di98jgu: Sorry, pause programmet gick.
+[kl. 13:19:36 CEST] Viktor Stärn: aha :)
+[kl. 13:19:53 CEST] di98jgu: Du kan ta SSC database och UI, 4 minuter till.
+[kl. 13:20:27 CEST] Viktor Stärn: ja, om vi inte ska beskriva på djupet går det väl bra
+[kl. 13:21:15 CEST] di98jgu: Japp, och du har infon om SSC som javadoc och API:et finns i rapporten, även i den version nu ligger på GitHub.
+[kl. 13:21:58 CEST] di98jgu: Kan kan säga 6 minuter för SSC databas och UI.
+[kl. 13:22:06 CEST] di98jgu: 2 min för varje.
+[kl. 13:22:18 CEST] Viktor Stärn: ok
+[kl. 13:23:10 CEST] di98jgu: Då tar jag backgrund användare och målsättning. det är två - tre punkter punkter säg 8 min max.
+[kl. 13:23:27 CEST] Viktor Stärn: fint
+[kl. 13:24:02 CEST] di98jgu: Sen kan jag tar avslutningen, vad som inte kom med det är 4 min till.
+[kl. 13:24:20 CEST] Viktor Stärn: ok, låter bra
+[kl. 13:24:38 CEST] di98jgu: Sen kan folk ställa frågor.
+[kl. 13:25:23 CEST] di98jgu: Vi har en plan för redovisningen ?
+[kl. 13:25:38 CEST] Viktor Stärn: jepp :)
+[kl. 13:26:32 CEST] di98jgu: Fint, vet inte vad du tycker men delar man upp det så här kan man öva på varje del och se att den håller sig inom tidsramarna.
+[kl. 13:28:00 CEST] Viktor Stärn: ja, precis.. tror inte det är hela världen om man inte håller sig inom ramarna, men kan ju vara bra att veta så att det inte blir alldeles för långt/kort
+[kl. 13:28:14 CEST] di98jgu: Jupp, precis.
+[kl. 13:28:42 CEST] di98jgu: Imorgon är det genrep.
+[kl. 13:29:20 CEST] di98jgu: Jag ska se till att jag har en rapport då.
+[kl. 13:29:40 CEST] Viktor Stärn: ok, men det är väl mest ljudtestning?
+[kl. 13:30:13 CEST] di98jgu: Ja, det var det om inte Daniel har något mer i tankarna.
+[kl. 13:30:26 CEST] Viktor Stärn: ok
+[kl. 13:30:37 CEST] di98jgu: Så något mer ?
+[kl. 13:31:04 CEST] Viktor Stärn: nej ,vi kan säga så tillls imorgon
+[kl. 13:32:00 CEST] di98jgu: Okej, då säger vi så (wave) :-).
+[kl. 13:32:20 CEST] Viktor Stärn: gör vi :) ses!
+[kl. 20:35:57 CEST] Viktor Stärn: http://www.sxc.hu/browse.phtml?f=view&id=912433
+http://www.sxc.hu/browse.phtml?f=view&id=1195649
+ikonen för edit user details fanns här: http://www.iconsdb.com, men verkar ha tagits bort
+ikonen för list http://icondatabase.net/icons/ipapun/devine-icons-black
+sync-ikonen verkar ha någon form av license-light:
+http://www.iconspedia.com/icon/sync-icon-19928.html
+http://creativecommons.org/licenses/by/3.0/
+[kl. 20:47:11 CEST] di98jgu: Utmärkt...

@@ -1,0 +1,69 @@
+torsdagen den 14:e mars 2013
+[kl. 13:04:33 CEST] di98jgu: Hej där allt väl ?
+[kl. 13:08:31 CEST] Viktor Stärn: Hej! Ja, det går väl framåt :)
+[kl. 13:09:34 CEST] Viktor Stärn: Använde sensor.getName osv för att lägga infon i databasen och sedan presentera den som valigt
+[kl. 13:10:02 CEST] Viktor Stärn: lyckades dock inte skapa en motsvarande metod (om det nu var tanken) till SnowPressure
+[kl. 13:10:39 CEST] di98jgu: Motsvarande metod ?
+[kl. 13:12:03 CEST] Viktor Stärn: ja, alltså, med hjälp av metoden du skrivit i DicNixApp kan man ju skapa en sensor i LocationDetailsActivity
+[kl. 13:12:10 CEST] Viktor Stärn: hade väl behövt något motsvarande för snowpressure
+[kl. 13:12:19 CEST] Viktor Stärn: så att jag kan använda get-metoderna i den klassen?
+[kl. 13:13:08 CEST] Viktor Stärn:       ssc.Sensor sensor = application.getSensor();
+[kl. 13:13:35 CEST] di98jgu: Aha, jag förstår.
+[kl. 13:14:14 CEST] di98jgu: Hmm, jag behöver skriva några metoder för SSC.
+[kl. 13:15:56 CEST] di98jgu: Min tanke är titta över Snowflake, ingen ändring av själva metoderna vad gäller namn och vad som skickas till dem. Men därimot så behöver de vara synkroniserade.
+[kl. 13:16:13 CEST] Viktor Stärn: ok
+[kl. 13:16:36 CEST] di98jgu: Så att Application object inte försöker skriva till databasen medan en aktivitet försöker läsa.
+[kl. 13:16:48 CEST] di98jgu: Det blir inte bra.
+[kl. 13:16:53 CEST] Viktor Stärn: nä, de e klart
+[kl. 13:18:08 CEST] Viktor Stärn: hur fungerar det egentligen? om man har två synkroniserade metoder i ett projekt, innebär det då att de inte kan köras samtidigt? väntar ut varandra?
+[kl. 13:19:10 CEST] di98jgu: Fungera så att endast en tråd i taget kan kör en metod, den andra får vänta.
+[kl. 13:20:04 CEST] di98jgu: Låter bra men är lite lurigt.
+[kl. 13:20:12 CEST] Viktor Stärn: ah
+[kl. 13:20:47 CEST] di98jgu: Vi har ju objekt som är globala i en klass.
+[kl. 13:21:33 CEST] di98jgu: Så även en metoderna är synkade vad händer om flera metoder använder samma globala objekt ?
+[kl. 13:23:37 CEST] Viktor Stärn: ok, det vet vi inte alls? :)
+[kl. 13:24:44 CEST] di98jgu: Av vad jag har förståt så är Javas synkronisering på metod nivå enkelt men rätt grov.
+[kl. 13:25:44 CEST] di98jgu: Jag har dock idé hur detta ska lösas.
+[kl. 13:26:23 CEST] Viktor Stärn: ok, va bra!
+[kl. 13:27:55 CEST] di98jgu: Vad pysslar du med nu ?
+[kl. 13:28:48 CEST] Viktor Stärn: första testet att länka båda databaserna med gränssnittet, men jag behöver som sagt lite hjälp med SnowPressure, hur jag kommer åt get-metoderna
+[kl. 13:29:14 CEST] di98jgu: Okej så där ligger prioritet.
+[kl. 13:29:43 CEST] di98jgu: Jag tittar på det tills imorgon, ska lägga till lite metoder för att hantera det.
+[kl. 13:29:53 CEST] Viktor Stärn: låter bra! :)
+[kl. 13:30:52 CEST] Viktor Stärn: har du förresten hunnit stylta upp rapporten? grovt... kanske hade kunnat börja så smått jag med... med de delar jag sysslat med
+[kl. 13:31:23 CEST] di98jgu: Gör så här, skriv det in texteditor eller liknande.
+[kl. 13:32:24 CEST] di98jgu: Jag använder LibreOffice, ungefär samma som OpenOffic.
+[kl. 13:32:47 CEST] di98jgu: Men jag vet inte vilka tecksnitt du har på din burk.
+[kl. 13:33:10 CEST] di98jgu: Så enklast är jag formatera och du skriver.
+[kl. 13:34:03 CEST] Viktor Stärn: ok, men har du börjat? hade gärna kollat på hur du delat upp rapporten
+[kl. 13:34:24 CEST] di98jgu: Skickar per post.... ett ögonblick.
+[kl. 13:34:33 CEST] Viktor Stärn: ok, bra! :)
+[kl. 13:36:04 CEST] di98jgu: Rapport skickad.
+[kl. 13:37:57 CEST] Viktor Stärn: hur va det nu, sa inte Daniel något om detta också, vad var det han nämnde som mall för rapporten?
+[kl. 13:39:02 CEST] di98jgu: Han skickade en mall för en vecka sedan, i pdf.
+[kl. 13:39:55 CEST] di98jgu: Jag yxade till något liknade.
+[kl. 13:40:09 CEST] Viktor Stärn: via e-mail?
+[kl. 13:40:23 CEST] di98jgu: Yapp, du ska ha den också.
+[kl. 13:40:38 CEST] Viktor Stärn: ah, nu hittade jag!
+[kl. 13:40:39 CEST] Viktor Stärn: super!
+[kl. 13:40:52 CEST] Viktor Stärn: ja, men då ska jag nog kunna börja med det också
+[kl. 13:42:27 CEST] di98jgu: Tittade på den och det verkar vara rätt vettig uppdelning.
+[kl. 13:42:54 CEST] di98jgu: Jag brukar dock inte vara rädd för att tumma på rubrikerna.
+[kl. 13:43:22 CEST] di98jgu: ;-)
+[kl. 13:44:09 CEST] di98jgu: Så du skriver tills imorgon ?
+[kl. 13:44:25 CEST] Viktor Stärn: japp, kan jag göra
+[kl. 13:45:06 CEST] di98jgu: Okej, se till att uppdatera GitHub med senaste.
+[kl. 13:45:33 CEST] di98jgu: Så ska jag lägga till lite metoder för att hantera SSC.
+[kl. 13:46:15 CEST] Viktor Stärn: japp :)
+[kl. 13:46:17 CEST] Viktor Stärn: fint!
+[kl. 13:48:31 CEST] di98jgu: Föresten, lägg inte ned något möda på formatering etc. Ju mindre formatering, ju enklare att klippa o klistra. Sätt lite rubriker o sånt. Har du referenser, sätt dom under egen rubrik och så vidare.
+[kl. 13:48:52 CEST] Viktor Stärn: ok, will do!
+[kl. 13:49:21 CEST] Viktor Stärn: kör jag en fetch nu också innan push?
+[kl. 13:49:43 CEST] di98jgu: Gör det till en vana, alltid fecth innan push.
+[kl. 13:50:12 CEST] Viktor Stärn: och merge?
+[kl. 13:50:24 CEST] di98jgu: fetch merge push
+[kl. 13:50:33 CEST] Viktor Stärn: ok, bra, då kör jag på det
+[kl. 13:50:54 CEST] di98jgu: Något mer ?
+[kl. 13:51:41 CEST] Viktor Stärn: nä, det var väl allt!
+[kl. 13:52:10 CEST] di98jgu: Okej då hörs vi imorgon, måste bege mig (wave) :-)
+[kl. 13:52:19 CEST] Viktor Stärn: yes, ses :)

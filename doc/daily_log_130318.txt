@@ -1,0 +1,45 @@
+måndagen den 18:e mars 2013
+[kl. 13:01:21 CEST] di98jgu: Hej där ser att det fungera :-)
+[kl. 13:05:10 CEST] Viktor Stärn: Hej! Ja, gick väldigt smidigt efter buggfixen! :)
+[kl. 13:06:17 CEST] Viktor Stärn: Har börjat på rapporten också, blev dock snabbt avbruten när jag insåg en del begränsningar i gränssnittet :) dashboarden jag gjort var ju inte skalbar
+[kl. 13:06:31 CEST] Viktor Stärn: så jag fick fixa det innan jag skrev om gränssnittet
+[kl. 13:06:47 CEST] di98jgu: Yupp, det är det som jag tror vi ska fokusera på.
+[kl. 13:07:29 CEST] di98jgu: Vi har ju en lista också, det vore trevligt att lista faktiska sensorer i den.
+[kl. 13:07:58 CEST] Viktor Stärn: jepp... var ska användaren lägga till sensorer? under användarinställningar?
+[kl. 13:09:26 CEST] di98jgu: Mja, sensorn har ett namn eller om det inte finns ett serie number som vi kan använda för att lista dem.
+[kl. 13:10:32 CEST] Viktor Stärn: jo, men användaren måste väl ange vilka som ska listas, eller görs det inte i vår applikation?
+[kl. 13:11:20 CEST] di98jgu: Nix det gör det inte,
+[kl. 13:13:03 CEST] di98jgu: En sensor tillhör en viss domän, vi listar alla de sensorer som finns i användarens domän som är av typen SnowPressure.
+[kl. 13:14:40 CEST] Viktor Stärn: så det är knutet till användaren då...
+[kl. 13:15:00 CEST] Viktor Stärn: tänker vi oss en inloggningsruta efter splash screen eller?
+[kl. 13:16:09 CEST] di98jgu: Tänkte titta lite på preferences.
+[kl. 13:17:00 CEST] di98jgu: Användaren ange sina inloggningsuppgifter, de sparas. Han behöver inte ange dem igen.
+[kl. 13:17:24 CEST] di98jgu: Vi kan ha en knapp för det på dashboard.
+[kl. 13:17:53 CEST] di98jgu: Till exempel då användaren använder sync för första gången.
+[kl. 13:17:57 CEST] Viktor Stärn: ja, den finns redan
+[kl. 13:18:04 CEST] Viktor Stärn: men alarm och karta ska bort?
+[kl. 13:18:53 CEST] di98jgu: På en en och halv vecka ? Vore rätt ambiöst tror jag. :-)
+[kl. 13:19:36 CEST] di98jgu: Nej lista och användar uppgifter är nog vad vi hinner.
+[kl. 13:19:42 CEST] Viktor Stärn: jo, det är ju därför jag tänker att de ska bort :)
+[kl. 13:20:08 CEST] Viktor Stärn: men du tänker att inloggningsruta ska dyka upp första gången man synkar?
+[kl. 13:20:34 CEST] di98jgu: Ja, vore mest logiskt.
+[kl. 13:20:53 CEST] di98jgu: Användaren behöver inte leta efter den.
+[kl. 13:23:03 CEST] Viktor Stärn: är det lättare att göra det så än att bara ha en inloggningsskärm som dyker upp första gången man använder applikationen?
+[kl. 13:24:26 CEST] di98jgu: Vi kör på din variant, det krävs minst kod för att implementera.
+[kl. 13:25:50 CEST] di98jgu: Jag behöver skriva färdigt dokumentationen för SSC och skapa Javadoc. Ska också samla ihop det material vi har till slutrapporten.
+[kl. 13:27:08 CEST] di98jgu: Du kan ju ta och titta på listan, använd gjärna ett särskilt objekt för varje list element.
+[kl. 13:27:19 CEST] di98jgu: Det gör det faktiskt mycket enklare.
+[kl. 13:28:12 CEST] di98jgu: Du kommer ju att behöva logik för att kolla om det finns ett namn eller om du ska visa serie nummeret istället.
+[kl. 13:28:17 CEST] Viktor Stärn: du menar uppdatera listan med faktiska sensorer?
+[kl. 13:28:26 CEST] di98jgu: Yupp, precis.
+[kl. 13:30:14 CEST] Viktor Stärn: ok, ska ta en titt på det..
+[kl. 13:30:52 CEST] Viktor Stärn: skickar det jag skrivit på rapporten hittils (säkert en del som måste ändras):
+[kl. 13:30:56 CEST] * Viktor Stärn sent file "Rapport.odt"
+[kl. 13:35:18 CEST] di98jgu: Utmärkt.
+[kl. 13:36:04 CEST] di98jgu: Nu har skype slutat att fungera igen tror jag.
+[kl. 13:47:22 CEST] Viktor Stärn: som vanligt :)
+[kl. 13:47:30 CEST] Viktor Stärn: fick dem nyss
+[kl. 13:48:09 CEST] di98jgu: Så vi har en plan till morgon dagen ?
+[kl. 13:52:16 CEST] Viktor Stärn: japp, vi kör på detta
+[kl. 13:52:58 CEST] di98jgu: Ok, behöver gå. Vi ses imorgon (wave)
+[kl. 13:53:05 CEST] Viktor Stärn: ses! :)
